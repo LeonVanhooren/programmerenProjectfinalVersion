@@ -4,8 +4,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="303.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.energyconservationapp.guiController">
+<AnchorPane prefHeight="303.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MyProfileController">
    <children>
       <Label layoutX="27.0" layoutY="59.0" text="Student number:" />
       <Label layoutX="43.0" layoutY="96.0" text="First name:" />

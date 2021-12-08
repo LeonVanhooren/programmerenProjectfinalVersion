@@ -1,8 +1,11 @@
 package logic;
 
+import java.util.ArrayList;
+
 public class Building {
 
     private String buildingID, country, city, adress;
+    private ArrayList<Room> rooms;
 
     public Building(String buildingID, String country, String city, String adress) {
         this.buildingID = buildingID;
@@ -13,6 +16,10 @@ public class Building {
 
     public String getBuildingID() {
         return buildingID;
+    }
+
+    public ArrayList<Room> getRooms() {
+        return rooms;
     }
 
     public void setBuildingID(String buildingID) {
