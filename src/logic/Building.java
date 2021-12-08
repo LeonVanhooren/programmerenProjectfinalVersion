@@ -1,14 +1,18 @@
 package logic;
 
+import java.util.ArrayList;
+
 public class Building {
 
-    private String buildingID, country, city, adress;
+    private String buildingID, country, city, adress,zip;
+    private ArrayList<Room> rooms;
 
-    public Building(String buildingID, String country, String city, String adress) {
+    public Building(String buildingID, String country, String city, String adress,String zip) {
         this.buildingID = buildingID;
         this.country = country;
         this.city = city;
         this.adress = adress;
+        this.zip = zip;
     }
 
     public String getBuildingID() {
@@ -21,6 +25,10 @@ public class Building {
 
     public String getCountry() {
         return country;
+    }
+
+    public ArrayList<Room> getRooms() {
+        return rooms;
     }
 
     public void setCountry(String country) {
@@ -43,13 +51,21 @@ public class Building {
         this.adress = adress;
     }
 
+    public String getZip() {
+        return zip;
+    }
+
+    public void setZip(String zip) {
+        this.zip = zip;
+    }
+
     @Override
     public String toString() {
         return "Building{" +
                 "buildingID='" + buildingID + '\'' +
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
-                ", adress='" + adress + '\'' +
+                ", adress='" + adress + '\'' +", zip='" + zip + '\''+
                 '}';
     }
 }

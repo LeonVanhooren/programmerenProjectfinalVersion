@@ -1,5 +1,6 @@
 package database;
 
+import logic.Appliance;
 import logic.Room;
 
 import java.sql.*;
@@ -36,6 +37,19 @@ public class DBRoom {
             e.printStackTrace();
         }
         return rooms;
+    }
+    public static void addRoomToDatabase(Room room){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO rooms "+"VALUES('"+room.getRoomNR()+"', '"+room.getRoomID()+"', '"+room.getBuildingID()+"', '"+room.getCharacteristics()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
     }
 }
 
