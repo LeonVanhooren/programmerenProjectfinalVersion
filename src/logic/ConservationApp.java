@@ -37,6 +37,14 @@ public class ConservationApp {
         this.currentLandlord = null;
     }
 
+    public String[] getRoomIDs(){
+        String[] output=null;
+        for(int i=0; i<rooms.size();i++){
+            output[i] = rooms.get(i).getRoomID();
+        }
+
+        return output;
+    }
     public void setCurrentStudent(Student student){
         this.currentStudent = student;
     }
