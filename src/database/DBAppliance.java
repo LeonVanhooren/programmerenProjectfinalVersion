@@ -1,6 +1,7 @@
 package database;
 
 import logic.Appliance;
+import logic.Student;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -42,6 +43,38 @@ public class DBAppliance {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
             String query = "INSERT INTO appliances "+"VALUES('"+appliance.getApplianceID()+"', '"+appliance.getConsumption()+"', '"+appliance.getEfficiency()+"', '"+appliance.getQRCode()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void changeApplianceFromDatabase(Appliance newAppliance, Appliance oldAppliance){
+        try {
+            removeApplianceFromDatabase(oldAppliance);
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO appliances "+"VALUES('"+newAppliance.getApplianceID()+"', '"+newAppliance.getConsumption()+"', '"+newAppliance.getEfficiency()+"', '"+newAppliance.getQRCode()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public static void removeApplianceFromDatabase(Appliance appliance){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "DELETE FROM appliances WHERE applianceID="+appliance.getApplianceID();
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
