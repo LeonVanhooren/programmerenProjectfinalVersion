@@ -1,5 +1,6 @@
 package database;
 
+import logic.Appliance;
 import logic.Building;
 
 import java.sql.*;
@@ -26,8 +27,9 @@ public class DBBuilding {
                 String country = rs.getString("country");
                 String city = rs.getString("city");
                 String adress = rs.getString("adress");
+                String zip = rs.getString("zip");
 
-                Building newBuilding = new Building(buildingID, country, city, adress);
+                Building newBuilding = new Building(buildingID, country, city, adress,zip);
                 buildings.add(newBuilding);
 
             }
@@ -37,6 +39,20 @@ public class DBBuilding {
             e.printStackTrace();
         }
         return buildings;
+    }
+
+    public static void addBuildingToDatabase(Building building){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO building "+"VALUES('"+building.getBuildingID()+"', '"+building.getCountry()+"', '"+building.getCity()+"', '"+building.getAdress()+"' , '"+building.getZip() +"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
     }
 
 }
