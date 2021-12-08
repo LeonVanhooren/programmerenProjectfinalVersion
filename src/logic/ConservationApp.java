@@ -38,7 +38,7 @@ public class ConservationApp {
     }
 
     public String[] getRoomIDs(){
-        String[] output=null;
+        String[] output = new String[rooms.size()];
         for(int i=0; i<rooms.size();i++){
             output[i] = rooms.get(i).getRoomID();
         }
