@@ -42,6 +42,10 @@ public class ApplianceMenuController {
     private TextField efficiencyTF;
     @FXML
     private Label addApplianceLabel;
+    @FXML
+    private Label RemoveApplianceLabel;
+    @FXML
+    private Label ChangeApplianceLabel;
 
     public void addAppliance(ActionEvent event){
         String applianceID, consumption, efficiency, QRCode;
@@ -64,6 +68,48 @@ public class ApplianceMenuController {
 
     }
 
+    public void changeAppliance(ActionEvent event) {
+        String applianceID, consumption, efficiency, QRCode;
+
+        applianceID = applianceIDTF.getText();
+        consumption = consumptionTF.getText();
+        efficiency = efficiencyTF.getText();
+        QRCode = QRCodeTF.getText();
+
+        if (appliancePresent(applianceID) == true) {
+            Appliance newAppliance = new Appliance(applianceID, consumption, efficiency, QRCode);
+            Appliance oldAppliance = new Appliance(applianceID, consumption, efficiency, QRCode);
+            DBAppliance.changeApplianceFromDatabase(newAppliance, oldAppliance);
+
+            setChangeApplianceStatus("The two appliances are changed in the database!");
+
+        } else {
+            setChangeApplianceStatus("The databasa doesn't contain the old appliance!");
+
+        }
+    }
+    public void removeAppliance(ActionEvent event){
+        String applianceID, consumption, efficiency, QRCode;
+
+        applianceID = applianceIDTF.getText();
+        consumption = consumptionTF.getText();
+        efficiency = efficiencyTF.getText();
+        QRCode = QRCodeTF.getText();
+
+
+
+        if(appliancePresent(applianceID)==true){
+            Appliance appliance = new Appliance(applianceID, consumption, efficiency, QRCode);
+            DBAppliance.removeApplianceFromDatabase(appliance);
+
+            setRemoveApplianceStatus("The appliance is removed from the database!");
+
+        }
+        else{ setRemoveApplianceStatus("The database doesn't contain this appliance!");
+    }
+    }
+
+
     //we moeten een appliance id number generator doen en een extra vakje voor appliance naam zodat meerdere laptops kunnen toegevoegd worden!!!!!!!!
 
     public boolean appliancePresent(String applianceID){
@@ -79,6 +125,15 @@ public class ApplianceMenuController {
 
     public void setAddApplianceStatus(String output){
         addApplianceLabel.setText(output);
+
+    }
+
+    public void setRemoveApplianceStatus(String output){
+        RemoveApplianceLabel.setText(output);
+
+    }
+    public void setChangeApplianceStatus(String output){
+        ChangeApplianceLabel.setText(output);
 
     }
 }
