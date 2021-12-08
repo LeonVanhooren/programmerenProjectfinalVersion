@@ -1,6 +1,7 @@
 package database;
 
 import logic.Contract;
+import logic.Student;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -37,5 +38,49 @@ public class DBContract {
             e.printStackTrace();
         }
         return contracts;
+    }
+    public static void addContractToDatabase(Contract contract){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO contract "+"VALUES('"+contract.getStudentID()+"', '"+contract.getLandlordID()+"', '"+contract.getContractID()+"', '"+contract.getStartDate()+"', '"+contract.getContractDuration()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+
+    public static void changeContractFromDatabase(Contract newContract, Contract oldContract){
+        try {
+            removeContractFromDatabase(oldContract);
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO contract "+"VALUES('"+newContract.getStudentID()+"', '"+newContract.getLandlordID()+"', '"+newContract.getContractID()+"', '"+newContract.getStartDate()+"', '"+newContract.getContractDuration()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public static void removeContractFromDatabase(Contract contract){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "DELETE FROM contract WHERE contractID="+contract.getStudentID();
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
     }
 }
