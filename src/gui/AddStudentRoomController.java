@@ -28,6 +28,19 @@ public class AddStudentRoomController implements Initializable {
 
     @FXML
     private ListView<String> myListView;
+    @FXML
+    private TextField Address;
+    @FXML
+    private TextField City;
+    @FXML
+    private TextField Country;
+    @FXML
+    private TextField Zip;
+    @FXML
+    private TextField RoomNr;
+
+
+
 
     String[] roomIDs = program.getRoomIDs();
 
@@ -49,7 +62,14 @@ public class AddStudentRoomController implements Initializable {
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                 currentRoom = myListView.getSelectionModel().getSelectedItem();
+                currentRoom = myListView.getSelectionModel().getSelectedItem();
+                Address.setPromptText(searchBuildingAdressStudent(searchBuildingIDStudent(currentRoom)));
+                City.setPromptText(searchBuildingCity(searchBuildingIDStudent(currentRoom)));
+                Country.setPromptText(searchBuildingCountry(searchBuildingIDStudent(currentRoom)));
+                Zip.setPromptText(searchBuildingZip(searchBuildingIDStudent(currentRoom)));
+                RoomNr.setPromptText(""+searchRoomNrStudent(currentRoom));
+
+
             }
         });
     }
@@ -92,6 +112,36 @@ public class AddStudentRoomController implements Initializable {
         for(Building newBuilding: program.getBuildings()){
             if(newBuilding.getBuildingID().equals(buildingID)){
                 buildingAdress = newBuilding.getAdress();
+            }
+        }
+        return buildingAdress;
+    }
+
+    public String searchBuildingCountry(String buildingID){
+        String buildingAdress = null;
+        for(Building newBuilding: program.getBuildings()){
+            if(newBuilding.getBuildingID().equals(buildingID)){
+                buildingAdress = newBuilding.getCountry();
+            }
+        }
+        return buildingAdress;
+    }
+
+    public String searchBuildingCity(String buildingID){
+        String buildingAdress = null;
+        for(Building newBuilding: program.getBuildings()){
+            if(newBuilding.getBuildingID().equals(buildingID)){
+                buildingAdress = newBuilding.getCity();
+            }
+        }
+        return buildingAdress;
+    }
+
+    public String searchBuildingZip(String buildingID){
+        String buildingAdress = null;
+        for(Building newBuilding: program.getBuildings()){
+            if(newBuilding.getBuildingID().equals(buildingID)){
+                buildingAdress = newBuilding.getZip();
             }
         }
         return buildingAdress;
