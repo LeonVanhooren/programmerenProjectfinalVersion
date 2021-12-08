@@ -6,6 +6,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="320.0" prefWidth="473.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddContactPersonController">
   <tabs>
@@ -13,14 +14,18 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="159.0" layoutY="14.0" prefHeight="36.0" prefWidth="156.0" text="Insert student information" />
                   <Label layoutX="104.0" layoutY="152.0" />
-                  <Label layoutX="94.0" layoutY="70.0" text="StudentID:" />
-                  <TextField layoutX="162.0" layoutY="66.0" />
-                  <Button layoutX="315.0" layoutY="212.0" mnemonicParsing="false" onAction="#landlordMenu" text="Submit" />
-                  <Button layoutX="143.0" layoutY="212.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
-                  <Label layoutX="99.0" layoutY="115.0" text="RoomID:" />
-                  <TextField layoutX="163.0" layoutY="111.0" />
+                  <Label layoutX="88.0" layoutY="79.0" text="StudentID:" />
+                  <TextField layoutX="162.0" layoutY="75.0" />
+                  <Button layoutX="210.0" layoutY="170.0" mnemonicParsing="false" onAction="#landlordMenu" text="Submit" />
+                  <Button layoutX="405.0" layoutY="238.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
+                  <Label layoutX="98.0" layoutY="124.0" text="RoomID:" />
+                  <TextField layoutX="162.0" layoutY="120.0" />
+                  <Label layoutX="156.0" layoutY="30.0" text="Insert student information">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children></AnchorPane>
       </content>
     </Tab>
@@ -28,15 +33,18 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="70.0" layoutY="73.0" text="Old studentID:" />
-                  <Label layoutX="147.0" layoutY="28.0" text="Insert student information" />
-                  <TextField layoutX="185.0" layoutY="69.0" />
-                  <Label layoutX="70.0" layoutY="113.0" text="New studentID:" />
+                  <Label layoutX="80.0" layoutY="73.0" text="Old studentID:" />
+                  <Label layoutX="156.0" layoutY="26.0" text="Insert student information">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <TextField layoutX="186.0" layoutY="69.0" />
+                  <Label layoutX="78.0" layoutY="113.0" text="New studentID:" />
                   <TextField layoutX="186.0" layoutY="109.0" />
-                  <Label layoutX="85.0" layoutY="156.0" text="RoomID:" />
+                  <Label layoutX="111.0" layoutY="156.0" text="RoomID:" />
                   <TextField layoutX="186.0" layoutY="152.0" />
-                  <Button layoutX="335.0" layoutY="215.0" mnemonicParsing="false" onAction="#landlordMenu" text="Submit" />
-                  <Button layoutX="160.0" layoutY="215.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
+                  <Button layoutX="234.0" layoutY="202.0" mnemonicParsing="false" onAction="#landlordMenu" text="Submit" />
+                  <Button layoutX="410.0" layoutY="245.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -44,13 +52,16 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="167.0" layoutY="30.0" text="Insert student information" />
-                  <Label layoutX="81.0" layoutY="80.0" text="StudentID:" />
-                  <TextField layoutX="178.0" layoutY="76.0" />
-                  <Label layoutX="85.0" layoutY="128.0" text="RoomID:" />
+                  <Label layoutX="156.0" layoutY="33.0" text="Insert student information">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label layoutX="101.0" layoutY="80.0" text="StudentID:" />
+                  <TextField layoutX="179.0" layoutY="76.0" />
+                  <Label layoutX="106.0" layoutY="128.0" text="RoomID:" />
                   <TextField layoutX="179.0" layoutY="124.0" />
-                  <Button layoutX="329.0" layoutY="200.0" mnemonicParsing="false" onAction="#landlordMenu" text="Submit" />
-                  <Button layoutX="152.0" layoutY="200.0" mnemonicParsing="false" onAction="#landlordMenu" prefHeight="26.0" prefWidth="41.0" text="Back" />
+                  <Button layoutX="227.0" layoutY="174.0" mnemonicParsing="false" onAction="#landlordMenu" text="Submit" />
+                  <Button layoutX="418.0" layoutY="238.0" mnemonicParsing="false" onAction="#landlordMenu" prefHeight="26.0" prefWidth="41.0" text="Back" />
                </children></AnchorPane>
         </content>
       </Tab>
