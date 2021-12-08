@@ -50,19 +50,19 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="177.0" layoutY="14.0" text="Student room is not yet added" />
+                  <Label fx:id="roominfo" layoutX="177.0" layoutY="14.0" text="Student room is not yet added" />
                   <Label layoutX="127.0" layoutY="87.0" text="Address:" />
                   <Label layoutX="118.0" layoutY="127.0" />
-                  <TextField layoutX="191.0" layoutY="83.0" />
-                  <TextField layoutX="191.0" layoutY="123.0" />
+                  <TextField fx:id="adressInput" layoutX="191.0" layoutY="83.0" />
+                  <TextField fx:id="countryInput" layoutX="191.0" layoutY="123.0" />
                   <Button layoutX="512.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
-                  <Button layoutX="216.0" layoutY="274.0" mnemonicParsing="false" text="Add building" />
+                  <Button layoutX="216.0" layoutY="274.0" mnemonicParsing="false" onAction="#addBuildingButton" text="Add building" />
                   <Label layoutX="127.0" layoutY="118.0" text="Country:" />
                   <Label layoutX="138.0" layoutY="167.0" text="City:" />
-                  <TextField layoutX="191.0" layoutY="163.0" />
-                  <TextField layoutX="191.0" layoutY="206.0" />
+                  <TextField fx:id="cityInput" layoutX="191.0" layoutY="163.0" />
+                  <TextField fx:id="zipInput" layoutX="191.0" layoutY="206.0" />
                   <Label layoutX="141.0" layoutY="210.0" text="Zip" />
-                  <Label layoutX="227.0" layoutY="50.0" text="Building ID:" />
+                  <Label fx:id="buildingIDT" layoutX="227.0" layoutY="50.0" text="Building ID:" />
                </children>
             </AnchorPane>
          </content>
