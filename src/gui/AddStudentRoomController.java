@@ -1,5 +1,6 @@
 package gui;
 
+import database.DBBuilding;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -8,6 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -42,9 +44,9 @@ public class AddStudentRoomController implements Initializable {
     @FXML
     private TextField RoomNr;
     @FXML
-    private TextField buildingID;
+    private TextField buildingIDRoom;
     @FXML
-    private Label roomID;
+    private TextField buildingIDBuilding;
 
 
 
@@ -75,8 +77,8 @@ public class AddStudentRoomController implements Initializable {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 currentRoom = myListView.getSelectionModel().getSelectedItem();
                 RoomNr.setPromptText(""+searchRoomNrStudent(currentRoom));
-                buildingID.setPromptText(searchBuildingIDStudent(currentRoom));
-                roomID.setText(currentRoom);
+                buildingIDRoom.setPromptText(searchBuildingIDStudent(currentRoom));
+
             }
 
 
@@ -91,7 +93,7 @@ public class AddStudentRoomController implements Initializable {
                 City.setPromptText(searchBuildingCity(currentBuilding));
                 Country.setPromptText(searchBuildingCountry(currentBuilding));
                 Zip.setPromptText(searchBuildingZip(currentBuilding));
-                buildingID.setPromptText(currentBuilding);
+                buildingIDBuilding.setPromptText(currentBuilding);
 
             }
         });
@@ -171,4 +173,45 @@ public class AddStudentRoomController implements Initializable {
         }
         return buildingAdress;
     }
+    @FXML
+    private TextField adressInput;
+    @FXML
+    private TextField countryInput;
+    @FXML
+    private TextField cityInput;
+    @FXML
+    private TextField zipInput;
+    @FXML
+    private Label buildingIDT;
+    @FXML
+    private Label roominfo;
+
+    public void addBuildingButton(){
+        String adress, country, city, zip;
+        adress = adressInput.getText();
+        country = countryInput.getText();
+        city = cityInput.getText();
+        zip = zipInput.getText();
+        if(buildingExists(adress, country, city, zip) == false){
+            int buildingID = (int)Math.floor(Math.random()*(99999-10000+1)+10000);
+            String buildingIDString = ""+buildingID;
+            Building newBuilding = new Building(buildingIDString, country, city, adress, zip);
+            DBBuilding.addBuildingToDatabase(newBuilding);
+            roominfo.setText("Building successfully added!");
+            buildingIDT.setText("The buildingID is " + buildingIDString + ", remember this well!");
+        }
+        else{
+            roominfo.setText("The database already contains this building!");
+        }
+    }
+
+    public boolean buildingExists(String adress, String country, String city, String zip){
+        for(Building b : program.getBuildings()){
+            if((b.getAdress().equals(adress)) && (b.getCountry().equals(country)) && (b.getCity().equals(city)) && (b.getZip().equals(zip))){
+                return true;
+            }
+        }
+        return false;
+    }
+
 }
