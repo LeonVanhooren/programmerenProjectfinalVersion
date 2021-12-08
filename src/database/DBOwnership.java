@@ -12,7 +12,7 @@ public class DBOwnership {
     private static String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static String URL = "jdbc:mysql://pdbmbook.com:3306/db2021_23";
 
-    public ArrayList<Ownership> databaseReadOwnership(){
+    public static ArrayList<Ownership> databaseReadOwnership(){
         ArrayList<Ownership> ownerships = new ArrayList<>();
 
         try {

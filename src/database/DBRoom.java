@@ -12,7 +12,7 @@ public class DBRoom {
     private static String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static String URL = "jdbc:mysql://pdbmbook.com:3306/db2021_23";
 
-    public ArrayList<Room> databaseReadRoom(){
+    public static ArrayList<Room> databaseReadRoom(){
         ArrayList<Room> rooms = new ArrayList<>();
 
         try {

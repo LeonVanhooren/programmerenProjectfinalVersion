@@ -12,7 +12,7 @@ public class DBStudent {
     private static String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static String URL = "jdbc:mysql://pdbmbook.com:3306/db2021_23";
 
-    public ArrayList<Student> databaseReadStudent(){
+    public static ArrayList<Student> databaseReadStudent(){
         ArrayList<Student> students = new ArrayList<>();
 
         try {
@@ -36,5 +36,19 @@ public class DBStudent {
             e.printStackTrace();
         }
         return students;
+    }
+
+    public void addStudentToDatabase(Student student){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO student "+"VALUES('"+student.getStudentID()+"', '"+student.getFirstName()+"', '"+student.getLastName()+"', '"+student.getEmail()+"', '"+student.getPassword()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
     }
 }

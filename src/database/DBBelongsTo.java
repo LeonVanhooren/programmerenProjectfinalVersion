@@ -12,7 +12,7 @@ public class DBBelongsTo {
     private static String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static String URL = "jdbc:mysql://pdbmbook.com:3306/db2021_23";
 
-    public ArrayList<BelongsTo> databaseReadBelongsTo(){
+    public static ArrayList<BelongsTo> databaseReadBelongsTo(){
         ArrayList<BelongsTo> belongsToArrayList = new ArrayList<>();
 
         try {

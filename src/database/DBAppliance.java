@@ -12,7 +12,7 @@ public class DBAppliance {
     private static String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static String URL = "jdbc:mysql://pdbmbook.com:3306/db2021_23";
 
-    public ArrayList<Appliance> databaseReadAppliance(){
+    public static ArrayList<Appliance> databaseReadAppliance(){
         ArrayList<Appliance> appliances = new ArrayList<>();
 
         try {
