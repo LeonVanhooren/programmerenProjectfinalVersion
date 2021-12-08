@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="com.app.energyconservationapp.guiController">
+  <tabs>
+    <Tab text="Electricity appliance">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <DatePicker layoutX="216.0" layoutY="51.0" />
+                  <Label layoutX="271.0" layoutY="24.0" text="Select a day:" />
+                  <Label layoutX="199.0" layoutY="101.0" text="Choose energy conservation action(s):" />
+                  <Button layoutX="391.0" layoutY="306.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Submit" />
+                  <Button layoutX="190.0" layoutY="306.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
+                  <ChoiceBox fx:id="ElectricityApplianceChoicebox" layoutX="225.0" layoutY="140.0" prefWidth="150.0" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab text="Water appliance">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="256.0" layoutY="42.0" text="Select a day:" />
+                  <DatePicker layoutX="202.0" layoutY="66.0" />
+                  <Label layoutX="198.0" layoutY="116.0" text="Choose energy conservation action(s): " />
+                  <ChoiceBox fx:id="WaterApplianceChoicebox" layoutX="225.0" layoutY="154.0" prefWidth="150.0" />
+                  <Button layoutX="376.0" layoutY="234.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Submit" />
+                  <Button layoutX="176.0" layoutY="234.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+      <Tab text="Gas appliance">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="286.0" layoutY="34.0" text="Select a day" />
+                  <DatePicker layoutX="231.0" layoutY="56.0" />
+                  <Label layoutX="219.0" layoutY="104.0" text="Choose energy conservation action(s)" />
+                  <ChoiceBox fx:id="GasApplianceChoicebox" layoutX="243.0" layoutY="143.0" prefWidth="150.0" />
+                  <Button layoutX="406.0" layoutY="246.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Submit" />
+                  <Button layoutX="179.0" layoutY="246.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
+  </tabs>
+</TabPane>

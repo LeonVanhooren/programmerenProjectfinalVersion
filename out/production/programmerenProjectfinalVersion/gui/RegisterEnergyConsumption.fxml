@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.energyconservationapp.guiController">
+   <children>
+      <Label layoutX="268.0" layoutY="57.0" text="Select the date" />
+      <DatePicker layoutX="220.0" layoutY="83.0" />
+      <Label layoutX="203.0" layoutY="133.0" text="Fill in the monthly energy consumption:" />
+      <Label layoutX="171.0" layoutY="14.0" text="Monthly energy consumption">
+         <font>
+            <Font size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="143.0" layoutY="183.0" text="Electricity (in kWh):" />
+      <Label layoutX="143.0" layoutY="225.0" text="Water (m³):" />
+      <Label layoutX="143.0" layoutY="266.0" text="Gas (kWh):" />
+      <TextField layoutX="280.0" layoutY="179.0" />
+      <TextField layoutX="280.0" layoutY="221.0" />
+      <TextField layoutX="280.0" layoutY="262.0" />
+      <Button layoutX="194.0" layoutY="336.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
+      <Button layoutX="395.0" layoutY="336.0" mnemonicParsing="false" onAction="#landlordMenu" text="Submit" />
+      <Label fx:id="firstDayError" layoutX="115.0" layoutY="87.0" textFill="RED" />
+   </children>
+</AnchorPane>

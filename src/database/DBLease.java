@@ -12,7 +12,7 @@ public class DBLease {
     private static String DRIVER = "com.mysql.cj.jdbc.Driver";
     private static String URL = "jdbc:mysql://pdbmbook.com:3306/db2021_23";
 
-    public ArrayList<Lease> databaseReadLease(){
+    public static ArrayList<Lease> databaseReadLease(){
         ArrayList<Lease> leases = new ArrayList<>();
 
         try {
