@@ -21,6 +21,7 @@ public class ConservationApp {
     private Student currentStudent;
     private Landlord currentLandlord;
 
+
     public ConservationApp() {
         this.students = DBStudent.databaseReadStudent();
         this.landlords = DBLandlord.databaseReadLandlord();
