@@ -6,7 +6,7 @@ import javafx.stage.Stage;
 public class AddContractController extends Application {
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage stage) throws Exception {
 
     }
 }
