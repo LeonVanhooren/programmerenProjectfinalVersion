@@ -51,4 +51,36 @@ public class DBStudent {
             e.printStackTrace();
         }
     }
+
+    public static void changeStudentFromDatabase(Student newStudent, Student oldStudent){
+        try {
+            removeStudentFromDatabase(oldStudent);
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO student "+"VALUES('"+newStudent.getStudentID()+"', '"+newStudent.getFirstName()+"', '"+newStudent.getLastName()+"', '"+newStudent.getEmail()+"', '"+newStudent.getPassword()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public static void removeStudentFromDatabase(Student student){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "DELETE FROM student WHERE studentID="+student.getStudentID();
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+
 }

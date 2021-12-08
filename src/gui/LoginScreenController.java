@@ -20,9 +20,6 @@ public class LoginScreenController {
 
     private ConservationApp program = ConservationApp.getInstance();
 
-
-
-
     private Stage stage;
     private Parent root;
     private Scene scene;
@@ -44,13 +41,15 @@ public class LoginScreenController {
             System.out.println("zit in de database");
 
             loginInfoStudent.setText("This matches an account in the DB!");
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("StudentMenu.fxml"));
+            Parent view = loader.load();
 
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("StudentMenu.fxml"));
-            root = loader.load();
+
 
             stage = (Stage)((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Student menu");
-            scene = new Scene(root);
+            scene = new Scene(view);
             stage.setScene(scene);
 
         }
@@ -121,9 +120,9 @@ public class LoginScreenController {
 
     }
 
-    public boolean landlordPresent(String landlordID, String password){
-        for(Landlord newLandlord:program.getLandlords()){
-            if(newLandlord.getLandlordID().equals(landlordID)&&newLandlord.getPassWord().equals(password)){
+    public boolean landlordPresent(String landlordID, String password) {
+        for (Landlord newLandlord : program.getLandlords()) {
+            if (newLandlord.getLandlordID().equals(landlordID) && newLandlord.getPassWord().equals(password)) {
                 program.setCurrentLandlord(newLandlord);
                 return true;
 
@@ -132,15 +131,20 @@ public class LoginScreenController {
         return false;
     }
 
+
+    private Parent root1;
+    private Scene scene1;
+    private Stage stage1;
+
     public void landlordRegister(ActionEvent event) throws IOException{
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterLandlord.fxml"));
-        root = loader.load();
+        root1 = loader.load();
 
-        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Landlord register menu");
-        scene = new Scene(root);
-        stage.setScene(scene);
+        stage1 = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage1.setTitle("Landlord register menu");
+        scene1 = new Scene(root1);
+        stage1.setScene(scene1);
     }
 
 

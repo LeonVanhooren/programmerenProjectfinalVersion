@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="303.0" prefWidth="366.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MyProfileController">
    <children>
-      <Label layoutX="27.0" layoutY="59.0" text="Student number:" />
-      <Label layoutX="43.0" layoutY="96.0" text="First name:" />
-      <Label layoutX="43.0" layoutY="135.0" text="Last name:" />
-      <Label layoutX="45.0" layoutY="170.0" text="Password:" />
-      <Label layoutX="57.0" layoutY="202.0" text="Email:" />
-      <Label layoutX="56.0" layoutY="235.0" text="Room:" />
-      <Label fx:id="roomMessage" layoutX="147.0" layoutY="235.0" text="No room yet!" />
-      <Button layoutX="242.0" layoutY="269.0" mnemonicParsing="false" text="Back" />
-      <Button layoutX="134.0" layoutY="269.0" mnemonicParsing="false" text="Change" />
-      <Label fx:id="emailStudentAcc" layoutX="148.0" layoutY="202.0" text="No email yet!" />
-      <Label fx:id="passwordStudentAcc" layoutX="148.0" layoutY="170.0" text="No password yet!" />
-      <Label fx:id="lastNameStudentAcc" layoutX="148.0" layoutY="135.0" text="No last name yet!" />
-      <Label fx:id="firstNameStudentAcc" layoutX="148.0" layoutY="96.0" text="No first name yet!" />
-      <Label fx:id="studentNumberAcc" layoutX="148.0" layoutY="59.0" text="No student number yet!" />
+      <Button layoutX="64.0" layoutY="256.0" mnemonicParsing="false" onAction="#back" text="Back" />
+      <Button layoutX="245.0" layoutY="256.0" mnemonicParsing="false" onAction="#change" text="Change" />
+      <Button layoutX="168.0" layoutY="256.0" mnemonicParsing="false" onAction="#showInfo" text="Show info" />
+      <Label fx:id="roomMessage" layoutX="75.0" layoutY="203.0" text="Room" />
+      <Label fx:id="passwordAcc" layoutX="75.0" layoutY="172.0" text="Password" />
+      <Label fx:id="emailAcc" layoutX="76.0" layoutY="143.0" text="Email" />
+      <Label fx:id="lastNameAcc" layoutX="77.0" layoutY="115.0" text="Last Name" />
+      <Label fx:id="firstNameAcc" layoutX="76.0" layoutY="85.0" text="First Name" />
+      <Label fx:id="studentNumberAcc" layoutX="75.0" layoutY="61.0" text="Student number" />
+      <Hyperlink layoutX="21.0" layoutY="58.0" text="change" />
+      <Hyperlink layoutX="21.0" layoutY="140.0" text="change" />
+      <Hyperlink layoutX="21.0" layoutY="112.0" text="change" />
+      <Hyperlink layoutX="21.0" layoutY="82.0" text="change" />
+      <Hyperlink layoutX="21.0" layoutY="169.0" text="change" />
    </children>
 </AnchorPane>

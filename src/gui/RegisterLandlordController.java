@@ -45,17 +45,6 @@ public class RegisterLandlordController {
     private Scene scene;
 
 
-    public void landlordRegister(ActionEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("RegisterLandlord.fxml"));
-        root = loader.load();
-
-        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Landlord register menu");
-        scene = new Scene(root);
-        stage.setScene(scene);
-    }
-
     public void landlordRegisterButton(){
         String firstName, lastName, email,telephoneNr, password1, password2;
         firstName = firstNameLandlord.getText();
@@ -114,6 +103,17 @@ public class RegisterLandlordController {
             }
         }
         return false;
+    }
+
+    public void backToSignIn(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
+        root = loader.load();
+
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Sign in menu");
+        scene = new Scene(root);
+        stage.setScene(scene);
+
     }
 
 }
