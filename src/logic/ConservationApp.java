@@ -40,6 +40,10 @@ public class ConservationApp {
         this.currentStudent = student;
     }
 
+    public void setCurrentLandlord(Landlord landlord){
+        this.currentLandlord = landlord;
+    }
+
     public static ConservationApp getInstance() {
         return conservationApp;
     }
