@@ -1,6 +1,7 @@
 package gui;
 
 import database.DBBuilding;
+import database.DBRoom;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
@@ -184,7 +185,7 @@ public class AddStudentRoomController implements Initializable {
     @FXML
     private Label buildingIDT;
     @FXML
-    private Label roominfo;
+    private Label buildinginfo;
 
     public void addBuildingButton(){
         String adress, country, city, zip;
@@ -197,11 +198,11 @@ public class AddStudentRoomController implements Initializable {
             String buildingIDString = ""+buildingID;
             Building newBuilding = new Building(buildingIDString, country, city, adress, zip);
             DBBuilding.addBuildingToDatabase(newBuilding);
-            roominfo.setText("Building successfully added!");
+            buildinginfo.setText("Building successfully added!");
             buildingIDT.setText("The buildingID is " + buildingIDString + ", remember this well!");
         }
         else{
-            roominfo.setText("The database already contains this building!");
+            buildinginfo.setText("The database already contains this building!");
         }
     }
 
@@ -224,14 +225,28 @@ public class AddStudentRoomController implements Initializable {
     private Label roomIDT;
 
     public void addRoomButton(){
-        String roomNr, buildingID;
-        roomNr = roomNrInput.getText();
+        String buildingID;
+        int roomNr;
+        roomNr = Integer.parseInt(roomNrInput.getText());
         buildingID = buildingIDInput.getText();
-    }
-    public boolean roomExists(String buildingID, String roomNr){
-        for (Room r : program.getRooms()){
-
+        if(!roomExists(buildingID, roomNr)){
+            String roomIDString = buildingID +"." + roomNr;
+            Room newRoom = new Room("null", buildingID, roomNr, roomIDString);
+            DBRoom.addRoomToDatabase(newRoom);
+            registerRoomInfo.setText("Student room successfully added");
+            roomIDT.setText("The roomID is " + roomIDString + ", remember this well!");
         }
+        else{
+            registerRoomInfo.setText("The database already contains this room!");
+        }
+    }
+    public boolean roomExists(String buildingID,int roomNr){
+        for (Room r : program.getRooms()){
+            if((r.getBuildingID().equals(buildingID)) && (r.getRoomNR() == roomNr)){
+                return true;
+            }
+        }
+        return false;
     }
 
 }
