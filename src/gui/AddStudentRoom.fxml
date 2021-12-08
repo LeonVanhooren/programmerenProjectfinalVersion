@@ -7,8 +7,9 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="574.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.energyconservationapp.guiController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="574.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddStudentRoomController">
   <tabs>
     <Tab text="Add student room">
       <content>
@@ -56,5 +57,31 @@
             </AnchorPane>
          </content>
     </Tab>
+      <Tab text="Info Student Room">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <Label layoutX="190.0" layoutY="49.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="173.0" layoutY="60.0" text="Adress:" />
+                  <Label layoutX="190.0" layoutY="97.0" text="City:" />
+                  <Label layoutX="170.0" layoutY="169.0" text="Country:" />
+                  <Label layoutX="192.0" layoutY="133.0" text="Zip:" />
+                  <Label layoutX="167.0" layoutY="251.0" prefHeight="3.0" prefWidth="50.0" text="Room ID:" />
+                  <Label layoutX="159.0" layoutY="206.0" text="Building ID:" />
+                  <Label layoutX="233.0" layoutY="60.0" text="No student room chosen!" />
+                  <Label layoutX="233.0" layoutY="97.0" text="No student room chosen!" />
+                  <Label layoutX="233.0" layoutY="206.0" text="No student room chosen!" />
+                  <Label layoutX="233.0" layoutY="169.0" text="No student room chosen!" />
+                  <Label layoutX="233.0" layoutY="133.0" text="No student room chosen!" />
+                  <TextField layoutX="233.0" layoutY="247.0" />
+                  <Button layoutX="266.0" layoutY="304.0" mnemonicParsing="false" text="Show Info" />
+               </children>
+            </AnchorPane>
+        </content>
+      </Tab>
   </tabs>
 </TabPane>
