@@ -1,6 +1,7 @@
 package gui;
+/*
 
-
+import database.DBStudent;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -94,7 +95,7 @@ public class guiController {
 
                 Student newStudent = new Student(firstName, lastName, email, studentNRstring, password1);
 
-                dbStream.addStudentToDatabase(newStudent);
+                DBStudent.addStudentToDatabase(newStudent);
 
                 studentNumber.setText("Your studentnr. is "+studentNRstring+" remember this well!");
                 registerInfoStudent.setText("The student is successfully registered!");
@@ -603,3 +604,4 @@ public class guiController {
 
 
 }
+*/
