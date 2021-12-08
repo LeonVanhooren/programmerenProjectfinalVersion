@@ -231,7 +231,7 @@ public class AddStudentRoomController implements Initializable {
         buildingID = buildingIDInput.getText();
         if(!roomExists(buildingID, roomNr)){
             String roomIDString = buildingID +"." + roomNr;
-            Room newRoom = new Room("null", buildingID, roomNr, roomIDString);
+            Room newRoom = new Room("blabla", buildingID, roomNr, roomIDString);
             DBRoom.addRoomToDatabase(newRoom);
             registerRoomInfo.setText("Student room successfully added");
             roomIDT.setText("The roomID is " + roomIDString + ", remember this well!");
