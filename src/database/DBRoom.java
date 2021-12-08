@@ -1,6 +1,5 @@
 package database;
 
-import logic.Appliance;
 import logic.Room;
 
 import java.sql.*;
@@ -43,6 +42,36 @@ public class DBRoom {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
             String query = "INSERT INTO rooms "+"VALUES('"+room.getRoomNR()+"', '"+room.getRoomID()+"', '"+room.getBuildingID()+"', '"+room.getCharacteristics()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+    public static void changeRoomFromDatabase(Room newRoom, Room oldRoom){
+        try {
+            removeRoomFromDatabase(oldRoom);
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO rooms "+"VALUES('"+newRoom.getRoomID()+"', '"+newRoom.getBuildingID()+"', '"+newRoom.getCharacteristics()+"', '"+newRoom.getRoomNR()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public static void removeRoomFromDatabase(Room room){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "DELETE FROM rooms WHERE studentID="+room.getRoomID();
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 

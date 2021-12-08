@@ -55,4 +55,35 @@ public class DBBuilding {
         }
     }
 
+    public static void changeBuildingFromDatabase(Building newBuilding, Building oldBuilding){
+        try {
+            removeBuildingFromDatabase(oldBuilding);
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO building "+"VALUES('"+newBuilding.getBuildingID()+"', '"+newBuilding.getCountry()+"', '"+newBuilding.getCity()+"', '"+newBuilding.getAdress()+"', '"+newBuilding.getZip()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+
+
+
+    public static void removeBuildingFromDatabase(Building building){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "DELETE FROM building WHERE buildingID="+building.getBuildingID();
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+
 }
