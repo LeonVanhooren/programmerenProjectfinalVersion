@@ -14,15 +14,15 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="177.0" layoutY="14.0" text="Student room is not yet added" />
-                  <Label layoutX="89.0" layoutY="88.0" text="Student number:" />
+                  <Label fx:id="registerRoomInfo" layoutX="177.0" layoutY="14.0" text="Student room is not yet added" />
+                  <Label layoutX="100.0" layoutY="88.0" text="Room number:" />
                   <Label layoutX="118.0" layoutY="127.0" />
-                  <TextField layoutX="191.0" layoutY="84.0" />
-                  <TextField layoutX="191.0" layoutY="123.0" />
+                  <TextField fx:id="roomNrInput" layoutX="191.0" layoutY="84.0" />
+                  <TextField fx:id="buildingIDInput" layoutX="191.0" layoutY="123.0" />
                   <Button layoutX="512.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
-                  <Button layoutX="201.0" layoutY="169.0" mnemonicParsing="false" text="Add student room" />
+                  <Button layoutX="209.0" layoutY="180.0" mnemonicParsing="false" text="Add student room" />
                   <Label layoutX="118.0" layoutY="127.0" text="Building ID:" />
-                  <Label layoutX="234.0" layoutY="48.0" text="Room id:" />
+                  <Label fx:id="roomIDT" layoutX="234.0" layoutY="48.0" text="Room id:" />
                </children></AnchorPane>
       </content>
     </Tab>
