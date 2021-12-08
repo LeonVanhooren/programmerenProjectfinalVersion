@@ -37,7 +37,7 @@ public class DBAppliance {
         return appliances;
     }
 
-    public void addApplianceToDatabase(Appliance appliance){
+    public static void addApplianceToDatabase(Appliance appliance){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();

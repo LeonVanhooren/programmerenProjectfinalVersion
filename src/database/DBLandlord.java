@@ -39,7 +39,7 @@ public class DBLandlord {
         return landlords;
     }
 
-    public void addLandlordToDatabase(Landlord landlord){
+    public static void addLandlordToDatabase(Landlord landlord){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
