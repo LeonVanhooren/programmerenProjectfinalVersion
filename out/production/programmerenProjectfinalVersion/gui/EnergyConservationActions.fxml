@@ -17,7 +17,7 @@
                   <DatePicker layoutX="210.0" layoutY="80.0" />
                   <Label layoutX="264.0" layoutY="48.0" text="Select a day:" />
                   <Label layoutX="197.0" layoutY="133.0" text="Choose energy conservation action(s):" />
-                  <Button layoutX="272.0" layoutY="238.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Submit" />
+                  <Button layoutX="272.0" layoutY="238.0" mnemonicParsing="false" text="Submit" />
                   <Button layoutX="527.0" layoutY="311.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
                   <ChoiceBox fx:id="ElectricityApplianceChoicebox" layoutX="223.0" layoutY="173.0" prefWidth="150.0" />
                </children></AnchorPane>
@@ -31,7 +31,7 @@
                   <DatePicker layoutX="210.0" layoutY="84.0" />
                   <Label layoutX="197.0" layoutY="134.0" text="Choose energy conservation action(s): " />
                   <ChoiceBox fx:id="WaterApplianceChoicebox" layoutX="224.0" layoutY="173.0" prefWidth="150.0" />
-                  <Button layoutX="272.0" layoutY="236.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Submit" />
+                  <Button layoutX="272.0" layoutY="236.0" mnemonicParsing="false" text="Submit" />
                   <Button layoutX="536.0" layoutY="322.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
                </children></AnchorPane>
       </content>
@@ -44,7 +44,7 @@
                   <DatePicker layoutX="211.0" layoutY="102.0" />
                   <Label layoutX="199.0" layoutY="153.0" text="Choose energy conservation action(s)" />
                   <ChoiceBox fx:id="GasApplianceChoicebox" layoutX="225.0" layoutY="186.0" prefWidth="150.0" />
-                  <Button layoutX="273.0" layoutY="239.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Submit" />
+                  <Button layoutX="273.0" layoutY="239.0" mnemonicParsing="false" text="Submit" />
                   <Button layoutX="536.0" layoutY="319.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
                </children>
             </AnchorPane>
