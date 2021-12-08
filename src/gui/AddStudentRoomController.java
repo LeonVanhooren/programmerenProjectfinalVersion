@@ -15,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import logic.*;
 
+import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,6 +31,9 @@ public class AddStudentRoomController implements Initializable {
     @FXML
     private ListView<String> myListView;
     @FXML
+    private ListView<String> myListViewBuilding;
+
+    @FXML
     private TextField Address;
     @FXML
     private TextField City;
@@ -39,13 +43,19 @@ public class AddStudentRoomController implements Initializable {
     private TextField Zip;
     @FXML
     private TextField RoomNr;
+    @FXML
+    private TextField buildingIDRoom;
+    @FXML
+    private TextField buildingIDBuilding;
 
 
 
 
     String[] roomIDs = program.getRoomIDs();
+    String[] buildingIDs = program.getBuildingIDs();
 
     String currentRoom;
+    String currentBuilding;
 
     public void backToMenu(javafx.event.ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LandlordMenu.fxml"));
@@ -61,19 +71,35 @@ public class AddStudentRoomController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         myListView.getItems().addAll(roomIDs);
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 currentRoom = myListView.getSelectionModel().getSelectedItem();
-                Address.setPromptText(searchBuildingAdressStudent(searchBuildingIDStudent(currentRoom)));
-                City.setPromptText(searchBuildingCity(searchBuildingIDStudent(currentRoom)));
-                Country.setPromptText(searchBuildingCountry(searchBuildingIDStudent(currentRoom)));
-                Zip.setPromptText(searchBuildingZip(searchBuildingIDStudent(currentRoom)));
                 RoomNr.setPromptText(""+searchRoomNrStudent(currentRoom));
+                buildingIDRoom.setPromptText(searchBuildingIDStudent(currentRoom));
 
+            }
+
+
+        });
+
+        myListViewBuilding.getItems().addAll(buildingIDs);
+        myListViewBuilding.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                currentBuilding = myListViewBuilding.getSelectionModel().getSelectedItem();
+                Address.setPromptText(searchBuildingAdressStudent(currentBuilding));
+                City.setPromptText(searchBuildingCity(currentBuilding));
+                Country.setPromptText(searchBuildingCountry(currentBuilding));
+                Zip.setPromptText(searchBuildingZip(currentBuilding));
+                buildingIDBuilding.setPromptText(currentBuilding);
 
             }
         });
     }
+
+
 
 
 

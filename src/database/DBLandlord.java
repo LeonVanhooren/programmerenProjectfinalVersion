@@ -1,5 +1,6 @@
 package database;
 
+import logic.Appliance;
 import logic.Landlord;
 
 import java.sql.*;
@@ -44,6 +45,36 @@ public class DBLandlord {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
             String query = "INSERT INTO landlord "+"VALUES('"+landlord.getLandlordID()+"', '"+landlord.getFirstName()+"', '"+landlord.getLastName()+"', '"+landlord.getEmail()+"', '"+landlord.getTelephoneNR()+"', '"+landlord.getPassWord()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+
+    public static void changeLandlordFromDatabase(Landlord newLandlord, Landlord oldLandlord){
+        try {
+            removeLandlordFromDatabase(oldLandlord);
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO landlord "+"VALUES('"+newLandlord.getLandlordID()+"', '"+newLandlord.getFirstName()+"', '"+newLandlord.getLastName()+"', '"+newLandlord.getEmail()+"', '"+newLandlord.getTelephoneNR()+"', '"+newLandlord.getPassWord()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void removeLandlordFromDatabase(Landlord landlord){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "DELETE FROM landlord WHERE landlordID="+landlord.getLandlordID();
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
