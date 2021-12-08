@@ -8,26 +8,26 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="574.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddStudentRoomController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="574.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.app.energyconservationapp.guiController">
   <tabs>
     <Tab text="Add student room">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="177.0" layoutY="14.0" text="Student room is not yet added" />
-                  <Label layoutX="132.0" layoutY="58.0" text="Adress:" />
+                  <Label layoutX="205.0" layoutY="26.0" text="Student room is not yet added" />
+                  <Label layoutX="158.0" layoutY="80.0" text="Adress:" />
                   <Label layoutX="118.0" layoutY="127.0" />
-                  <Label layoutX="129.0" layoutY="136.0" text="Country:" />
-                  <TextField layoutX="191.0" layoutY="54.0" />
-                  <TextField layoutX="191.0" layoutY="92.0" />
-                  <TextField layoutX="191.0" layoutY="132.0" />
+                  <Label layoutX="155.0" layoutY="158.0" text="Country:" />
+                  <TextField layoutX="212.0" layoutY="76.0" />
+                  <TextField layoutX="212.0" layoutY="114.0" />
+                  <TextField layoutX="212.0" layoutY="154.0" />
                   <Button layoutX="512.0" layoutY="364.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
-                  <Button layoutX="202.0" layoutY="285.0" mnemonicParsing="false" onAction="#landlordMenu" text="Add student room" />
-                  <Label layoutX="147.0" layoutY="96.0" text="City:" />
-                  <Label layoutX="149.0" layoutY="180.0" text="Zip:" />
-                  <TextField layoutX="191.0" layoutY="176.0" />
-                  <TextField layoutX="191.0" layoutY="220.0" />
-                  <Label layoutX="97.0" layoutY="224.0" text="Room number:" />
+                  <Button layoutX="230.0" layoutY="298.0" mnemonicParsing="false" onAction="#landlordMenu" text="Add student room" />
+                  <Label layoutX="175.0" layoutY="118.0" text="City:" />
+                  <Label layoutX="177.0" layoutY="197.0" text="Zip:" />
+                  <TextField layoutX="212.0" layoutY="193.0" />
+                  <TextField layoutX="212.0" layoutY="238.0" />
+                  <Label layoutX="118.0" layoutY="242.0" text="Room number:" />
                </children></AnchorPane>
       </content>
     </Tab>
