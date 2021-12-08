@@ -38,7 +38,7 @@ public class DBStudent {
         return students;
     }
 
-    public void addStudentToDatabase(Student student){
+    public static void addStudentToDatabase(Student student){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
