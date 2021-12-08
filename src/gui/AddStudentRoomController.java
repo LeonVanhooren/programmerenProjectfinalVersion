@@ -214,4 +214,24 @@ public class AddStudentRoomController implements Initializable {
         return false;
     }
 
+    @FXML
+    private TextField roomNrInput;
+    @FXML
+    private TextField buildingIDInput;
+    @FXML
+    private Label registerRoomInfo;
+    @FXML
+    private Label roomIDT;
+
+    public void addRoomButton(){
+        String roomNr, buildingID;
+        roomNr = roomNrInput.getText();
+        buildingID = buildingIDInput.getText();
+    }
+    public boolean roomExists(String buildingID, String roomNr){
+        for (Room r : program.getRooms()){
+
+        }
+    }
+
 }
