@@ -42,9 +42,9 @@ public class AddStudentRoomController implements Initializable {
     @FXML
     private TextField RoomNr;
     @FXML
-    private TextField buildingID;
+    private TextField buildingIDRoom;
     @FXML
-    private Label roomID;
+    private TextField buildingIDBuilding;
 
 
 
@@ -75,8 +75,8 @@ public class AddStudentRoomController implements Initializable {
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 currentRoom = myListView.getSelectionModel().getSelectedItem();
                 RoomNr.setPromptText(""+searchRoomNrStudent(currentRoom));
-                buildingID.setPromptText(searchBuildingIDStudent(currentRoom));
-                roomID.setText(currentRoom);
+                buildingIDRoom.setPromptText(searchBuildingIDStudent(currentRoom));
+
             }
 
 
@@ -91,7 +91,7 @@ public class AddStudentRoomController implements Initializable {
                 City.setPromptText(searchBuildingCity(currentBuilding));
                 Country.setPromptText(searchBuildingCountry(currentBuilding));
                 Zip.setPromptText(searchBuildingZip(currentBuilding));
-                buildingID.setPromptText(currentBuilding);
+                buildingIDBuilding.setPromptText(currentBuilding);
 
             }
         });
