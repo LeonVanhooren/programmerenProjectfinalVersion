@@ -117,4 +117,52 @@ public class ConservationApp {
     public Landlord getCurrentLandlord() {
         return currentLandlord;
     }
+
+    public static void setConservationApp(ConservationApp conservationApp) {
+        ConservationApp.conservationApp = conservationApp;
+    }
+
+    public void setStudents(ArrayList<Student> students) {
+        this.students = students;
+    }
+
+    public void setLandlords(ArrayList<Landlord> landlords) {
+        this.landlords = landlords;
+    }
+
+    public void setBuildings(ArrayList<Building> buildings) {
+        this.buildings = buildings;
+    }
+
+    public void setOwnerships(ArrayList<Ownership> ownerships) {
+        this.ownerships = ownerships;
+    }
+
+    public void setContracts(ArrayList<Contract> contracts) {
+        this.contracts = contracts;
+    }
+
+    public void setRooms(ArrayList<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public void setLeases(ArrayList<Lease> leases) {
+        this.leases = leases;
+    }
+
+    public void setAppliances(ArrayList<Appliance> appliances) {
+        this.appliances = appliances;
+    }
+
+    public void setBelongsToArrayList(ArrayList<BelongsTo> belongsToArrayList) {
+        this.belongsToArrayList = belongsToArrayList;
+    }
+
+    public void setContainsArrayList(ArrayList<Contains> containsArrayList) {
+        this.containsArrayList = containsArrayList;
+    }
+
+    public void setOpenContracts(ArrayList<OpenContract> openContracts) {
+        this.openContracts = openContracts;
+    }
 }

@@ -134,6 +134,23 @@ public class AddStudentRoomController implements Initializable {
         });
     }
 
+    public void removeBuilding(){
+        /*Building building = null;
+        for(Building newBuilding: program.getBuildings()){
+            if (newBuilding.getBuildingID().equals(currentBuilding)){
+                building = newBuilding;
+            }
+        }
+
+        ArrayList<Building> buildings = program.getBuildings();
+        buildings.remove(building);
+        */
+        DBBuilding.removeBuildingFromDatabase(currentBuilding);
+        program.setBuildings(DBBuilding.databaseReadBuilding());
+        myListViewBuilding.getItems().clear();
+        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord().getLandlordID()));
+    }
+
 
 
 
@@ -148,6 +165,8 @@ public class AddStudentRoomController implements Initializable {
 
         return roomID;
     }
+
+
 
     public int searchRoomNrStudent(String roomID){
         int roomNr=0;
