@@ -6,6 +6,8 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EnergyConservationActionsController">
@@ -14,6 +16,11 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
+                  <ImageView fitHeight="371.0" fitWidth="613.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@symbol-circuit-diagram-electrical-wires-cable-wing-wire.jpg" />
+                     </image>
+                  </ImageView>
                   <DatePicker layoutX="210.0" layoutY="80.0" />
                   <Label layoutX="264.0" layoutY="48.0" text="Select a day:" />
                   <Label layoutX="197.0" layoutY="133.0" text="Choose energy conservation action(s):" />
@@ -27,6 +34,11 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
+                  <ImageView fitHeight="652.0" fitWidth="600.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@depositphotos_197773898-stock-illustration-realistic-vector-water-drops-transparent.jpg" />
+                     </image>
+                  </ImageView>
                   <Label layoutX="264.0" layoutY="49.0" text="Select a day:" />
                   <DatePicker layoutX="210.0" layoutY="84.0" />
                   <Label layoutX="197.0" layoutY="134.0" text="Choose energy conservation action(s): " />
@@ -40,6 +52,11 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
+                  <ImageView fitHeight="400.0" fitWidth="760.0" layoutY="-1.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@png-clipart-hazard-symbol-dangerous-goods-toxicity-hazmat-class-6-toxic-and-infectious-substances-warning-sign-others-miscellaneous-angle.png" />
+                     </image>
+                  </ImageView>
                   <Label layoutX="266.0" layoutY="62.0" text="Select a day" />
                   <DatePicker layoutX="211.0" layoutY="102.0" />
                   <Label layoutX="199.0" layoutY="153.0" text="Choose energy conservation action(s)" />

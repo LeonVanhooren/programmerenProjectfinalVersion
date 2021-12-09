@@ -7,23 +7,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddContractController">
+<AnchorPane prefHeight="353.0" prefWidth="425.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddContractController">
    <children>
       <Label layoutX="266.0" layoutY="49.0" text="Add a contract ">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="131.0" layoutY="115.0" text="Student number:" />
-      <Label layoutX="154.0" layoutY="158.0" text="Landlord ID:" />
-      <Label layoutX="168.0" layoutY="200.0" text="Startdate:" />
-      <Label layoutX="127.0" layoutY="243.0" text="Contract duration:" />
-      <DatePicker layoutX="240.0" layoutY="196.0" />
-      <TextField layoutX="239.0" layoutY="111.0" />
-      <TextField layoutX="240.0" layoutY="154.0" />
-      <TextField layoutX="241.0" layoutY="243.0" />
-      <Button layoutX="272.0" layoutY="302.0" mnemonicParsing="false" text="Save contract" />
-      <Button layoutX="524.0" layoutY="344.0" mnemonicParsing="false" text="Back" />
+      <Label layoutX="64.0" layoutY="115.0" text="Student number:" />
+      <Label layoutX="88.0" layoutY="158.0" text="Landlord ID:" />
+      <Label layoutX="102.0" layoutY="200.0" text="Startdate:" />
+      <Label layoutX="57.0" layoutY="247.0" text="Contract duration:" />
+      <DatePicker layoutX="166.0" layoutY="196.0" />
+      <TextField layoutX="166.0" layoutY="111.0" />
+      <TextField layoutX="165.0" layoutY="154.0" />
+      <TextField layoutX="165.0" layoutY="243.0" />
+      <Button layoutX="196.0" layoutY="289.0" mnemonicParsing="false" text="Save contract" />
+      <Button layoutX="100.0" layoutY="289.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
    </children>
 </AnchorPane>
