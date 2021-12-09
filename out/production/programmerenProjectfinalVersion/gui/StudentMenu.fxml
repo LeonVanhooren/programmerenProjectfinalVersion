@@ -4,15 +4,32 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="245.0" prefWidth="402.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StudentMenuController">
    <children>
       <Button fx:id="signOutButton" layoutX="171.0" layoutY="189.0" mnemonicParsing="false" onAction="#backToSignIn" text="Sign out" />
-      <RadioButton layoutX="51.0" layoutY="81.0" mnemonicParsing="false" onAction="#applianceMenu" text="Adding, changing or deleting of appliances?" />
-      <Label layoutX="126.0" layoutY="47.0" text="Choose one option!" />
-      <RadioButton layoutX="49.0" layoutY="114.0" mnemonicParsing="false" onAction="#goToConservationMenu" text="Energy conservation menu?     " />
-      <RadioButton layoutX="49.0" layoutY="145.0" mnemonicParsing="false" text="Energy consumption/conservation report?" />
-      <Hyperlink layoutX="317.0" layoutY="11.0" onAction="#goToStudentProfile" text="My profile" />
+      <RadioButton layoutX="51.0" layoutY="81.0" mnemonicParsing="false" onAction="#applianceMenu" text="Appliance menu" />
+      <Label layoutX="149.0" layoutY="47.0" text="Choose one option!">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font></Label>
+      <RadioButton layoutX="49.0" layoutY="114.0" mnemonicParsing="false" onAction="#goToConservationMenu" text="Energy conservation menu  " />
+      <RadioButton layoutX="49.0" layoutY="145.0" mnemonicParsing="false" text="Energy consumption/conservation report" />
+      <Hyperlink layoutX="326.0" layoutY="102.0" onAction="#goToStudentProfile" text="My profile" />
+      <Hyperlink layoutX="14.0" layoutY="52.0" onAction="#goToMessages" text="Messages" />
+      <ImageView fitHeight="35.0" fitWidth="25.0" layoutX="363.0" layoutY="12.0" onMouseClicked="#goToStudentProfile" opacity="0.59" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@profilePicture.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="25.0" fitWidth="34.0" layoutX="14.0" layoutY="12.0" onMouseClicked="#goToMessages" opacity="0.58" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@emailSymbol.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>

@@ -70,6 +70,20 @@ public class StudentMenuController {
 
     }
 
+    public void goToMessages(ActionEvent event)throws IOException{
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Messages.fxml"));
+        root = loader.load();
+
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Energy conservation menu");
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+
+
 
 
 }

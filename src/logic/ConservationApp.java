@@ -18,8 +18,10 @@ public class ConservationApp {
     private ArrayList<Appliance> appliances;
     private ArrayList<BelongsTo> belongsToArrayList;
     private ArrayList<Contains> containsArrayList;
+    private ArrayList<OpenContract> openContracts;
     private Student currentStudent;
     private Landlord currentLandlord;
+
 
 
     public ConservationApp() {
@@ -33,6 +35,7 @@ public class ConservationApp {
         this.appliances = DBAppliance.databaseReadAppliance();
         this.belongsToArrayList = DBBelongsTo.databaseReadBelongsTo();
         this.containsArrayList = DBContains.databaseReadContains();
+        this.openContracts = new ArrayList<>();
         this.currentStudent = null;
         this.currentLandlord = null;
     }
