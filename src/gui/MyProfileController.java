@@ -25,15 +25,15 @@ MyProfileController {
     private Scene scene;
 
     @FXML
-    private Label studentNumberAcc;
+    private Label studentNumber;
     @FXML
-    private Label firstNameAcc;
+    private TextField firstName;
     @FXML
-    private Label lastNameAcc;
+    private TextField lastName;
     @FXML
-    private Label passwordAcc;
+    private TextField password;
     @FXML
-    private Label emailAcc;
+    private TextField email;
     @FXML
     private Label roomMessage;
 

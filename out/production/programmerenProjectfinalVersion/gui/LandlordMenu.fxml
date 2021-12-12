@@ -22,10 +22,10 @@
          </font></Label>
         <RadioButton layoutX="45.0" layoutY="89.0" mnemonicParsing="false" onAction="#studentRoomMenu" text="Student room and building menu" />
         <RadioButton layoutX="44.0" layoutY="165.0" mnemonicParsing="false" onAction="#monthlyConsumptionMenu" text="Energy consumption menu" />
-        <RadioButton layoutX="44.0" layoutY="190.0" mnemonicParsing="false" onAction="#monthlyConsumptionMenu" text="Energy consumption/conservation report" />
+        <RadioButton layoutX="44.0" layoutY="190.0" mnemonicParsing="false" onAction="#goToLandlordReport" text="Energy consumption/conservation report" />
         <Button layoutX="152.0" layoutY="224.0" mnemonicParsing="false" onAction="#backToSignIn" text="Sign Out" />
       <RadioButton layoutX="45.0" layoutY="114.0" mnemonicParsing="false" onAction="#contactPersonMenu" text="Contact person menu" />
-      <RadioButton layoutX="45.0" layoutY="139.0" mnemonicParsing="false" text="Contract menu" />
+      <RadioButton layoutX="45.0" layoutY="139.0" mnemonicParsing="false" onAction="#goToContractMenu" text="Contract menu" />
       <Hyperlink layoutX="317.0" layoutY="14.0" text="My profile" />
     </children>
 </AnchorPane>
