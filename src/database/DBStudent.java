@@ -75,7 +75,7 @@ public class DBStudent {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             switch (column){
                 case "firstname":
-                    String query1 = "UPDATE student SET firstname = ?, " + "WHERE studentID = ?";
+                    String query1 = "UPDATE student SET firstname = ? WHERE studentID = ?";
                     PreparedStatement pstmt1 = connection.prepareStatement(query1);
                     pstmt1.setString(1, change);
                     pstmt1.setString(2, primaryKey);
@@ -83,21 +83,21 @@ public class DBStudent {
                     break;
                     
                 case "lastname":
-                    String query2 = "UPDATE student SET lastname = ?, " + "WHERE studentID = ?";
+                    String query2 = "UPDATE student SET lastname = ? WHERE studentID = ?";
                     PreparedStatement pstmt2 = connection.prepareStatement(query2);
                     pstmt2.setString(1, change);
                     pstmt2.setString(2, primaryKey);
                     pstmt2.executeUpdate();
                     break;
                 case "email":
-                    String query3 = "UPDATE student SET email = ?, " + "WHERE studentID = ?";
+                    String query3 = "UPDATE student SET email = ? WHERE studentID = ?";
                     PreparedStatement pstmt3 = connection.prepareStatement(query3);
                     pstmt3.setString(1, change);
                     pstmt3.setString(2, primaryKey);
                     pstmt3.executeUpdate();
                     break;
                 case "password":
-                    String query4 = "UPDATE student SET password = ?, " + "WHERE studentID = ?";
+                    String query4 = "UPDATE student SET password = ? WHERE studentID = ?";
                     PreparedStatement pstmt4 = connection.prepareStatement(query4);
                     pstmt4.setString(1, change);
                     pstmt4.setString(2, primaryKey);
@@ -109,6 +109,8 @@ public class DBStudent {
             e.printStackTrace();
         }
     }
+
+
 
     public static void removeStudentFromDatabase(Student student){
         try {
