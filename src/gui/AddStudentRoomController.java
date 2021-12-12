@@ -19,6 +19,7 @@ import logic.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AddStudentRoomController implements Initializable {
@@ -68,9 +69,42 @@ public class AddStudentRoomController implements Initializable {
         stage.setScene(scene);
     }
 
+    public String[] buildingIDsLandlord(String landlordID){
+        ArrayList<String> output1 = new ArrayList<>();
+        for (Ownership newOwnership: program.getOwnerships()){
+            if(newOwnership.getLandlordID().equals(landlordID)){
+                output1.add(newOwnership.getBuildingID());
+            }
+        }
+        String[] output = new String[output1.size()];
+        for (int j = 0; j< output1.size();j++) {
+            output[j] = output1.get(j);
+        }
+        return output;
+    }
+
+
+    public String[] roomIDsLandlord(String[] buildingIDs){
+        ArrayList<String> output1 = new ArrayList<>();
+        for(int i =0; i <buildingIDs.length;i++){
+            for(BelongsTo newBelongsTo:program.getBelongsToArrayList()){
+                if(buildingIDs[i].equals(newBelongsTo.getBuildingID())){
+                    output1.add(newBelongsTo.getRoomID());
+                }
+            }
+        }
+        String[] output = new String[output1.size()];
+        for (int j = 0; j< output1.size();j++) {
+            output[j] = output1.get(j);
+        }
+        return output;
+    }
+
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        myListView.getItems().addAll(roomIDs);
+        myListView.getItems().addAll(roomIDsLandlord(buildingIDsLandlord(program.getCurrentLandlord().getLandlordID())));
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 
@@ -85,7 +119,7 @@ public class AddStudentRoomController implements Initializable {
 
         });
 
-        myListViewBuilding.getItems().addAll(buildingIDs);
+        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord().getLandlordID()));
         myListViewBuilding.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
@@ -98,6 +132,25 @@ public class AddStudentRoomController implements Initializable {
 
             }
         });
+    }
+
+    public void removeBuilding(){
+        /*Building building = null;
+        for(Building newBuilding: program.getBuildings()){
+            if (newBuilding.getBuildingID().equals(currentBuilding)){
+                building = newBuilding;
+            }
+        }
+        buildings.remove(building);*/
+
+       DBBuilding.removeBuildingFromDatabase(currentBuilding);
+
+    }
+
+    public void refreshBuildingListView(){
+        myListViewBuilding.getItems().clear();
+        program.setBuildings();
+        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord().getLandlordID()));
     }
 
 
@@ -114,6 +167,8 @@ public class AddStudentRoomController implements Initializable {
 
         return roomID;
     }
+
+
 
     public int searchRoomNrStudent(String roomID){
         int roomNr=0;

@@ -7,8 +7,9 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="574.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddStudentRoomController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="506.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddStudentRoomController">
   <tabs>
     <Tab text="Add student room">
       <content>
@@ -19,7 +20,7 @@
                   <Label layoutX="118.0" layoutY="127.0" />
                   <TextField fx:id="roomNrInput" layoutX="191.0" layoutY="84.0" />
                   <TextField fx:id="buildingIDInput" layoutX="191.0" layoutY="123.0" />
-                  <Button layoutX="512.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
+                  <Button layoutX="451.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
                   <Button layoutX="209.0" layoutY="180.0" mnemonicParsing="false" onAction="#addRoomButton" text="Add student room" />
                   <Label layoutX="118.0" layoutY="127.0" text="Building ID:" />
                   <Label fx:id="roomIDT" layoutX="234.0" layoutY="48.0" text="Room id:" />
@@ -38,7 +39,7 @@
                   <TextField fx:id="buildingIDRoom" layoutX="348.0" layoutY="116.0" />
                   <Button layoutX="365.0" layoutY="193.0" mnemonicParsing="false" text="Save student room" />
                   <Button layoutX="97.0" layoutY="287.0" mnemonicParsing="false" text="Remove" />
-                  <Button layoutX="498.0" layoutY="363.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
+                  <Button layoutX="452.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
                   <ListView fx:id="myListView" layoutX="27.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" />
                   <Label layoutX="292.0" layoutY="157.0" text="Room ID:" />
                   <Label fx:id="roomID" layoutX="374.0" layoutY="157.0" text="No room selected!" />
@@ -55,7 +56,7 @@
                   <Label layoutX="118.0" layoutY="127.0" />
                   <TextField fx:id="adressInput" layoutX="191.0" layoutY="83.0" />
                   <TextField fx:id="countryInput" layoutX="191.0" layoutY="123.0" />
-                  <Button layoutX="512.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
+                  <Button layoutX="450.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="25.0" prefWidth="42.0" text="Back" />
                   <Button layoutX="216.0" layoutY="274.0" mnemonicParsing="false" onAction="#addBuildingButton" text="Add building" />
                   <Label layoutX="127.0" layoutY="118.0" text="Country:" />
                   <Label layoutX="138.0" layoutY="167.0" text="City:" />
@@ -82,11 +83,16 @@
                   <TextField fx:id="Country" layoutX="348.0" layoutY="152.0" />
                   <TextField fx:id="Zip" layoutX="348.0" layoutY="187.0" />
                   <Button layoutX="379.0" layoutY="261.0" mnemonicParsing="false" text="Save building" />
-                  <Button layoutX="97.0" layoutY="287.0" mnemonicParsing="false" text="Remove" />
-                  <Button layoutX="498.0" layoutY="363.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
+                  <Button layoutX="97.0" layoutY="287.0" mnemonicParsing="false" onAction="#removeBuilding" text="Remove" />
+                  <Button layoutX="456.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
                   <ListView fx:id="myListViewBuilding" layoutX="27.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" />
                   <TextField fx:id="buildingIDBuilding" layoutX="348.0" layoutY="225.0" />
                   <Label layoutX="273.0" layoutY="229.0" text="Building ID:" />
+                  <Button layoutX="189.0" layoutY="277.0" mnemonicParsing="false" onAction="#refreshBuildingListView" text="Refresh">
+                     <font>
+                        <Font size="8.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </content>
