@@ -51,16 +51,16 @@ public class StudentProfileController implements Initializable {
     private Label roomMessage;
 
     public void changeStudent(){
-        if(!firstName.getText().equals(null)){
-            DBStudent.changeStudentFromDatabase("firstName", firstName.getText(),program.getCurrentStudent().getStudentID());
+        if(!firstName.getText().equals("")){
+            DBStudent.changeStudentFromDatabase("firstname", firstName.getText(),program.getCurrentStudent().getStudentID());
         }
-        if(!lastName.getText().equals(null)){
-            DBStudent.changeStudentFromDatabase("lastName", lastName.getText(),program.getCurrentStudent().getStudentID());
+        if(!lastName.getText().equals("")){
+            DBStudent.changeStudentFromDatabase("lastname", lastName.getText(),program.getCurrentStudent().getStudentID());
         }
-        if(!email.getText().equals(null)){
+        if(!email.getText().equals("")){
             DBStudent.changeStudentFromDatabase("email", email.getText(),program.getCurrentStudent().getStudentID());
         }
-        if(!password.getText().equals(null)){
+        if(!password.getText().equals("")){
             DBStudent.changeStudentFromDatabase("password", password.getText(),program.getCurrentStudent().getStudentID());
         }
 
