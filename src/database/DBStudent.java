@@ -52,23 +52,6 @@ public class DBStudent {
             e.printStackTrace();
         }
     }
-/*
-    public static void changeStudentFromDatabase(Student newStudent, Student oldStudent){
-        try {
-            removeStudentFromDatabase(oldStudent);
-            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            Statement stm = connection.createStatement();
-
-            String query;
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.execute();
-
-        } catch (SQLException e) {
-            System.out.println("FAIL");
-            e.printStackTrace();
-        }
-    }
- */
 
     public static void changeStudentFromDatabase(String column, String change, String primaryKey){
         try {
