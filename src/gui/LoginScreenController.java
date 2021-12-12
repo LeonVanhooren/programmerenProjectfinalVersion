@@ -55,6 +55,8 @@ public class LoginScreenController {
         }
         else{
             loginInfoStudent.setText("This doesn't match an account in the DB!");
+            studentUsernameInput.setText("");
+            studentPasswordInput.setText("");
 
 
         }
@@ -115,6 +117,8 @@ public class LoginScreenController {
         else{
 
             loginInfoLandlord.setText("This doesn't match an account in the DB!");
+            landlordUsernameInput.setText("");
+            landlordPasswordInput.setText("");
         }
 
 

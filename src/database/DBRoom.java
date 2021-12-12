@@ -41,7 +41,7 @@ public class DBRoom {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO rooms "+"VALUES('"+room.getRoomNR()+"', '"+room.getRoomID()+"', '"+room.getBuildingID()+"', '"+room.getCharacteristics()+"')";
+            String query = "INSERT INTO room "+"VALUES('"+room.getRoomNR()+"', '"+room.getRoomID()+"', '"+room.getBuildingID()+"', '"+room.getCharacteristics()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 

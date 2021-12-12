@@ -18,8 +18,10 @@ public class ConservationApp {
     private ArrayList<Appliance> appliances;
     private ArrayList<BelongsTo> belongsToArrayList;
     private ArrayList<Contains> containsArrayList;
+    private ArrayList<OpenContract> openContracts;
     private Student currentStudent;
     private Landlord currentLandlord;
+
 
 
     public ConservationApp() {
@@ -33,6 +35,7 @@ public class ConservationApp {
         this.appliances = DBAppliance.databaseReadAppliance();
         this.belongsToArrayList = DBBelongsTo.databaseReadBelongsTo();
         this.containsArrayList = DBContains.databaseReadContains();
+        this.openContracts = new ArrayList<>();
         this.currentStudent = null;
         this.currentLandlord = null;
     }
@@ -113,5 +116,53 @@ public class ConservationApp {
 
     public Landlord getCurrentLandlord() {
         return currentLandlord;
+    }
+
+    public static void setConservationApp(ConservationApp conservationApp) {
+        ConservationApp.conservationApp = conservationApp;
+    }
+
+    public void setStudents(ArrayList<Student> students) {
+        this.students = students;
+    }
+
+    public void setLandlords(ArrayList<Landlord> landlords) {
+        this.landlords = landlords;
+    }
+
+    public void setBuildings() {
+        this.buildings = DBBuilding.databaseReadBuilding();
+    }
+
+    public void setOwnerships(ArrayList<Ownership> ownerships) {
+        this.ownerships = ownerships;
+    }
+
+    public void setContracts(ArrayList<Contract> contracts) {
+        this.contracts = contracts;
+    }
+
+    public void setRooms(ArrayList<Room> rooms) {
+        this.rooms = rooms;
+    }
+
+    public void setLeases(ArrayList<Lease> leases) {
+        this.leases = leases;
+    }
+
+    public void setAppliances(ArrayList<Appliance> appliances) {
+        this.appliances = appliances;
+    }
+
+    public void setBelongsToArrayList(ArrayList<BelongsTo> belongsToArrayList) {
+        this.belongsToArrayList = belongsToArrayList;
+    }
+
+    public void setContainsArrayList(ArrayList<Contains> containsArrayList) {
+        this.containsArrayList = containsArrayList;
+    }
+
+    public void setOpenContracts(ArrayList<OpenContract> openContracts) {
+        this.openContracts = openContracts;
     }
 }

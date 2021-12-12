@@ -57,7 +57,7 @@ public class DBBuilding {
 
     public static void changeBuildingFromDatabase(Building newBuilding, Building oldBuilding){
         try {
-            removeBuildingFromDatabase(oldBuilding);
+            removeBuildingFromDatabase(oldBuilding.getBuildingID());
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
             String query = "INSERT INTO building "+"VALUES('"+newBuilding.getBuildingID()+"', '"+newBuilding.getCountry()+"', '"+newBuilding.getCity()+"', '"+newBuilding.getAdress()+"', '"+newBuilding.getZip()+"')";
@@ -72,11 +72,11 @@ public class DBBuilding {
 
 
 
-    public static void removeBuildingFromDatabase(Building building){
+    public static void removeBuildingFromDatabase(String buildingID){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "DELETE FROM building WHERE buildingID="+building.getBuildingID();
+            String query = "DELETE FROM building WHERE buildingID="+buildingID;
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
