@@ -52,11 +52,6 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="400.0" fitWidth="760.0" layoutY="-1.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@gas.png" />
-                     </image>
-                  </ImageView>
                   <Label layoutX="266.0" layoutY="62.0" text="Select a day" />
                   <DatePicker layoutX="211.0" layoutY="102.0" />
                   <Label layoutX="199.0" layoutY="153.0" text="Choose energy conservation action(s)" />
