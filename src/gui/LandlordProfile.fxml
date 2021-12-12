@@ -12,7 +12,7 @@
         <TextField fx:id="lastName" layoutX="113.0" layoutY="122.0" />
         <TextField fx:id="email" layoutX="113.0" layoutY="161.0" />
         <TextField fx:id="telephoneNr" layoutX="113.0" layoutY="203.0" />
-        <Button layoutX="113.0" layoutY="308.0" mnemonicParsing="false" onAction="#changeStudent" text="Change" />
+        <Button layoutX="113.0" layoutY="308.0" mnemonicParsing="false" onAction="#changeLandlord" text="Change" />
         <Button layoutX="227.0" layoutY="308.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
         <Label layoutX="31.0" layoutY="85.0" text="First name:" />
         <Label layoutX="31.0" layoutY="126.0" text="Last name:" />

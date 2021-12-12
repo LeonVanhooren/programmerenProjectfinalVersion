@@ -1,5 +1,6 @@
 package gui;
 
+import database.DBLandlord;
 import database.DBStudent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -56,20 +57,21 @@ public class LandlordProfileController implements Initializable {
         telephoneNr.setPromptText(program.getCurrentLandlord().getTelephoneNR());
     }
 
-    public void changeStudent(){
+    public void changeLandlord(){
         if(!firstName.getText().equals("")){
-            DBStudent.changeStudentFromDatabase("firstname", firstName.getText(),program.getCurrentStudent().getStudentID());
+            DBLandlord.changeLandlordFromDatabase("firstname", firstName.getText(), program.getCurrentLandlord().getLandlordID());
         }
         if(!lastName.getText().equals("")){
-            DBStudent.changeStudentFromDatabase("lastname", lastName.getText(),program.getCurrentStudent().getStudentID());
+            DBLandlord.changeLandlordFromDatabase("lastname", lastName.getText(), program.getCurrentLandlord().getLandlordID());
         }
         if(!email.getText().equals("")){
-            DBStudent.changeStudentFromDatabase("email", email.getText(),program.getCurrentStudent().getStudentID());
+            DBLandlord.changeLandlordFromDatabase("email", email.getText(), program.getCurrentLandlord().getLandlordID());
         }
         if(!password.getText().equals("")){
-            DBStudent.changeStudentFromDatabase("password", password.getText(),program.getCurrentStudent().getStudentID());
+            DBLandlord.changeLandlordFromDatabase("password", password.getText(), program.getCurrentLandlord().getLandlordID());
         }
         if(!telephoneNr.getText().equals("")){
+            DBLandlord.changeLandlordFromDatabase("telephoneNr", telephoneNr.getText(), program.getCurrentLandlord().getLandlordID());
         }
 
     }

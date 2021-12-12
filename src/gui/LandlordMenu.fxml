@@ -26,6 +26,6 @@
         <Button layoutX="152.0" layoutY="224.0" mnemonicParsing="false" onAction="#backToSignIn" text="Sign Out" />
       <RadioButton layoutX="45.0" layoutY="114.0" mnemonicParsing="false" onAction="#contactPersonMenu" text="Contact person menu" />
       <RadioButton layoutX="45.0" layoutY="139.0" mnemonicParsing="false" onAction="#goToContractMenu" text="Contract menu" />
-      <Hyperlink layoutX="317.0" layoutY="14.0" text="My profile" />
+      <Hyperlink layoutX="317.0" layoutY="14.0" onAction="#goToLandlordProfile" text="My profile" />
     </children>
 </AnchorPane>

@@ -79,7 +79,6 @@ public class ApplianceMenuController {
         if (appliancePresent(applianceID) == true) {
             Appliance newAppliance = new Appliance(applianceID, consumption, efficiency, QRCode);
             Appliance oldAppliance = new Appliance(applianceID, consumption, efficiency, QRCode);
-            DBAppliance.changeApplianceFromDatabase(newAppliance, oldAppliance);
 
             setChangeApplianceStatus("The two appliances are changed in the database!");
 
