@@ -1,6 +1,8 @@
 package database;
 
 import logic.BelongsTo;
+import logic.Building;
+import logic.Room;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -34,5 +36,18 @@ public class DBBelongsTo {
             e.printStackTrace();
         }
         return belongsToArrayList;
+    }
+    public static void addBelongingToDatabase(BelongsTo belongsTo){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO belongs_to"+"VALUES('"+ belongsTo.getBuildingID() +"', '"+ belongsTo.getRoomID() +"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
     }
 }

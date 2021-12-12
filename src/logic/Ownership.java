@@ -4,7 +4,7 @@ public class Ownership {
 
     private String landlordID, buildingID;
 
-    public Ownership(String landlordID, String buildingID) {
+    public Ownership(String buildingID, String landlordID) {
         this.landlordID = landlordID;
         this.buildingID = buildingID;
     }
