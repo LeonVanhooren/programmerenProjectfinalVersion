@@ -38,7 +38,8 @@ public class DBStudent {
         return students;
     }
 
-    public static void addStudentToDatabase(Student student){
+    public static
+    void addStudentToDatabase(Student student){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
@@ -51,13 +52,14 @@ public class DBStudent {
             e.printStackTrace();
         }
     }
-
+/*
     public static void changeStudentFromDatabase(Student newStudent, Student oldStudent){
         try {
             removeStudentFromDatabase(oldStudent);
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO student "+"VALUES('"+newStudent.getStudentID()+"', '"+newStudent.getFirstName()+"', '"+newStudent.getLastName()+"', '"+newStudent.getEmail()+"', '"+newStudent.getPassword()+"')";
+
+            String query;
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
@@ -66,8 +68,47 @@ public class DBStudent {
             e.printStackTrace();
         }
     }
+ */
 
-
+    public static void changeStudent(String column, String change, String primaryKey){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            switch (column){
+                case "firstname":
+                    String query1 = "UPDATE student SET firstname = ?, " + "WHERE studentID = ?";
+                    PreparedStatement pstmt1 = connection.prepareStatement(query1);
+                    pstmt1.setString(1, change);
+                    pstmt1.setString(2, primaryKey);
+                    pstmt1.executeUpdate();
+                    break;
+                    
+                case "lastname":
+                    String query2 = "UPDATE student SET lastname = ?, " + "WHERE studentID = ?";
+                    PreparedStatement pstmt2 = connection.prepareStatement(query2);
+                    pstmt2.setString(1, change);
+                    pstmt2.setString(2, primaryKey);
+                    pstmt2.executeUpdate();
+                    break;
+                case "email":
+                    String query3 = "UPDATE student SET email = ?, " + "WHERE studentID = ?";
+                    PreparedStatement pstmt3 = connection.prepareStatement(query3);
+                    pstmt3.setString(1, change);
+                    pstmt3.setString(2, primaryKey);
+                    pstmt3.executeUpdate();
+                    break;
+                case "password":
+                    String query4 = "UPDATE student SET password = ?, " + "WHERE studentID = ?";
+                    PreparedStatement pstmt4 = connection.prepareStatement(query4);
+                    pstmt4.setString(1, change);
+                    pstmt4.setString(2, primaryKey);
+                    pstmt4.executeUpdate();
+                    break;
+            }
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
 
     public static void removeStudentFromDatabase(Student student){
         try {

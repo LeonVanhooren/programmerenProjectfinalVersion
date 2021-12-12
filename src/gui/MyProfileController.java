@@ -15,7 +15,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
-public class MyProfileController {
+public class
+MyProfileController {
 
     private ConservationApp program = ConservationApp.getInstance();
 
