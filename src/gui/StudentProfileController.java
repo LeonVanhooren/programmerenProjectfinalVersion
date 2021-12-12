@@ -49,6 +49,8 @@ public class StudentProfileController implements Initializable {
     private Label studentNumber;
     @FXML
     private Label roomMessage;
+    @FXML
+    private Label address;
 
     public void changeStudent(){
         if(!firstName.getText().equals("")){
@@ -114,15 +116,17 @@ public class StudentProfileController implements Initializable {
             lastName.setPromptText(program.getCurrentStudent().getLastName());
             email.setPromptText(program.getCurrentStudent().getEmail());
             password.setPromptText(program.getCurrentStudent().getPassword());
-            studentNumber.setText("Student nr.: "+program.getCurrentStudent().getStudentID());
+            studentNumber.setText("Student number: "+program.getCurrentStudent().getStudentID());
 
         String roomID = searchRoomStudent(program.getCurrentStudent());
         String buildingID = searchBuildingIDStudent(roomID);
         int roomNr = searchRoomNrStudent(roomID);
         String buildingAddress = searchBuildingAdressStudent(buildingID);
 
-        String roomMessageString = "Room number "+roomNr+" on address: "+buildingAddress;
+        String roomMessageString = "Room number: "+roomNr;
         roomMessage.setText(roomMessageString);
+        String addressString = "Addres: "+buildingAddress;
+        address.setText(addressString);
     }
 
 }

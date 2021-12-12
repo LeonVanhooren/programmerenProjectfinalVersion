@@ -93,6 +93,8 @@ public class DBStudent {
         }
     }
 
+
+
     public static void removeStudentFromDatabase(Student student){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
