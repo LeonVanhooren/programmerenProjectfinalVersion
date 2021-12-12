@@ -47,7 +47,7 @@ public class StudentMenuController {
 
     public void goToStudentProfile(ActionEvent event) throws IOException{
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MyProfile.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StudentProfile.fxml"));
         root = loader.load();
 
 

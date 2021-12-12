@@ -80,32 +80,12 @@ MyProfileController {
     }
 
     public void change(){
-        String StudentNr = studentNumberAcc.getText();
-        String FirstName = firstNameAcc.getText();
-        String LastName = lastNameAcc.getText();
-        String email = emailAcc.getText();
-        String Password = passwordAcc.getText();
 
-        Student newStudent = new Student(FirstName, LastName, email, StudentNr, Password);
 
-        Student currentStudent = program.getCurrentStudent();
-
-        DBStudent.changeStudentFromDatabase(newStudent, currentStudent);
     }
 
     public void showInfo(){
-        studentNumberAcc.setText(program.getCurrentStudent().getStudentID());
-        firstNameAcc.setText(program.getCurrentStudent().getFirstName());
-        lastNameAcc.setText(program.getCurrentStudent().getLastName());
-        emailAcc.setText(program.getCurrentStudent().getEmail());
-        passwordAcc.setText(program.getCurrentStudent().getPassword());
-        String roomID = searchRoomStudent(program.getCurrentStudent());
-        String buildingID = searchBuildingIDStudent(roomID);
-        int roomNr = searchRoomNrStudent(roomID);
-        String buildingAddress = searchBuildingAdressStudent(buildingID);
 
-        String roomMessageString = "Room number "+roomNr+" on address: "+buildingAddress;
-        roomMessage.setText(roomMessageString);
     }
 
     public void back(javafx.event.ActionEvent event) throws IOException{
