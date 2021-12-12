@@ -14,6 +14,7 @@ import logic.ConservationApp;
 import logic.Student;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class RegisterStudentController {
     private Stage stage;
@@ -60,6 +61,10 @@ public class RegisterStudentController {
                 Student newStudent = new Student(firstName, lastName, email, studentNRstring, password1);
 
                 DBStudent.addStudentToDatabase(newStudent);
+
+                ArrayList<Student> newArrayList = program.getStudents();
+                newArrayList.add(newStudent);
+                program.setStudents(newArrayList);
 
                 studentNumber.setText("Your studentnr. is "+studentNRstring+" remember this well!");
                 registerInfoStudent.setText("The student is successfully registered!");
