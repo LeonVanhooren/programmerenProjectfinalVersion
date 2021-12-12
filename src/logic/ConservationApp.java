@@ -130,8 +130,8 @@ public class ConservationApp {
         this.landlords = landlords;
     }
 
-    public void setBuildings(ArrayList<Building> buildings) {
-        this.buildings = buildings;
+    public void setBuildings() {
+        this.buildings = DBBuilding.databaseReadBuilding();
     }
 
     public void setOwnerships(ArrayList<Ownership> ownerships) {

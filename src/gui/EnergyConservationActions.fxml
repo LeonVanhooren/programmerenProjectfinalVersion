@@ -18,7 +18,7 @@
                <children>
                   <ImageView fitHeight="371.0" fitWidth="613.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@symbol-circuit-diagram-electrical-wires-cable-wing-wire.jpg" />
+                        <Image url="@electriciteit.jpg" />
                      </image>
                   </ImageView>
                   <DatePicker layoutX="210.0" layoutY="80.0" />
@@ -36,7 +36,7 @@
                <children>
                   <ImageView fitHeight="652.0" fitWidth="600.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@depositphotos_197773898-stock-illustration-realistic-vector-water-drops-transparent.jpg" />
+                        <Image url="@regendruppels.jpg" />
                      </image>
                   </ImageView>
                   <Label layoutX="264.0" layoutY="49.0" text="Select a day:" />
@@ -54,7 +54,7 @@
                <children>
                   <ImageView fitHeight="400.0" fitWidth="760.0" layoutY="-1.0" opacity="0.2" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@png-clipart-hazard-symbol-dangerous-goods-toxicity-hazmat-class-6-toxic-and-infectious-substances-warning-sign-others-miscellaneous-angle.png" />
+                        <Image url="@gas.png" />
                      </image>
                   </ImageView>
                   <Label layoutX="266.0" layoutY="62.0" text="Select a day" />

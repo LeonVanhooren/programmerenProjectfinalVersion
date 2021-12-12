@@ -7,6 +7,7 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
 <TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="506.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddStudentRoomController">
   <tabs>
@@ -87,6 +88,11 @@
                   <ListView fx:id="myListViewBuilding" layoutX="27.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" />
                   <TextField fx:id="buildingIDBuilding" layoutX="348.0" layoutY="225.0" />
                   <Label layoutX="273.0" layoutY="229.0" text="Building ID:" />
+                  <Button layoutX="189.0" layoutY="277.0" mnemonicParsing="false" onAction="#refreshBuildingListView" text="Refresh">
+                     <font>
+                        <Font size="8.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </content>

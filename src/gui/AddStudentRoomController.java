@@ -141,13 +141,15 @@ public class AddStudentRoomController implements Initializable {
                 building = newBuilding;
             }
         }
+        buildings.remove(building);*/
 
-        ArrayList<Building> buildings = program.getBuildings();
-        buildings.remove(building);
-        */
-        DBBuilding.removeBuildingFromDatabase(currentBuilding);
-        program.setBuildings(DBBuilding.databaseReadBuilding());
+       DBBuilding.removeBuildingFromDatabase(currentBuilding);
+
+    }
+
+    public void refreshBuildingListView(){
         myListViewBuilding.getItems().clear();
+        program.setBuildings();
         myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord().getLandlordID()));
     }
 
