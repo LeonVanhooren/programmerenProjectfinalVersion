@@ -53,15 +53,33 @@ public class DBAppliance {
     }
 
 
-    public static void changeApplianceFromDatabase(Appliance newAppliance, Appliance oldAppliance){
+    public static void changeStudentFromDatabase(String column, String change, String primaryKey){
         try {
-            removeApplianceFromDatabase(oldAppliance);
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            Statement stm = connection.createStatement();
-            String query = "INSERT INTO appliances "+"VALUES('"+newAppliance.getApplianceID()+"', '"+newAppliance.getConsumption()+"', '"+newAppliance.getEfficiency()+"', '"+newAppliance.getQRCode()+"')";
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.execute();
+            switch (column){
+                case "consumption":
+                    String query1 = "UPDATE appliances SET consumption  = ? WHERE applianceID = ?";
+                    PreparedStatement pstmt1 = connection.prepareStatement(query1);
+                    pstmt1.setString(1, change);
+                    pstmt1.setString(2, primaryKey);
+                    pstmt1.executeUpdate();
+                    break;
 
+                case "efficiency":
+                    String query2 = "UPDATE appliances SET efficiency = ? WHERE applianceID = ?";
+                    PreparedStatement pstmt2 = connection.prepareStatement(query2);
+                    pstmt2.setString(1, change);
+                    pstmt2.setString(2, primaryKey);
+                    pstmt2.executeUpdate();
+                    break;
+                case "QR-code":
+                    String query3 = "UPDATE appliances SET QR-code = ? WHERE applianceID = ?";
+                    PreparedStatement pstmt3 = connection.prepareStatement(query3);
+                    pstmt3.setString(1, change);
+                    pstmt3.setString(2, primaryKey);
+                    pstmt3.executeUpdate();
+                    break;
+            }
         } catch (SQLException e) {
             System.out.println("FAIL");
             e.printStackTrace();
