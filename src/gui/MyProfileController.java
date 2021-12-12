@@ -15,7 +15,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.io.IOException;
 
-public class MyProfileController {
+public class
+MyProfileController {
 
     private ConservationApp program = ConservationApp.getInstance();
 
@@ -24,15 +25,15 @@ public class MyProfileController {
     private Scene scene;
 
     @FXML
-    private Label studentNumberAcc;
+    private Label studentNumber;
     @FXML
-    private Label firstNameAcc;
+    private TextField firstName;
     @FXML
-    private Label lastNameAcc;
+    private TextField lastName;
     @FXML
-    private Label passwordAcc;
+    private TextField password;
     @FXML
-    private Label emailAcc;
+    private TextField email;
     @FXML
     private Label roomMessage;
 
@@ -79,32 +80,12 @@ public class MyProfileController {
     }
 
     public void change(){
-        String StudentNr = studentNumberAcc.getText();
-        String FirstName = firstNameAcc.getText();
-        String LastName = lastNameAcc.getText();
-        String email = emailAcc.getText();
-        String Password = passwordAcc.getText();
 
-        Student newStudent = new Student(FirstName, LastName, email, StudentNr, Password);
 
-        Student currentStudent = program.getCurrentStudent();
-
-        DBStudent.changeStudentFromDatabase(newStudent, currentStudent);
     }
 
     public void showInfo(){
-        studentNumberAcc.setText(program.getCurrentStudent().getStudentID());
-        firstNameAcc.setText(program.getCurrentStudent().getFirstName());
-        lastNameAcc.setText(program.getCurrentStudent().getLastName());
-        emailAcc.setText(program.getCurrentStudent().getEmail());
-        passwordAcc.setText(program.getCurrentStudent().getPassword());
-        String roomID = searchRoomStudent(program.getCurrentStudent());
-        String buildingID = searchBuildingIDStudent(roomID);
-        int roomNr = searchRoomNrStudent(roomID);
-        String buildingAddress = searchBuildingAdressStudent(buildingID);
 
-        String roomMessageString = "Room number "+roomNr+" on address: "+buildingAddress;
-        roomMessage.setText(roomMessageString);
     }
 
     public void back(javafx.event.ActionEvent event) throws IOException{

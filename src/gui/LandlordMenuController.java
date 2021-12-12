@@ -65,6 +65,17 @@ public class LandlordMenuController {
 
     }
 
+    public void goToLandlordReport(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LandlordReport.fxml"));
+        root = loader.load();
+
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Landlord report");
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
 
 
     public void contactPersonMenu(ActionEvent event) throws IOException {
