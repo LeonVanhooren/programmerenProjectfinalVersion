@@ -18,7 +18,7 @@ public class AddContractController  {
     private Stage stage;
     private Scene scene;
 
-    public void landlordMenu(ActionEvent event) throws IOException {
+    public void backToLandlordMenu(ActionEvent event) throws IOException {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LandlordMenu.fxml"));
         root = loader.load();

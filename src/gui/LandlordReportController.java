@@ -10,20 +10,21 @@ import logic.ConservationApp;
 
 import java.io.IOException;
 
-public class StudentReportController {
+public class LandlordReportController {
     ConservationApp program = ConservationApp.getInstance();
-    Parent root;
-    Stage stage;
-    Scene scene;
+    private Parent root;
+    private Stage stage;
+    private Scene scene;
 
-    public void backToStudentMenu(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("StudentMenu.fxml"));
+    public void backToLandlordMenu(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LandlordMenu.fxml"));
         root = loader.load();
 
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Student menu");
+        stage.setTitle("landlord menu");
         scene = new Scene(root);
         stage.setScene(scene);
+
     }
 }

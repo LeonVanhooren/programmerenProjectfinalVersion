@@ -14,7 +14,10 @@ import javafx.stage.Stage;
 import logic.ConservationApp;
 import logic.Landlord;
 
+import java.awt.*;
 import java.io.IOException;
+
+import static java.awt.Color.*;
 
 public class RegisterLandlordController {
 
@@ -72,17 +75,30 @@ public class RegisterLandlordController {
 
                 landlordIDLabel.setText("Your landlord ID is "+landlordIDstring+" remember this well!");
                 registerInfoLandlord.setText("The landlord is successfully registered!");
+                registerInfoLandlord.setStyle("-fx-text-fill: green;");
+                firstNameLandlord.setText("");
+                lastNameLandlord.setText("");
+                emailLandlord.setText("");
+                passwordLandlord1.setText("");
+                passWordLandlord2.setText("");
+                passwordMatchingLandlord.setText("");
+                telephoneNrLandlord.setText("");
             }
 
         }
         else{
             registerInfoLandlord.setText("The database already contains this landlord!");
+            registerInfoLandlord.setStyle("-fx-text-fill: red;");
         }
 
         if(password1.equals(password2)){
             passwordMatchingLandlord.setText("The passwords match!");
+            passwordMatchingLandlord.setStyle("-fx-text-fill: green;");
         }
-        else{passwordMatchingLandlord.setText("The passwords do not match!");}
+        else{
+            passwordMatchingLandlord.setText("The passwords do not match!");
+            passwordMatchingLandlord.setStyle("-fx-text-fill: red;");
+        }
 
     }
 
@@ -94,6 +110,9 @@ public class RegisterLandlordController {
         passWordLandlord2.setText("");
         passwordMatchingLandlord.setText("");
         telephoneNrLandlord.setText("");
+        registerInfoLandlord.setText("The database already contains this landlord!");
+        registerInfoLandlord.setStyle("-fx-text-fill: red;");
+
     }
 
     public boolean landlordPresentRegister(String firstname, String lastName, String email, String telephoneNr){
