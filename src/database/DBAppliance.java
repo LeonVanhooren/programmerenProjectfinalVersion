@@ -53,7 +53,7 @@ public class DBAppliance {
     }
 
 
-    public static void changeStudentFromDatabase(String column, String change, String primaryKey){
+    public static void changeApplianceFromDatabase(String column, String change, String primaryKey){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             switch (column){
