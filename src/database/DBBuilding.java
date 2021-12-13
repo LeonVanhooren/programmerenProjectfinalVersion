@@ -66,7 +66,6 @@ public class DBBuilding {
                     pstmt1.setString(2, primaryKey);
                     pstmt1.executeUpdate();
                     break;
-
                 case "city":
                     String query2 = "UPDATE building SET city = ? WHERE buildingID = ?";
                     PreparedStatement pstmt2 = connection.prepareStatement(query2);
