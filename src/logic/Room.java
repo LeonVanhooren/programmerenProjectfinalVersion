@@ -8,7 +8,6 @@ public class Room {
 
     public Room(String characteristics, String buildingID, int roomNR, String roomID){
         this.roomID =roomID;
-
         this.roomNR = roomNR;
         this.buildingID = buildingID;
         this.characteristics = characteristics;
