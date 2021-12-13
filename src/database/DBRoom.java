@@ -26,7 +26,7 @@ public class DBRoom {
                 String buildingID = rs.getString("buildingID");
                 String characteristics = rs.getString("characteristics");
 
-                Room newRoom = new Room(characteristics, buildingID, roomNr, roomID);
+                Room newRoom = new Room(roomNr, roomID, buildingID, characteristics);
                 rooms.add(newRoom);
 
             }

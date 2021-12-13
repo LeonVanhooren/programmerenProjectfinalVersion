@@ -6,7 +6,7 @@ public class Room {
     /*private ArrayList<String> characteristics;*/
 
 
-    public Room(String characteristics, String buildingID, int roomNR, String roomID){
+    public Room(int roomNR, String roomID, String buildingID, String characteristics){
         this.roomID =roomID;
         this.roomNR = roomNR;
         this.buildingID = buildingID;

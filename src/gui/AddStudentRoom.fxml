@@ -35,16 +35,18 @@
                <children>
                   <Label layoutX="71.0" layoutY="42.0" text="Select Student Room" />
                   <Label layoutX="81.0" layoutY="291.0" />
-                  <Label layoutX="264.0" layoutY="88.0" text="Room number:" />
+                  <Label layoutX="259.0" layoutY="88.0" text="Room number:" />
                   <Label layoutX="277.0" layoutY="120.0" text="Building ID:" />
                   <TextField fx:id="RoomNr" layoutX="348.0" layoutY="84.0" />
                   <TextField fx:id="buildingIDRoom" layoutX="348.0" layoutY="116.0" />
-                  <Button layoutX="365.0" layoutY="193.0" mnemonicParsing="false" text="Save student room" />
+                  <Button layoutX="365.0" layoutY="248.0" mnemonicParsing="false" onAction="#changeRoom" text="Save student room" />
                   <Button layoutX="97.0" layoutY="287.0" mnemonicParsing="false" text="Remove" />
                   <Button layoutX="452.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
                   <ListView fx:id="myListView" layoutX="27.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" />
-                  <Label layoutX="292.0" layoutY="157.0" text="Room ID:" />
-                  <Label fx:id="roomIDroom" layoutX="374.0" layoutY="157.0" text="No room selected!" />
+                  <Label layoutX="283.0" layoutY="206.0" text="Room ID:" />
+                  <Label fx:id="roomIDroom" layoutX="373.0" layoutY="206.0" text="No room selected!" />
+                  <Label fx:id="characteristicsLabel" layoutX="261.0" layoutY="152.0" text="characteristics:" />
+                  <TextField fx:id="characteristics" layoutX="348.0" layoutY="148.0" />
                </children>
             </AnchorPane>
          </content>

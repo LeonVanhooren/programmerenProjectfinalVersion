@@ -7,24 +7,26 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RegisterEnergyConsumptionController">
+<AnchorPane prefHeight="368.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RegisterEnergyConsumptionController">
    <children>
-      <Label layoutX="268.0" layoutY="57.0" text="Select the date" />
-      <DatePicker layoutX="220.0" layoutY="83.0" />
-      <Label layoutX="203.0" layoutY="133.0" text="Fill in the monthly energy consumption:" />
-      <Label layoutX="171.0" layoutY="14.0" text="Monthly energy consumption">
+      <Label layoutX="37.0" layoutY="95.0" text="Select the date" />
+      <DatePicker fx:id="datePicker" layoutX="142.0" layoutY="91.0" />
+      <Label layoutX="76.0" layoutY="14.0" text="Monthly energy consumption">
          <font>
             <Font size="21.0" />
          </font>
       </Label>
-      <Label layoutX="143.0" layoutY="183.0" text="Electricity (in kWh):" />
-      <Label layoutX="143.0" layoutY="225.0" text="Water (m³):" />
-      <Label layoutX="143.0" layoutY="266.0" text="Gas (kWh):" />
-      <TextField layoutX="280.0" layoutY="179.0" />
-      <TextField layoutX="280.0" layoutY="221.0" />
-      <TextField layoutX="280.0" layoutY="262.0" />
-      <Button layoutX="194.0" layoutY="336.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
-      <Button layoutX="395.0" layoutY="336.0" mnemonicParsing="false" onAction="#landlordMenu" text="Submit" />
+      <Label layoutX="36.0" layoutY="183.0" text="Electricity (in kWh):" />
+      <Label layoutX="37.0" layoutY="225.0" text="Water (m³):" />
+      <Label layoutX="38.0" layoutY="266.0" text="Gas (kWh):" />
+      <TextField fx:id="electricity" layoutX="143.0" layoutY="179.0" />
+      <TextField fx:id="water" layoutX="143.0" layoutY="221.0" />
+      <TextField fx:id="gas" layoutX="143.0" layoutY="262.0" />
+      <Button layoutX="352.0" layoutY="328.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
+      <Button layoutX="191.0" layoutY="302.0" mnemonicParsing="false" onAction="#addConsumption" text="Submit" />
       <Label fx:id="firstDayError" layoutX="115.0" layoutY="87.0" textFill="RED" />
+      <TextField fx:id="roomID" layoutX="143.0" layoutY="134.0" />
+      <Label layoutX="36.0" layoutY="138.0" text="Room ID:" />
+      <Label fx:id="consumptionInfo" alignment="CENTER" layoutX="3.0" layoutY="56.0" prefHeight="17.0" prefWidth="399.0" text="Consumption not yet added!" textFill="RED" />
    </children>
 </AnchorPane>

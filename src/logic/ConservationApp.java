@@ -22,6 +22,8 @@ public class ConservationApp {
     private ArrayList<OpenContract> openContracts;
     private Student currentStudent;
     private Landlord currentLandlord;
+    private ArrayList<MonthlyConsumption> monthlyConsumptions;
+    private ArrayList<Registers> registers;
 
 
 
@@ -39,7 +41,25 @@ public class ConservationApp {
         this.openContracts = new ArrayList<>();
         this.currentStudent = null;
         this.currentLandlord = null;
+        this.registers = DBRegisters.databaseReadRegisters();
+        this.monthlyConsumptions = DBMonthlyConsumption.databaseReadMonthlyConsumption();
 
+    }
+
+    public ArrayList<MonthlyConsumption> getMonthlyConsumptions() {
+        return monthlyConsumptions;
+    }
+
+    public void setMonthlyConsumptions(ArrayList<MonthlyConsumption> monthlyConsumptions) {
+        this.monthlyConsumptions = monthlyConsumptions;
+    }
+
+    public ArrayList<Registers> getRegisters() {
+        return registers;
+    }
+
+    public void setRegisters(ArrayList<Registers> registers) {
+        this.registers = registers;
     }
 
     public String[] getRoomIDs(){
