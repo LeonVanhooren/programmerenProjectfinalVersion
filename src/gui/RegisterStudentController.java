@@ -14,6 +14,7 @@ import logic.ConservationApp;
 import logic.Student;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class RegisterStudentController {
     private Stage stage;
@@ -61,20 +62,36 @@ public class RegisterStudentController {
 
                 DBStudent.addStudentToDatabase(newStudent);
 
+                ArrayList<Student> newArrayList = program.getStudents();
+                newArrayList.add(newStudent);
+                program.setStudents(newArrayList);
+
                 studentNumber.setText("Your studentnr. is "+studentNRstring+" remember this well!");
                 registerInfoStudent.setText("The student is successfully registered!");
+                registerInfoStudent.setStyle("-fx-text-fill: green;");
+                firstNameStudent.setText("");
+                lastNameStudent.setText("");
+                emailStudent.setText("");
+                passwordStudent2.setText("");
+                passwordStudent1.setText("");
+                passwordMatching.setText("");
+
             }
 
         }
         else{
             registerInfoStudent.setText("The database already contains this student!");
+            registerInfoStudent.setStyle("-fx-text-fill: red;");
         }
 
         if(password1.equals(password2)){
             passwordMatching.setText("The passwords match!");
+            passwordMatching.setStyle("-fx-text-fill: green;");
         }
-        else{passwordMatching.setText("The passwords do not match!");}
-
+        else{
+            passwordMatching.setText("The passwords do not match!");
+            passwordMatching.setStyle("-fx-text-fill: red;");
+        }
     }
 
     public void clearStudentInput(){

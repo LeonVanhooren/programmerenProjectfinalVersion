@@ -26,7 +26,8 @@ public class DBAppliance {
                 String consumption = rs.getString("consumption");
                 String efficiency = rs.getString("efficiency");
                 String QRCode = rs.getString("QR-code");
-                Appliance newAppliance = new Appliance(applianceID, consumption, efficiency, QRCode);
+                String applianceName = rs.getString("applianceName");
+                Appliance newAppliance = new Appliance(applianceID, consumption, efficiency, QRCode, applianceName);
                 appliances.add(newAppliance);
 
             }
@@ -34,6 +35,7 @@ public class DBAppliance {
         } catch (SQLException e) {
             System.out.println("FAIL");
             e.printStackTrace();
+
         }
         return appliances;
     }
@@ -42,7 +44,7 @@ public class DBAppliance {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO appliances "+"VALUES('"+appliance.getApplianceID()+"', '"+appliance.getConsumption()+"', '"+appliance.getEfficiency()+"', '"+appliance.getQRCode()+"')";
+            String query = "INSERT INTO appliances "+"VALUES('"+appliance.getApplianceID()+"', '"+appliance.getConsumption()+"', '"+appliance.getEfficiency()+"', '"+appliance.getQRCode()+"', '"+appliance.getApplianceName()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
@@ -53,15 +55,40 @@ public class DBAppliance {
     }
 
 
-    public static void changeApplianceFromDatabase(Appliance newAppliance, Appliance oldAppliance){
+    public static void changeApplianceFromDatabase(String column, String change, String primaryKey){
         try {
-            removeApplianceFromDatabase(oldAppliance);
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            Statement stm = connection.createStatement();
-            String query = "INSERT INTO appliances "+"VALUES('"+newAppliance.getApplianceID()+"', '"+newAppliance.getConsumption()+"', '"+newAppliance.getEfficiency()+"', '"+newAppliance.getQRCode()+"')";
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.execute();
+            switch (column){
+                case "consumption":
+                    String query1 = "UPDATE appliances SET consumption  = ? WHERE applianceID = ?";
+                    PreparedStatement pstmt1 = connection.prepareStatement(query1);
+                    pstmt1.setString(1, change);
+                    pstmt1.setString(2, primaryKey);
+                    pstmt1.executeUpdate();
+                    break;
 
+                case "efficiency":
+                    String query2 = "UPDATE appliances SET efficiency = ? WHERE applianceID = ?";
+                    PreparedStatement pstmt2 = connection.prepareStatement(query2);
+                    pstmt2.setString(1, change);
+                    pstmt2.setString(2, primaryKey);
+                    pstmt2.executeUpdate();
+                    break;
+                case "QR-code":
+                    String query3 = "UPDATE appliances SET QR-code = ? WHERE applianceID = ?";
+                    PreparedStatement pstmt3 = connection.prepareStatement(query3);
+                    pstmt3.setString(1, change);
+                    pstmt3.setString(2, primaryKey);
+                    pstmt3.executeUpdate();
+                    break;
+                case "applianceName":
+                    String query4 = "UPDATE appliances SET applianceName = ? WHERE applianceName = ?";
+                    PreparedStatement pstmt4 = connection.prepareStatement(query4);
+                    pstmt4.setString(1, change);
+                    pstmt4.setString(2,primaryKey);
+                    pstmt4.executeUpdate();
+                    break;
+            }
         } catch (SQLException e) {
             System.out.println("FAIL");
             e.printStackTrace();

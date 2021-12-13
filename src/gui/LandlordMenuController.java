@@ -51,7 +51,45 @@ public class LandlordMenuController {
         scene = new Scene(root);
         stage.setScene(scene);
 
+
     }
+
+    public void goToLandlordProfile(ActionEvent event)throws IOException{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LandlordProfile.fxml"));
+        root = loader.load();
+
+
+
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Landlord profile");
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    public void goToContractMenu(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("AddContract.fxml"));
+        root = loader.load();
+
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Contract menu");
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+    public void goToLandlordReport(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LandlordReport.fxml"));
+        root = loader.load();
+
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Landlord report");
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+
 
     public void contactPersonMenu(ActionEvent event) throws IOException {
 

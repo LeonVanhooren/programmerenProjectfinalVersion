@@ -7,22 +7,25 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="441.0" prefWidth="574.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddStudentRoomController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="417.0" prefWidth="506.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddStudentRoomController">
   <tabs>
     <Tab text="Add student room">
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label layoutX="177.0" layoutY="14.0" text="Student room is not yet added" />
+                  <Label fx:id="registerRoomInfo" layoutX="177.0" layoutY="14.0" text="Student room is not yet added" />
                   <Label layoutX="100.0" layoutY="88.0" text="Room number:" />
                   <Label layoutX="118.0" layoutY="127.0" />
-                  <TextField layoutX="191.0" layoutY="84.0" />
-                  <TextField layoutX="191.0" layoutY="123.0" />
-                  <Button layoutX="512.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
-                  <Button layoutX="209.0" layoutY="180.0" mnemonicParsing="false" text="Add student room" />
+                  <TextField fx:id="roomNrInput" layoutX="191.0" layoutY="84.0" />
+                  <TextField fx:id="buildingIDInput" layoutX="191.0" layoutY="123.0" />
+                  <Button layoutX="451.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
+                  <Button layoutX="209.0" layoutY="227.0" mnemonicParsing="false" onAction="#addRoomButton" text="Add student room" />
                   <Label layoutX="118.0" layoutY="127.0" text="Building ID:" />
-                  <Label layoutX="234.0" layoutY="48.0" text="Room id:" />
+                  <Label fx:id="roomIDT" layoutX="234.0" layoutY="48.0" text="Room id:" />
+                  <TextField fx:id="characteristicsInput" layoutX="191.0" layoutY="162.0" />
+                  <Label layoutX="100.0" layoutY="166.0" text="Characteristics:" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -38,7 +41,7 @@
                   <TextField fx:id="buildingIDRoom" layoutX="348.0" layoutY="116.0" />
                   <Button layoutX="365.0" layoutY="193.0" mnemonicParsing="false" text="Save student room" />
                   <Button layoutX="97.0" layoutY="287.0" mnemonicParsing="false" text="Remove" />
-                  <Button layoutX="498.0" layoutY="363.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
+                  <Button layoutX="452.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
                   <ListView fx:id="myListView" layoutX="27.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" />
                   <Label layoutX="292.0" layoutY="157.0" text="Room ID:" />
                   <Label fx:id="roomID" layoutX="374.0" layoutY="157.0" text="No room selected!" />
@@ -50,12 +53,12 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="roominfo" layoutX="177.0" layoutY="14.0" text="Student room is not yet added" />
+                  <Label fx:id="buildinginfo" layoutX="177.0" layoutY="14.0" text="Student room is not yet added" />
                   <Label layoutX="127.0" layoutY="87.0" text="Address:" />
                   <Label layoutX="118.0" layoutY="127.0" />
                   <TextField fx:id="adressInput" layoutX="191.0" layoutY="83.0" />
                   <TextField fx:id="countryInput" layoutX="191.0" layoutY="123.0" />
-                  <Button layoutX="512.0" layoutY="364.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
+                  <Button layoutX="450.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="25.0" prefWidth="42.0" text="Back" />
                   <Button layoutX="216.0" layoutY="274.0" mnemonicParsing="false" onAction="#addBuildingButton" text="Add building" />
                   <Label layoutX="127.0" layoutY="118.0" text="Country:" />
                   <Label layoutX="138.0" layoutY="167.0" text="City:" />
@@ -81,12 +84,15 @@
                   <TextField fx:id="City" layoutX="348.0" layoutY="116.0" />
                   <TextField fx:id="Country" layoutX="348.0" layoutY="152.0" />
                   <TextField fx:id="Zip" layoutX="348.0" layoutY="187.0" />
-                  <Button layoutX="379.0" layoutY="261.0" mnemonicParsing="false" text="Save building" />
-                  <Button layoutX="97.0" layoutY="287.0" mnemonicParsing="false" text="Remove" />
-                  <Button layoutX="498.0" layoutY="363.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
+                  <Button layoutX="379.0" layoutY="224.0" mnemonicParsing="false" onAction="#changeBuilding" text="Save building" />
+                  <Button layoutX="97.0" layoutY="287.0" mnemonicParsing="false" onAction="#removeBuilding" text="Remove" />
+                  <Button layoutX="456.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
                   <ListView fx:id="myListViewBuilding" layoutX="27.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" />
-                  <TextField fx:id="buildingIDBuilding" layoutX="348.0" layoutY="225.0" />
-                  <Label layoutX="273.0" layoutY="229.0" text="Building ID:" />
+                  <Button layoutX="189.0" layoutY="277.0" mnemonicParsing="false" onAction="#refreshBuildingListView" text="Refresh">
+                     <font>
+                        <Font size="8.0" />
+                     </font>
+                  </Button>
                </children>
             </AnchorPane>
          </content>

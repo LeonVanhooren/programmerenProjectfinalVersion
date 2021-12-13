@@ -34,6 +34,8 @@ public class StudentMenuController {
 
     }
 
+
+
     public void backToSignIn(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
         root = loader.load();
@@ -47,7 +49,7 @@ public class StudentMenuController {
 
     public void goToStudentProfile(ActionEvent event) throws IOException{
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("MyProfile.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StudentProfile.fxml"));
         root = loader.load();
 
 
@@ -56,6 +58,41 @@ public class StudentMenuController {
         scene = new Scene(root);
         stage.setScene(scene);
 
+    }
+
+    public void goToConservationMenu(ActionEvent event)throws IOException{
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("EnergyConservationActions.fxml"));
+        root = loader.load();
+
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Energy conservation menu");
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+    public void goToMessages(ActionEvent event)throws IOException{
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("Messages.fxml"));
+        root = loader.load();
+
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Messages");
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+    public void goToStudentReport(ActionEvent event)throws IOException{
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("StudentReport.fxml"));
+        root = loader.load();
+
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Student report");
+        scene = new Scene(root);
+        stage.setScene(scene);
     }
 
 }

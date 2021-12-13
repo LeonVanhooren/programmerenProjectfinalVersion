@@ -55,15 +55,40 @@ public class DBBuilding {
         }
     }
 
-    public static void changeBuildingFromDatabase(Building newBuilding, Building oldBuilding){
+    public static void changeBuildingFromDatabase(String column, String change, String primaryKey){
         try {
-            removeBuildingFromDatabase(oldBuilding);
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            Statement stm = connection.createStatement();
-            String query = "INSERT INTO building "+"VALUES('"+newBuilding.getBuildingID()+"', '"+newBuilding.getCountry()+"', '"+newBuilding.getCity()+"', '"+newBuilding.getAdress()+"', '"+newBuilding.getZip()+"')";
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.execute();
+            switch (column){
+                case "country":
+                    String query1 = "UPDATE building SET country = ? WHERE buildingID = ?";
+                    PreparedStatement pstmt1 = connection.prepareStatement(query1);
+                    pstmt1.setString(1, change);
+                    pstmt1.setString(2, primaryKey);
+                    pstmt1.executeUpdate();
+                    break;
 
+                case "city":
+                    String query2 = "UPDATE building SET city = ? WHERE buildingID = ?";
+                    PreparedStatement pstmt2 = connection.prepareStatement(query2);
+                    pstmt2.setString(1, change);
+                    pstmt2.setString(2, primaryKey);
+                    pstmt2.executeUpdate();
+                    break;
+                case "adress":
+                    String query3 = "UPDATE building SET adress = ? WHERE buildingID = ?";
+                    PreparedStatement pstmt3 = connection.prepareStatement(query3);
+                    pstmt3.setString(1, change);
+                    pstmt3.setString(2, primaryKey);
+                    pstmt3.executeUpdate();
+                    break;
+                case "zip":
+                    String query4 = "UPDATE building SET zip = ? WHERE buildingID = ?";
+                    PreparedStatement pstmt4 = connection.prepareStatement(query4);
+                    pstmt4.setString(1, change);
+                    pstmt4.setString(2, primaryKey);
+                    pstmt4.executeUpdate();
+                    break;
+            }
         } catch (SQLException e) {
             System.out.println("FAIL");
             e.printStackTrace();
@@ -72,11 +97,11 @@ public class DBBuilding {
 
 
 
-    public static void removeBuildingFromDatabase(Building building){
+    public static void removeBuildingFromDatabase(String buildingID){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "DELETE FROM building WHERE buildingID="+building.getBuildingID();
+            String query = "DELETE FROM building WHERE buildingID="+buildingID;
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 

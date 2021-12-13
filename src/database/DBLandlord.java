@@ -54,15 +54,47 @@ public class DBLandlord {
         }
     }
 
-    public static void changeLandlordFromDatabase(Landlord newLandlord, Landlord oldLandlord){
+    public static void changeLandlordFromDatabase(String column, String change, String primaryKey){
         try {
-            removeLandlordFromDatabase(oldLandlord);
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            Statement stm = connection.createStatement();
-            String query = "INSERT INTO landlord "+"VALUES('"+newLandlord.getLandlordID()+"', '"+newLandlord.getFirstName()+"', '"+newLandlord.getLastName()+"', '"+newLandlord.getEmail()+"', '"+newLandlord.getTelephoneNR()+"', '"+newLandlord.getPassWord()+"')";
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.execute();
+            switch (column){
+                case "firstname":
+                    String query1 = "UPDATE landlord SET firstname = ? WHERE landlordID = ?";
+                    PreparedStatement pstmt1 = connection.prepareStatement(query1);
+                    pstmt1.setString(1, change);
+                    pstmt1.setString(2, primaryKey);
+                    pstmt1.executeUpdate();
+                    break;
 
+                case "lastname":
+                    String query2 = "UPDATE landlord SET lastname = ? WHERE landlordID = ?";
+                    PreparedStatement pstmt2 = connection.prepareStatement(query2);
+                    pstmt2.setString(1, change);
+                    pstmt2.setString(2, primaryKey);
+                    pstmt2.executeUpdate();
+                    break;
+                case "email":
+                    String query3 = "UPDATE landlord SET email = ? WHERE landlordID = ?";
+                    PreparedStatement pstmt3 = connection.prepareStatement(query3);
+                    pstmt3.setString(1, change);
+                    pstmt3.setString(2, primaryKey);
+                    pstmt3.executeUpdate();
+                    break;
+                case "telephoneNr":
+                    String query4 = "UPDATE landlord SET telephoneNr = ? WHERE landlordID = ?";
+                    PreparedStatement pstmt4 = connection.prepareStatement(query4);
+                    pstmt4.setString(1, change);
+                    pstmt4.setString(2, primaryKey);
+                    pstmt4.executeUpdate();
+                    break;
+                case "password":
+                    String query5 = "UPDATE landlord SET password = ? WHERE landlordID = ?";
+                    PreparedStatement pstmt5 = connection.prepareStatement(query5);
+                    pstmt5.setString(1, change);
+                    pstmt5.setString(2, primaryKey);
+                    pstmt5.executeUpdate();
+                    break;
+            }
         } catch (SQLException e) {
             System.out.println("FAIL");
             e.printStackTrace();
