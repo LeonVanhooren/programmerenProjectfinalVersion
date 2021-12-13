@@ -104,17 +104,27 @@ public class AddStudentRoomController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         myListViewBuilding.getItems().addAll(program.getBuildingIDsLandlord());
-
         myListViewBuilding.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                String currentBuilding = myListViewBuilding.getSelectionModel().getSelectedItem();
+                currentBuilding = myListViewBuilding.getSelectionModel().getSelectedItem();
                 City.setPromptText(searchBuildingCity(currentBuilding));
                 Country.setPromptText(searchBuildingCountry(currentBuilding));
                 Zip.setPromptText(searchBuildingZip(currentBuilding));
                 Address.setPromptText(searchBuildingAdressStudent(currentBuilding));
+            }
+            
+        });
+        myListView.getItems().addAll(roomIDsLandlord(program.getBuildingIDsLandlord()));
+        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                currentRoom = myListView.getSelectionModel().getSelectedItem();
+
             }
 
 
@@ -291,7 +301,7 @@ public class AddStudentRoomController implements Initializable {
         return false;
     }
 
-    public void changeBuilding(ActionEvent event) {
+    public void changeBuilding() {
         if(!Address.getText().equals("")){
             DBBuilding.changeBuildingFromDatabase("adress", Address.getText(), currentBuilding);
         }
