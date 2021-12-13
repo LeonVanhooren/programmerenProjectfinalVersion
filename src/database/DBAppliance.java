@@ -26,7 +26,8 @@ public class DBAppliance {
                 String consumption = rs.getString("consumption");
                 String efficiency = rs.getString("efficiency");
                 String QRCode = rs.getString("QR-code");
-                Appliance newAppliance = new Appliance(applianceID, consumption, efficiency, QRCode);
+                String applianceName = rs.getString("applianceName");
+                Appliance newAppliance = new Appliance(applianceID, consumption, efficiency, QRCode, applianceName);
                 appliances.add(newAppliance);
 
             }

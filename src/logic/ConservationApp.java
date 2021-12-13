@@ -57,6 +57,14 @@ public class ConservationApp {
         return output;
     }
 
+    public String[] getApplianceIDs(){
+        String[] output = new String[appliances.size()];
+        for(int i = 0; i<appliances.size();i++){
+            output[i] = appliances.get(i).getApplianceID();
+        }
+        return output;
+    }
+
 
     public void setCurrentStudent(Student student){
         this.currentStudent = student;

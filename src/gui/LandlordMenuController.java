@@ -57,6 +57,8 @@ public class LandlordMenuController {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LandlordProfile.fxml"));
         root = loader.load();
 
+
+
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Landlord profile");
         scene = new Scene(root);

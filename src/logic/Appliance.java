@@ -3,13 +3,25 @@ package logic;
 
 public class Appliance {
 
-    private String applianceID, consumption, efficiency, QRCode;
+    private String applianceID, consumption, efficiency, QRCode, applianceName;
 
-    public Appliance(String applianceID, String consumption, String efficiency, String QRCode) {
+    public Appliance(String applianceID, String consumption, String efficiency, String QRCode, String applianceName) {
         this.applianceID = applianceID;
         this.consumption = consumption;
         this.efficiency = efficiency;
         this.QRCode = QRCode;
+        this.applianceName = applianceName;
+
+    }
+
+
+
+    public String getApplianceName() {
+        return applianceName;
+    }
+
+    public void setApplianceName(String applianceName) {
+        this.applianceName = applianceName;
     }
 
     public String getApplianceID() {

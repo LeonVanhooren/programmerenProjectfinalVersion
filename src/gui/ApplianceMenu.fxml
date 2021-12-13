@@ -33,19 +33,20 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Label layoutX="70.0" layoutY="37.0" text="Select Appliance" />
-                  <ListView layoutX="14.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0" />
-                  <Button layoutX="44.0" layoutY="283.0" mnemonicParsing="false" onAction="#changeAppliance" text="Change" />
+                  <ListView fx:id="myListView" layoutX="14.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0" />
                   <Button layoutX="127.0" layoutY="283.0" mnemonicParsing="false" onAction="#removeAppliance" text="Remove" />
-                  <Label layoutX="245.0" layoutY="84.0" text="Appliance ID:" />
+                  <Label layoutX="245.0" layoutY="84.0" text="Appliance name:" />
                   <Label layoutX="243.0" layoutY="125.0" text="Consumption:" />
                   <Label layoutX="266.0" layoutY="167.0" text="Efficiency:" />
                   <Label layoutX="267.0" layoutY="213.0" text="QR-code:" />
-                  <TextField layoutX="335.0" layoutY="80.0" />
-                  <TextField layoutX="335.0" layoutY="121.0" />
-                  <TextField layoutX="335.0" layoutY="163.0" />
-                  <TextField layoutX="334.0" layoutY="209.0" />
+                  <TextField fx:id="applianceNameChange" layoutX="335.0" layoutY="80.0" />
+                  <TextField fx:id="consumptionChange" layoutX="335.0" layoutY="121.0" />
+                  <TextField fx:id="efficiencyChange" layoutX="335.0" layoutY="163.0" />
+                  <TextField fx:id="QRCodeChange" layoutX="334.0" layoutY="209.0" />
                   <Button layoutX="360.0" layoutY="263.0" mnemonicParsing="false" onAction="#addAppliance" text="Save Appliance" />
                   <Button layoutX="444.0" layoutY="329.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
+                  <Button layoutX="50.0" layoutY="283.0" mnemonicParsing="false" text="Show list" />
+                  <Label fx:id="applianceIDChange" layoutX="266.0" layoutY="45.0" text="Appliance ID:" />
                </children>
             </AnchorPane>
          </content>
