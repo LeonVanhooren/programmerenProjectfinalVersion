@@ -84,7 +84,7 @@
                   <TextField fx:id="City" layoutX="348.0" layoutY="116.0" />
                   <TextField fx:id="Country" layoutX="348.0" layoutY="152.0" />
                   <TextField fx:id="Zip" layoutX="348.0" layoutY="187.0" />
-                  <Button layoutX="379.0" layoutY="224.0" mnemonicParsing="false" onAction="#changeBuilding" text="Save building" />
+                  <Button layoutX="379.0" layoutY="224.0" mnemonicParsing="false" text="Save building" />
                   <Button layoutX="97.0" layoutY="287.0" mnemonicParsing="false" onAction="#removeBuilding" text="Remove" />
                   <Button layoutX="456.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
                   <ListView fx:id="myListViewBuilding" layoutX="27.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" />

@@ -254,8 +254,6 @@ public class AddStudentRoomController implements Initializable {
             DBBuilding.addBuildingToDatabase(newBuilding);
             buildinginfo.setText("Building successfully added!");
             buildingIDT.setText("The buildingID is " + buildingIDString + ", remember this well!");
-            Ownership newOwnership = new Ownership(newBuilding.getBuildingID(), program.getCurrentLandlord().getLandlordID());
-            DBOwnership.addOwnershipToDatabase(newOwnership);
         }
         else{
             buildinginfo.setText("The database already contains this building!");
