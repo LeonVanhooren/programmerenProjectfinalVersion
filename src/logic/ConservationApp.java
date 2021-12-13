@@ -130,6 +130,29 @@ public class ConservationApp {
         ConservationApp.conservationApp = conservationApp;
     }
 
+    public String[] getBuildingIDsLandlord(){
+        ArrayList<String> output = new ArrayList<>();
+
+        for(Ownership newOwnership: ownerships){
+            System.out.println("blablabla");
+            System.out.println(currentLandlord.getLandlordID());
+            System.out.println(newOwnership.getLandlordID());
+            if(newOwnership.getLandlordID().equals(currentLandlord.getLandlordID())){
+                System.out.println("blablabla");
+                output.add(newOwnership.getBuildingID());
+            }
+        }
+
+        System.out.println(output);
+
+        String[] outputString = new String[output.size()];
+        System.out.println(output.size());
+        for(int i = 0; i< output.size(); i++){
+            outputString[i]=output.get(i);
+        }
+        return outputString;
+    }
+
     public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }

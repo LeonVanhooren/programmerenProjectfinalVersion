@@ -64,21 +64,6 @@ public class AddStudentRoomController implements Initializable {
         stage.setScene(scene);
     }
 
-    public String[] buildingIDsLandlord(Landlord landlord){
-        ArrayList<String> output = new ArrayList<>();
-
-        for(Ownership newOwnership: program.getOwnerships()){
-            if(newOwnership.getLandlordID().equals(landlord.getLandlordID())){
-                output.add(newOwnership.getBuildingID());
-            }
-        }
-
-        String[] outputString = new String[output.size()];
-        for(int i = 0; i< output.size(); i++){
-            outputString[i]=output.get(i);
-        }
-        return outputString;
-    }
 
 
     public String[] roomIDsLandlord(String[] buildingIDs){
@@ -116,16 +101,31 @@ public class AddStudentRoomController implements Initializable {
        DBBuilding.removeBuildingFromDatabase(currentBuilding);
 
     }
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        myListViewBuilding.getItems().addAll(program.getBuildingIDsLandlord());
 
+        myListViewBuilding.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                String currentBuilding = myListViewBuilding.getSelectionModel().getSelectedItem();
+                City.setPromptText(searchBuildingCity(currentBuilding));
+                Country.setPromptText(searchBuildingCountry(currentBuilding));
+                Zip.setPromptText(searchBuildingZip(currentBuilding));
+                Address.setPromptText(searchBuildingAdressStudent(currentBuilding));
+            }
+
+
+        });
+
+    }
     public void refreshBuildingListView(){
         myListViewBuilding.getItems().clear();
-        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord()));
+        myListViewBuilding.getItems().addAll(program.getBuildingIDsLandlord());
     }
 
-    public void refreshRoomListView(){
-        myListView.getItems().clear();
-        myListView.getItems().addAll(roomIDsLandlord(buildingIDsLandlord(program.getCurrentLandlord())));
-    }
 
 
 
@@ -307,24 +307,7 @@ public class AddStudentRoomController implements Initializable {
     }
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord()));
-        System.out.println(buildingIDBuilding);
-        System.out.println(buildingIDsLandlord(program.getCurrentLandlord()));
-        myListViewBuilding.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
-
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                String currentBuilding = myListView.getSelectionModel().getSelectedItem();
-
-            }
-
-
-        });
-
-    }
 }
 
 

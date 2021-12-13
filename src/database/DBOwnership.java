@@ -25,7 +25,7 @@ public class DBOwnership {
                 String landlordID = rs.getString("landlordID");
                 String buildingID = rs.getString("buildingID");
 
-                Ownership newOwnership = new Ownership(landlordID, buildingID);
+                Ownership newOwnership = new Ownership(buildingID, landlordID);
                 ownerships.add(newOwnership);
 
             }
