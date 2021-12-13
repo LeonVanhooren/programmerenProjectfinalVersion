@@ -64,7 +64,6 @@ public class DBStudent {
                     pstmt1.setString(2, primaryKey);
                     pstmt1.executeUpdate();
                     break;
-                    
                 case "lastname":
                     String query2 = "UPDATE student SET lastname = ? WHERE studentID = ?";
                     PreparedStatement pstmt2 = connection.prepareStatement(query2);
