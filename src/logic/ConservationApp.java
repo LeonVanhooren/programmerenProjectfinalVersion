@@ -2,6 +2,7 @@ package logic;
 
 import database.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ConservationApp {
@@ -38,6 +39,7 @@ public class ConservationApp {
         this.openContracts = new ArrayList<>();
         this.currentStudent = null;
         this.currentLandlord = null;
+
     }
 
     public String[] getRoomIDs(){
@@ -141,14 +143,34 @@ public class ConservationApp {
             }
         }
 
-        System.out.println(output);
+
 
         String[] outputString = new String[output.size()];
-        System.out.println(output.size());
+
         for(int i = 0; i< output.size(); i++){
             outputString[i]=output.get(i);
         }
         return outputString;
+    }
+
+    public String[] getRoomIDsLandlord(String[] buildingIDs){
+       String[] output = buildingIDs;
+       ArrayList<String> outputList = new ArrayList<>();
+
+       for(int i=0; i<buildingIDs.length; i++) {
+           for (BelongsTo newBelongsTo : belongsToArrayList) {
+               if (buildingIDs[i].equals(newBelongsTo.getBuildingID())){
+                   outputList.add(newBelongsTo.getRoomID());
+               }
+           }
+       }
+
+       String[] outputString = new String[outputList.size()];
+        for(int j = 0; j< outputList.size();j++){
+            outputString[j]=outputList.get(j);
+        }
+
+       return outputString;
     }
 
     public void setStudents(ArrayList<Student> students) {
