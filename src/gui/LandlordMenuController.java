@@ -35,7 +35,7 @@ public class LandlordMenuController {
         root = loader.load();
 
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("landlord menu");
+        stage.setTitle("Consumption menu");
         scene = new Scene(root);
         stage.setScene(scene);
 
@@ -47,7 +47,7 @@ public class LandlordMenuController {
         root = loader.load();
 
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("landlord menu");
+        stage.setTitle("Student room/building menu");
         scene = new Scene(root);
         stage.setScene(scene);
 
