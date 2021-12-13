@@ -35,6 +35,7 @@ public class DBAppliance {
         } catch (SQLException e) {
             System.out.println("FAIL");
             e.printStackTrace();
+
         }
         return appliances;
     }
