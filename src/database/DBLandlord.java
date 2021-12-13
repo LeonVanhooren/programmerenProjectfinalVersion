@@ -86,6 +86,7 @@ public class DBLandlord {
                     pstmt4.setString(1, change);
                     pstmt4.setString(2, primaryKey);
                     pstmt4.executeUpdate();
+                    break;
                 case "password":
                     String query5 = "UPDATE landlord SET password = ? WHERE landlordID = ?";
                     PreparedStatement pstmt5 = connection.prepareStatement(query5);

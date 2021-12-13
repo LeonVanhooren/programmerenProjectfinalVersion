@@ -34,6 +34,8 @@ public class StudentMenuController {
 
     }
 
+
+
     public void backToSignIn(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
         root = loader.load();

@@ -13,9 +13,11 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import logic.ConservationApp;
 import logic.Landlord;
+import logic.Student;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import static java.awt.Color.*;
 
@@ -72,6 +74,10 @@ public class RegisterLandlordController {
                 Landlord newLandlord = new Landlord(landlordIDstring, firstName, lastName, email, telephoneNr, password1);
 
                 DBLandlord.addLandlordToDatabase(newLandlord);
+
+                ArrayList<Landlord> newArrayList = program.getLandlords();
+                newArrayList.add(newLandlord);
+                program.setLandlords(newArrayList);
 
                 landlordIDLabel.setText("Your landlord ID is "+landlordIDstring+" remember this well!");
                 registerInfoLandlord.setText("The landlord is successfully registered!");

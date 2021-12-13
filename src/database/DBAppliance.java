@@ -26,7 +26,9 @@ public class DBAppliance {
                 String consumption = rs.getString("consumption");
                 String efficiency = rs.getString("efficiency");
                 String QRCode = rs.getString("QR-code");
-                Appliance newAppliance = new Appliance(applianceID, consumption, efficiency, QRCode);
+                String applianceName = rs.getString("applianceName");
+                String applianceKind = rs.getString("applianceKind");
+                Appliance newAppliance = new Appliance(applianceID, consumption, efficiency, QRCode, applianceName, applianceKind);
                 appliances.add(newAppliance);
 
             }
@@ -34,6 +36,7 @@ public class DBAppliance {
         } catch (SQLException e) {
             System.out.println("FAIL");
             e.printStackTrace();
+
         }
         return appliances;
     }
@@ -42,7 +45,7 @@ public class DBAppliance {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO appliances "+"VALUES('"+appliance.getApplianceID()+"', '"+appliance.getConsumption()+"', '"+appliance.getEfficiency()+"', '"+appliance.getQRCode()+"')";
+            String query = "INSERT INTO appliances "+"VALUES('"+appliance.getApplianceID()+"', '"+appliance.getConsumption()+"', '"+appliance.getEfficiency()+"', '"+appliance.getQRCode()+"', '"+appliance.getApplianceName()+"', "+appliance.getApplianceKind()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
@@ -53,7 +56,7 @@ public class DBAppliance {
     }
 
 
-    public static void changeStudentFromDatabase(String column, String change, String primaryKey){
+    public static void changeApplianceFromDatabase(String column, String change, String primaryKey){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             switch (column){
@@ -78,6 +81,20 @@ public class DBAppliance {
                     pstmt3.setString(1, change);
                     pstmt3.setString(2, primaryKey);
                     pstmt3.executeUpdate();
+                    break;
+                case "applianceName":
+                    String query4 = "UPDATE appliances SET applianceName = ? WHERE applianceName = ?";
+                    PreparedStatement pstmt4 = connection.prepareStatement(query4);
+                    pstmt4.setString(1, change);
+                    pstmt4.setString(2,primaryKey);
+                    pstmt4.executeUpdate();
+                    break;
+                case "applianceKind":
+                    String query5 = "UPDATE appliances SET applianceKind = ? WHERE applianceName = ?";
+                    PreparedStatement pstmt5 = connection.prepareStatement(query5);
+                    pstmt5.setString(1, change);
+                    pstmt5.setString(2,primaryKey);
+                    pstmt5.executeUpdate();
                     break;
             }
         } catch (SQLException e) {

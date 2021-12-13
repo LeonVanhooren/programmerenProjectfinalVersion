@@ -1,5 +1,6 @@
 package database;
 
+import logic.Building;
 import logic.Contains;
 
 import java.sql.*;
@@ -34,5 +35,19 @@ public class DBContains {
             e.printStackTrace();
         }
         return containsArrayList;
+    }
+
+    public static void addContainsToDatabase(Contains contains){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO contains "+"VALUES('"+contains.getRoomID()+"', '"+contains.getApplianceID()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
     }
 }
