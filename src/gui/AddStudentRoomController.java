@@ -115,8 +115,7 @@ public class AddStudentRoomController implements Initializable {
                 Zip.setPromptText(searchBuildingZip(currentBuilding));
                 Address.setPromptText(searchBuildingAdressStudent(currentBuilding));
             }
-
-
+            
         });
         myListView.getItems().addAll(roomIDsLandlord(program.getBuildingIDsLandlord()));
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
@@ -302,7 +301,7 @@ public class AddStudentRoomController implements Initializable {
         return false;
     }
 
-    public void changeBuilding(ActionEvent event) {
+    public void changeBuilding() {
         if(!Address.getText().equals("")){
             DBBuilding.changeBuildingFromDatabase("adress", Address.getText(), currentBuilding);
         }
