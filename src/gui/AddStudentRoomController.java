@@ -105,6 +105,9 @@ public class AddStudentRoomController implements Initializable {
        DBBuilding.removeBuildingFromDatabase(currentBuilding);
 
     }
+
+    @FXML
+    private Label roomIDroom;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         myListViewBuilding.getItems().addAll(program.getBuildingIDsLandlord());
@@ -121,13 +124,17 @@ public class AddStudentRoomController implements Initializable {
             }
             
         });
-        myListView.getItems().addAll(roomIDsLandlord(program.getBuildingIDsLandlord()));
+        myListView.getItems().addAll(program.getRoomIDsLandlord(program.getBuildingIDsLandlord()));
+
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
                 currentRoom = myListView.getSelectionModel().getSelectedItem();
+                roomIDroom.setText(currentRoom);
+                buildingIDRoom.setPromptText(searchBuildingIDStudent(currentRoom));
+                RoomNr.setPromptText(""+searchRoomNrStudent(currentRoom));
 
             }
 

@@ -44,7 +44,7 @@
                   <Button layoutX="452.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
                   <ListView fx:id="myListView" layoutX="27.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" />
                   <Label layoutX="292.0" layoutY="157.0" text="Room ID:" />
-                  <Label fx:id="roomID" layoutX="374.0" layoutY="157.0" text="No room selected!" />
+                  <Label fx:id="roomIDroom" layoutX="374.0" layoutY="157.0" text="No room selected!" />
                </children>
             </AnchorPane>
          </content>
