@@ -135,7 +135,7 @@ public class AddStudentRoomController implements Initializable {
                 roomIDroom.setText(currentRoom);
                 buildingIDRoom.setPromptText(searchBuildingIDStudent(currentRoom));
                 RoomNr.setPromptText(""+searchRoomNrStudent(currentRoom));
-
+                characteristics.setPromptText(searchCharacteristics(currentRoom));
             }
 
 
@@ -145,6 +145,16 @@ public class AddStudentRoomController implements Initializable {
     public void refreshBuildingListView(){
         myListViewBuilding.getItems().clear();
         myListViewBuilding.getItems().addAll(program.getBuildingIDsLandlord());
+    }
+
+    public String searchCharacteristics(String roomID){
+        String output = null;
+        for(Room newRoom: program.getRooms()){
+            if(newRoom.getRoomID().equals(roomID)){
+                output = newRoom.getCharacteristics();
+            }
+        }
+        return output;
     }
 
 
@@ -286,18 +296,34 @@ public class AddStudentRoomController implements Initializable {
     private Label registerRoomInfo;
     @FXML
     private Label roomIDT;
+    @FXML
+    private TextField characteristicsInput;
 
     public void addRoomButton(){
-        String buildingID;
+        String buildingID, characteristics;
         int roomNr;
         roomNr = Integer.parseInt(roomNrInput.getText());
         buildingID = buildingIDInput.getText();
+        characteristics = characteristicsInput.getText();
         if(!roomExists(buildingID, roomNr)){
-            String roomIDString = buildingID +"." + roomNr;
-            Room newRoom = new Room("blabla", buildingID, roomNr, roomIDString);
+            String roomIDString = buildingID +"." + roomNrInput.getText();
+            Room newRoom = new Room(roomNr, roomIDString, buildingID, characteristics);
             DBRoom.addRoomToDatabase(newRoom);
+
+            ArrayList<Room> roomsList = new ArrayList<>();
+            roomsList = program.getRooms();
+            roomsList.add(newRoom);
+            program.setRooms(roomsList);
+
             registerRoomInfo.setText("Student room successfully added");
             roomIDT.setText("The roomID is " + roomIDString + ", remember this well!");
+            BelongsTo newBelongsTo = new BelongsTo(newRoom.getBuildingID(), roomIDString);
+            DBBelongsTo.addBelongingToDatabase(newBelongsTo);
+
+            ArrayList<BelongsTo> belongsToArrayList = new ArrayList<>();
+            belongsToArrayList = program.getBelongsToArrayList();
+            belongsToArrayList.add(newBelongsTo);
+            program.setBelongsToArrayList(belongsToArrayList);
         }
         else{
             registerRoomInfo.setText("The database already contains this room!");
@@ -326,8 +352,17 @@ public class AddStudentRoomController implements Initializable {
             DBBuilding.changeBuildingFromDatabase("zip", Zip.getText(), currentBuilding);
         }
     }
-
-
+    public void changeRoom(){
+        if(!RoomNr.getText().equals("")){
+            DBRoom.changeRoomFromDatabase("roomNr", RoomNr.getText(), currentRoom);
+        }
+        if(!buildingIDRoom.getText().equals("")){
+            DBRoom.changeRoomFromDatabase("buildingID", buildingIDRoom.getText(), currentRoom);
+        }
+        if(!characteristics.getText().equals("")){
+            DBRoom.changeRoomFromDatabase("characteristics", characteristics.getText(), currentRoom);
+        }
+    }
 
 }
 

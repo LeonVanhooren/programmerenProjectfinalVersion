@@ -41,7 +41,7 @@ public class DBOwnership {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO ownership "+"VALUES('"+ownership.getBuildingID()+"', '"+ownership.getLandlordID() +"')";
+            String query = "INSERT INTO ownership "+"VALUES('"+ownership.getBuildingID()+"', '"+ownership.getLandlordID()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
