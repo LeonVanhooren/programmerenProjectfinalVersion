@@ -104,7 +104,6 @@ public class AddStudentRoomController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         myListViewBuilding.getItems().addAll(program.getBuildingIDsLandlord());
-
         myListViewBuilding.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 
