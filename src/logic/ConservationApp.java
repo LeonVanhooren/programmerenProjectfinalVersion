@@ -151,6 +151,23 @@ public class ConservationApp {
         return outputString;
     }
 
+    public String[] getRoomIDsLandlord(){
+        ArrayList<String> output = new ArrayList<>();
+        String[] buildingIDs = getBuildingIDsLandlord();
+        for(int i=0; i<buildingIDs.length; i++) {
+            for (BelongsTo newBelongsTo : belongsToArrayList) {
+                if (newBelongsTo.getBuildingID().equals(buildingIDs[i])){
+                    output.add(newBelongsTo.getRoomID());
+                }
+            }
+        }
+        String[] outputString = new String[output.size()];
+        for (int j=0; j<output.size();j++){
+            outputString[j]=output.get(j);
+        }
+        return outputString;
+    }
+
     public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
