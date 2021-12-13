@@ -138,9 +138,7 @@ public class ConservationApp {
         this.landlords = landlords;
     }
 
-    public void setBuildings() {
-        this.buildings = DBBuilding.databaseReadBuilding();
-    }
+    public void setBuildings(ArrayList<Building> buildings){this.buildings = buildings;}
 
     public void setOwnerships(ArrayList<Ownership> ownerships) {
         this.ownerships = ownerships;

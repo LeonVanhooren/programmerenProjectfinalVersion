@@ -3,6 +3,7 @@ package gui;
 import database.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -50,11 +51,6 @@ public class AddStudentRoomController implements Initializable {
     private TextField buildingIDBuilding;
 
 
-
-
-    String[] roomIDs = program.getRoomIDs();
-    String[] buildingIDs = program.getBuildingIDs();
-
     String currentRoom;
     String currentBuilding;
 
@@ -68,23 +64,26 @@ public class AddStudentRoomController implements Initializable {
         stage.setScene(scene);
     }
 
-    public String[] buildingIDsLandlord(String landlordID){
-        ArrayList<String> output1 = new ArrayList<>();
-        for (Ownership newOwnership: program.getOwnerships()){
-            if(newOwnership.getLandlordID().equals(landlordID)){
-                output1.add(newOwnership.getBuildingID());
+    public String[] buildingIDsLandlord(Landlord landlord){
+        ArrayList<String> output = new ArrayList<>();
+
+        for(Ownership newOwnership: program.getOwnerships()){
+            if(newOwnership.getLandlordID().equals(landlord.getLandlordID())){
+                output.add(newOwnership.getBuildingID());
             }
         }
-        String[] output = new String[output1.size()];
-        for (int j = 0; j< output1.size();j++) {
-            output[j] = output1.get(j);
+
+        String[] outputString = new String[output.size()];
+        for(int i = 0; i< output.size(); i++){
+            outputString[i]=output.get(i);
         }
-        return output;
+        return outputString;
     }
 
 
     public String[] roomIDsLandlord(String[] buildingIDs){
         ArrayList<String> output1 = new ArrayList<>();
+
         for(int i =0; i <buildingIDs.length;i++){
             for(BelongsTo newBelongsTo:program.getBelongsToArrayList()){
                 if(buildingIDs[i].equals(newBelongsTo.getBuildingID())){
@@ -101,46 +100,18 @@ public class AddStudentRoomController implements Initializable {
 
 
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-        myListView.getItems().addAll(roomIDsLandlord(buildingIDsLandlord(program.getCurrentLandlord().getLandlordID())));
-        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
-
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                currentRoom = myListView.getSelectionModel().getSelectedItem();
-                RoomNr.setPromptText(""+searchRoomNrStudent(currentRoom));
-                buildingIDRoom.setPromptText(searchBuildingIDStudent(currentRoom));
-
-            }
-
-
-        });
-
-        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord().getLandlordID()));
-        myListViewBuilding.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-            @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                currentBuilding = myListViewBuilding.getSelectionModel().getSelectedItem();
-                Address.setPromptText(searchBuildingAdressStudent(currentBuilding));
-                City.setPromptText(searchBuildingCity(currentBuilding));
-                Country.setPromptText(searchBuildingCountry(currentBuilding));
-                Zip.setPromptText(searchBuildingZip(currentBuilding));
-                buildingIDBuilding.setPromptText(currentBuilding);
-
-            }
-        });
-    }
 
     public void removeBuilding(){
-        /*Building building = null;
+        Building building = null;
         for(Building newBuilding: program.getBuildings()){
             if (newBuilding.getBuildingID().equals(currentBuilding)){
                 building = newBuilding;
             }
         }
-        buildings.remove(building);*/
+        ArrayList<Building> buildings = program.getBuildings();
+        buildings.remove(building);
+        program.setBuildings(buildings);
 
        DBBuilding.removeBuildingFromDatabase(currentBuilding);
 
@@ -148,8 +119,12 @@ public class AddStudentRoomController implements Initializable {
 
     public void refreshBuildingListView(){
         myListViewBuilding.getItems().clear();
-        program.setBuildings();
-        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord().getLandlordID()));
+        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord()));
+    }
+
+    public void refreshRoomListView(){
+        myListView.getItems().clear();
+        myListView.getItems().addAll(roomIDsLandlord(buildingIDsLandlord(program.getCurrentLandlord())));
     }
 
 
@@ -252,10 +227,21 @@ public class AddStudentRoomController implements Initializable {
             String buildingIDString = ""+buildingID;
             Building newBuilding = new Building(buildingIDString, country, city, adress, zip);
             DBBuilding.addBuildingToDatabase(newBuilding);
+
+            ArrayList<Building> buildings = new ArrayList<>();
+            buildings = program.getBuildings();
+            buildings.add(newBuilding);
+            program.setBuildings(buildings);
+
             buildinginfo.setText("Building successfully added!");
             buildingIDT.setText("The buildingID is " + buildingIDString + ", remember this well!");
             Ownership newOwnership = new Ownership(newBuilding.getBuildingID(), program.getCurrentLandlord().getLandlordID());
             DBOwnership.addOwnershipToDatabase(newOwnership);
+
+            ArrayList<Ownership> ownerships = new ArrayList<>();
+            ownerships = program.getOwnerships();
+            ownerships.add(newOwnership);
+            program.setOwnerships(ownerships);
         }
         else{
             buildinginfo.setText("The database already contains this building!");
@@ -305,4 +291,42 @@ public class AddStudentRoomController implements Initializable {
         return false;
     }
 
+    public void changeBuilding(ActionEvent event) {
+        if(!Address.getText().equals("")){
+            DBBuilding.changeBuildingFromDatabase("adress", Address.getText(), currentBuilding);
+        }
+        if(!City.getText().equals("")){
+            DBBuilding.changeBuildingFromDatabase("city", City.getText(), currentBuilding);
+        }
+        if(!Country.getText().equals("")){
+            DBBuilding.changeBuildingFromDatabase("country", Country.getText(), currentBuilding);
+        }
+        if(!Zip.getText().equals("")){
+            DBBuilding.changeBuildingFromDatabase("zip", Zip.getText(), currentBuilding);
+        }
+    }
+
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord()));
+        System.out.println(buildingIDBuilding);
+        System.out.println(buildingIDsLandlord(program.getCurrentLandlord()));
+        myListViewBuilding.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
+                String currentBuilding = myListView.getSelectionModel().getSelectedItem();
+
+            }
+
+
+        });
+
+    }
 }
+
+
+
+

@@ -14,17 +14,18 @@
          <content>
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="applianceIDTF" layoutX="210.0" layoutY="96.0" />
+                  <TextField fx:id="applianceNameTF" layoutX="210.0" layoutY="96.0" />
                   <TextField fx:id="consumptionTF" layoutX="209.0" layoutY="142.0" />
                   <TextField fx:id="efficiencyTF" layoutX="208.0" layoutY="187.0" />
-                  <Label layoutX="111.0" layoutY="100.0" text="Appliance ID:" />
+                  <Label layoutX="111.0" layoutY="100.0" text="Appliance name:" />
                   <Label layoutX="109.0" layoutY="146.0" text="Consumption:" />
                   <Label layoutX="132.0" layoutY="191.0" text="Efficiency:" />
                   <Label layoutX="133.0" layoutY="233.0" text="QR-code:" />
                   <TextField fx:id="QRCodeTF" layoutX="210.0" layoutY="229.0" />
-                  <Label fx:id="addApplianceLabel" layoutX="211.0" layoutY="58.0" text="Appliance is not yet added!" />
+                  <Label fx:id="addApplianceLabel" layoutX="211.0" layoutY="31.0" text="Appliance is not yet added!" />
                   <Button layoutX="456.0" layoutY="329.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
                   <Button layoutX="239.0" layoutY="287.0" mnemonicParsing="false" onAction="#addAppliance" text="Add appliance" />
+                  <Label fx:id="applianceID" layoutX="211.0" layoutY="64.0" text="Your appliance ID is:" />
                </children>
             </AnchorPane>
          </content></Tab>
@@ -43,9 +44,9 @@
                   <TextField fx:id="consumptionChange" layoutX="335.0" layoutY="121.0" />
                   <TextField fx:id="efficiencyChange" layoutX="335.0" layoutY="163.0" />
                   <TextField fx:id="QRCodeChange" layoutX="334.0" layoutY="209.0" />
-                  <Button layoutX="360.0" layoutY="263.0" mnemonicParsing="false" onAction="#addAppliance" text="Save Appliance" />
+                  <Button layoutX="381.0" layoutY="263.0" mnemonicParsing="false" onAction="#changeAppliance" text="Change" />
                   <Button layoutX="444.0" layoutY="329.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
-                  <Button layoutX="50.0" layoutY="283.0" mnemonicParsing="false" text="Show list" />
+                  <Button layoutX="50.0" layoutY="283.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
                   <Label fx:id="applianceIDChange" layoutX="266.0" layoutY="45.0" text="Appliance ID:" />
                </children>
             </AnchorPane>
