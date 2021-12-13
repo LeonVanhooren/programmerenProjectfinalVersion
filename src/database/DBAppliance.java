@@ -44,7 +44,7 @@ public class DBAppliance {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO appliances "+"VALUES('"+appliance.getApplianceID()+"', '"+appliance.getConsumption()+"', '"+appliance.getEfficiency()+"', '"+appliance.getQRCode()+"')";
+            String query = "INSERT INTO appliances "+"VALUES('"+appliance.getApplianceID()+"', '"+appliance.getConsumption()+"', '"+appliance.getEfficiency()+"', '"+appliance.getQRCode()+"', '"+appliance.getApplianceName()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
@@ -80,6 +80,13 @@ public class DBAppliance {
                     pstmt3.setString(1, change);
                     pstmt3.setString(2, primaryKey);
                     pstmt3.executeUpdate();
+                    break;
+                case "applianceName":
+                    String query4 = "UPDATE appliances SET applianceName = ? WHERE applianceName = ?";
+                    PreparedStatement pstmt4 = connection.prepareStatement(query4);
+                    pstmt4.setString(1, change);
+                    pstmt4.setString(2,primaryKey);
+                    pstmt4.executeUpdate();
                     break;
             }
         } catch (SQLException e) {

@@ -1,6 +1,7 @@
 package gui;
 
 import database.DBAppliance;
+import database.DBContains;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -27,7 +28,7 @@ public class ApplianceMenuController implements Initializable {
     private Parent root;
     private Scene scene;
 
-    private String currentApplianceName;
+    private String currentApplianceID;
 
     public void backToStudentMenu(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("studentMenu.fxml"));
@@ -56,31 +57,48 @@ public class ApplianceMenuController implements Initializable {
     @FXML
     private Label ChangeApplianceLabel;
     @FXML
+    private Label applianceID;
+    @FXML
     private TextField applianceNameTF;
 
     public void addAppliance(ActionEvent event){
-        String applianceID, consumption, efficiency, QRCode, applianceName;
+        String  consumption, efficiency, QRCode, applianceName;
+        int applianceIDint;
 
-        applianceID = applianceIDTF.getText();
+        applianceIDint = (int)Math.floor(Math.random()*(999-100+1)+999);
         consumption = consumptionTF.getText();
         efficiency = efficiencyTF.getText();
         QRCode = QRCodeTF.getText();
         applianceName = applianceNameTF.getText();
 
-        if(appliancePresent(applianceID)==true){
+        if(appliancePresent(applianceName)==true){
             setAddApplianceStatus("The database already contains this appliance!");
         }
         else{
-            Appliance newAppliance = new Appliance(applianceID, consumption, efficiency, QRCode, applianceName);
-
-
+            Appliance newAppliance = new Appliance("1"+applianceIDint, consumption, efficiency, QRCode, applianceName);
+            applianceID.setText("The appliance ID is: 1"+applianceIDint);
 
             DBAppliance.addApplianceToDatabase(newAppliance);
+            ArrayList<Appliance> appliances = program.getAppliances();
+            appliances.add(newAppliance);
+            program.setAppliances(appliances);
+
+            Contains newContains = new Contains(searchRoomID(program.getCurrentStudent()), "1"+applianceIDint);
+            DBContains.addContainsToDatabase(newContains);
+            ArrayList<Contains> containsArrayList = program.getContainsArrayList();
+            containsArrayList.add(newContains);
+            program.setContainsArrayList(containsArrayList);
 
             setAddApplianceStatus("The appliance is added to the database!");
 
         }
 
+
+    }
+
+    public void refresh(){
+        myListView.getItems().clear();
+        myListView.getItems().addAll(getApplianceIDs(searchRoomID(program.getCurrentStudent())));
     }
 
     @FXML
@@ -93,14 +111,18 @@ public class ApplianceMenuController implements Initializable {
     private TextField QRCodeChange;
 
     public void changeAppliance(ActionEvent event) {
-        String applianceID, consumption, efficiency, QRCode, applianceName;
-
-        applianceID = applianceIDChange.getText();
-        consumption = consumptionChange.getText();
-        efficiency = efficiencyChange.getText();
-        QRCode = QRCodeChange.getText();
-        applianceName = applianceNameChange.getText();
-
+        if(!applianceNameChange.getText().equals("")){
+            DBAppliance.changeApplianceFromDatabase("applianceName", applianceNameChange.getText(), currentApplianceID);
+        }
+        if(!consumptionChange.getText().equals("")){
+            DBAppliance.changeApplianceFromDatabase("consumption", consumptionChange.getText(), currentApplianceID);
+        }
+        if(!efficiencyChange.getText().equals("")){
+            DBAppliance.changeApplianceFromDatabase("efficiency", efficiencyChange.getText(), currentApplianceID);
+        }
+        if (!QRCodeChange.getText().equals("")){
+            DBAppliance.changeApplianceFromDatabase("QR-code", QRCodeChange.getText(), currentApplianceID);
+        }
 
     }
 
@@ -176,9 +198,9 @@ public class ApplianceMenuController implements Initializable {
 
     //we moeten een appliance id number generator doen en een extra vakje voor appliance naam zodat meerdere laptops kunnen toegevoegd worden!!!!!!!!
 
-    public boolean appliancePresent(String applianceID){
+    public boolean appliancePresent(String applianceName){
         for(Appliance newAppliance: program.getAppliances()){
-            if(newAppliance.getApplianceID().equals(applianceID)){
+            if(newAppliance.getApplianceName().equals(applianceName)){
                 return true;
             }
         }
