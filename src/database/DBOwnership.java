@@ -35,6 +35,7 @@ public class DBOwnership {
             e.printStackTrace();
         }
         return ownerships;
+
     }
     public static void addOwnershipToDatabase(Ownership ownership){
         try {
