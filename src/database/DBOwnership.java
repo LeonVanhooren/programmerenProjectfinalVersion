@@ -1,5 +1,6 @@
 package database;
 
+import logic.Building;
 import logic.Ownership;
 
 import java.sql.*;
@@ -34,6 +35,20 @@ public class DBOwnership {
             e.printStackTrace();
         }
         return ownerships;
+
+    }
+    public static void addOwnershipToDatabase(Ownership ownership){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO ownership "+"VALUES('"+ownership.getBuildingID()+"', '"+ownership.getLandlordID() +"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
     }
 
 }
