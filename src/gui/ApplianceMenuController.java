@@ -11,9 +11,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.skin.ChoiceBoxSkin;
 import javafx.stage.Stage;
 import logic.*;
 
@@ -61,6 +63,7 @@ public class ApplianceMenuController implements Initializable {
     @FXML
     private TextField applianceNameTF;
 
+
     public void addAppliance(ActionEvent event){
         String  consumption, efficiency, QRCode, applianceName;
         int applianceIDint;
@@ -75,7 +78,7 @@ public class ApplianceMenuController implements Initializable {
             setAddApplianceStatus("The database already contains this appliance!");
         }
         else{
-            Appliance newAppliance = new Appliance("1"+applianceIDint, consumption, efficiency, QRCode, applianceName);
+            Appliance newAppliance = new Appliance("1"+applianceIDint, consumption, efficiency, QRCode, applianceName, currentChoiceAdd);
             applianceID.setText("The appliance ID is: 1"+applianceIDint);
 
             DBAppliance.addApplianceToDatabase(newAppliance);
@@ -123,6 +126,9 @@ public class ApplianceMenuController implements Initializable {
         if (!QRCodeChange.getText().equals("")){
             DBAppliance.changeApplianceFromDatabase("QR-code", QRCodeChange.getText(), currentApplianceID);
         }
+        if(!choiceBoxChange.getValue().equals("")){
+            DBAppliance.changeApplianceFromDatabase("applianceKind", choiceBoxChange.getValue(), currentApplianceID);
+        }
 
     }
 
@@ -157,10 +163,31 @@ public class ApplianceMenuController implements Initializable {
 
      @FXML
      private Label applianceIDChange;
+    @FXML
+    private ChoiceBox<String> choiceBoxAdd;
+    @FXML
+    private ChoiceBox<String> choiceBoxChange;
 
+    private String[] choices ={"Electricity", "Water", "Gas"};
+
+    private String currentChoiceAdd;
+    private String currentChoiceChange;
+
+    public void getCurrentAdd(ActionEvent event){
+        currentChoiceAdd = choiceBoxAdd.getValue();
+    }
+
+    public void getCurrentChange(ActionEvent event){
+        currentChoiceChange = choiceBoxChange.getValue();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        choiceBoxAdd.getItems().addAll(choices);
+        choiceBoxAdd.setOnAction(this::getCurrentAdd);
+        choiceBoxChange.getItems().addAll(choices);
+        choiceBoxChange.setOnAction(this::getCurrentChange);
+
         myListView.getItems().addAll(getApplianceIDs(searchRoomID(program.getCurrentStudent())));
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
@@ -179,6 +206,7 @@ public class ApplianceMenuController implements Initializable {
         });
 
     }
+
 
 
     public Appliance searchAppliance(String applianceID, Student student){

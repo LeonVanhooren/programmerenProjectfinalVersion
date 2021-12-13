@@ -27,7 +27,8 @@ public class DBAppliance {
                 String efficiency = rs.getString("efficiency");
                 String QRCode = rs.getString("QR-code");
                 String applianceName = rs.getString("applianceName");
-                Appliance newAppliance = new Appliance(applianceID, consumption, efficiency, QRCode, applianceName);
+                String applianceKind = rs.getString("applianceKind");
+                Appliance newAppliance = new Appliance(applianceID, consumption, efficiency, QRCode, applianceName, applianceKind);
                 appliances.add(newAppliance);
 
             }
@@ -44,7 +45,7 @@ public class DBAppliance {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO appliances "+"VALUES('"+appliance.getApplianceID()+"', '"+appliance.getConsumption()+"', '"+appliance.getEfficiency()+"', '"+appliance.getQRCode()+"', '"+appliance.getApplianceName()+"')";
+            String query = "INSERT INTO appliances "+"VALUES('"+appliance.getApplianceID()+"', '"+appliance.getConsumption()+"', '"+appliance.getEfficiency()+"', '"+appliance.getQRCode()+"', '"+appliance.getApplianceName()+"', "+appliance.getApplianceKind()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
@@ -87,6 +88,13 @@ public class DBAppliance {
                     pstmt4.setString(1, change);
                     pstmt4.setString(2,primaryKey);
                     pstmt4.executeUpdate();
+                    break;
+                case "applianceKind":
+                    String query5 = "UPDATE appliances SET applianceKind = ? WHERE applianceName = ?";
+                    PreparedStatement pstmt5 = connection.prepareStatement(query5);
+                    pstmt5.setString(1, change);
+                    pstmt5.setString(2,primaryKey);
+                    pstmt5.executeUpdate();
                     break;
             }
         } catch (SQLException e) {
