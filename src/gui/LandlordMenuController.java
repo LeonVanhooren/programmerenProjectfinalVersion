@@ -51,6 +51,7 @@ public class LandlordMenuController {
         scene = new Scene(root);
         stage.setScene(scene);
 
+
     }
 
     public void goToLandlordProfile(ActionEvent event)throws IOException{
