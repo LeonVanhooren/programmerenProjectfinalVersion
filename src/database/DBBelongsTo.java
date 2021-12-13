@@ -41,7 +41,7 @@ public class DBBelongsTo {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO belongs_to"+"VALUES('"+ belongsTo.getBuildingID() +"', '"+ belongsTo.getRoomID() +"')";
+            String query = "INSERT INTO belongs_to "+"VALUES('"+belongsTo.getBuildingID()+"', '"+belongsTo.getRoomID()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
