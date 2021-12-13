@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import logic.*;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -64,11 +63,11 @@ public class AddStudentRoomController implements Initializable {
         stage.setScene(scene);
     }
 
-    public String[] buildingIDsLandlord(Landlord landlord){
+    public String[] buildingIDsLandlord(String landlordID){
         ArrayList<String> output = new ArrayList<>();
 
         for(Ownership newOwnership: program.getOwnerships()){
-            if(newOwnership.getLandlordID().equals(landlord.getLandlordID())){
+            if(newOwnership.getLandlordID().equals(landlordID)){
                 output.add(newOwnership.getBuildingID());
             }
         }
@@ -119,12 +118,12 @@ public class AddStudentRoomController implements Initializable {
 
     public void refreshBuildingListView(){
         myListViewBuilding.getItems().clear();
-        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord()));
+        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord().getLandlordID()));
     }
 
     public void refreshRoomListView(){
         myListView.getItems().clear();
-        myListView.getItems().addAll(roomIDsLandlord(buildingIDsLandlord(program.getCurrentLandlord())));
+        myListView.getItems().addAll(roomIDsLandlord(buildingIDsLandlord(program.getCurrentLandlord().getLandlordID())));
     }
 
 
@@ -309,21 +308,29 @@ public class AddStudentRoomController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord()));
-        System.out.println(buildingIDBuilding);
-        System.out.println(buildingIDsLandlord(program.getCurrentLandlord()));
+        myListViewBuilding.getItems().addAll(buildingIDsLandlord(program.getCurrentLandlord().getLandlordID()));
         myListViewBuilding.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
 
 
             @Override
             public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                String currentBuilding = myListView.getSelectionModel().getSelectedItem();
+                String currentBuilding = myListViewBuilding.getSelectionModel().getSelectedItem();
+                countryInput.setPromptText(searchBuilding(currentBuilding, program.getCurrentLandlord()).getCity());
 
             }
 
 
         });
 
+    }
+    public Building searchBuilding(String buildingID, Landlord landlord){
+        Building output = null;
+        for(Building newBuilding: program.getBuildings()){
+            if(newBuilding.getBuildingID().equals(buildingID)){
+                output = newBuilding;
+            }
+        }
+        return output;
     }
 }
 
