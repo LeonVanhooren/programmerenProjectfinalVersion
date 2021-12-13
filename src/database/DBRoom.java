@@ -50,22 +50,38 @@ public class DBRoom {
             e.printStackTrace();
         }
     }
-    public static void changeRoomFromDatabase(Room newRoom, Room oldRoom){
-        try {
-            removeRoomFromDatabase(oldRoom);
+    public static void changeRoomFromDatabase(String column, String change, String primarykey){
+        try{
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            Statement stm = connection.createStatement();
-            String query = "INSERT INTO rooms "+"VALUES('"+newRoom.getRoomID()+"', '"+newRoom.getBuildingID()+"', '"+newRoom.getCharacteristics()+"', '"+newRoom.getRoomNR()+"')";
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.execute();
+            switch(column){
+                case "roomNr":
+                    String query1 = "UPDATE room SET roomNr = ? WHERE roomID = ?";
+                    PreparedStatement pstmt1 = connection.prepareStatement(query1);
+                    pstmt1.setString(1, change);
+                    pstmt1.setString(2, primarykey);
+                    pstmt1.executeUpdate();
+                    break;
+                case "buildingID":
+                    String query2 = "UPDATE room SET buildingID = ? WHERE roomID = ?";
+                    PreparedStatement pstmt2 = connection.prepareStatement(query2);
+                    pstmt2.setString(1, change);
+                    pstmt2.setString(2, primarykey);
+                    pstmt2.executeUpdate();
+                    break;
+                case "characteristics":
+                    String query3 = "UPDATE room SET characteristics = ? WHERE roomID = ?";
+                    PreparedStatement pstmt3 = connection.prepareStatement((query3));
+                    pstmt3.setString(1, change);
+                    pstmt3.setString(2, primarykey);
+                    pstmt3.executeUpdate();
+                    break;
+            }
 
-        } catch (SQLException e) {
+        } catch(SQLException e){
             System.out.println("FAIL");
             e.printStackTrace();
         }
     }
-
-
 
     public static void removeRoomFromDatabase(Room room){
         try {

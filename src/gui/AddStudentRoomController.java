@@ -49,6 +49,10 @@ public class AddStudentRoomController implements Initializable {
     private TextField buildingIDRoom;
     @FXML
     private TextField buildingIDBuilding;
+    @FXML
+    private TextField characteristics;
+    @FXML
+    private Label characteristicsLabel;
 
 
     String currentRoom;
