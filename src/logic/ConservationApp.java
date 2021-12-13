@@ -134,11 +134,9 @@ public class ConservationApp {
         ArrayList<String> output = new ArrayList<>();
 
         for(Ownership newOwnership: ownerships){
-            System.out.println("blablabla");
-            System.out.println(currentLandlord.getLandlordID());
-            System.out.println(newOwnership.getLandlordID());
+
             if(newOwnership.getLandlordID().equals(currentLandlord.getLandlordID())){
-                System.out.println("blablabla");
+
                 output.add(newOwnership.getBuildingID());
             }
         }
