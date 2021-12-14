@@ -25,8 +25,9 @@ public class DBStudent {
                 String firstname = rs.getString("firstname");
                 String lastname = rs.getString("lastname");
                 String email = rs.getString("email");
+                String telephoneNr = rs.getString("telephoneNr");
                 String password = rs.getString("password");
-                Student newStudent = new Student(firstname, lastname, email, id, password);
+                Student newStudent = new Student(firstname, lastname, email, telephoneNr, id, password);
                 students.add(newStudent);
 
             }
@@ -43,7 +44,7 @@ public class DBStudent {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO student "+"VALUES('"+student.getStudentID()+"', '"+student.getFirstName()+"', '"+student.getLastName()+"', '"+student.getEmail()+"', '"+student.getPassword()+"')";
+            String query = "INSERT INTO student "+"VALUES('"+student.getStudentID()+"', '"+student.getFirstName()+"', '"+student.getLastName()+"', '"+student.getEmail()+"', '"+student.getPassword()+"', '"+student.getTelephoneNr()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
@@ -78,12 +79,19 @@ public class DBStudent {
                     pstmt3.setString(2, primaryKey);
                     pstmt3.executeUpdate();
                     break;
-                case "password":
-                    String query4 = "UPDATE student SET password = ? WHERE studentID = ?";
+                case "telephoneNr":
+                    String query4 = "UPDATE student SET telephoneNr = ? WHERE studentID = ?";
                     PreparedStatement pstmt4 = connection.prepareStatement(query4);
                     pstmt4.setString(1, change);
                     pstmt4.setString(2, primaryKey);
                     pstmt4.executeUpdate();
+                    break;
+                case "password":
+                    String query5 = "UPDATE student SET password = ? WHERE studentID = ?";
+                    PreparedStatement pstmt5 = connection.prepareStatement(query5);
+                    pstmt5.setString(1, change);
+                    pstmt5.setString(2, primaryKey);
+                    pstmt5.executeUpdate();
                     break;
             }
         } catch (SQLException e) {

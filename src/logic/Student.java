@@ -6,10 +6,10 @@ import java.util.Objects;
 
 public class Student {
 
-    private String name, firstName, lastName, email, password, studentID;
+    private String name, firstName, lastName, email, password, studentID, telephoneNr;
 
 
-    public Student(String firstName, String lastName, String email, String studentID,String password){
+    public Student(String firstName, String lastName, String email, String telephoneNr, String studentID,String password){
         /*this.studentID = (int)Math.floor(Math.random()*(200000-100000+1)+100000);*/
         this.studentID = studentID;
         this.name = firstName + " " + lastName;
@@ -17,6 +17,7 @@ public class Student {
         this.lastName = lastName;
         this.email = email;
         this.password = password;
+        this.telephoneNr = telephoneNr;
     }
 
     public String getName() {
@@ -67,6 +68,15 @@ public class Student {
         this.studentID = studentID;
     }
 
+    public String getTelephoneNr(){
+        return telephoneNr;
+    }
+    public void setTelephoneNr(String telephoneNr){
+        this.telephoneNr = telephoneNr;
+    }
+
+
+
     @Override
     public String toString() {
         return "Student{" +
@@ -74,6 +84,7 @@ public class Student {
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", studentID='" + studentID + '\'' +
+                ", telephoneNr='" + telephoneNr + '\'' +
                 '}';
     }
 }
