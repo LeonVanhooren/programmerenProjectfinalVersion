@@ -109,7 +109,7 @@ public class LandlordReportController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
-        series1.setName("Water");
+        series1.setName("Water (m³)");
         for(int i = 0; i<water.size(); i++){
             series1.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), water.get(i)));
         }
@@ -117,17 +117,17 @@ public class LandlordReportController implements Initializable {
 
 
         XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
-        series2.setName("Electricity");
+        series2.setName("Electricity (kWh)");
         for(int i = 0; i<electricity.size(); i++){
-            series1.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), electricity.get(i)));
+            series2.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), electricity.get(i)));
         }
         System.out.println(electricity);
 
 
         XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
-        series3.setName("Gas");
+        series3.setName("Gas (kWh)");
         for(int i = 0; i<gas.size(); i++){
-            series1.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), gas.get(i)));
+            series3.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), gas.get(i)));
         }
         System.out.println(gas);
         System.out.println(roomIDs);
