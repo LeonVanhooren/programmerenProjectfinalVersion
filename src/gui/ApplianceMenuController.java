@@ -183,6 +183,7 @@ public class ApplianceMenuController implements Initializable {
     }
 
     private Appliance currentAppliance;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         choiceBoxAdd.getItems().addAll(choices);
@@ -195,6 +196,7 @@ public class ApplianceMenuController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Appliance> observableValue, Appliance appliance, Appliance t1) {
                 currentAppliance = myListView.getSelectionModel().getSelectedItem();
+                System.out.println(currentAppliance);
                 consumptionChange.setPromptText(currentAppliance.getConsumption());
                 efficiencyChange.setPromptText(currentAppliance.getEfficiency());
                 applianceIDChange.setText("Appliance ID:"+currentAppliance.getApplianceID());
