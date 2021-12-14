@@ -2,14 +2,18 @@ package gui;
 
 import database.DBMonthlyConsumption;
 import database.DBRegisters;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import logic.ConservationApp;
@@ -19,6 +23,7 @@ import logic.Registers;
 import java.awt.*;
 import java.io.IOException;
 import java.lang.reflect.Array;
+import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
@@ -26,8 +31,9 @@ import java.time.ZoneId;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.ResourceBundle;
 
-public class RegisterEnergyConsumptionController {
+public class RegisterEnergyConsumptionController implements Initializable {
     private ConservationApp program = ConservationApp.getInstance();
 
     private Parent root;
@@ -64,12 +70,8 @@ public class RegisterEnergyConsumptionController {
 
     public void addConsumption(ActionEvent event){
         LocalDate ld = datePicker.getValue();
-
-
-        String time = ld.getYear()+""+ld.getMonthValue()+""+ld.getDayOfMonth()+"";
-       Date date = new Date();
-
-
+        String date = ld.getDayOfMonth()+"/"+ld.getMonthValue()+"/"+ld.getYear();
+        System.out.println(date);
 
         String registrationID =""+Math.floor(Math.random()*(99999-91000+1)+91000);
         String roomIDString = roomID.getText();
@@ -113,4 +115,25 @@ public class RegisterEnergyConsumptionController {
         }
         return output;
     }
+
+    @FXML
+    private ListView<Registers> myListView;
+
+    private Registers currentRegister;
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        myListView.getItems().addAll(program.getRegisters());
+        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Registers>() {
+            @Override
+            public void changed(ObservableValue<? extends Registers> observableValue, Registers registers, Registers t1) {
+                currentRegister = myListView.getSelectionModel().getSelectedItem();
+            }
+
+
+    });
+
+    }
+
+
+
 }

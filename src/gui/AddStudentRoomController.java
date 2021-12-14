@@ -273,6 +273,8 @@ public class AddStudentRoomController implements Initializable {
             ownerships = program.getOwnerships();
             ownerships.add(newOwnership);
             program.setOwnerships(ownerships);
+
+            clearBuildingInput();
         }
         else{
             buildinginfo.setText("The database already contains this building!");
@@ -324,6 +326,8 @@ public class AddStudentRoomController implements Initializable {
             belongsToArrayList = program.getBelongsToArrayList();
             belongsToArrayList.add(newBelongsTo);
             program.setBelongsToArrayList(belongsToArrayList);
+
+            clearRoomInput();
         }
         else{
             registerRoomInfo.setText("The database already contains this room!");
@@ -363,7 +367,17 @@ public class AddStudentRoomController implements Initializable {
             DBRoom.changeRoomFromDatabase("characteristics", characteristics.getText(), currentRoom);
         }
     }
-
+    public void clearBuildingInput(){
+        adressInput.setText("");
+        countryInput.setText("");
+        cityInput.setText("");
+        zipInput.setText("");
+    }
+    public void clearRoomInput(){
+        roomNrInput.setText("");
+        buildingIDInput.setText("");
+        characteristicsInput.setText("");
+    }
 }
 
 
