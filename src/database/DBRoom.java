@@ -1,5 +1,6 @@
 package database;
 
+import logic.ConservationApp;
 import logic.Room;
 
 import java.sql.*;

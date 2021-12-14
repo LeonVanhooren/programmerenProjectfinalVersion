@@ -278,6 +278,9 @@ public class AddStudentRoomController implements Initializable {
             ownerships.add(newOwnership);
             program.setOwnerships(ownerships);
 
+            myListViewBuilding.getItems().clear();
+            myListViewBuilding.getItems().addAll(program.getBuildingIDsLandlord());
+
             clearBuildingInput();
         }
         else{
@@ -330,6 +333,9 @@ public class AddStudentRoomController implements Initializable {
             belongsToArrayList = program.getBelongsToArrayList();
             belongsToArrayList.add(newBelongsTo);
             program.setBelongsToArrayList(belongsToArrayList);
+
+            myListView.getItems().clear();
+            myListView.getItems().addAll(program.getRoomIDsLandlord(program.getBuildingIDsLandlord()));
 
             clearRoomInput();
         }

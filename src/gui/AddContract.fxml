@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="351.0" prefWidth="422.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="351.0" prefWidth="422.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="gui.AddContractController">
   <tabs>
     <Tab text="Add contract">
          <content>
@@ -28,7 +28,7 @@
                   <TextField layoutX="166.0" layoutY="111.0" />
                   <TextField layoutX="165.0" layoutY="196.0" />
                   <Button layoutX="190.0" layoutY="241.0" mnemonicParsing="false" text="Send to student" />
-                  <Button layoutX="79.0" layoutY="241.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
+                  <Button layoutX="79.0" layoutY="241.0" mnemonicParsing="false" onAction="#backToLandlordMenu" text="Back" />
                </children>
             </AnchorPane>
          </content>

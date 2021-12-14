@@ -4,15 +4,17 @@ import java.util.Date;
 
 public class Contract {
     private String studentID, landlordID, contractNr;
-    private Date startDate;
+    private String startDate;
+    private String status;
     private int contractDuration;
 
-    public Contract(String studentID, String landlordID, String contractID, Date startDate, int contractDuration) {
+    public Contract(String studentID, String landlordID, String contractID, String startDate, int contractDuration, String status) {
         this.studentID = studentID;
         this.landlordID = landlordID;
         this.contractNr = contractID;
         this.startDate = startDate;
         this.contractDuration = contractDuration;
+        this.status = status;
     }
 
     public String getStudentID() {
@@ -31,19 +33,19 @@ public class Contract {
         this.landlordID = landlordID;
     }
 
-    public String getContractID() {
+    public String getContractNr() {
         return contractNr;
     }
 
-    public void setContractID(String contractNr) {
+    public void setContractNr(String contractNr) {
         this.contractNr = contractNr;
     }
 
-    public Date getStartDate() {
+    public String getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(Date startDate) {
+    public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
@@ -55,14 +57,22 @@ public class Contract {
         this.contractDuration = contractDuration;
     }
 
+    public String getStatus(){
+        return status;
+    }
+    public void setStatus(String status){
+        this.status = status;
+    }
+
     @Override
     public String toString() {
         return "Contract{" +
                 "studentID='" + studentID + '\'' +
                 ", landlordID='" + landlordID + '\'' +
                 ", contractID='" + contractNr + '\'' +
-                ", startDate=" + startDate +
-                ", contractDuration=" + contractDuration +
+                ", startDate=" + startDate + '\'' +
+                ", contractDuration=" + contractDuration + '\'' +
+                ", status=" + status + '\'' +
                 '}';
     }
 }

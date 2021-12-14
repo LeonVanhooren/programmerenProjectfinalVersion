@@ -25,10 +25,11 @@ public class DBContract {
                 String landlordID = rs.getString("landlordID");
                 String studentID = rs.getString("studentID");
                 String contractNr = rs.getString("contractNr");
-                Date startDate = rs.getDate("startDate");
+                String startDate = rs.getString("startDate");
+                String status = rs.getString("status");
                 int contractDuration = rs.getInt("contractDuration");
 
-                Contract newContract = new Contract(studentID, landlordID, contractNr, startDate, contractDuration);
+                Contract newContract = new Contract(studentID, landlordID, contractNr, startDate, contractDuration, status);
                 contracts.add(newContract);
 
             }
@@ -43,7 +44,7 @@ public class DBContract {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO contract "+"VALUES('"+contract.getStudentID()+"', '"+contract.getLandlordID()+"', '"+contract.getContractID()+"', '"+contract.getStartDate()+"', '"+contract.getContractDuration()+"')";
+            String query = "INSERT INTO contract "+"VALUES('"+contract.getStudentID()+"', '"+contract.getLandlordID()+"', '"+contract.getContractNr()+"', '"+contract.getStartDate()+"', '"+contract.getContractDuration()+"', '"+contract.getStatus()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
@@ -52,23 +53,6 @@ public class DBContract {
             e.printStackTrace();
         }
     }
-
-    public static void changeContractFromDatabase(Contract newContract, Contract oldContract){
-        try {
-            removeContractFromDatabase(oldContract);
-            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
-            Statement stm = connection.createStatement();
-            String query = "INSERT INTO contract "+"VALUES('"+newContract.getStudentID()+"', '"+newContract.getLandlordID()+"', '"+newContract.getContractID()+"', '"+newContract.getStartDate()+"', '"+newContract.getContractDuration()+"')";
-            PreparedStatement preparedStmt = connection.prepareStatement(query);
-            preparedStmt.execute();
-
-        } catch (SQLException e) {
-            System.out.println("FAIL");
-            e.printStackTrace();
-        }
-    }
-
-
 
     public static void removeContractFromDatabase(Contract contract){
         try {

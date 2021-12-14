@@ -28,25 +28,28 @@ public class RegisterStudentController {
     @FXML
     private TextField emailStudent;
     @FXML
+    private TextField telephoneStudent;
+    @FXML
     private TextField passwordStudent1;
     @FXML
     private TextField passwordStudent2;
-
     @FXML
     private Label registerInfoStudent;
     @FXML
     private Label studentNumber;
     @FXML
     private Label passwordMatching;
+
     public void studentRegisterButton(){
-        String firstName, lastName, email, password1, password2;
+        String firstName, lastName, email, telephoneNr, password1, password2;
         firstName = firstNameStudent.getText();
         lastName = lastNameStudent.getText();
         email = emailStudent.getText();
+        telephoneNr = telephoneStudent.getText();
         password1 = passwordStudent1.getText();
         password2 = passwordStudent2.getText();
 
-        if(studentPresentRegister(firstName, lastName, email)==false){
+        if(studentPresentRegister(firstName, lastName, email, telephoneNr)==false){
 
             if(!password1.equals(password2)){
                 passwordStudent1.setText("");
@@ -58,7 +61,7 @@ public class RegisterStudentController {
                 int studentNR = (int)Math.floor(Math.random()*(999999-910000+1)+910000);
                 String studentNRstring = "01"+studentNR;
 
-                Student newStudent = new Student(firstName, lastName, email, studentNRstring, password1);
+                Student newStudent = new Student(firstName, lastName, email, telephoneNr, studentNRstring, password1);
 
                 DBStudent.addStudentToDatabase(newStudent);
 
@@ -72,6 +75,7 @@ public class RegisterStudentController {
                 firstNameStudent.setText("");
                 lastNameStudent.setText("");
                 emailStudent.setText("");
+                telephoneStudent.setText("");
                 passwordStudent2.setText("");
                 passwordStudent1.setText("");
                 passwordMatching.setText("");
@@ -103,9 +107,9 @@ public class RegisterStudentController {
         passwordMatching.setText("");
     }
 
-    public boolean studentPresentRegister(String firstname, String lastName, String email){
+    public boolean studentPresentRegister(String firstname, String lastName, String email, String telephoneNr){
         for(Student newStudent:program.getStudents()){
-            if(newStudent.getFirstName().equals(firstname)&&newStudent.getLastName().equals(lastName)&&newStudent.getEmail().equals(email)){
+            if(newStudent.getFirstName().equals(firstname)&&newStudent.getLastName().equals(lastName)&&newStudent.getEmail().equals(email)&&newStudent.getTelephoneNr().equals(telephoneNr)){
                 return true;
             }
         }

@@ -44,6 +44,8 @@ public class StudentProfileController implements Initializable {
     @FXML
     private TextField email;
     @FXML
+    private TextField telephoneNr;
+    @FXML
     private TextField password;
     @FXML
     private Label studentNumber;
@@ -61,6 +63,9 @@ public class StudentProfileController implements Initializable {
         }
         if(!email.getText().equals("")){
             DBStudent.changeStudentFromDatabase("email", email.getText(),program.getCurrentStudent().getStudentID());
+        }
+        if(!telephoneNr.getText().equals("")){
+            DBStudent.changeStudentFromDatabase("telephoneNr", telephoneNr.getText(), program.getCurrentStudent().getStudentID());
         }
         if(!password.getText().equals("")){
             DBStudent.changeStudentFromDatabase("password", password.getText(),program.getCurrentStudent().getStudentID());
@@ -115,6 +120,7 @@ public class StudentProfileController implements Initializable {
             firstName.setPromptText(program.getCurrentStudent().getFirstName());
             lastName.setPromptText(program.getCurrentStudent().getLastName());
             email.setPromptText(program.getCurrentStudent().getEmail());
+            telephoneNr.setPromptText(program.getCurrentStudent().getTelephoneNr());
             password.setPromptText(program.getCurrentStudent().getPassword());
             studentNumber.setText("Student number: "+program.getCurrentStudent().getStudentID());
 
