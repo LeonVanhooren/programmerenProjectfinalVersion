@@ -208,23 +208,23 @@ public class ConservationApp {
        ArrayList<String > appliancesString = new ArrayList<>();
         for(Contains newContains: containsArrayList){
             if(newContains.getRoomID().equals(roomID)){
+                System.out.println(newContains.getApplianceID());
                 appliancesString.add(newContains.getApplianceID());
             }
         }
 
-        System.out.println(appliancesString);
-        Appliance[] appliancesOutput = new Appliance[appliances.size()];
+
+        Appliance[] appliancesOutput = new Appliance[appliancesString.size()];
+
         for(int i = 0; i<appliancesString.size();i++){
-            for(Appliance newAppliance: appliances){
+            for(Appliance newAppliance: this.appliances){
                 if(newAppliance.getApplianceID().equals(appliancesString.get(i))){
+                    System.out.println(newAppliance);
                     appliancesOutput[i] = newAppliance;
                 }
             }
         }
 
-
-
-        System.out.println(appliancesOutput);
 
         return appliancesOutput;
     }

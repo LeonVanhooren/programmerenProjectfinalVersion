@@ -116,19 +116,19 @@ public class ApplianceMenuController implements Initializable {
 
     public void changeAppliance(ActionEvent event) {
         if(!applianceNameChange.getText().equals("")){
-            DBAppliance.changeApplianceFromDatabase("applianceName", applianceNameChange.getText(), currentApplianceID);
+            DBAppliance.changeApplianceFromDatabase("applianceName", applianceNameChange.getText(), currentAppliance.getApplianceID());
         }
         if(!consumptionChange.getText().equals("")){
-            DBAppliance.changeApplianceFromDatabase("consumption", consumptionChange.getText(), currentApplianceID);
+            DBAppliance.changeApplianceFromDatabase("consumption", consumptionChange.getText(), currentAppliance.getApplianceID());
         }
         if(!efficiencyChange.getText().equals("")){
-            DBAppliance.changeApplianceFromDatabase("efficiency", efficiencyChange.getText(), currentApplianceID);
+            DBAppliance.changeApplianceFromDatabase("efficiency", efficiencyChange.getText(), currentAppliance.getApplianceID());
         }
         if (!QRCodeChange.getText().equals("")){
-            DBAppliance.changeApplianceFromDatabase("QR-code", QRCodeChange.getText(), currentApplianceID);
+            DBAppliance.changeApplianceFromDatabase("QR-code", QRCodeChange.getText(), currentAppliance.getApplianceID());
         }
         if(!choiceBoxChange.getValue().equals("")){
-            DBAppliance.changeApplianceFromDatabase("applianceKind", choiceBoxChange.getValue(), currentApplianceID);
+            DBAppliance.changeApplianceFromDatabase("applianceKind", choiceBoxChange.getValue(), currentAppliance.getApplianceID());
         }
 
     }
@@ -190,7 +190,7 @@ public class ApplianceMenuController implements Initializable {
         choiceBoxChange.getItems().addAll(choices);
         choiceBoxChange.setOnAction(this::getCurrentChange);
 
-        myListView.getItems().addAll(program.getAppliances());
+        myListView.getItems().addAll(program.getAppliancesStudent());
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Appliance>() {
             @Override
             public void changed(ObservableValue<? extends Appliance> observableValue, Appliance appliance, Appliance t1) {
