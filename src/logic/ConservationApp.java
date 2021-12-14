@@ -193,6 +193,41 @@ public class ConservationApp {
        return outputString;
     }
 
+    public Appliance[] getAppliancesStudent(){
+        ArrayList<Appliance> appliances = new ArrayList<>();
+
+
+        String roomID = null;
+        for(Lease newLease:leases){
+            if(newLease.getStudentID().equals(currentStudent.getStudentID())){
+                roomID = newLease.getRoomID();
+            }
+        }
+        System.out.println(roomID);
+
+       ArrayList<String > appliancesString = new ArrayList<>();
+        for(Contains newContains: containsArrayList){
+            if(newContains.getRoomID().equals(roomID)){
+                System.out.println(newContains.getApplianceID());
+                appliancesString.add(newContains.getApplianceID());
+            }
+        }
+
+
+        Appliance[] appliancesOutput = new Appliance[appliancesString.size()];
+
+        for(int i = 0; i<appliancesString.size();i++){
+            for(Appliance newAppliance: this.appliances){
+                if(newAppliance.getApplianceID().equals(appliancesString.get(i))){
+                    System.out.println(newAppliance);
+                    appliancesOutput[i] = newAppliance;
+                }
+            }
+        }
+
+
+        return appliancesOutput;
+    }
     public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }

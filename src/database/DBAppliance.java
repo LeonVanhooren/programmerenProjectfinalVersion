@@ -45,7 +45,7 @@ public class DBAppliance {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO appliances "+"VALUES('"+appliance.getApplianceID()+"', '"+appliance.getConsumption()+"', '"+appliance.getEfficiency()+"', '"+appliance.getQRCode()+"', '"+appliance.getApplianceName()+"', "+appliance.getApplianceKind()+"')";
+            String query = "INSERT INTO appliances "+"VALUES('"+appliance.getApplianceID()+"', '"+appliance.getConsumption()+"', '"+appliance.getEfficiency()+"', '"+appliance.getQRCode()+"', '"+appliance.getApplianceName()+"', '"+appliance.getApplianceKind()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
@@ -67,7 +67,6 @@ public class DBAppliance {
                     pstmt1.setString(2, primaryKey);
                     pstmt1.executeUpdate();
                     break;
-
                 case "efficiency":
                     String query2 = "UPDATE appliances SET efficiency = ? WHERE applianceID = ?";
                     PreparedStatement pstmt2 = connection.prepareStatement(query2);
@@ -83,14 +82,14 @@ public class DBAppliance {
                     pstmt3.executeUpdate();
                     break;
                 case "applianceName":
-                    String query4 = "UPDATE appliances SET applianceName = ? WHERE applianceName = ?";
+                    String query4 = "UPDATE appliances SET applianceName = ? WHERE applianceID = ?";
                     PreparedStatement pstmt4 = connection.prepareStatement(query4);
                     pstmt4.setString(1, change);
                     pstmt4.setString(2,primaryKey);
                     pstmt4.executeUpdate();
                     break;
                 case "applianceKind":
-                    String query5 = "UPDATE appliances SET applianceKind = ? WHERE applianceName = ?";
+                    String query5 = "UPDATE appliances SET applianceKind = ? WHERE applianceID = ?";
                     PreparedStatement pstmt5 = connection.prepareStatement(query5);
                     pstmt5.setString(1, change);
                     pstmt5.setString(2,primaryKey);

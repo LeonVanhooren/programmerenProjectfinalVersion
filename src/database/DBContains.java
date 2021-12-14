@@ -50,4 +50,18 @@ public class DBContains {
             e.printStackTrace();
         }
     }
+
+    public static void removeContainsFromDatabase(Contains contains){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "DELETE FROM contains WHERE applianceID="+contains.getApplianceID();
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
 }
