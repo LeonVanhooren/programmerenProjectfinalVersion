@@ -26,11 +26,12 @@ public class DBRegisters {
             ResultSet rs = stm.executeQuery("select * from registers");
             while (rs.next()) {
 
-                Date date = rs.getDate("date");
+                String date = rs.getString("date");
                 String registrationID = rs.getString("registrationID");
                 String roomID = rs.getString("roomID");
 
                 Registers newRegisters = new Registers(date, registrationID, roomID);
+                registers.add(newRegisters);
 
             }
 

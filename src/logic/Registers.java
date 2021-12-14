@@ -4,20 +4,20 @@ import java.time.LocalDate;
 import java.util.Date;
 
 public class Registers {
-    private Date date;
+    private String date;
     private String registrationID, roomID;
 
-    public Registers(Date date, String registrationID, String roomID) {
+    public Registers(String date, String registrationID, String roomID) {
         this.date = date;
         this.registrationID = registrationID;
         this.roomID = roomID;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -39,10 +39,7 @@ public class Registers {
 
     @Override
     public String toString() {
-        return "Registers{" +
-                "date=" + date +
-                ", registrationID='" + registrationID + '\'' +
-                ", roomID='" + roomID + '\'' +
-                '}';
+        return
+                "registrationID: " + registrationID + ", roomID: " + roomID+", "+date ;
     }
 }
