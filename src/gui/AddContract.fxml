@@ -16,7 +16,7 @@
          <content>
             <AnchorPane prefHeight="353.0" prefWidth="425.0">
                <children>
-                  <Label fx:id="contractAdd" layoutX="163.0" layoutY="32.0" text="Add a contract ">
+                  <Label fx:id="contractAdd" alignment="CENTER" contentDisplay="CENTER" layoutX="26.0" layoutY="32.0" prefHeight="20.0" prefWidth="393.0" text="Add a contract ">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -27,11 +27,11 @@
                   <DatePicker fx:id="startDateInput" layoutX="148.0" layoutY="158.0" />
                   <TextField fx:id="studentIDInput" layoutX="148.0" layoutY="76.0" />
                   <TextField fx:id="durationInput" layoutX="148.0" layoutY="199.0" />
-                  <Button layoutX="190.0" layoutY="241.0" mnemonicParsing="false" onAction="#addContract" text="Send to student" />
-                  <Button layoutX="79.0" layoutY="241.0" mnemonicParsing="false" onAction="#backToLandlordMenu" text="Back" />
+                  <Button layoutX="173.0" layoutY="241.0" mnemonicParsing="false" onAction="#addContract" text="Send to student" />
+                  <Button layoutX="367.0" layoutY="282.0" mnemonicParsing="false" onAction="#backToLandlordMenu" text="Back" />
                   <TextField fx:id="roomIDInput" layoutX="148.0" layoutY="117.0" />
                   <Label layoutX="83.0" layoutY="121.0" text="roomID:" />
-                  <Label fx:id="contractNr" layoutX="197.0" layoutY="52.0" text="Label" />
+                  <Label fx:id="contractNr" alignment="CENTER" contentDisplay="CENTER" layoutX="54.0" layoutY="52.0" prefHeight="17.0" prefWidth="338.0" text="Label" />
                </children>
             </AnchorPane>
          </content>
