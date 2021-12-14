@@ -56,11 +56,11 @@ public class AddContractController  {
         int duration;
         LocalDate ld = startDateInput.getValue();
         startDate = ld.getDayOfMonth()+ "/" +ld.getMonthValue()+ "/" +ld.getYear();
-        duration = Integer.parseInt("0" + durationInput);
+        duration = Integer.parseInt(durationInput.getText());
         studentID = studentIDInput.getText();
         roomID = roomIDInput.getText();
 
-        if(!contractExists(studentID, roomID)&&roomExists(roomID)&&!emptyField()&&studentExists(studentID)){
+        if(!contractExists(studentID, roomID)&&roomExists(roomID)&&studentExists(studentID)){
                 int contractNr = (int) Math.floor(Math.random() * (999 - 100 + 1) + 100);
                 String contractNrString = "" + contractNr;
                 Contract newContract = new Contract(studentID, program.getCurrentLandlord().getLandlordID(), contractNrString, startDate, duration, "pending", roomID);
@@ -86,10 +86,6 @@ public class AddContractController  {
             this.contractNr.setText("Please try again");
             clearContractInput();
         }
-        else if(emptyField()){
-            contractAdd.setText("");
-            this.contractNr.setText("All fields are required");
-        }
         else if(!studentExists(studentID)){
             contractAdd.setText("This student doesn't exist");
             this.contractNr.setText("Please try again");
@@ -112,12 +108,7 @@ public class AddContractController  {
         }
         return false;
     }
-    public boolean emptyField(){
-        if((studentIDInput.getText().equals(""))||(startDateInput == null)||(roomIDInput.getText().equals(""))||(durationInput.getText().equals(""))){
-            return true;
-        }
-        return false;
-    }
+
     public boolean studentExists(String studentID){
         for(Student newStudent: program.getStudents()){
             if(newStudent.getStudentID().equals(studentID)){
