@@ -56,7 +56,7 @@ public class AddContractController  {
         int duration;
         LocalDate ld = startDateInput.getValue();
         startDate = ld.getDayOfMonth()+ "/" +ld.getMonthValue()+ "/" +ld.getYear();
-        duration = Integer.parseInt(durationInput.getText());
+        duration = Integer.parseInt("0" + durationInput);
         studentID = studentIDInput.getText();
         roomID = roomIDInput.getText();
 
@@ -113,7 +113,7 @@ public class AddContractController  {
         return false;
     }
     public boolean emptyField(){
-        if((studentIDInput.getText().equals(""))||(startDateInput == null)||(roomIDInput.getText().equals(""))||(durationInput.getText() == null)){
+        if((studentIDInput.getText().equals(""))||(startDateInput == null)||(roomIDInput.getText().equals(""))||(durationInput.getText().equals(""))){
             return true;
         }
         return false;
