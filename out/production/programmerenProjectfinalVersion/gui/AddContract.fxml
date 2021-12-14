@@ -16,7 +16,7 @@
          <content>
             <AnchorPane prefHeight="353.0" prefWidth="425.0">
                <children>
-                  <Label fx:id="contractAdd" layoutX="163.0" layoutY="32.0" text="Add a contract ">
+                  <Label fx:id="contractAdd" alignment="CENTER" layoutX="5.0" layoutY="32.0" prefHeight="20.0" prefWidth="413.0" text="Add a contract ">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -31,7 +31,7 @@
                   <Button layoutX="79.0" layoutY="241.0" mnemonicParsing="false" onAction="#backToLandlordMenu" text="Back" />
                   <TextField fx:id="roomIDInput" layoutX="148.0" layoutY="117.0" />
                   <Label layoutX="83.0" layoutY="121.0" text="roomID:" />
-                  <Label fx:id="contractNr" layoutX="197.0" layoutY="52.0" text="Label" />
+                  <Label fx:id="contractNr" alignment="CENTER" layoutX="22.0" layoutY="52.0" prefHeight="17.0" prefWidth="377.0" text="Label" />
                </children>
             </AnchorPane>
          </content>
