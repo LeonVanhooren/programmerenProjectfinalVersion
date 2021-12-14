@@ -146,6 +146,10 @@ public class AddStudentRoomController implements Initializable {
         myListViewBuilding.getItems().clear();
         myListViewBuilding.getItems().addAll(program.getBuildingIDsLandlord());
     }
+    public void refreshRoomListView(){
+        myListView.getItems().clear();
+        myListView.getItems().addAll(program.getRoomIDsLandlord(program.getBuildingIDsLandlord()));
+    }
 
     public String searchCharacteristics(String roomID){
         String output = null;
