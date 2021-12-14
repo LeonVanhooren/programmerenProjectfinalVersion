@@ -36,8 +36,7 @@
             <AnchorPane prefHeight="200.0" prefWidth="200.0">
                <children>
                   <Label layoutX="70.0" layoutY="37.0" text="Select Appliance" />
-                  <ListView fx:id="myListView" layoutX="14.0" layoutY="63.0" prefHeight="200.0" prefWidth="200.0" />
-                  <Button layoutX="127.0" layoutY="283.0" mnemonicParsing="false" onAction="#removeAppliance" text="Remove" />
+                  <ListView fx:id="myListView" layoutX="14.0" layoutY="63.0" prefHeight="260.0" prefWidth="200.0" />
                   <Label layoutX="245.0" layoutY="84.0" text="Appliance name:" />
                   <Label layoutX="243.0" layoutY="125.0" text="Consumption:" />
                   <Label layoutX="266.0" layoutY="167.0" text="Efficiency:" />
@@ -48,9 +47,23 @@
                   <TextField fx:id="QRCodeChange" layoutX="334.0" layoutY="209.0" />
                   <Button layoutX="380.0" layoutY="295.0" mnemonicParsing="false" onAction="#changeAppliance" text="Change" />
                   <Button layoutX="444.0" layoutY="329.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
-                  <Button layoutX="50.0" layoutY="283.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
                   <Label fx:id="applianceIDChange" layoutX="266.0" layoutY="45.0" text="Appliance ID:" />
                   <ChoiceBox fx:id="choiceBoxChange" layoutX="333.0" layoutY="250.0" prefWidth="150.0" />
+                  <Button layoutX="86.0" layoutY="329.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
+               </children>
+            </AnchorPane>
+         </content>
+      </Tab>
+      <Tab text="Remove appliance">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+        </content>
+         <content>
+            <AnchorPane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <Label fx:id="RemoveApplianceLabel" alignment="CENTER" layoutX="96.0" layoutY="31.0" prefHeight="17.0" prefWidth="320.0" text="Type the name of the appliance you would like to remove!" />
+                  <TextField fx:id="applianceRemove" layoutX="181.0" layoutY="70.0" />
+                  <Button layoutX="226.0" layoutY="116.0" mnemonicParsing="false" onAction="#removeAppliance" text="Remove" />
                </children>
             </AnchorPane>
          </content>
