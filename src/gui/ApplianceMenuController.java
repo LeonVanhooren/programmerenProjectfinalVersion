@@ -69,6 +69,7 @@ public class ApplianceMenuController implements Initializable {
         int applianceIDint;
 
         applianceIDint = (int)Math.floor(Math.random()*(999-100+1)+999);
+        String applianceIDString = "1"+applianceIDint;
         consumption = consumptionTF.getText();
         efficiency = efficiencyTF.getText();
         QRCode = QRCodeTF.getText();
@@ -78,15 +79,15 @@ public class ApplianceMenuController implements Initializable {
             setAddApplianceStatus("The database already contains this appliance!");
         }
         else{
-            Appliance newAppliance = new Appliance("1"+applianceIDint, consumption, efficiency, QRCode, applianceName, currentChoiceAdd);
-            applianceID.setText("The appliance ID is: 1"+applianceIDint);
+            Appliance newAppliance = new Appliance(applianceIDString, consumption, efficiency, QRCode, applianceName, choiceBoxAdd.getValue());
+            applianceID.setText("The appliance ID is: "+applianceIDString);
 
             DBAppliance.addApplianceToDatabase(newAppliance);
             ArrayList<Appliance> appliances = program.getAppliances();
             appliances.add(newAppliance);
             program.setAppliances(appliances);
 
-            Contains newContains = new Contains(searchRoomID(program.getCurrentStudent()), "1"+applianceIDint);
+            Contains newContains = new Contains(searchRoomID(program.getCurrentStudent()), applianceIDString);
             DBContains.addContainsToDatabase(newContains);
             ArrayList<Contains> containsArrayList = program.getContainsArrayList();
             containsArrayList.add(newContains);
@@ -101,7 +102,7 @@ public class ApplianceMenuController implements Initializable {
 
     public void refresh(){
         myListView.getItems().clear();
-        myListView.getItems().addAll(getApplianceIDs(searchRoomID(program.getCurrentStudent())));
+        myListView.getItems().addAll(program.getAppliancesStudent());
     }
 
     @FXML
@@ -133,7 +134,7 @@ public class ApplianceMenuController implements Initializable {
     }
 
     @FXML
-    private ListView<String> myListView;
+    private ListView<Appliance> myListView;
 
 
     public String searchRoomID(Student student){
@@ -181,6 +182,7 @@ public class ApplianceMenuController implements Initializable {
         currentChoiceChange = choiceBoxChange.getValue();
     }
 
+    private Appliance currentAppliance;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         choiceBoxAdd.getItems().addAll(choices);
@@ -188,22 +190,22 @@ public class ApplianceMenuController implements Initializable {
         choiceBoxChange.getItems().addAll(choices);
         choiceBoxChange.setOnAction(this::getCurrentChange);
 
-        myListView.getItems().addAll(getApplianceIDs(searchRoomID(program.getCurrentStudent())));
-        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
-
-
+        myListView.getItems().addAll(program.getAppliances());
+        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Appliance>() {
             @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                String currentApplianceID = myListView.getSelectionModel().getSelectedItem();
-                consumptionChange.setPromptText(searchAppliance(currentApplianceID, program.getCurrentStudent()).getConsumption());
-                efficiencyChange.setPromptText(searchAppliance(currentApplianceID, program.getCurrentStudent()).getEfficiency());
-                applianceIDChange.setText("Appliance ID:"+searchAppliance(currentApplianceID, program.getCurrentStudent()).getApplianceID());
-                applianceNameChange.setPromptText(searchAppliance(currentApplianceID, program.getCurrentStudent()).getApplianceName());
-                QRCodeChange.setPromptText(searchAppliance(currentApplianceID, program.getCurrentStudent()).getQRCode());
+            public void changed(ObservableValue<? extends Appliance> observableValue, Appliance appliance, Appliance t1) {
+                currentAppliance = myListView.getSelectionModel().getSelectedItem();
+                consumptionChange.setPromptText(currentAppliance.getConsumption());
+                efficiencyChange.setPromptText(currentAppliance.getEfficiency());
+                applianceIDChange.setText("Appliance ID:"+currentAppliance.getApplianceID());
+                applianceNameChange.setPromptText(currentAppliance.getApplianceName());
+                QRCodeChange.setPromptText(currentAppliance.getQRCode());
+                choiceBoxChange.setValue(currentAppliance.getApplianceKind());
             }
 
 
-        });
+
+    });
 
     }
 

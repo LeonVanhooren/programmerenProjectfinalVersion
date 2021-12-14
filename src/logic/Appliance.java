@@ -65,11 +65,6 @@ public class Appliance {
 
     @Override
     public String toString() {
-        return "Appliance{" +
-                "applianceID='" + applianceID + '\'' +
-                ", consumption='" + consumption + '\'' +
-                ", efficiency='" + efficiency + '\'' +
-                ", QRCode='" + QRCode + '\'' +
-                '}';
+        return applianceName;
     }
 }
