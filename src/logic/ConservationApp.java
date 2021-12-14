@@ -2,7 +2,6 @@ package logic;
 
 import database.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ConservationApp {
@@ -228,6 +227,20 @@ public class ConservationApp {
 
         return appliancesOutput;
     }
+
+    public ArrayList<Registers> getRegistersLandlord(){
+        ArrayList<Registers> registers = new ArrayList<>();
+        String[] roomIDs =getRoomIDsLandlord(getBuildingIDsLandlord());
+        for(Registers newRegisters : this.registers){
+            for(int i = 0; i<roomIDs.length; i++){
+                if(newRegisters.getRoomID().equals(roomIDs[i])){
+                    registers.add(newRegisters);
+                }
+            }
+        }
+        return registers;
+    }
+
     public void setStudents(ArrayList<Student> students) {
         this.students = students;
     }
