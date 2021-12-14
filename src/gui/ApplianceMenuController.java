@@ -237,8 +237,19 @@ public class ApplianceMenuController implements Initializable {
         program.setAppliances(appliances);
 
         DBAppliance.removeApplianceFromDatabase(newAppliance);
+
+        Contains newContains = new Contains(searchRoomID(program.getCurrentStudent()), currentAppliance.getApplianceID());
+
+        ArrayList<Contains> containsArrayList = new ArrayList<>();
+        containsArrayList.remove(newContains);
+        program.setContainsArrayList(containsArrayList);
+
+
+
         myListView.getItems().clear();
         myListView.getItems().addAll(program.getAppliancesStudent());
+
+
     }
 
 
