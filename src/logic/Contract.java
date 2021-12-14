@@ -6,15 +6,17 @@ public class Contract {
     private String studentID, landlordID, contractNr;
     private String startDate;
     private String status;
+    private String contractRoomID;
     private int contractDuration;
 
-    public Contract(String studentID, String landlordID, String contractID, String startDate, int contractDuration, String status) {
+    public Contract(String studentID, String landlordID, String contractNr, String startDate, int contractDuration, String status, String contractRoomID) {
         this.studentID = studentID;
         this.landlordID = landlordID;
-        this.contractNr = contractID;
+        this.contractNr = contractNr;
         this.startDate = startDate;
         this.contractDuration = contractDuration;
         this.status = status;
+        this.contractRoomID = contractRoomID;
     }
 
     public String getStudentID() {
@@ -63,6 +65,12 @@ public class Contract {
     public void setStatus(String status){
         this.status = status;
     }
+    public String getcontractRoomID(){
+        return contractRoomID;
+    }
+    public void setContractRoomID(String contractRoomID){
+        this.contractRoomID = contractRoomID;
+    }
 
     @Override
     public String toString() {
@@ -73,6 +81,7 @@ public class Contract {
                 ", startDate=" + startDate + '\'' +
                 ", contractDuration=" + contractDuration + '\'' +
                 ", status=" + status + '\'' +
+                ", contractRoomID=" + contractRoomID + '\'' +
                 '}';
     }
 }

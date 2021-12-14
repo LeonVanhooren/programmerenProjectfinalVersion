@@ -3,12 +3,12 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
-
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <StackedBarChart layoutX="15.0" prefHeight="392.0" prefWidth="565.0" title="report per building">
+      <StackedBarChart layoutX="15.0" prefHeight="371.0" prefWidth="565.0" title="report per building">
         <xAxis>
           <CategoryAxis side="BOTTOM" />
         </xAxis>
@@ -16,5 +16,6 @@
           <NumberAxis side="LEFT" />
         </yAxis>
       </StackedBarChart>
+      <Button layoutX="508.0" layoutY="361.0" mnemonicParsing="false" text="Back" />
    </children>
 </AnchorPane>

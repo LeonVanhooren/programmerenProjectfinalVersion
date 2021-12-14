@@ -269,4 +269,33 @@ public class ConservationApp {
     public void setOpenContracts(ArrayList<OpenContract> openContracts) {
         this.openContracts = openContracts;
     }
+
+    public ArrayList<Building> getCurrentLandlordBuildings(){
+        ArrayList<Building> buildings = new ArrayList<>();
+        for(Ownership newOwnership: this.ownerships){
+            for(Building newBuilding:this.buildings){
+                if(newOwnership.getLandlordID().equals(currentLandlord.getLandlordID())&&newBuilding.getBuildingID().equals(newOwnership.getBuildingID())){
+                    buildings.add(newBuilding);
+                }
+            }
+        }
+        return buildings;
+    }
+
+    public ArrayList<Room> getCurrentLandlordRooms() {
+        ArrayList<Building> currentLandlordBuildings = getCurrentLandlordBuildings();
+        ArrayList<Room> rooms = new ArrayList<>();
+        for(Building newBuilding:currentLandlordBuildings) {
+            for (BelongsTo newBelongsTo : this.belongsToArrayList) {
+                for (Room newRoom : this.rooms){
+                    if(newBuilding.getBuildingID().equals(newBelongsTo.getBuildingID())&&
+                    newBelongsTo.getRoomID().equals(newRoom.getRoomID())){
+                        rooms.add(newRoom);
+                    }
+                }
+            }
+        }
+        return rooms;
+    }
 }
+
