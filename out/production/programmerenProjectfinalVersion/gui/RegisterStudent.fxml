@@ -9,25 +9,27 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="440.0" prefWidth="273.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.RegisterStudentController">
    <children>
-      <TextField fx:id="firstNameStudent" layoutX="95.0" layoutY="131.0" />
-      <TextField fx:id="lastNameStudent" layoutX="95.0" layoutY="177.0" />
-      <TextField fx:id="emailStudent" layoutX="95.0" layoutY="220.0" />
-      <Label fx:id="registerInfoStudent" layoutX="18.0" layoutY="43.0" text="Student is not yet registered!" textFill="#fd0000" />
-      <Label layoutX="24.0" layoutY="135.0" text="First name:" />
-      <Label layoutX="25.0" layoutY="181.0" text="Last name:" />
-      <Label layoutX="28.0" layoutY="224.0" text="Email:" />
-      <Label layoutX="28.0" layoutY="269.0" text="Password:" />
-      <PasswordField fx:id="passwordStudent1" layoutX="95.0" layoutY="265.0" />
-      <PasswordField fx:id="passwordStudent2" layoutX="95.0" layoutY="312.0" />
-      <Label layoutX="28.0" layoutY="316.0" text="Password:" />
-      <Label fx:id="studentNumber" layoutX="15.0" layoutY="77.0" text="Your studentnr. is ... remember this well!" />
-      <Button layoutX="30.0" layoutY="372.0" mnemonicParsing="false" onAction="#backToSignIn" text="Sign in" />
-      <Button layoutX="105.0" layoutY="372.0" mnemonicParsing="false" onAction="#studentRegisterButton" text="Register" />
-      <Label fx:id="passwordMatching" layoutX="104.0" layoutY="296.0" textFill="#e40b0b">
+      <TextField fx:id="firstNameStudent" layoutX="95.0" layoutY="109.0" />
+      <TextField fx:id="lastNameStudent" layoutX="95.0" layoutY="152.0" />
+      <TextField fx:id="emailStudent" layoutX="95.0" layoutY="190.0" />
+      <Label fx:id="registerInfoStudent" alignment="CENTER" layoutX="-30.0" layoutY="43.0" prefHeight="17.0" prefWidth="340.0" text="Student is not yet registered!" textFill="RED" />
+      <Label layoutX="25.0" layoutY="113.0" text="First name:" />
+      <Label layoutX="27.0" layoutY="156.0" text="Last name:" />
+      <Label layoutX="52.0" layoutY="194.0" text="Email:" />
+      <Label layoutX="30.0" layoutY="282.0" text="Password:" />
+      <PasswordField fx:id="passwordStudent1" layoutX="95.0" layoutY="278.0" />
+      <PasswordField fx:id="passwordStudent2" layoutX="95.0" layoutY="320.0" />
+      <Label layoutX="30.0" layoutY="324.0" text="Password:" />
+      <Label fx:id="studentNumber" alignment="CENTER" layoutX="-46.0" layoutY="78.0" prefHeight="17.0" prefWidth="372.0" text="Your Student ID is ... remember this well!" />
+      <Button layoutX="34.0" layoutY="372.0" mnemonicParsing="false" onAction="#backToSignIn" text="Sign in" />
+      <Button layoutX="110.0" layoutY="372.0" mnemonicParsing="false" onAction="#studentRegisterButton" text="Register" />
+      <TextField fx:id="telephoneStudent" layoutX="95.0" layoutY="233.0" />
+      <Label layoutX="8.0" layoutY="237.0" text="Telephone Nr:" />
+      <Button layoutX="189.0" layoutY="372.0" mnemonicParsing="false" onAction="#clearStudentInput" text="Empty" />
+      <Label fx:id="passwordMatching" layoutX="96.0" layoutY="303.0" textFill="RED">
          <font>
             <Font size="10.0" />
          </font>
       </Label>
-      <Button layoutX="192.0" layoutY="372.0" mnemonicParsing="false" onAction="#clearStudentInput" text="Empty" />
    </children>
 </AnchorPane>
