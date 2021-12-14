@@ -28,8 +28,9 @@ public class DBContract {
                 String startDate = rs.getString("startDate");
                 String status = rs.getString("status");
                 int contractDuration = rs.getInt("contractDuration");
+                String contractRoomID = rs.getString("contractRoomID");
 
-                Contract newContract = new Contract(studentID, landlordID, contractNr, startDate, contractDuration, status);
+                Contract newContract = new Contract(studentID, landlordID, contractNr, startDate, contractDuration, status, contractRoomID);
                 contracts.add(newContract);
 
             }
@@ -44,7 +45,7 @@ public class DBContract {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO contract "+"VALUES('"+contract.getStudentID()+"', '"+contract.getLandlordID()+"', '"+contract.getContractNr()+"', '"+contract.getStartDate()+"', '"+contract.getContractDuration()+"', '"+contract.getStatus()+"')";
+            String query = "INSERT INTO contract "+"VALUES('"+contract.getStudentID()+"', '"+contract.getLandlordID()+"', '"+contract.getContractNr()+"', '"+contract.getStartDate()+"', '"+contract.getContractDuration()+"', '"+contract.getStatus()+"', '"+contract.getcontractRoomID()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
