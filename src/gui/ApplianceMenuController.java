@@ -20,8 +20,10 @@ import javafx.stage.Stage;
 import logic.*;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class ApplianceMenuController implements Initializable {
@@ -93,8 +95,10 @@ public class ApplianceMenuController implements Initializable {
             containsArrayList.add(newContains);
             program.setContainsArrayList(containsArrayList);
 
-            myListView.getItems().clear();
-            myListView.getItems().addAll(program.getAppliancesStudent());
+            this.addApplianceList(newAppliance);
+            this.refresh();
+
+
 
             setAddApplianceStatus("The appliance is added to the database!");
 
@@ -103,9 +107,55 @@ public class ApplianceMenuController implements Initializable {
 
     }
 
-    public void refresh(ActionEvent event){
+    public void removeApplianceList(Appliance appliance){
+        ArrayList<Appliance> applianceArrayList = new ArrayList<>();
+
+        for(int i=0; i<appliances.length;i++){
+            applianceArrayList.add(appliances[i]);
+        }
+        applianceArrayList.remove(appliance);
+
+        Appliance[] appliances1 = new Appliance[applianceArrayList.size()];
+        for(int i=0; i<applianceArrayList.size(); i++){
+            appliances1[i] = applianceArrayList.get(i);
+        }
+        appliances = appliances1;
+    }
+
+    public void addApplianceList(Appliance appliance){
+        ArrayList<Appliance> applianceArrayList = new ArrayList<>();
+
+        for(int i=0; i<appliances.length;i++){
+            applianceArrayList.add(appliances[i]);
+        }
+        applianceArrayList.add(appliance);
+
+        Appliance[] appliances1 = new Appliance[applianceArrayList.size()];
+        for(int i=0; i<applianceArrayList.size(); i++){
+            appliances1[i] = applianceArrayList.get(i);
+        }
+        appliances = appliances1;
+    }
+
+    public void changeApplianceList(Appliance newAppliance, Appliance oldAppliance){
+        ArrayList<Appliance> applianceArrayList = new ArrayList<>();
+
+        for(int i=0; i<appliances.length;i++){
+            applianceArrayList.add(appliances[i]);
+        }
+        applianceArrayList.remove(oldAppliance);
+        applianceArrayList.add(newAppliance);
+
+        Appliance[] appliances1 = new Appliance[applianceArrayList.size()];
+        for(int i=0; i<applianceArrayList.size(); i++){
+            appliances1[i] = applianceArrayList.get(i);
+        }
+        appliances = appliances1;
+    }
+
+    public void refresh(){
         myListView.getItems().clear();
-        myListView.getItems().addAll(program.getAppliancesStudent());
+        myListView.getItems().addAll(appliances);
     }
 
     @FXML
@@ -134,9 +184,21 @@ public class ApplianceMenuController implements Initializable {
             DBAppliance.changeApplianceFromDatabase("applianceKind", choiceBoxChange.getValue(), currentAppliance.getApplianceID());
         }
 
-        myListView.getItems().clear();
-        myListView.getItems().addAll(program.getAppliancesStudent());
+        changeApplianceList(searchApplianceChange(currentAppliance.getApplianceID()) , currentAppliance);
+        refresh();
 
+
+    }
+
+    public Appliance searchApplianceChange(String applianceID){
+        ArrayList<Appliance> appliances = DBAppliance.databaseReadAppliance();
+        Appliance appliance1 = null;
+        for(Appliance newAppliance:appliances){
+            if(newAppliance.getApplianceID().equals(applianceID)){
+                appliance1 = newAppliance;
+            }
+        }
+        return appliance1;
     }
 
     @FXML
@@ -190,6 +252,8 @@ public class ApplianceMenuController implements Initializable {
 
     private Appliance currentAppliance;
 
+    private Appliance[] appliances = program.getAppliancesStudent();
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         choiceBoxAdd.getItems().addAll(choices);
@@ -197,18 +261,20 @@ public class ApplianceMenuController implements Initializable {
         choiceBoxChange.getItems().addAll(choices);
         choiceBoxChange.setOnAction(this::getCurrentChange);
 
-        myListView.getItems().addAll(program.getAppliancesStudent());
+        myListView.getItems().addAll(appliances);
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Appliance>() {
             @Override
             public void changed(ObservableValue<? extends Appliance> observableValue, Appliance appliance, Appliance t1) {
                 currentAppliance = myListView.getSelectionModel().getSelectedItem();
                 System.out.println(currentAppliance);
+                if(!currentAppliance.equals(null)){
                 consumptionChange.setPromptText(currentAppliance.getConsumption());
                 efficiencyChange.setPromptText(currentAppliance.getEfficiency());
                 applianceIDChange.setText("Appliance ID:"+currentAppliance.getApplianceID());
                 applianceNameChange.setPromptText(currentAppliance.getApplianceName());
                 QRCodeChange.setPromptText(currentAppliance.getQRCode());
                 choiceBoxChange.setValue(currentAppliance.getApplianceKind());
+                }
             }
 
 
@@ -229,25 +295,47 @@ public class ApplianceMenuController implements Initializable {
         return output;
     }
 
+    @FXML
+    private TextField applianceRemove;
+
     public void removeAppliance(ActionEvent event){
-        Appliance newAppliance = currentAppliance;
+        String removeAppliance = applianceRemove.getText();
+        Appliance newAppliance=null;
 
-        ArrayList<Appliance> appliances = program.getAppliances();
-        appliances.remove(newAppliance);
-        program.setAppliances(appliances);
+        for(Appliance newApp: program.getAppliancesStudent()){
+            if(newApp.getApplianceName().equals(removeAppliance)){
+                newAppliance = newApp;
+            }
+        }
 
-        DBAppliance.removeApplianceFromDatabase(newAppliance);
+        if(appliancePresent(removeAppliance)==true&&!newAppliance.equals(null)){
 
-        Contains newContains = new Contains(searchRoomID(program.getCurrentStudent()), currentAppliance.getApplianceID());
+            ArrayList<Appliance> appliances = program.getAppliances();
+            appliances.remove(newAppliance);
+            program.setAppliances(appliances);
 
-        ArrayList<Contains> containsArrayList = new ArrayList<>();
-        containsArrayList.remove(newContains);
-        program.setContainsArrayList(containsArrayList);
+            DBAppliance.removeApplianceFromDatabase(newAppliance);
+
+            Contains newContains = new Contains(searchRoomID(program.getCurrentStudent()), newAppliance.getApplianceID());
+
+            ArrayList<Contains> containsArrayList = new ArrayList<>();
+            containsArrayList.remove(newContains);
+            program.setContainsArrayList(containsArrayList);
+
+            DBContains.removeContainsFromDatabase(newContains);
+
+            this.removeApplianceList(newAppliance);
+            this.refresh();
+
+            RemoveApplianceLabel.setText("Appliance is removed!");
+
+        }
+        else{
+            RemoveApplianceLabel.setText("You did not input an existing appliance!");
+        }
 
 
 
-        myListView.getItems().clear();
-        myListView.getItems().addAll(program.getAppliancesStudent());
 
 
     }
@@ -256,7 +344,7 @@ public class ApplianceMenuController implements Initializable {
     //we moeten een appliance id number generator doen en een extra vakje voor appliance naam zodat meerdere laptops kunnen toegevoegd worden!!!!!!!!
 
     public boolean appliancePresent(String applianceName){
-        for(Appliance newAppliance: program.getAppliances()){
+        for(Appliance newAppliance: program.getAppliancesStudent()){
             if(newAppliance.getApplianceName().equals(applianceName)){
                 return true;
             }
