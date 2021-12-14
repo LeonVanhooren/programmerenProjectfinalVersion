@@ -93,6 +93,9 @@ public class ApplianceMenuController implements Initializable {
             containsArrayList.add(newContains);
             program.setContainsArrayList(containsArrayList);
 
+            myListView.getItems().clear();
+            myListView.getItems().addAll(program.getAppliancesStudent());
+
             setAddApplianceStatus("The appliance is added to the database!");
 
         }
@@ -100,7 +103,7 @@ public class ApplianceMenuController implements Initializable {
 
     }
 
-    public void refresh(){
+    public void refresh(ActionEvent event){
         myListView.getItems().clear();
         myListView.getItems().addAll(program.getAppliancesStudent());
     }
@@ -130,6 +133,9 @@ public class ApplianceMenuController implements Initializable {
         if(!choiceBoxChange.getValue().equals("")){
             DBAppliance.changeApplianceFromDatabase("applianceKind", choiceBoxChange.getValue(), currentAppliance.getApplianceID());
         }
+
+        myListView.getItems().clear();
+        myListView.getItems().addAll(program.getAppliancesStudent());
 
     }
 
@@ -224,7 +230,15 @@ public class ApplianceMenuController implements Initializable {
     }
 
     public void removeAppliance(ActionEvent event){
-        String applianceID, consumption, efficiency, QRCode;
+        Appliance newAppliance = currentAppliance;
+
+        ArrayList<Appliance> appliances = program.getAppliances();
+        appliances.remove(newAppliance);
+        program.setAppliances(appliances);
+
+        DBAppliance.removeApplianceFromDatabase(newAppliance);
+        myListView.getItems().clear();
+        myListView.getItems().addAll(program.getAppliancesStudent());
     }
 
 
