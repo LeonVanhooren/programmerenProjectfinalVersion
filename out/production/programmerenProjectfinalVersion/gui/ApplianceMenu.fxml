@@ -50,20 +50,7 @@
                   <Label fx:id="applianceIDChange" layoutX="266.0" layoutY="45.0" text="Appliance ID:" />
                   <ChoiceBox fx:id="choiceBoxChange" layoutX="333.0" layoutY="250.0" prefWidth="150.0" />
                   <Button layoutX="86.0" layoutY="329.0" mnemonicParsing="false" onAction="#refresh" text="Refresh" />
-               </children>
-            </AnchorPane>
-         </content>
-      </Tab>
-      <Tab text="Remove appliance">
-        <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-        </content>
-         <content>
-            <AnchorPane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Label fx:id="RemoveApplianceLabel" alignment="CENTER" layoutX="96.0" layoutY="31.0" prefHeight="17.0" prefWidth="320.0" text="Type the name of the appliance you would like to remove!" />
-                  <TextField fx:id="applianceRemove" layoutX="181.0" layoutY="70.0" />
-                  <Button layoutX="226.0" layoutY="116.0" mnemonicParsing="false" onAction="#removeAppliance" text="Remove" />
+                  <Button layoutX="162.0" layoutY="323.0" mnemonicParsing="false" onAction="#removeListItem" text="Delete" />
                </children>
             </AnchorPane>
          </content>
