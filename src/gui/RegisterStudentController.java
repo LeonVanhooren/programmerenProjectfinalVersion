@@ -105,6 +105,7 @@ public class RegisterStudentController {
         emailStudent.setText("");
         passwordStudent2.setText("");
         passwordStudent1.setText("");
+        telephoneStudent.setText("");
         passwordMatching.setText("");
     }
 
