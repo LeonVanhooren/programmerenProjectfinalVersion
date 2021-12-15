@@ -238,17 +238,27 @@ public class ConservationApp {
         return appliancesOutput;
     }
 
-    public ArrayList<Registers> getRegistersLandlord(){
+    public ArrayList<Registers> getRegistersLandlord(String date){
         ArrayList<Registers> registers = new ArrayList<>();
         String[] roomIDs =getRoomIDsLandlord(getBuildingIDsLandlord());
         for(Registers newRegisters : this.registers){
             for(int i = 0; i<roomIDs.length; i++){
-                if(newRegisters.getRoomID().equals(roomIDs[i])){
+                if(newRegisters.getRoomID().equals(roomIDs[i])&&toMonth(newRegisters.getDate()).equals(toMonth(date))
+                &&toYear(newRegisters.getDate()).equals(toYear(date))){
                     registers.add(newRegisters);
                 }
             }
         }
         return registers;
+    }
+
+    public String toMonth(String date){
+        String[] outputArray = date.split("/");
+        return outputArray[1];
+    }
+    public String toYear(String date){
+        String[] outputArray = date.split("/");
+        return outputArray[2];
     }
 
     public void setStudents(ArrayList<Student> students) {
