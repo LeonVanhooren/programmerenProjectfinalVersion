@@ -190,7 +190,10 @@ public class ApplianceMenuController implements Initializable {
         }
 
         changeApplianceList(searchApplianceChange(currentAppliance.getApplianceID()), currentAppliance);
-        refresh();
+        applianceNameChange.setPromptText(currentAppliance.getApplianceName());
+        consumptionChange.setPromptText(currentAppliance.getConsumption());
+        efficiencyChange.setPromptText(currentAppliance.getEfficiency());
+        QRCodeChange.setPromptText(currentAppliance.getQRCode());
 
 
     }
