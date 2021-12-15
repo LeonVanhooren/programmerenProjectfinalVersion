@@ -58,7 +58,7 @@ public class RegisterLandlordController {
         password1 = passwordLandlord1.getText();
         password2 = passWordLandlord2.getText();
         telephoneNr = telephoneNrLandlord.getText();
-
+        if (!emptyfields()){
         if(landlordPresentRegister(firstName, lastName, email, telephoneNr)==false){
 
             if(!password1.equals(password2)){
@@ -107,6 +107,7 @@ public class RegisterLandlordController {
         }
 
     }
+        else {registerInfoLandlord.setText("Please fill in every field!");}}
 
     public void clearLandlordInput(){
         firstNameLandlord.setText("");
@@ -140,5 +141,11 @@ public class RegisterLandlordController {
         stage.setScene(scene);
 
     }
+    public boolean emptyfields(){
+        if ((firstNameLandlord.getText().equals(""))||(lastNameLandlord.getText().equals(""))||(emailLandlord.getText().equals(""))||(telephoneNrLandlord.getText().equals(""))||(passwordLandlord1.getText().equals(""))||(passWordLandlord2.getText().equals(""))){
+            return true;
+        }
+        return false;
+    }
+    }
 
-}

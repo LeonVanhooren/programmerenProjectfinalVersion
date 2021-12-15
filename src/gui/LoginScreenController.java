@@ -36,7 +36,7 @@ public class LoginScreenController {
 
         outputStudent[0] = studentUsernameInput.getText();
         outputStudent[1] = studentPasswordInput.getText();
-
+        if (!emptyfieldsStudent()){
         if(studentPresent(outputStudent[0],outputStudent[1] )==true){
             System.out.println("zit in de database");
 
@@ -59,9 +59,10 @@ public class LoginScreenController {
             studentPasswordInput.setText("");
 
 
-        }
+        }}
+        else{loginInfoStudent.setText("Please fill in every field!");
 
-    }
+    }}
 
     public boolean studentPresent(String studentID, String password){
         for(Student newStudent:program.getStudents()){
@@ -100,7 +101,7 @@ public class LoginScreenController {
 
         outputLandlord[0] = landlordUsernameInput.getText();
         outputLandlord[1] = landlordPasswordInput.getText();
-
+        if (!emptyfieldsLandlord()){
         if(landlordPresent(outputLandlord[0],outputLandlord[1] )==true){
             System.out.println("zit in de database");
             loginInfoLandlord.setText("This matches an account in the DB!");
@@ -119,10 +120,11 @@ public class LoginScreenController {
             loginInfoLandlord.setText("This doesn't match an account in the DB!");
             landlordUsernameInput.setText("");
             landlordPasswordInput.setText("");
-        }
+        }}
+        else{ loginInfoLandlord.setText("Please fill in every field!");
 
 
-    }
+    }}
 
     public boolean landlordPresent(String landlordID, String password) {
         for (Landlord newLandlord : program.getLandlords()) {
@@ -151,5 +153,18 @@ public class LoginScreenController {
         stage1.setScene(scene1);
     }
 
+    public boolean emptyfieldsLandlord(){
+        if ((landlordUsernameInput.getText().equals(""))||(landlordPasswordInput.getText().equals(""))){
+            return true;
+        }
+        return false;
+    }
 
-}
+    public boolean emptyfieldsStudent(){
+        if ((studentUsernameInput.getText().equals(""))||(studentPasswordInput.getText().equals(""))){
+            return true;
+        }
+        return false;
+    }
+    }
+
