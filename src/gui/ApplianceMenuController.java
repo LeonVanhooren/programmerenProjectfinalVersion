@@ -308,37 +308,32 @@ public class ApplianceMenuController implements Initializable {
             }
         }
 
-        if(appliancePresent(removeAppliance)==true&&!newAppliance.equals(null)){
+        if(appliancePresent(removeAppliance)==true&&!newAppliance.equals(null)) {
+                ArrayList<Appliance> appliances = program.getAppliances();
+                appliances.remove(newAppliance);
+                program.setAppliances(appliances);
 
-            ArrayList<Appliance> appliances = program.getAppliances();
-            appliances.remove(newAppliance);
-            program.setAppliances(appliances);
+                DBAppliance.removeApplianceFromDatabase(newAppliance);
 
-            DBAppliance.removeApplianceFromDatabase(newAppliance);
+                Contains newContains = new Contains(searchRoomID(program.getCurrentStudent()), newAppliance.getApplianceID());
 
-            Contains newContains = new Contains(searchRoomID(program.getCurrentStudent()), newAppliance.getApplianceID());
+                ArrayList<Contains> containsArrayList = new ArrayList<>();
+                containsArrayList.remove(newContains);
+                program.setContainsArrayList(containsArrayList);
 
-            ArrayList<Contains> containsArrayList = new ArrayList<>();
-            containsArrayList.remove(newContains);
-            program.setContainsArrayList(containsArrayList);
+                DBContains.removeContainsFromDatabase(newContains);
 
-            DBContains.removeContainsFromDatabase(newContains);
+                this.removeApplianceList(newAppliance);
+                this.refresh();
+                applianceRemove.setText("");
 
-            this.removeApplianceList(newAppliance);
-            this.refresh();
+                RemoveApplianceLabel.setText("Appliance is removed!");
 
-            RemoveApplianceLabel.setText("Appliance is removed!");
-
-        }
-        else{
+        }else{
             RemoveApplianceLabel.setText("You did not input an existing appliance!");
         }
-
-
-
-
-
     }
+
 
 
     //we moeten een appliance id number generator doen en een extra vakje voor appliance naam zodat meerdere laptops kunnen toegevoegd worden!!!!!!!!
@@ -367,6 +362,4 @@ public class ApplianceMenuController implements Initializable {
         ChangeApplianceLabel.setText(output);
 
     }
-
-
 }
