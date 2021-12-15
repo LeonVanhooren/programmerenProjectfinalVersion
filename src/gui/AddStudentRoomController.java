@@ -260,6 +260,7 @@ public class AddStudentRoomController implements Initializable {
         city = cityInput.getText();
         zip = zipInput.getText();
 
+        if (!emptyFieldsBuilding()){
             if(buildingExists(adress, country, city, zip) == false){
             int buildingID = (int)Math.floor(Math.random()*(99999-10000+1)+10000);
             String buildingIDString = ""+buildingID;
@@ -286,9 +287,13 @@ public class AddStudentRoomController implements Initializable {
 
             clearBuildingInput();
         }
-        else{
+        else {
             buildinginfo.setText("The database already contains this building!");
-        }
+        }}
+        else{buildingIDT.setText("Please fill in every field!");}
+
+
+
     }
 
     public boolean buildingExists(String adress, String country, String city, String zip){
@@ -314,7 +319,7 @@ public class AddStudentRoomController implements Initializable {
     public void addRoomButton(){
         String buildingID, characteristics;
         int roomNr;
-        roomNr = Integer.parseInt(roomNrInput.getText());
+        roomNr = Integer.parseInt("0"+roomNrInput.getText());
         buildingID = buildingIDInput.getText();
         characteristics = characteristicsInput.getText();
         if(!emptyFieldsRoom()){
@@ -349,6 +354,7 @@ public class AddStudentRoomController implements Initializable {
         }
     }
     else if (emptyFieldsRoom()){
+
         registerRoomInfo.setText("Please fill in every field!");
         }}
     public boolean roomExists(String buildingID,int roomNr){
@@ -396,16 +402,16 @@ public class AddStudentRoomController implements Initializable {
         buildingIDInput.setText("");
         characteristicsInput.setText("");
     }
-    public boolean emptyFieldsRoom(){
 
+    public boolean emptyFieldsRoom(){
         int roomnr = Integer.parseInt("0"+ roomNrInput.getText());
-        if((roomnr==(0))||(buildingIDInput.equals(""))|| (characteristicsInput.equals(""))) {
+        if((roomnr== 0)||(buildingIDInput.getText().equals(""))|| (characteristicsInput.getText().equals(""))) {
             return true;
         }
         return false;
     }
-    public boolean emptyFielsBuilding(){
-        if ((adressInput.equals(""))||(countryInput.equals(""))||(cityInput.equals(""))||(zipInput.equals(""))){
+    public boolean emptyFieldsBuilding(){
+        if ((adressInput.getText().equals(""))||(countryInput.getText().equals(""))||(cityInput.getText().equals(""))||(zipInput.getText().equals(""))){
             return true;
         }
         return false;

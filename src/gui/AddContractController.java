@@ -127,7 +127,7 @@ public class AddContractController  {
         if(ld!=null) {
             startDate = ld.getDayOfMonth() + "/" + ld.getMonthValue() + "/" + ld.getYear();
             int duration = Integer.parseInt("0" + durationInput.getText());
-            if ((studentIDInput.equals("")) || (roomIDInput.equals("")) ||(duration == 0)) {
+            if ((studentIDInput.getText().equals("")) || (roomIDInput.getText().equals("")) ||(duration == 0)) {
                 return true;
             }
         }
