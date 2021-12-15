@@ -1,5 +1,6 @@
 package logic;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Contract {
@@ -18,6 +19,8 @@ public class Contract {
         this.status = status;
         this.contractRoomID = contractRoomID;
     }
+
+
 
     public String getStudentID() {
         return studentID;

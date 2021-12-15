@@ -19,6 +19,7 @@ import logic.*;
 import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -258,7 +259,8 @@ public class AddStudentRoomController implements Initializable {
         country = countryInput.getText();
         city = cityInput.getText();
         zip = zipInput.getText();
-        if(buildingExists(adress, country, city, zip) == false){
+
+            if(buildingExists(adress, country, city, zip) == false){
             int buildingID = (int)Math.floor(Math.random()*(99999-10000+1)+10000);
             String buildingIDString = ""+buildingID;
             Building newBuilding = new Building(buildingIDString, country, city, adress, zip);
@@ -315,7 +317,9 @@ public class AddStudentRoomController implements Initializable {
         roomNr = Integer.parseInt(roomNrInput.getText());
         buildingID = buildingIDInput.getText();
         characteristics = characteristicsInput.getText();
-        if(!roomExists(buildingID, roomNr)){
+        if(!emptyFieldsRoom()){
+
+            if(!roomExists(buildingID, roomNr)){
             String roomIDString = buildingID +"." + roomNrInput.getText();
             Room newRoom = new Room(roomNr, roomIDString, buildingID, characteristics);
             DBRoom.addRoomToDatabase(newRoom);
@@ -340,10 +344,13 @@ public class AddStudentRoomController implements Initializable {
 
             clearRoomInput();
         }
-        else{
+        else if (roomExists(buildingID,roomNr)){
             registerRoomInfo.setText("The database already contains this room!");
         }
     }
+    else if (emptyFieldsRoom()){
+        registerRoomInfo.setText("Please fill in every field!");
+        }}
     public boolean roomExists(String buildingID,int roomNr){
         for (Room r : program.getRooms()){
             if((r.getBuildingID().equals(buildingID)) && (r.getRoomNR() == roomNr)){
@@ -389,6 +396,22 @@ public class AddStudentRoomController implements Initializable {
         buildingIDInput.setText("");
         characteristicsInput.setText("");
     }
+    public boolean emptyFieldsRoom(){
+
+        int roomnr = Integer.parseInt("0"+ roomNrInput.getText());
+        if((roomnr==(0))||(buildingIDInput.equals(""))|| (characteristicsInput.equals(""))) {
+            return true;
+        }
+        return false;
+    }
+    public boolean emptyFielsBuilding(){
+        if ((adressInput.equals(""))||(countryInput.equals(""))||(cityInput.equals(""))||(zipInput.equals(""))){
+            return true;
+        }
+        return false;
+    }
+
+
 }
 
 
