@@ -56,11 +56,10 @@ public class AddContractController  {
         int duration;
         LocalDate ld = startDateInput.getValue();
         startDate = ld.getDayOfMonth()+ "/" +ld.getMonthValue()+ "/" +ld.getYear();
-        duration = Integer.parseInt(durationInput.getText());
+        duration = Integer.parseInt("0" +durationInput.getText());
         studentID = studentIDInput.getText();
         roomID = roomIDInput.getText();
-
-        if(!contractExists(studentID, roomID)&&roomExists(roomID)&&studentExists(studentID)){
+        if(!emptyFields()){
                 int contractNr = (int) Math.floor(Math.random() * (999 - 100 + 1) + 100);
                 String contractNrString = "" + contractNr;
                 Contract newContract = new Contract(studentID, program.getCurrentLandlord().getLandlordID(), contractNrString, startDate, duration, "pending", roomID);
@@ -76,6 +75,10 @@ public class AddContractController  {
 
                 clearContractInput();
             }
+        else if(emptyFields()) {
+            contractAdd.setText("");
+            this.contractNr.setText("Please fill in every field");
+        }/*
         else if(contractExists(studentID, roomID)){
             contractAdd.setText("It's not possible to make 2 contracts for the same student/room!");
             this.contractNr.setText("Please try again");
@@ -90,7 +93,7 @@ public class AddContractController  {
             contractAdd.setText("This student doesn't exist");
             this.contractNr.setText("Please try again");
             clearContractInput();
-        }
+        }*/
     }
     public boolean contractExists(String studentID, String roomID){
         for(Contract newContract: program.getContracts()){
@@ -109,11 +112,23 @@ public class AddContractController  {
         return false;
     }
 
+
     public boolean studentExists(String studentID){
         for(Student newStudent: program.getStudents()){
             if(newStudent.getStudentID().equals(studentID)){
                 return true;
             }
+        }
+        return false;
+    }
+
+    public boolean emptyFields(){
+        String startDate;
+        LocalDate ld = startDateInput.getValue();
+        startDate = ld.getDayOfMonth()+ "/" +ld.getMonthValue()+ "/" +ld.getYear();
+        int duration = Integer.parseInt("0"+ durationInput.getText());
+        if((studentIDInput.equals(""))||(roomIDInput.equals(""))||(startDate.equals(null))||(duration==0)){
+            return true;
         }
         return false;
     }
