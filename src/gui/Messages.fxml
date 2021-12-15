@@ -7,21 +7,23 @@
 
 <AnchorPane prefHeight="271.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.MessagesController">
    <children>
-      <Label layoutX="75.0" layoutY="38.0" text="You have no open contract!">
+      <Label fx:id="contractInfo" alignment="CENTER" layoutX="11.0" layoutY="29.0" prefHeight="17.0" prefWidth="301.0" text="You have no open contract!">
          <font>
             <Font name="System Bold" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="48.0" layoutY="77.0" text="Landlord ID:" />
+      <Label layoutX="48.0" layoutY="58.0" text="Landlord ID:" />
       <Label layoutX="62.0" layoutY="108.0" text="Duration:" />
       <Label layoutX="60.0" layoutY="136.0" text="Start date:" />
       <Label layoutX="80.0" layoutY="168.0" text="Status:" />
-      <Label layoutX="130.0" layoutY="77.0" text="No open contract!" />
-      <Label layoutX="130.0" layoutY="108.0" text="No open contract!" />
-      <Label layoutX="130.0" layoutY="136.0" text="No open contract!" />
-      <Label layoutX="130.0" layoutY="168.0" text="No open contract!" />
+      <Label fx:id="landlordID" layoutX="130.0" layoutY="58.0" text="No open contract!" />
+      <Label fx:id="duration" layoutX="130.0" layoutY="108.0" text="No open contract!" />
+      <Label fx:id="startDate" layoutX="130.0" layoutY="136.0" text="No open contract!" />
+      <Label fx:id="status" layoutX="130.0" layoutY="168.0" text="No open contract!" />
       <Button layoutX="262.0" layoutY="231.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
       <Button layoutX="153.0" layoutY="205.0" mnemonicParsing="false" onAction="#accept" text="Accept" />
       <Button layoutX="57.0" layoutY="205.0" mnemonicParsing="false" onAction="#decline" text="Decline" />
+      <Label layoutX="60.0" layoutY="81.0" text="Room ID:" />
+      <Label fx:id="roomID" layoutX="130.0" layoutY="81.0" text="No open contract!" />
    </children>
 </AnchorPane>

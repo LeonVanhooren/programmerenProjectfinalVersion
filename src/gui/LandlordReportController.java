@@ -14,10 +14,7 @@ import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
-import logic.ConservationApp;
-import logic.MonthlyConsumption;
-import logic.Registers;
-import logic.Room;
+import logic.*;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
@@ -104,6 +101,55 @@ public class LandlordReportController implements Initializable {
         }
         return roomIDs;
     }
+    ArrayList<String> buildingIDs = getBuildingIDs();
+
+    public ArrayList<String> getBuildingIDs(){
+        ArrayList<String> roomIDs = getRoomIDs();
+        ArrayList<String> buildingIDs = new ArrayList<>();
+        for(int i = 0; i< getRoomIDs().size(); i++) {
+            for (BelongsTo newBelongsTo : program.getBelongsToArrayList()) {
+                if (newBelongsTo.getRoomID().equals(roomIDs.get(i))){
+                    buildingIDs.add(newBelongsTo.getBuildingID());
+                }
+            }
+        }
+        return buildingIDs;
+    }
+
+    private ArrayList<String> trimmedBuildingID;
+    private ArrayList<Integer> waterBuildings;
+    private ArrayList<Integer> electricityBuildings;
+    private ArrayList<Integer> gasBuildings;
+
+    public void setConsumptionPerBuilding(){
+        /*ArrayList <String> buildingIDsLandlord = buildingIDs;
+        ArrayList <Integer> waterBuilding = new ArrayList<>();
+        ArrayList <Integer> electricityBuilding = new ArrayList<>();
+        ArrayList <Integer> gasBuilding = new ArrayList<>();
+        ArrayList <String> trimmedBuildingIDs = new ArrayList<>();
+
+        trimmedBuildingIDs.add(buildingIDsLandlord.get(0));
+
+        for(int i = 0; i<buildingIDsLandlord.size(); i++){
+            for(int j =0; j<buildingIDsLandlord.size(); j++){
+                if (trimmedBuildingIDs.get(i).equals(buildingIDsLandlord.get(i))) {
+                    trimmedBuildingIDs.add(buildingIDsLandlord.get(j));
+                    waterBuilding.set(i, waterBuilding.get(i)+water.get(j));
+                    electricityBuilding.set(i, electricityBuilding.get(i)+ electricity.get(j));
+                    gasBuilding.set(i, gasBuilding.get(i)+gas.get(j));
+                }
+
+            }
+        }
+
+        trimmedBuildingID = trimmedBuildingIDs;
+        waterBuildings = waterBuilding;
+        electricityBuildings = electricityBuilding;
+        gasBuildings = gasBuilding;*/
+    }
+    
+    @FXML
+    private BarChart<String, Integer> barChart1;
 
 
     @Override
@@ -113,26 +159,38 @@ public class LandlordReportController implements Initializable {
         for(int i = 0; i<water.size(); i++){
             series1.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), water.get(i)));
         }
-        System.out.println(water);
-
 
         XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
         series2.setName("Electricity (kWh)");
         for(int i = 0; i<electricity.size(); i++){
             series2.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), electricity.get(i)));
         }
-        System.out.println(electricity);
-
 
         XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
         series3.setName("Gas (kWh)");
         for(int i = 0; i<gas.size(); i++){
             series3.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), gas.get(i)));
         }
-        System.out.println(gas);
-        System.out.println(roomIDs);
 
         barChart.getData().addAll(series1, series2, series3);
+
+        XYChart.Series<String, Integer> series4 = new XYChart.Series<>();
+        series4.setName("Water (m³)");
+        for(int i = 0; i<buildingIDs.size(); i++){
+            series4.getData().add(new XYChart.Data<String, Integer>(buildingIDs.get(i), water.get(i)));
+        }
+        XYChart.Series<String, Integer> series5 = new XYChart.Series<>();
+        series5.setName("Electricity (kWh)");
+        for(int i = 0; i<buildingIDs.size(); i++){
+            series5.getData().add(new XYChart.Data<String, Integer>(buildingIDs.get(i), electricity.get(i)));
+        }
+        XYChart.Series<String, Integer> series6 = new XYChart.Series<>();
+        series6.setName("Gas (kWh)");
+        for(int i = 0; i<buildingIDs.size(); i++){
+            series6.getData().add(new XYChart.Data<String, Integer>(buildingIDs.get(i), gas.get(i)));
+        }
+
+        barChart1.getData().addAll(series4, series5, series6);
 
 
     }
