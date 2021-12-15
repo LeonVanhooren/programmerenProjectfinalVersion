@@ -68,4 +68,65 @@ public class DBContract {
             e.printStackTrace();
         }
     }
+
+    public static void changeContractFromDatabase(String column, String change, String primaryKey){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            switch (column){
+                case "studentID":
+                    String query1 = "UPDATE contract SET studentID = ? WHERE contractNr = ?";
+                    PreparedStatement pstmt1 = connection.prepareStatement(query1);
+                    pstmt1.setString(1, change);
+                    pstmt1.setString(2, primaryKey);
+                    pstmt1.executeUpdate();
+                    break;
+
+                case "landlordID":
+                    String query2 = "UPDATE contract SET landlordID = ? WHERE contractNr = ?";
+                    PreparedStatement pstmt2 = connection.prepareStatement(query2);
+                    pstmt2.setString(1, change);
+                    pstmt2.setString(2, primaryKey);
+                    pstmt2.executeUpdate();
+                    break;
+                case "contractNr":
+                    String query3 = "UPDATE contract SET contractNr = ? WHERE contractNr = ?";
+                    PreparedStatement pstmt3 = connection.prepareStatement(query3);
+                    pstmt3.setString(1, change);
+                    pstmt3.setString(2, primaryKey);
+                    pstmt3.executeUpdate();
+                    break;
+                case "startDate":
+                    String query4 = "UPDATE contract SET startDate = ? WHERE contractNr = ?";
+                    PreparedStatement pstmt4 = connection.prepareStatement(query4);
+                    pstmt4.setString(1, change);
+                    pstmt4.setString(2, primaryKey);
+                    pstmt4.executeUpdate();
+                    break;
+                case "contractDuration":
+                    String query5 = "UPDATE contract SET contractDuration = ? WHERE contractNr = ?";
+                    PreparedStatement pstmt5 = connection.prepareStatement(query5);
+                    pstmt5.setString(1, change);
+                    pstmt5.setString(2, primaryKey);
+                    pstmt5.executeUpdate();
+                    break;
+                case "status":
+                    String query6 = "UPDATE contract SET status = ? WHERE contractNr = ?";
+                    PreparedStatement pstmt6 = connection.prepareStatement(query6);
+                    pstmt6.setString(1, change);
+                    pstmt6.setString(2, primaryKey);
+                    pstmt6.executeUpdate();
+                    break;
+                case "contractRoomID":
+                    String query7 = "UPDATE contract SET contractRoomID = ? WHERE contractNr = ?";
+                    PreparedStatement pstmt7 = connection.prepareStatement(query7);
+                    pstmt7.setString(1, change);
+                    pstmt7.setString(2, primaryKey);
+                    pstmt7.executeUpdate();
+                    break;
+            }
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
 }

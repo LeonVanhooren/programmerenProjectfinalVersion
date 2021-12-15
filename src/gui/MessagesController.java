@@ -1,5 +1,6 @@
 package gui;
 
+import database.DBContract;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -71,7 +72,9 @@ public class MessagesController implements Initializable {
 
         if(currentContract.getStatus().equals("pending")){
             contractInfo.setText("The contract is successfully declined!");
-
+            DBContract.changeContractFromDatabase("status", "declined", currentContract.getContractNr());
+            currentContract.setStatus("declined");
+            status.setText("declined");
         }
 
     }
@@ -89,41 +92,45 @@ public class MessagesController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Contract contractStudent = null;
+        
 
         for(Contract newContract: program.getContracts()){
             if(newContract.getStudentID().equals(program.getCurrentStudent().getStudentID())){
-                contractStudent = newContract;
-                currentContract = newContract;
+                if(newContract.getStatus().equals("pending")){
+                    
+                    currentContract = newContract;
+
+                    contractInfo.setText("Pending contract with contract nr. "+newContract.getContractNr());
+                    landlordID.setText(newContract.getLandlordID());
+                    roomID.setText(newContract.getcontractRoomID());
+                    duration.setText(""+newContract.getContractDuration()+" jaar");
+                    startDate.setText(newContract.getStartDate());
+                    status.setText(newContract.getStatus());
+                }
+
+                if(newContract.getStatus().equals("accepted")){
+                    contractInfo.setText("Accepted contract with contract nr. "+newContract.getContractNr());
+                    landlordID.setText(newContract.getLandlordID());
+                    roomID.setText(newContract.getcontractRoomID());
+                    duration.setText(""+newContract.getContractDuration()+" jaar");
+                    startDate.setText(newContract.getStartDate());
+                    status.setText(newContract.getStatus());
+                }
+
+                if(newContract.getStatus().equals("declined")){
+                    contractInfo.setText("Declined contract with contract nr. "+newContract.getContractNr());
+                    landlordID.setText(newContract.getLandlordID());
+                    roomID.setText(newContract.getcontractRoomID());
+                    duration.setText(""+newContract.getContractDuration()+" jaar");
+                    startDate.setText(newContract.getStartDate());
+                    status.setText(newContract.getStatus());
+                }
+
+
             }
         }
 
-        if(!contractStudent.equals(null)&&contractStudent.getStatus().equals("pending")){
-            contractInfo.setText("Pending contract with contract nr. "+contractStudent.getContractNr());
-            landlordID.setText(contractStudent.getLandlordID());
-            roomID.setText(contractStudent.getcontractRoomID());
-            duration.setText(""+contractStudent.getContractDuration()+" jaar");
-            startDate.setText(contractStudent.getStartDate());
-            status.setText(contractStudent.getStatus());
-        }
 
-        if(!contractStudent.equals(null)&&contractStudent.getStatus().equals("accepted")){
-            contractInfo.setText("Accepted contract with contract nr. "+contractStudent.getContractNr());
-            landlordID.setText(contractStudent.getLandlordID());
-            roomID.setText(contractStudent.getcontractRoomID());
-            duration.setText(""+contractStudent.getContractDuration()+" jaar");
-            startDate.setText(contractStudent.getStartDate());
-            status.setText(contractStudent.getStatus());
-        }
-
-        if(!contractStudent.equals(null)&&contractStudent.getStatus().equals("declined")){
-            contractInfo.setText("Declined contract with contract nr. "+contractStudent.getContractNr());
-            landlordID.setText(contractStudent.getLandlordID());
-            roomID.setText(contractStudent.getcontractRoomID());
-            duration.setText(""+contractStudent.getContractDuration()+" jaar");
-            startDate.setText(contractStudent.getStartDate());
-            status.setText(contractStudent.getStatus());
-        }
 
 
 
