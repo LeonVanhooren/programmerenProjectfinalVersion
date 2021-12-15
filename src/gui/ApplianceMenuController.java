@@ -327,6 +327,7 @@ public class ApplianceMenuController implements Initializable {
                 this.refresh();
                 applianceRemove.setText("");
 
+
                 RemoveApplianceLabel.setText("Appliance is removed!");
 
         }else{
