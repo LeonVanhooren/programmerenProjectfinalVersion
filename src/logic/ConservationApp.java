@@ -23,6 +23,7 @@ public class ConservationApp {
     private Landlord currentLandlord;
     private ArrayList<MonthlyConsumption> monthlyConsumptions;
     private ArrayList<Registers> registers;
+    private Contract currentContract;
 
 
 
@@ -40,9 +41,18 @@ public class ConservationApp {
         this.openContracts = new ArrayList<>();
         this.currentStudent = null;
         this.currentLandlord = null;
+        this.currentContract = null;
         this.registers = DBRegisters.databaseReadRegisters();
         this.monthlyConsumptions = DBMonthlyConsumption.databaseReadMonthlyConsumption();
 
+    }
+
+    public Contract getCurrentContract() {
+        return currentContract;
+    }
+
+    public void setCurrentContract(Contract currentContract) {
+        this.currentContract = currentContract;
     }
 
     public ArrayList<MonthlyConsumption> getMonthlyConsumptions() {

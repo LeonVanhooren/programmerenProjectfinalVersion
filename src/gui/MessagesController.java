@@ -1,6 +1,7 @@
 package gui;
 
 import database.DBContract;
+import database.DBLease;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import logic.ConservationApp;
 import logic.Contract;
+import logic.Lease;
 
 
 import java.io.IOException;
@@ -31,7 +33,7 @@ public class MessagesController implements Initializable {
 
     private ArrayList<Contract> contracts = program.getContracts();
 
-    private Contract currentContract;
+    
 
     @FXML
     private Label landlordID;
@@ -47,33 +49,43 @@ public class MessagesController implements Initializable {
     private Label contractInfo;
 
     public void accept() {
-        if(currentContract.getStatus().equals("declined")){
-
+        if(program.getCurrentContract().getStatus().equals("declined")){
+            contractInfo.setText("The contract has already been accepted!");
         }
 
-        if(currentContract.getStatus().equals("accepted")){
-
+        if(program.getCurrentContract().getStatus().equals("accepted")){
+            contractInfo.setText("The contract is already accepted!");
         }
 
-        if(currentContract.getStatus().equals("pending")){
+        if(program.getCurrentContract().getStatus().equals("pending")){
+            contractInfo.setText("The contract is successfully accepted!");
+            DBContract.changeContractFromDatabase("status", "accepted", program.getCurrentContract().getContractNr());
+            program.getCurrentContract().setStatus("accepted");
+            status.setText("accepted");
 
+            Lease newLease = new Lease(program.getCurrentContract().getStudentID(), program.getCurrentContract().getcontractRoomID());
+            DBLease.addLeaseToDatabase(newLease);
+
+            ArrayList<Lease> leases = program.getLeases();
+            leases.add(newLease);
+            program.setLeases(leases);
         }
     }
 
     public void decline() {
 
-        if(currentContract.getStatus().equals("declined")){
+        if(program.getCurrentContract().getStatus().equals("declined")){
             contractInfo.setText("The contract is already declined!");
         }
 
-        if(currentContract.getStatus().equals("accepted")){
+        if(program.getCurrentContract().getStatus().equals("accepted")){
             contractInfo.setText("The contract has already been accepted!");
         }
 
-        if(currentContract.getStatus().equals("pending")){
+        if(program.getCurrentContract().getStatus().equals("pending")){
             contractInfo.setText("The contract is successfully declined!");
-            DBContract.changeContractFromDatabase("status", "declined", currentContract.getContractNr());
-            currentContract.setStatus("declined");
+            DBContract.changeContractFromDatabase("status", "declined", program.getCurrentContract().getContractNr());
+            program.getCurrentContract().setStatus("declined");
             status.setText("declined");
         }
 
@@ -98,7 +110,7 @@ public class MessagesController implements Initializable {
             if(newContract.getStudentID().equals(program.getCurrentStudent().getStudentID())){
                 if(newContract.getStatus().equals("pending")){
                     
-                    currentContract = newContract;
+                    program.setCurrentContract(newContract);
 
                     contractInfo.setText("Pending contract with contract nr. "+newContract.getContractNr());
                     landlordID.setText(newContract.getLandlordID());

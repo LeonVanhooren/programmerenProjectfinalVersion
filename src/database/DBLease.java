@@ -1,5 +1,6 @@
 package database;
 
+import logic.Landlord;
 import logic.Lease;
 
 import java.sql.*;
@@ -34,5 +35,19 @@ public class DBLease {
             e.printStackTrace();
         }
         return leases;
+    }
+
+    public static void addLeaseToDatabase(Lease lease){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "INSERT INTO lease "+"VALUES('"+lease.getStudentID()+"', '"+lease.getRoomID()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
     }
 }
