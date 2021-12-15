@@ -315,6 +315,16 @@ public class ConservationApp {
         return buildings;
     }
 
+    public ArrayList<Contract> getContractsLandlord(){
+        ArrayList<Contract> contracts = new ArrayList<>();
+        for(Contract newContract: this.contracts){
+            if(newContract.getLandlordID().equals(currentLandlord.getLandlordID())){
+                contracts.add(newContract);
+            }
+        }
+        return contracts;
+    }
+
     public ArrayList<Room> getCurrentLandlordRooms() {
         ArrayList<Building> currentLandlordBuildings = getCurrentLandlordBuildings();
         ArrayList<Room> rooms = new ArrayList<>();
