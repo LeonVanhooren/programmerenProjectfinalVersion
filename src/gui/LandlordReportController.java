@@ -12,6 +12,8 @@ import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import logic.*;
@@ -19,6 +21,7 @@ import logic.*;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -46,12 +49,99 @@ public class LandlordReportController implements Initializable {
 
     }
 
-    private ArrayList<Registers> registersLandlord  = program.getRegistersLandlord();
-    private ArrayList<MonthlyConsumption> monthlyConsumptionsLandlord = monthlyConsumptionsLandlord();
-    private ArrayList<Integer> water = getWaterFromRooms();
-    private ArrayList<Integer> electricity = getElectricityFromRooms();
-    private ArrayList<Integer> gas = getGasFromRooms();
-    private ArrayList<String> roomIDs = getRoomIDs();
+    private ArrayList<Registers> registersLandlord;
+    private ArrayList<MonthlyConsumption> monthlyConsumptionsLandlord;
+    private ArrayList<Integer> water;
+    private ArrayList<Integer> electricity;
+    private ArrayList<Integer> gas;
+    private ArrayList<String> roomIDs;
+
+    @FXML
+    private DatePicker datePicker;
+    @FXML
+    private Label monthInfo;
+
+    public String toMonth(String date){
+        String[] outputArray = date.split("/");
+        return outputArray[1];
+    }
+    public String toYear(String date){
+        String[] outputArray = date.split("/");
+        return outputArray[2];
+    }
+
+    public void showBarChart(){
+        LocalDate date = datePicker.getValue();
+        String dateString = date.getDayOfMonth()+"/"+date.getMonthValue()+"/"+date.getYear();
+
+        registersLandlord = program.getRegistersLandlord(dateString);
+        monthlyConsumptionsLandlord = monthlyConsumptionsLandlord();
+        water = getWaterFromRooms();
+        electricity = getElectricityFromRooms();
+        gas = getGasFromRooms();
+        roomIDs = getRoomIDs();
+        buildingIDs = getBuildingIDs();
+
+        XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
+        series1.setName("Water (m³)");
+        for(int i = 0; i<water.size(); i++){
+            series1.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), water.get(i)));
+        }
+
+        XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
+        series2.setName("Electricity (kWh)");
+        for(int i = 0; i<electricity.size(); i++){
+            series2.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), electricity.get(i)));
+        }
+
+        XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
+        series3.setName("Gas (kWh)");
+        for(int i = 0; i<gas.size(); i++){
+            series3.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), gas.get(i)));
+        }
+
+        barChart.getData().addAll(series1, series2, series3);
+
+        switch (toMonth(dateString)){
+            case "01":
+                monthInfo.setText("January of the year "+toYear(dateString));
+                break;
+            case "02":
+                monthInfo.setText("February of the year "+toYear(dateString));
+                break;
+            case "03":
+                monthInfo.setText("March of the year "+toYear(dateString));
+                break;
+            case "04":
+                monthInfo.setText("April of the year "+toYear(dateString));
+                break;
+            case "05":
+                monthInfo.setText("May of the year "+toYear(dateString));
+                break;
+            case "06":
+                monthInfo.setText("June of the year "+toYear(dateString));
+                break;
+            case "07":
+                monthInfo.setText("July of the year "+toYear(dateString));
+                break;
+            case "08":
+                monthInfo.setText("August of the year "+toYear(dateString));
+                break;
+            case "09":
+                monthInfo.setText("September of the year "+toYear(dateString));
+                break;
+            case "10":
+                monthInfo.setText("October of the year "+toYear(dateString));
+                break;
+            case "11":
+                monthInfo.setText("November of the year "+toYear(dateString));
+                break;
+            case "12":
+                monthInfo.setText("December of the year "+toYear(dateString));
+                break;
+        }
+
+    }
 
     private ArrayList<Integer> getWaterFromRooms(){
         ArrayList<Integer> water =new ArrayList<>();
@@ -101,7 +191,7 @@ public class LandlordReportController implements Initializable {
         }
         return roomIDs;
     }
-    ArrayList<String> buildingIDs = getBuildingIDs();
+    ArrayList<String> buildingIDs;
 
     public ArrayList<String> getBuildingIDs(){
         ArrayList<String> roomIDs = getRoomIDs();
@@ -114,6 +204,10 @@ public class LandlordReportController implements Initializable {
             }
         }
         return buildingIDs;
+    }
+
+    public void clearBarChart(){
+        barChart.getData().clear();
     }
 
     private ArrayList<String> trimmedBuildingID;
@@ -152,47 +246,10 @@ public class LandlordReportController implements Initializable {
     private BarChart<String, Integer> barChart1;
 
 
+
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
-        series1.setName("Water (m³)");
-        for(int i = 0; i<water.size(); i++){
-            series1.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), water.get(i)));
-        }
-
-        XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
-        series2.setName("Electricity (kWh)");
-        for(int i = 0; i<electricity.size(); i++){
-            series2.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), electricity.get(i)));
-        }
-
-        XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
-        series3.setName("Gas (kWh)");
-        for(int i = 0; i<gas.size(); i++){
-            series3.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), gas.get(i)));
-        }
-
-        barChart.getData().addAll(series1, series2, series3);
-
-        XYChart.Series<String, Integer> series4 = new XYChart.Series<>();
-        series4.setName("Water (m³)");
-        for(int i = 0; i<buildingIDs.size(); i++){
-            series4.getData().add(new XYChart.Data<String, Integer>(buildingIDs.get(i), water.get(i)));
-        }
-        XYChart.Series<String, Integer> series5 = new XYChart.Series<>();
-        series5.setName("Electricity (kWh)");
-        for(int i = 0; i<buildingIDs.size(); i++){
-            series5.getData().add(new XYChart.Data<String, Integer>(buildingIDs.get(i), electricity.get(i)));
-        }
-        XYChart.Series<String, Integer> series6 = new XYChart.Series<>();
-        series6.setName("Gas (kWh)");
-        for(int i = 0; i<buildingIDs.size(); i++){
-            series6.getData().add(new XYChart.Data<String, Integer>(buildingIDs.get(i), gas.get(i)));
-        }
-
-        barChart1.getData().addAll(series4, series5, series6);
-
-
     }
 
 }

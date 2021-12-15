@@ -48,7 +48,7 @@ public class RegisterStudentController {
         telephoneNr = telephoneStudent.getText();
         password1 = passwordStudent1.getText();
         password2 = passwordStudent2.getText();
-
+        if (!emptyFields()){
         if(studentPresentRegister(firstName, lastName, email, telephoneNr)==false){
 
             if(!password1.equals(password2)){
@@ -97,6 +97,7 @@ public class RegisterStudentController {
             passwordMatching.setStyle("-fx-text-fill: red;");
         }
     }
+        else { registerInfoStudent.setText("Please fill in every field!");}}
 
     public void clearStudentInput(){
         firstNameStudent.setText("");
@@ -126,5 +127,12 @@ public class RegisterStudentController {
         stage.setScene(scene);
 
     }
+    public boolean emptyFields(){
+        if ((firstNameStudent.getText().equals(""))||(lastNameStudent.getText().equals(""))||(emailStudent.getText().equals(""))||(telephoneStudent.getText().equals(""))||(passwordStudent1.getText().equals(""))||(passwordStudent2.getText().equals(""))){
+            return true;
+        }
+        return false;
+    }
+    }
 
-}
+
