@@ -51,15 +51,16 @@ public class AddContractController  {
     @FXML
     private Label contractAdd;
 
-    public void addContract(){
+    public void addContract() {
         String studentID, roomID, startDate;
         int duration;
         LocalDate ld = startDateInput.getValue();
-        startDate = ld.getDayOfMonth()+ "/" +ld.getMonthValue()+ "/" +ld.getYear();
-        duration = Integer.parseInt("0" +durationInput.getText());
+        duration = Integer.parseInt("0" + durationInput.getText());
         studentID = studentIDInput.getText();
         roomID = roomIDInput.getText();
-        if(!emptyFields()){
+        if (!emptyFields()) {
+            startDate = ld.getDayOfMonth() + "/" + ld.getMonthValue() + "/" + ld.getYear();
+            if (!contractExists(studentID, roomID) && roomExists(roomID) && studentExists(studentID)) {
                 int contractNr = (int) Math.floor(Math.random() * (999 - 100 + 1) + 100);
                 String contractNrString = "" + contractNr;
                 Contract newContract = new Contract(studentID, program.getCurrentLandlord().getLandlordID(), contractNrString, startDate, duration, "pending", roomID);
@@ -74,26 +75,24 @@ public class AddContractController  {
                 this.contractNr.setText("The contractNr is " + contractNrString);
 
                 clearContractInput();
+            } else if (contractExists(studentID, roomID)) {
+                contractAdd.setText("It's not possible to make 2 contracts for the same student/room!");
+                this.contractNr.setText("Please try again");
+                clearContractInput();
+            } else if (!roomExists(roomID)) {
+                contractAdd.setText("This room doesn't exist");
+                this.contractNr.setText("Please try again");
+                clearContractInput();
+            } else if (!studentExists(studentID)) {
+                contractAdd.setText("This student doesn't exist");
+                this.contractNr.setText("Please try again");
+                clearContractInput();
             }
-        else if(emptyFields()) {
+        } else if (emptyFields()) {
             contractAdd.setText("");
             this.contractNr.setText("Please fill in every field");
-        }/*
-        else if(contractExists(studentID, roomID)){
-            contractAdd.setText("It's not possible to make 2 contracts for the same student/room!");
-            this.contractNr.setText("Please try again");
-            clearContractInput();
+
         }
-        else if(!roomExists(roomID)){
-            contractAdd.setText("This room doesn't exist");
-            this.contractNr.setText("Please try again");
-            clearContractInput();
-        }
-        else if(!studentExists(studentID)){
-            contractAdd.setText("This student doesn't exist");
-            this.contractNr.setText("Please try again");
-            clearContractInput();
-        }*/
     }
     public boolean contractExists(String studentID, String roomID){
         for(Contract newContract: program.getContracts()){
@@ -125,9 +124,14 @@ public class AddContractController  {
     public boolean emptyFields(){
         String startDate;
         LocalDate ld = startDateInput.getValue();
-        startDate = ld.getDayOfMonth()+ "/" +ld.getMonthValue()+ "/" +ld.getYear();
-        int duration = Integer.parseInt("0"+ durationInput.getText());
-        if((studentIDInput.equals(""))||(roomIDInput.equals(""))||(startDate.equals(null))||(duration==0)){
+        if(ld!=null) {
+            startDate = ld.getDayOfMonth() + "/" + ld.getMonthValue() + "/" + ld.getYear();
+            int duration = Integer.parseInt("0" + durationInput.getText());
+            if ((studentIDInput.equals("")) || (roomIDInput.equals("")) ||(duration == 0)) {
+                return true;
+            }
+        }
+        else if(ld==null){
             return true;
         }
         return false;
