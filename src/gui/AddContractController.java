@@ -112,6 +112,7 @@ public class AddContractController  {
         return false;
     }
 
+
     public boolean studentExists(String studentID){
         for(Student newStudent: program.getStudents()){
             if(newStudent.getStudentID().equals(studentID)){
