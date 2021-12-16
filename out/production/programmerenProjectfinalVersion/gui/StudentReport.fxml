@@ -7,9 +7,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StudentReportController">
    <children>
-      <Button layoutX="541.0" layoutY="357.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="541.0" layoutY="357.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
       <TableView layoutX="212.0" layoutY="13.0" prefHeight="375.0" prefWidth="305.0">
         <columns>
           <TableColumn prefWidth="153.0" text="Actions" />

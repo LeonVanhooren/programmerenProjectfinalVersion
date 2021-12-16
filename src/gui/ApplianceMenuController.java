@@ -118,6 +118,13 @@ public class ApplianceMenuController implements Initializable {
         QRCodeTF.setText("");
         choiceBoxAdd.setValue("");
     }
+    public void clearInputChange(){
+        applianceNameChange.setText("");
+        consumptionChange.setText("");
+        choiceBoxChange1.setValue("");
+        QRCodeChange.setText("");
+        choiceBoxChange.setValue("");
+    }
 
     @FXML
     private TextField applianceNameChange;
@@ -137,13 +144,12 @@ public class ApplianceMenuController implements Initializable {
             DBAppliance.changeApplianceFromDatabase("efficiency", choiceBoxChange1.getValue(), currentAppliance.getApplianceID());
         }
         if (!QRCodeChange.getText().equals("")) {
-            DBAppliance.changeApplianceFromDatabase("QR-code", QRCodeChange.getText(), currentAppliance.getApplianceID());
+            DBAppliance.changeApplianceFromDatabase("qrCode", QRCodeChange.getText(), currentAppliance.getApplianceID());
         }
         if (choiceBoxChange.getValue() != null) {
             DBAppliance.changeApplianceFromDatabase("applianceKind", choiceBoxChange.getValue(), currentAppliance.getApplianceID());
         }
-
-
+        clearInputChange();
 
     }
 
@@ -159,7 +165,7 @@ public class ApplianceMenuController implements Initializable {
     }
 
     @FXML
-    private ListView<Appliance> myListView;
+    private ListView myListView;
 
 
     public String searchRoomID(Student student) {
@@ -242,7 +248,7 @@ public class ApplianceMenuController implements Initializable {
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Appliance>() {
             @Override
             public void changed(ObservableValue<? extends Appliance> observableValue, Appliance appliance, Appliance t1) {
-                    currentAppliance = myListView.getSelectionModel().getSelectedItem();
+                    currentAppliance = (Appliance) myListView.getSelectionModel().getSelectedItem();
             }
         });
     }
@@ -292,7 +298,7 @@ public class ApplianceMenuController implements Initializable {
 
         final int selectedIdx = myListView.getSelectionModel().getSelectedIndex();
         if (selectedIdx != -1) {
-            Appliance itemToRemove = myListView.getSelectionModel().getSelectedItem();
+            Appliance itemToRemove = (Appliance) myListView.getSelectionModel().getSelectedItem();
 
             final int newSelectedIdx =
                     (selectedIdx == myListView.getItems().size() - 1)

@@ -25,7 +25,7 @@ public class DBAppliance {
                 String applianceID = rs.getString("applianceID");
                 String consumption = rs.getString("consumption");
                 String efficiency = rs.getString("efficiency");
-                String QRCode = rs.getString("QR-code");
+                String QRCode = rs.getString("qrCode");
                 String applianceName = rs.getString("applianceName");
                 String applianceKind = rs.getString("applianceKind");
                 Appliance newAppliance = new Appliance(applianceID, consumption, efficiency, QRCode, applianceName, applianceKind);
@@ -74,8 +74,8 @@ public class DBAppliance {
                     pstmt2.setString(2, primaryKey);
                     pstmt2.executeUpdate();
                     break;
-                case "QR-code":
-                    String query3 = "UPDATE appliances SET QR-code = ? WHERE applianceID = ?";
+                case "qrCode":
+                    String query3 = "UPDATE appliances SET qrCode = ? WHERE applianceID = ?";
                     PreparedStatement pstmt3 = connection.prepareStatement(query3);
                     pstmt3.setString(1, change);
                     pstmt3.setString(2, primaryKey);

@@ -295,6 +295,8 @@ public class ConservationApp {
                 }
             }
         }
+
+
         return appliances;
     }
 
