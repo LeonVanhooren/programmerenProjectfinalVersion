@@ -4,6 +4,7 @@ import database.DBAppliance;
 import database.DBContains;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -161,6 +162,7 @@ public class ApplianceMenuController implements Initializable {
         consumptionTF.setText("");
         efficiencyTF.setText("");
         QRCodeTF.setText("");
+        choiceBoxAdd.setValue("");
     }
 
     @FXML
@@ -268,12 +270,11 @@ public class ApplianceMenuController implements Initializable {
         choiceBoxAdd.setOnAction(this::getCurrentAdd);
         choiceBoxChange.getItems().addAll(choices);
         choiceBoxChange.setOnAction(this::getCurrentChange);
-
         myListView.getItems().addAll(appliances);
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Appliance>() {
             @Override
             public void changed(ObservableValue<? extends Appliance> observableValue, Appliance appliance, Appliance t1) {
-                if (!myListView.getSelectionModel().getSelectedItem().equals(null)) {
+                    myListView.refresh();
                     currentAppliance = myListView.getSelectionModel().getSelectedItem();
                     consumptionChange.setPromptText(currentAppliance.getConsumption());
                     efficiencyChange.setPromptText(currentAppliance.getEfficiency());
@@ -281,18 +282,8 @@ public class ApplianceMenuController implements Initializable {
                     applianceNameChange.setPromptText(currentAppliance.getApplianceName());
                     QRCodeChange.setPromptText(currentAppliance.getQRCode());
                     choiceBoxChange.setValue(currentAppliance.getApplianceKind());
-                } else {
-                    currentAppliance = null;
-                    consumptionChange.setPromptText("");
-                    efficiencyChange.setPromptText("");
-                    applianceIDChange.setText("");
-                    applianceNameChange.setPromptText("");
-                    QRCodeChange.setPromptText("");
-                    choiceBoxChange.setValue("");
-                }
             }
         });
-
     }
 
 
@@ -351,27 +342,25 @@ public class ApplianceMenuController implements Initializable {
             appliances.remove(itemToRemove);
             program.setAppliances(appliances);
 
-            DBAppliance.removeApplianceFromDatabase(itemToRemove);
-
             Contains newContains = new Contains(searchRoomID(program.getCurrentStudent()), itemToRemove.getApplianceID());
 
-            ArrayList<Contains> containsArrayList = new ArrayList<>();
+            ArrayList<Contains> containsArrayList = program.getContainsArrayList();
             containsArrayList.remove(newContains);
             program.setContainsArrayList(containsArrayList);
 
             DBContains.removeContainsFromDatabase(newContains);
 
+            DBAppliance.removeApplianceFromDatabase(itemToRemove);
+
+
+
+
+
             myListView.getItems().remove(selectedIdx);
             myListView.getSelectionModel().select(newSelectedIdx);
 
-            consumptionChange.setPromptText("");
-            efficiencyChange.setPromptText("");
-            applianceIDChange.setText("");
-            applianceNameChange.setPromptText("");
-            QRCodeChange.setPromptText("");
-            choiceBoxChange.setValue("");
-
         }
+        myListView.refresh();
     }
 
     public void goToSite(ActionEvent event) throws IOException {
