@@ -67,4 +67,29 @@ public class DBActions {
             e.printStackTrace();
         }
     }
+
+    public static void changeActionFromDatabase(String column, int change, String primaryKey){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            switch (column){
+                case "recommended":
+                    String query3 = "UPDATE actions SET recommended = ? WHERE actionID = ?";
+                    PreparedStatement pstmt3 = connection.prepareStatement(query3);
+                    pstmt3.setInt(1, change);
+                    pstmt3.setString(2, primaryKey);
+                    pstmt3.executeUpdate();
+                    break;
+                case "savedAmount":
+                    String query4 = "UPDATE actions SET savedAmount = ? WHERE actionID = ?";
+                    PreparedStatement pstmt4 = connection.prepareStatement(query4);
+                    pstmt4.setInt(1, change);
+                    pstmt4.setString(2,primaryKey);
+                    pstmt4.executeUpdate();
+                    break;
+            }
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
 }

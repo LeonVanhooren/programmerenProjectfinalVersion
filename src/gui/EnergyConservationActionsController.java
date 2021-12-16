@@ -1,6 +1,7 @@
 package gui;
 
 import database.DBActions;
+import database.DBSavesBy;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
@@ -10,6 +11,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.chart.BarChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import logic.Action;
@@ -19,6 +22,7 @@ import logic.SavesBy;
 
 
 import java.io.IOException;
+import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -79,6 +83,7 @@ public class EnergyConservationActionsController implements Initializable {
     private ArrayList<Action> listViewActions = programs.getActions();
 
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceBoxElectricity.getItems().addAll(appliancesElectricity);
@@ -88,6 +93,10 @@ public class EnergyConservationActionsController implements Initializable {
         choiceBoxGasAction.getItems().addAll(gasActions);
         choiceBoxElecAction.getItems().addAll(electricityActions);
         choiceBoxWaterAction.getItems().addAll(waterActions);
+
+        showBarChartGas();
+        showBarChartWater();
+        showBarChartElectricity();
 
         myListView.getItems().addAll(listViewActions);
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Action>() {
@@ -107,6 +116,7 @@ public class EnergyConservationActionsController implements Initializable {
 
     public void removeAction(){
         Action currentActionRemove = currentAction;
+
         ArrayList<Action> removeList = listViewActions;
         DBActions.removeActionFromDatabase(currentActionRemove);
         removeList.remove(currentActionRemove);
@@ -147,11 +157,18 @@ public class EnergyConservationActionsController implements Initializable {
         savedAmount.setText("");
         choiceBoxApplianceKind.setValue("");
     }
+    @FXML
+    private Label electricityInfo;
+    @FXML
+    private Label gasInfo;
+    @FXML
+    private Label waterInfo;
 
     @FXML
     private DatePicker datePickerElectricity;
 
     public void setActionOnElectricityAppliance(){
+
         Appliance currentAppliance = choiceBoxElectricity.getValue();
         LocalDate date = datePickerElectricity.getValue();
         String dateString = date.getDayOfMonth()+"/"+date.getMonthValue()+"/"+date.getYear();
@@ -159,9 +176,153 @@ public class EnergyConservationActionsController implements Initializable {
 
         SavesBy newSavesBy = new SavesBy(currentAction.getActionID(), currentAppliance.getApplianceID(), dateString );
 
+        if(savesByPresent(newSavesBy)==false){
+        ArrayList<SavesBy> savesByArrayList = programs.getSavesByArrayList();
+        savesByArrayList.add(newSavesBy);
+        programs.setSavesByArrayList(savesByArrayList);
+
+        barChartElectricity.getData().clear();
+        showBarChartElectricity();
+
+        DBSavesBy.addSavesByToDatabase(newSavesBy);
+        DBActions.changeActionFromDatabase("recommended", currentAction.getRecommended()+1, currentAction.getActionID());
+        electricityInfo.setText("The conservation action is successfully added!");
+        }
+        else{
+            electricityInfo.setText("You already added this action to this appliance today!");
+        }
     }
 
+    @FXML
+    private DatePicker datePickerGas;
+
+    public void setActionOnGasAppliance(){
+        Appliance currentAppliance = choiceBoxGas.getValue();
+        LocalDate date = datePickerGas.getValue();
+        String dateString = date.getDayOfMonth()+"/"+date.getMonthValue()+"/"+date.getYear();
+        Action currentAction = choiceBoxGasAction.getValue();
+
+        SavesBy newSavesBy = new SavesBy(currentAction.getActionID(), currentAppliance.getApplianceID(), dateString );
+
+        if(savesByPresent(newSavesBy)==false){
+        ArrayList<SavesBy> savesByArrayList = programs.getSavesByArrayList();
+        savesByArrayList.add(newSavesBy);
+        programs.setSavesByArrayList(savesByArrayList);
+
+        barChartGas.getData().clear();
+        showBarChartGas();
+
+        DBSavesBy.addSavesByToDatabase(newSavesBy);
+        DBActions.changeActionFromDatabase("recommended", currentAction.getRecommended()+1, currentAction.getActionID());
+        gasInfo.setText("The conservation action is successfully added!");
+        }
+        else{
+            gasInfo.setText("You already added this action to this appliance today!");
+        }
+    }
+
+    @FXML
+    private DatePicker datePickerWater;
+
+    public void setActionOnWaterAppliance(){
+
+        Appliance currentAppliance = choiceBoxWater.getValue();
+        LocalDate date = datePickerWater.getValue();
+        String dateString = date.getDayOfMonth()+"/"+date.getMonthValue()+"/"+date.getYear();
+        Action currentAction = choiceBoxWaterAction.getValue();
+
+        SavesBy newSavesBy = new SavesBy(currentAction.getActionID(), currentAppliance.getApplianceID(), dateString );
+
+        if(savesByPresent(newSavesBy)==false) {
+            ArrayList<SavesBy> savesByArrayList = programs.getSavesByArrayList();
+            savesByArrayList.add(newSavesBy);
+            programs.setSavesByArrayList(savesByArrayList);
+
+            barChartWater.getData().clear();
+            showBarChartWater();
+
+            DBSavesBy.addSavesByToDatabase(newSavesBy);
+            DBActions.changeActionFromDatabase("recommended", currentAction.getRecommended()+1, currentAction.getActionID());
+
+            waterInfo.setText("The conservation action is successfully added!");
+        }
+        else{
+            waterInfo.setText("You already added this action to this appliance today!");
+        }
+    }
+
+    public boolean savesByPresent(SavesBy savesBy){
+        for(SavesBy newSavesBy: programs.getSavesByArrayList()) {
+            if (savesBy.getDate().equals(newSavesBy.getDate())&&savesBy.getApplianceID().equals(newSavesBy.getApplianceID())&&
+            savesBy.getActionID().equals(newSavesBy.getActionID())){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @FXML
+    private BarChart barChartGas;
 
 
+    public void showBarChartGas(){
+
+        ArrayList<Integer> recommended = new ArrayList<>();
+        ArrayList<String> actionsIDs = new ArrayList<>();
+        for(Action newAction: programs.getGasActions()) {
+            recommended.add(newAction.getRecommended());
+            actionsIDs.add(newAction.getActionID());
+        }
+
+        XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
+        series1.setName("amount of times the action is used");
+        for(int i = 0; i<actionsIDs.size(); i++){
+            series1.getData().add(new XYChart.Data<String, Integer>(actionsIDs.get(i), recommended.get(i)));
+        }
+        barChartGas.getData().addAll(series1);
+    }
+
+    @FXML
+    private BarChart barChartWater;
+
+    public void showBarChartWater(){
+
+        ArrayList<Integer> recommended = new ArrayList<>();
+        ArrayList<String> actionsIDs = new ArrayList<>();
+        for(Action newAction: programs.getWaterActions()) {
+            recommended.add(newAction.getRecommended());
+            actionsIDs.add(newAction.getActionID());
+        }
+
+        XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
+        series1.setName("amount of times the action is used");
+        for(int i = 0; i<actionsIDs.size(); i++){
+            series1.getData().add(new XYChart.Data<String, Integer>(actionsIDs.get(i), recommended.get(i)));
+        }
+        barChartWater.getData().addAll(series1);
+
+
+    }
+
+    @FXML
+    private BarChart barChartElectricity;
+
+
+    public void showBarChartElectricity(){
+
+        ArrayList<Integer> recommended = new ArrayList<>();
+        ArrayList<String> actionsIDs = new ArrayList<>();
+        for(Action newAction: programs.getElectricityActions()) {
+            recommended.add(newAction.getRecommended());
+            actionsIDs.add(newAction.getActionID());
+        }
+
+        XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
+        series1.setName("amount of times the action is used");
+        for(int i = 0; i<actionsIDs.size(); i++){
+            series1.getData().add(new XYChart.Data<String, Integer>(actionsIDs.get(i), recommended.get(i)));
+        }
+        barChartElectricity.getData().addAll(series1);
+    }
 
 }

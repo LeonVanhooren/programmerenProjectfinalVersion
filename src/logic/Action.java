@@ -54,7 +54,7 @@ public class Action {
 
     @Override
     public String toString() {
-        String output = getDescription()+" saves "+getSavedAmount();
+        String output = getActionID()+", "+getDescription()+" saves "+getSavedAmount();
         switch (getApplianceKind()){
             case "Electricity":
                 output += " kWh electricity";
