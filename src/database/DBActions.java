@@ -24,7 +24,7 @@ public class DBActions {
 
                 int savedAmount = rs.getInt("savedAmount");
                 String description = rs.getString("description");
-                String applianceKind = rs.getString("recommended");
+                String applianceKind = rs.getString("applianceKind");
                 int recommended = rs.getInt("recommended");
                 Action newAction = new Action(description, applianceKind, savedAmount, recommended);
                 actions.add(newAction);

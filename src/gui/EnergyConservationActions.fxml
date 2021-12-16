@@ -29,7 +29,7 @@
                   <Label layoutX="196.0" layoutY="211.0" text="Choose energy conservation action(s):" />
                   <Button layoutX="265.0" layoutY="285.0" mnemonicParsing="false" text="Submit" />
                   <Button layoutX="527.0" layoutY="311.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
-                  <ChoiceBox fx:id="ElectricityApplianceChoicebox" layoutX="225.0" layoutY="241.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="choiceBoxElecAction" layoutX="225.0" layoutY="241.0" prefWidth="150.0" />
                   <Label layoutX="256.0" layoutY="66.0" text="Appliance name" />
                   <ChoiceBox fx:id="choiceBoxElectricity" layoutX="220.0" layoutY="98.0" prefWidth="150.0" />
                </children></AnchorPane>
@@ -47,7 +47,7 @@
                   <Label layoutX="265.0" layoutY="116.0" text="Select a day:" />
                   <DatePicker layoutX="210.0" layoutY="150.0" />
                   <Label layoutX="197.0" layoutY="198.0" text="Choose energy conservation action(s): " />
-                  <ChoiceBox fx:id="WaterApplianceChoicebox" layoutX="224.0" layoutY="238.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="choiceBoxWaterAction" layoutX="224.0" layoutY="238.0" prefWidth="150.0" />
                   <Button layoutX="271.0" layoutY="282.0" mnemonicParsing="false" text="Submit" />
                   <Button layoutX="536.0" layoutY="322.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
                   <Label layoutX="255.0" layoutY="46.0" text="Appliance name" />
@@ -62,7 +62,7 @@
                   <Label layoutX="268.0" layoutY="129.0" text="Select a day" />
                   <DatePicker layoutX="209.0" layoutY="158.0" />
                   <Label layoutX="197.0" layoutY="200.0" text="Choose energy conservation action(s)" />
-                  <ChoiceBox fx:id="GasApplianceChoicebox" layoutX="224.0" layoutY="234.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="choiceBoxGasAction" layoutX="224.0" layoutY="234.0" prefWidth="150.0" />
                   <Button layoutX="274.0" layoutY="277.0" mnemonicParsing="false" text="Submit" />
                   <Button layoutX="536.0" layoutY="319.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
                   <Label layoutX="258.0" layoutY="55.0" text="Appliance name" />
@@ -75,14 +75,14 @@
         <content>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ListView fx:id="myListView" layoutX="14.0" layoutY="14.0" prefHeight="297.0" prefWidth="237.0" />
-                  <TextField fx:id="savedAmount" layoutX="356.0" layoutY="150.0" />
-                  <TextArea fx:id="description" layoutX="356.0" layoutY="63.0" prefHeight="72.0" prefWidth="150.0" />
-                  <ChoiceBox fx:id="choiceBoxApplianceKind" layoutX="356.0" layoutY="185.0" prefWidth="150.0" />
-                  <Label layoutX="268.0" layoutY="63.0" text="Description:" />
-                  <Label layoutX="268.0" layoutY="154.0" text="Saved amount:" />
-                  <Label layoutX="268.0" layoutY="189.0" text="Appliance kind:" />
-                  <Button layoutX="394.0" layoutY="225.0" mnemonicParsing="false" onAction="#addAction" text="Add action" />
+                  <ListView fx:id="myListView" layoutX="14.0" layoutY="14.0" prefHeight="297.0" prefWidth="327.0" />
+                  <TextField fx:id="savedAmount" layoutX="436.0" layoutY="150.0" />
+                  <TextArea fx:id="description" layoutX="436.0" layoutY="63.0" prefHeight="72.0" prefWidth="150.0" />
+                  <ChoiceBox fx:id="choiceBoxApplianceKind" layoutX="436.0" layoutY="185.0" prefWidth="150.0" />
+                  <Label layoutX="348.0" layoutY="63.0" text="Description:" />
+                  <Label layoutX="348.0" layoutY="154.0" text="Saved amount:" />
+                  <Label layoutX="347.0" layoutY="189.0" text="Appliance kind:" />
+                  <Button layoutX="474.0" layoutY="223.0" mnemonicParsing="false" onAction="#addAction" text="Add action" />
                </children>
             </AnchorPane>
         </content>
