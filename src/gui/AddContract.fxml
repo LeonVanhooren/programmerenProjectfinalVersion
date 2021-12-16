@@ -28,7 +28,7 @@
                   <TextField fx:id="studentIDInput" layoutX="148.0" layoutY="76.0" />
                   <TextField fx:id="durationInput" layoutX="148.0" layoutY="199.0" />
                   <Button layoutX="190.0" layoutY="241.0" mnemonicParsing="false" onAction="#addContract" text="Send to student" />
-                  <Button layoutX="79.0" layoutY="241.0" mnemonicParsing="false" onAction="#backToLandlordMenu" text="Back" />
+                  <Button layoutX="367.0" layoutY="282.0" mnemonicParsing="false" onAction="#backToLandlordMenu" text="Back" />
                   <TextField fx:id="roomIDInput" layoutX="148.0" layoutY="117.0" />
                   <Label layoutX="83.0" layoutY="121.0" text="roomID:" />
                   <Label fx:id="contractNr" alignment="CENTER" layoutX="22.0" layoutY="52.0" prefHeight="17.0" prefWidth="377.0" text="Label" />
@@ -44,7 +44,7 @@
                   <TextField layoutX="94.0" layoutY="216.0" prefHeight="25.0" prefWidth="132.0" />
                   <Label layoutX="25.0" layoutY="220.0" text="Contrac nr.:" />
                   <Button layoutX="238.0" layoutY="216.0" mnemonicParsing="false" text="Terminate contract and lease" />
-                  <Button layoutX="366.0" layoutY="282.0" mnemonicParsing="false" text="Back" />
+                  <Button layoutX="366.0" layoutY="282.0" mnemonicParsing="false" onAction="#backToLandlordMenu" text="Back" />
                   <Label fx:id="studentIDStatus" layoutX="284.0" layoutY="14.0" text="Student ID:" />
                   <Label fx:id="landlordIDStatus" layoutX="284.0" layoutY="40.0" text="Landlord ID:" />
                   <Label fx:id="contractNrStatus" layoutX="284.0" layoutY="67.0" text="Contract Nr:" />
