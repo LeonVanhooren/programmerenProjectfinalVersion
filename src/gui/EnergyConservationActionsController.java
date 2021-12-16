@@ -125,7 +125,7 @@ public class EnergyConservationActionsController implements Initializable {
         int actionID = (int) Math.floor(Math.random() * (999 - 100 + 1) + 100);
         String actionIDString = ""+actionID;
 
-        Action newAction = new Action(descriptionString, applianceKind, 0, savedAmountInteger, actionIDString);
+        Action newAction = new Action(actionIDString, applianceKind, 0, savedAmountInteger, descriptionString);
 
         ArrayList<Action> actions = new ArrayList<>();
         actions.add(newAction);

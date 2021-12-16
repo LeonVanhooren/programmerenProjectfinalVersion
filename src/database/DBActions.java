@@ -27,7 +27,7 @@ public class DBActions {
                 int recommended = rs.getInt("recommended");
                 int savedAmount = rs.getInt("savedAmount");
                 String actionID = rs.getString("actionID");
-                Action newAction = new Action(description, applianceKind, recommended, savedAmount, actionID);
+                Action newAction = new Action(actionID, applianceKind, recommended, savedAmount, description);
                 actions.add(newAction);
 
             }
@@ -44,7 +44,7 @@ public class DBActions {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO actions "+"VALUES('"+action.getDescription()+"', '"+action.getApplianceKind()+"', '"+action.getRecommended()+"', '"+action.getSavedAmount()+"', '"+action.getActionID()+"')";
+            String query = "INSERT INTO actions "+"VALUES('"+action.getActionID()+"', '"+action.getApplianceKind()+"', '"+action.getRecommended()+"', '"+action.getSavedAmount()+"', '"+action.getDescription()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 

@@ -4,7 +4,7 @@ public class Action {
     private String description, applianceKind, actionID;
     private int recommended, savedAmount;
 
-    public Action(String description, String applianceKind, int recommended, int savedAmount, String actionID) {
+    public Action(String actionID, String applianceKind, int recommended, int savedAmount, String description) {
         this.description = description;
         this.applianceKind = applianceKind;
         this.savedAmount = savedAmount;
