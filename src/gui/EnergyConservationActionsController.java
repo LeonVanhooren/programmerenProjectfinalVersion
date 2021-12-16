@@ -157,7 +157,7 @@ public class EnergyConservationActionsController implements Initializable {
         String dateString = date.getDayOfMonth()+"/"+date.getMonthValue()+"/"+date.getYear();
         Action currentAction = choiceBoxElecAction.getValue();
 
-        SavesBy newSavesBy = new SavesBy(currentAppliance.getApplianceID(), )
+        SavesBy newSavesBy = new SavesBy(currentAction.getActionID(), currentAppliance.getApplianceID(), dateString );
 
     }
 
