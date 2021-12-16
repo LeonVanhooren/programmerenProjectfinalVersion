@@ -45,11 +45,18 @@ public class Action {
 
     @Override
     public String toString() {
-        return "Action{" +
-                "description='" + description + '\'' +
-                ", applianceKind='" + applianceKind + '\'' +
-                ", savedAmount='" + savedAmount + '\'' +
-                ", recommended=" + recommended +
-                '}';
+        String output= description + " saves "+savedAmount;
+        switch(applianceKind){
+            case "Electricity":
+                output+=" kWh electricity";
+                break;
+            case "Gas":
+                output+=" m³ gas";
+                break;
+            case "Water":
+                output+=" m³ water";
+                break;
+        }
+        return output;
     }
 }

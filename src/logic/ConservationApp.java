@@ -89,6 +89,33 @@ public class ConservationApp {
         return output;
     }
 
+    public ArrayList<Action> getElectricityActions(){
+        ArrayList<Action> output = new ArrayList<>();
+        for(Action newAction:this.actions){
+            if(newAction.getApplianceKind().equals("Electricity")){
+                output.add(newAction);
+            }
+        }
+        return output;
+    }
+    public ArrayList<Action> getGasActions(){
+        ArrayList<Action> output = new ArrayList<>();
+        for(Action newAction:this.actions){
+            if(newAction.getApplianceKind().equals("Gas")){
+                output.add(newAction);
+            }
+        }
+        return output;
+    }
+    public ArrayList<Action> getWaterActions(){
+        ArrayList<Action> output = new ArrayList<>();
+        for(Action newAction:this.actions){
+            if(newAction.getApplianceKind().equals("Water")){
+                output.add(newAction);
+            }
+        }
+        return output;
+    }
     public Contract getCurrentContract() {
         return currentContract;
     }

@@ -1,6 +1,8 @@
 package gui;
 
 import database.DBActions;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -26,7 +28,7 @@ import java.util.ResourceBundle;
 
 public class EnergyConservationActionsController implements Initializable {
 
-    private ConservationApp program = ConservationApp.getInstance();
+    private ConservationApp programs = ConservationApp.getInstance();
 
     private Stage stage;
     private Parent root;
@@ -45,9 +47,12 @@ public class EnergyConservationActionsController implements Initializable {
         stage.setScene(scene);
     }
 
-    private ArrayList<Appliance> appliancesElectricity = program.getAppliancesCurrentStudentElectricity();
-    private ArrayList<Appliance> appliancesWater = program.getAppliancesCurrentStudentWater();
-    private ArrayList<Appliance> appliancesGas = program.getAppliancesCurrentStudentGas();
+    private ArrayList<Appliance> appliancesElectricity = programs.getAppliancesCurrentStudentElectricity();
+    private ArrayList<Appliance> appliancesWater = programs.getAppliancesCurrentStudentWater();
+    private ArrayList<Appliance> appliancesGas = programs.getAppliancesCurrentStudentGas();
+    private ArrayList<Action> electricityActions = programs.getElectricityActions();
+    private ArrayList<Action> gasActions = programs.getGasActions();
+    private ArrayList<Action> waterActions = programs.getWaterActions();
 
     private String[] applianceKindInput= {"Electricity", "Water", "Gas" };
 
@@ -65,7 +70,15 @@ public class EnergyConservationActionsController implements Initializable {
     private TextField savedAmount;
     @FXML
     private ListView myListView;
+    @FXML
+    private ChoiceBox choiceBoxElecAction;
+    @FXML
+    private ChoiceBox choiceBoxGasAction;
+    @FXML
+    private ChoiceBox choiceBoxWaterAction;
 
+    private Action currentAction;
+    private ArrayList<Action> listViewActions = programs.getActions();
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -73,7 +86,23 @@ public class EnergyConservationActionsController implements Initializable {
         choiceBoxGas.getItems().addAll(appliancesGas);
         choiceBoxWater.getItems().addAll(appliancesWater);
         choiceBoxApplianceKind.getItems().addAll(applianceKindInput);
-        myListView.getItems().addAll(program.getActions());
+        choiceBoxGasAction.getItems().addAll(gasActions);
+        choiceBoxElecAction.getItems().addAll(electricityActions);
+        choiceBoxWaterAction.getItems().addAll(waterActions);
+
+        myListView.getItems().addAll(listViewActions);
+        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Action>() {
+            @Override
+            public void changed(ObservableValue<? extends Action> observableValue, Action action, Action t1) {
+                   currentAction = (Action) myListView.getSelectionModel().getSelectedItem();
+                   /*description.setPromptText(currentAction.getDescription());
+                   savedAmount.setPromptText(""+currentAction.getSavedAmount());
+                   choiceBoxApplianceKind.setValue(currentAction.getApplianceKind());*/
+
+            }
+
+
+        });
 
     }
 
@@ -86,13 +115,25 @@ public class EnergyConservationActionsController implements Initializable {
 
         ArrayList<Action> actions = new ArrayList<>();
         actions.add(newAction);
-        program.setActions(actions);
+        programs.setActions(actions);
 
         DBActions.addActionsToDatabase(newAction);
 
+        if(newAction.getApplianceKind().equals("Electricity")){
+            choiceBoxElecAction.getItems().add(newAction);
+        }
+        if(newAction.getApplianceKind().equals("Gas")){
+            choiceBoxGasAction.getItems().add(newAction);
+        }
+        if(newAction.getApplianceKind().equals("Water")){
+            choiceBoxWaterAction.getItems().add(newAction);
+        }
+        listViewActions.add(newAction);
         myListView.getItems().clear();
-        myListView.getItems().addAll(program.getActions());
+        myListView.getItems().addAll(listViewActions);
     }
+
+
 
 
 }
