@@ -596,7 +596,7 @@ public class ConservationApp {
     private ArrayList<Integer> getMonthlyConsumptionReducted(ArrayList<Integer> monthlyConsumptionRoom, ArrayList<Integer> monthlyConservation) {
         ArrayList<Integer> output = new ArrayList<>();
         for(int i=0; i<monthlyConsumptionRoom.size(); i++){
-            output.set(i, monthlyConsumptionRoom.get(i)-monthlyConservation.get(i));
+            output.add( monthlyConsumptionRoom.get(i)-monthlyConservation.get(i));
         }
         return output;
     }

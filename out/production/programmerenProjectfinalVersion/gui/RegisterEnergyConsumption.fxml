@@ -36,8 +36,8 @@
                   <TextField fx:id="roomID" layoutX="180.0" layoutY="134.0" />
                   <Label layoutX="60.0" layoutY="138.0" text="Room ID:" />
                   <Label fx:id="consumptionInfo" alignment="CENTER" layoutX="55.0" layoutY="55.0" prefHeight="17.0" prefWidth="399.0" text="Consumption not yet added!" textFill="RED" />
-                  <ChoiceBox layoutX="379.0" layoutY="91.0" prefWidth="150.0" />
-                  <Button layoutX="395.0" layoutY="134.0" mnemonicParsing="false" text="Show consumption" />
+                  <ChoiceBox fx:id="roomChoiceBox" layoutX="379.0" layoutY="91.0" prefWidth="150.0" />
+                  <Button layoutX="395.0" layoutY="134.0" mnemonicParsing="false" onAction="#showConsumption" text="Show consumption" />
                </children>
             </AnchorPane>
          </content>
