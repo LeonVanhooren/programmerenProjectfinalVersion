@@ -57,16 +57,15 @@ public class ConservationApp {
         this.currentSite = currentSite;
     }
 
-    public ArrayList<Room> getRoomsFromBuildings(){
+    public ArrayList<Room> getRoomsFromBuilding(Building building){
         ArrayList<Room> output = new ArrayList<>();
 
-        for(Building newBuilding: this.buildings){
             for(Room newRoom:this.rooms){
-                if(newRoom.getBuildingID().equals(newBuilding.getBuildingID())){
+                if(newRoom.getBuildingID().equals(building.getBuildingID())){
                     output.add(newRoom);
                 }
             }
-        }
+
         return output;
     }
 
