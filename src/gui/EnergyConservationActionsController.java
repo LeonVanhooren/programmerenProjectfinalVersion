@@ -181,8 +181,6 @@ public class EnergyConservationActionsController implements Initializable {
         savesByArrayList.add(newSavesBy);
         programs.setSavesByArrayList(savesByArrayList);
 
-        barChartElectricity.getData().clear();
-        showBarChartElectricity();
 
         DBSavesBy.addSavesByToDatabase(newSavesBy);
         DBActions.changeActionFromDatabase("recommended", currentAction.getRecommended()+1, currentAction.getActionID());
@@ -209,8 +207,6 @@ public class EnergyConservationActionsController implements Initializable {
         savesByArrayList.add(newSavesBy);
         programs.setSavesByArrayList(savesByArrayList);
 
-        barChartGas.getData().clear();
-        showBarChartGas();
 
         DBSavesBy.addSavesByToDatabase(newSavesBy);
         DBActions.changeActionFromDatabase("recommended", currentAction.getRecommended()+1, currentAction.getActionID());
@@ -238,8 +234,6 @@ public class EnergyConservationActionsController implements Initializable {
             savesByArrayList.add(newSavesBy);
             programs.setSavesByArrayList(savesByArrayList);
 
-            barChartWater.getData().clear();
-            showBarChartWater();
 
             DBSavesBy.addSavesByToDatabase(newSavesBy);
             DBActions.changeActionFromDatabase("recommended", currentAction.getRecommended()+1, currentAction.getActionID());
