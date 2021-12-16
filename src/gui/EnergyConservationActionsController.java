@@ -29,13 +29,13 @@ public class EnergyConservationActionsController implements Initializable {
     public void backToStudentMenu(ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("StudentMenu.fxml"));
-        Parent view = loader.load();
+        root = loader.load();
 
 
 
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Student menu");
-        scene = new Scene(view);
+        scene = new Scene(root);
         stage.setScene(scene);
     }
 
@@ -52,6 +52,7 @@ public class EnergyConservationActionsController implements Initializable {
     @FXML
     private ChoiceBox choiceBoxWater;
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceBoxElectricity.getItems().addAll(appliancesElectricity);
@@ -59,4 +60,6 @@ public class EnergyConservationActionsController implements Initializable {
         choiceBoxWater.getItems().addAll(appliancesWater);
 
     }
+
+
 }

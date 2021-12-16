@@ -57,6 +57,19 @@ public class ConservationApp {
         this.currentSite = currentSite;
     }
 
+    public ArrayList<Room> getRoomsFromBuildings(){
+        ArrayList<Room> output = new ArrayList<>();
+
+        for(Building newBuilding: this.buildings){
+            for(Room newRoom:this.rooms){
+                if(newRoom.getBuildingID().equals(newBuilding.getBuildingID())){
+                    output.add(newRoom);
+                }
+            }
+        }
+        return output;
+    }
+
     public Contract getCurrentContract() {
         return currentContract;
     }

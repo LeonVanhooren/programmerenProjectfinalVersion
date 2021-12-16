@@ -26,4 +26,8 @@ public class StudentReportController {
         scene = new Scene(root);
         stage.setScene(scene);
     }
+
+
+
+
 }
