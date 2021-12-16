@@ -1,13 +1,17 @@
 package gui;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import logic.ConservationApp;
@@ -15,10 +19,12 @@ import logic.*;
 import database.*;
 
 import java.io.IOException;
+import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
-public class AddContractController  {
+public class AddContractController  implements Initializable {
 
     private ConservationApp program = ConservationApp.getInstance();
 
@@ -142,5 +148,45 @@ public class AddContractController  {
         roomIDInput.setText("");
         durationInput.setText("");
         startDateInput.getEditor().clear();
+    }
+
+    @FXML
+    private ListView myListView;
+    @FXML
+    private Label studentIDStatus;
+    @FXML
+    private Label landlordIDStatus;
+    @FXML
+    private Label contractNrStatus;
+    @FXML
+    private Label startDateStatus;
+    @FXML
+    private Label durationStatus;
+    @FXML
+    private Label statusStatus;
+    @FXML
+    private Label roomIDStatus;
+
+    private Contract currentContract;
+
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        myListView.getItems().addAll(program.getContractsLandlord());
+        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Contract>() {
+            @Override
+            public void changed(ObservableValue<? extends Contract> observableValue, Contract o, Contract t1) {
+                currentContract = (Contract) myListView.getSelectionModel().getSelectedItem();
+                studentIDStatus.setText("Student ID: "+currentContract.getStudentID());
+                landlordIDStatus.setText("Landlord ID: "+currentContract.getLandlordID());
+                contractNrStatus.setText("Contract Nr: "+currentContract.getContractNr());
+                startDateStatus.setText("Start date: "+currentContract.getStartDate());
+                durationStatus.setText("Duration: "+currentContract.getContractDuration());
+                statusStatus.setText("Status: "+currentContract.getStatus());
+                roomIDStatus.setText("Room ID: "+currentContract.getcontractRoomID());
+
+            }
+        });
+
     }
 }
