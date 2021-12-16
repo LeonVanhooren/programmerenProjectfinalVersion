@@ -272,9 +272,8 @@ public class ConservationApp {
        return outputString;
     }
 
-    public Appliance[] getAppliancesStudent(){
+    public ArrayList<Appliance> getAppliancesStudent(){
         ArrayList<Appliance> appliances = new ArrayList<>();
-
 
         String roomID = null;
         for(Lease newLease:leases){
@@ -283,26 +282,23 @@ public class ConservationApp {
             }
         }
 
-       ArrayList<String > appliancesString = new ArrayList<>();
-        for(Contains newContains: containsArrayList){
-            if(newContains.getRoomID().equals(roomID)){
+       ArrayList<String> appliancesString = new ArrayList<>();
+        for(Contains newContains: containsArrayList) {
+            if (newContains.getRoomID().equals(roomID)) {
                 appliancesString.add(newContains.getApplianceID());
             }
         }
 
-
-        Appliance[] appliancesOutput = new Appliance[appliancesString.size()];
-
-        for(int i = 0; i<appliancesString.size();i++){
-            for(Appliance newAppliance: this.appliances){
-                if(newAppliance.getApplianceID().equals(appliancesString.get(i))){
-                    appliancesOutput[i] = newAppliance;
+        for(int i =0; i<appliancesString.size();i++){
+            for(Appliance newAppliance:this.appliances){
+                if(appliancesString.get(i).equals(newAppliance.getApplianceID())){
+                    appliances.add(newAppliance);
                 }
             }
         }
 
 
-        return appliancesOutput;
+        return appliances;
     }
 
     public ArrayList<Appliance> getAppliancesCurrentStudentElectricity(){

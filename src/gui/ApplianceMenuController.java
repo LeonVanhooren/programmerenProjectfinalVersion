@@ -1,5 +1,6 @@
 package gui;
 
+import database.DBActions;
 import database.DBAppliance;
 import database.DBContains;
 import javafx.beans.value.ChangeListener;
@@ -66,7 +67,7 @@ public class ApplianceMenuController implements Initializable {
 
 
     public void addAppliance(ActionEvent event) {
-        String consumption, efficiency, QRCode, applianceName;
+        String consumption, QRCode, applianceName;
         int applianceIDint;
 
         applianceIDint = (int) Math.floor(Math.random() * (999 - 100 + 1) + 999);
@@ -92,8 +93,9 @@ public class ApplianceMenuController implements Initializable {
             containsArrayList.add(newContains);
             program.setContainsArrayList(containsArrayList);
 
-            this.addApplianceList(newAppliance);
-            this.refresh();
+            this.appliances.add(newAppliance);
+            myListView.getItems().clear();
+            myListView.getItems().addAll(this.appliances);
             clearInput();
 
 
@@ -104,51 +106,6 @@ public class ApplianceMenuController implements Initializable {
 
     }
 
-    public void removeApplianceList(Appliance appliance) {
-        ArrayList<Appliance> applianceArrayList = new ArrayList<>();
-
-        for (int i = 0; i < appliances.length; i++) {
-            applianceArrayList.add(appliances[i]);
-        }
-        applianceArrayList.remove(appliance);
-
-        Appliance[] appliances1 = new Appliance[applianceArrayList.size()];
-        for (int i = 0; i < applianceArrayList.size(); i++) {
-            appliances1[i] = applianceArrayList.get(i);
-        }
-        appliances = appliances1;
-    }
-
-    public void addApplianceList(Appliance appliance) {
-        ArrayList<Appliance> applianceArrayList = new ArrayList<>();
-
-        for (int i = 0; i < appliances.length; i++) {
-            applianceArrayList.add(appliances[i]);
-        }
-        applianceArrayList.add(appliance);
-
-        Appliance[] appliances1 = new Appliance[applianceArrayList.size()];
-        for (int i = 0; i < applianceArrayList.size(); i++) {
-            appliances1[i] = applianceArrayList.get(i);
-        }
-        appliances = appliances1;
-    }
-
-    public void changeApplianceList(Appliance newAppliance, Appliance oldAppliance) {
-        ArrayList<Appliance> applianceArrayList = new ArrayList<>();
-
-        for (int i = 0; i < appliances.length; i++) {
-            applianceArrayList.add(appliances[i]);
-        }
-        applianceArrayList.remove(oldAppliance);
-        applianceArrayList.add(newAppliance);
-
-        Appliance[] appliances1 = new Appliance[applianceArrayList.size()];
-        for (int i = 0; i < applianceArrayList.size(); i++) {
-            appliances1[i] = applianceArrayList.get(i);
-        }
-        appliances = appliances1;
-    }
 
     public void refresh() {
         myListView.getItems().clear();
@@ -160,6 +117,13 @@ public class ApplianceMenuController implements Initializable {
         choiceBoxAdd1.setValue("");
         QRCodeTF.setText("");
         choiceBoxAdd.setValue("");
+    }
+    public void clearInputChange(){
+        applianceNameChange.setText("");
+        consumptionChange.setText("");
+        choiceBoxChange1.setValue("");
+        QRCodeChange.setText("");
+        choiceBoxChange.setValue("");
     }
 
     @FXML
@@ -176,21 +140,16 @@ public class ApplianceMenuController implements Initializable {
         if (!consumptionChange.getText().equals("")) {
             DBAppliance.changeApplianceFromDatabase("consumption", consumptionChange.getText(), currentAppliance.getApplianceID());
         }
-        if (!choiceBoxChange1.getValue().equals("")) {
+        if (choiceBoxChange1.getValue() != null) {
             DBAppliance.changeApplianceFromDatabase("efficiency", choiceBoxChange1.getValue(), currentAppliance.getApplianceID());
         }
         if (!QRCodeChange.getText().equals("")) {
-            DBAppliance.changeApplianceFromDatabase("QR-code", QRCodeChange.getText(), currentAppliance.getApplianceID());
+            DBAppliance.changeApplianceFromDatabase("qrCode", QRCodeChange.getText(), currentAppliance.getApplianceID());
         }
-        if (!choiceBoxChange.getValue().equals("")) {
+        if (choiceBoxChange.getValue() != null) {
             DBAppliance.changeApplianceFromDatabase("applianceKind", choiceBoxChange.getValue(), currentAppliance.getApplianceID());
         }
-
-        changeApplianceList(searchApplianceChange(currentAppliance.getApplianceID()), currentAppliance);
-        applianceNameChange.setPromptText(currentAppliance.getApplianceName());
-        consumptionChange.setPromptText(currentAppliance.getConsumption());
-        QRCodeChange.setPromptText(currentAppliance.getQRCode());
-
+        clearInputChange();
 
     }
 
@@ -206,7 +165,7 @@ public class ApplianceMenuController implements Initializable {
     }
 
     @FXML
-    private ListView<Appliance> myListView;
+    private ListView myListView;
 
 
     public String searchRoomID(Student student) {
@@ -272,7 +231,8 @@ public class ApplianceMenuController implements Initializable {
 
     private Appliance currentAppliance;
 
-    private Appliance[] appliances = program.getAppliancesStudent();
+
+    private ArrayList<Appliance> appliances = program.getAppliancesStudent();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -288,13 +248,7 @@ public class ApplianceMenuController implements Initializable {
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Appliance>() {
             @Override
             public void changed(ObservableValue<? extends Appliance> observableValue, Appliance appliance, Appliance t1) {
-                    currentAppliance = myListView.getSelectionModel().getSelectedItem();
-                    consumptionChange.setPromptText(currentAppliance.getConsumption());
-                    choiceBoxChange1.setValue(currentAppliance.getEfficiency());
-                    applianceIDChange.setText("Appliance ID:" + currentAppliance.getApplianceID());
-                    applianceNameChange.setPromptText(currentAppliance.getApplianceName());
-                    QRCodeChange.setPromptText(currentAppliance.getQRCode());
-                    choiceBoxChange.setValue(currentAppliance.getApplianceKind());
+                    currentAppliance = (Appliance) myListView.getSelectionModel().getSelectedItem();
             }
         });
     }
@@ -344,7 +298,7 @@ public class ApplianceMenuController implements Initializable {
 
         final int selectedIdx = myListView.getSelectionModel().getSelectedIndex();
         if (selectedIdx != -1) {
-            Appliance itemToRemove = myListView.getSelectionModel().getSelectedItem();
+            Appliance itemToRemove = (Appliance) myListView.getSelectionModel().getSelectedItem();
 
             final int newSelectedIdx =
                     (selectedIdx == myListView.getItems().size() - 1)
@@ -381,6 +335,26 @@ public class ApplianceMenuController implements Initializable {
         stage.setTitle("Appliance site");
         scene = new Scene(root);
         stage.setScene(scene);
+
+    }
+
+    public void removeAppliance(){
+        Appliance currentApplianceRemove = currentAppliance;
+        DBAppliance.removeApplianceFromDatabase(currentApplianceRemove);
+        appliances.remove(currentApplianceRemove);
+
+        Contains newContains = new Contains(searchRoomID(program.getCurrentStudent()), currentApplianceRemove.getApplianceID());
+
+        ArrayList<Contains> containsArrayList = program.getContainsArrayList();
+        containsArrayList.remove(newContains);
+        program.setContainsArrayList(containsArrayList);
+
+        DBContains.removeContainsFromDatabase(newContains);
+
+
+        myListView.getItems().clear();
+        myListView.getItems().addAll(appliances);
+        program.setAppliances(appliances);
 
     }
 }
