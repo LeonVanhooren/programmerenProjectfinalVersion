@@ -22,11 +22,12 @@ public class DBActions {
             ResultSet rs = stm.executeQuery("select * from actions");
             while (rs.next()) {
 
-                int savedAmount = rs.getInt("savedAmount");
                 String description = rs.getString("description");
                 String applianceKind = rs.getString("applianceKind");
                 int recommended = rs.getInt("recommended");
-                Action newAction = new Action(description, applianceKind, savedAmount, recommended);
+                int savedAmount = rs.getInt("savedAmount");
+                String actionID = rs.getString("actionID");
+                Action newAction = new Action(description, applianceKind, recommended, savedAmount, actionID);
                 actions.add(newAction);
 
             }
@@ -43,7 +44,21 @@ public class DBActions {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO actions "+"VALUES('"+action.getDescription()+"', '"+action.getApplianceKind()+"', '"+action.getRecommended()+"', '"+action.getSavedAmount()+"')";
+            String query = "INSERT INTO actions "+"VALUES('"+action.getDescription()+"', '"+action.getApplianceKind()+"', '"+action.getRecommended()+"', '"+action.getSavedAmount()+"', '"+action.getActionID()+"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+
+    public static void removeActionFromDatabase(Action action){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "DELETE FROM actions WHERE actionID="+action.getActionID();
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 

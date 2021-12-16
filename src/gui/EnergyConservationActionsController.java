@@ -80,6 +80,7 @@ public class EnergyConservationActionsController implements Initializable {
     private Action currentAction;
     private ArrayList<Action> listViewActions = programs.getActions();
 
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceBoxElectricity.getItems().addAll(appliancesElectricity);
@@ -106,12 +107,25 @@ public class EnergyConservationActionsController implements Initializable {
 
     }
 
+    public void removeAction(){
+        Action currentActionRemove = currentAction;
+        ArrayList<Action> removeList = listViewActions;
+        DBActions.removeActionFromDatabase(currentActionRemove);
+        removeList.remove(currentActionRemove);
+
+        myListView.getItems().clear();
+        myListView.getItems().addAll(removeList);
+        programs.setActions(removeList);
+    }
+
     public void addAction(){
         String descriptionString = description.getText();
         int savedAmountInteger = Integer.parseInt(savedAmount.getText());
         String applianceKind = (String) choiceBoxApplianceKind.getValue();
+        int actionID = (int) Math.floor(Math.random() * (999 - 100 + 1) + 100);
+        String actionIDString = ""+actionID;
 
-        Action newAction = new Action(descriptionString, applianceKind, savedAmountInteger, 0);
+        Action newAction = new Action(descriptionString, applianceKind, 0, savedAmountInteger, actionIDString);
 
         ArrayList<Action> actions = new ArrayList<>();
         actions.add(newAction);
@@ -131,6 +145,9 @@ public class EnergyConservationActionsController implements Initializable {
         listViewActions.add(newAction);
         myListView.getItems().clear();
         myListView.getItems().addAll(listViewActions);
+        description.setText("");
+        savedAmount.setText("");
+        choiceBoxApplianceKind.setValue("");
     }
 
 

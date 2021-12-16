@@ -102,8 +102,6 @@ public class DBAppliance {
         }
     }
 
-
-
     public static void removeApplianceFromDatabase(Appliance appliance){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);

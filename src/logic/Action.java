@@ -1,14 +1,23 @@
 package logic;
 
 public class Action {
-    private String description, applianceKind;
+    private String description, applianceKind, actionID;
     private int recommended, savedAmount;
 
-    public Action(String description, String applianceKind, int savedAmount, int recommended) {
+    public Action(String description, String applianceKind, int recommended, int savedAmount, String actionID) {
         this.description = description;
         this.applianceKind = applianceKind;
         this.savedAmount = savedAmount;
         this.recommended = recommended;
+        this.actionID = actionID;
+    }
+
+    public String getActionID() {
+        return actionID;
+    }
+
+    public void setActionID(String actionID) {
+        this.actionID = actionID;
     }
 
     public String getDescription() {
@@ -45,18 +54,7 @@ public class Action {
 
     @Override
     public String toString() {
-        String output= description + " saves "+savedAmount;
-        switch(applianceKind){
-            case "Electricity":
-                output+=" kWh electricity";
-                break;
-            case "Gas":
-                output+=" m³ gas";
-                break;
-            case "Water":
-                output+=" m³ water";
-                break;
-        }
-        return output;
+
+        return getDescription();
     }
 }
