@@ -1,5 +1,6 @@
 package gui;
 
+import database.DBActions;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,11 +9,16 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import logic.Action;
 import logic.Appliance;
 import logic.ConservationApp;
 
-import javax.swing.*;
+
+import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -43,14 +49,22 @@ public class EnergyConservationActionsController implements Initializable {
     private ArrayList<Appliance> appliancesWater = program.getAppliancesCurrentStudentWater();
     private ArrayList<Appliance> appliancesGas = program.getAppliancesCurrentStudentGas();
 
+    private String[] applianceKindInput= {"Electricity", "Water", "Gas" };
 
-
+    @FXML
+    private ChoiceBox choiceBoxApplianceKind;
     @FXML
     private ChoiceBox choiceBoxElectricity;
     @FXML
     private ChoiceBox choiceBoxGas;
     @FXML
     private ChoiceBox choiceBoxWater;
+    @FXML
+    private TextArea description;
+    @FXML
+    private TextField savedAmount;
+    @FXML
+    private ListView myListView;
 
 
     @Override
@@ -58,7 +72,26 @@ public class EnergyConservationActionsController implements Initializable {
         choiceBoxElectricity.getItems().addAll(appliancesElectricity);
         choiceBoxGas.getItems().addAll(appliancesGas);
         choiceBoxWater.getItems().addAll(appliancesWater);
+        choiceBoxApplianceKind.getItems().addAll(applianceKindInput);
+        myListView.getItems().addAll(program.getActions());
 
+    }
+
+    public void addAction(){
+        String descriptionString = description.getText();
+        int savedAmountInteger = Integer.parseInt(savedAmount.getText());
+        String applianceKind = (String) choiceBoxApplianceKind.getValue();
+
+        Action newAction = new Action(descriptionString, applianceKind, savedAmountInteger, 0);
+
+        ArrayList<Action> actions = new ArrayList<>();
+        actions.add(newAction);
+        program.setActions(actions);
+
+        DBActions.addActionsToDatabase(newAction);
+
+        myListView.getItems().clear();
+        myListView.getItems().addAll(program.getActions());
     }
 
 

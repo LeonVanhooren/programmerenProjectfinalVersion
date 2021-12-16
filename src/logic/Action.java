@@ -1,10 +1,10 @@
 package logic;
 
 public class Action {
-    private String description, applianceKind, savedAmount;
-    private int recommended;
+    private String description, applianceKind;
+    private int recommended, savedAmount;
 
-    public Action(String description, String applianceKind, String savedAmount, int recommended) {
+    public Action(String description, String applianceKind, int savedAmount, int recommended) {
         this.description = description;
         this.applianceKind = applianceKind;
         this.savedAmount = savedAmount;
@@ -27,11 +27,11 @@ public class Action {
         this.applianceKind = applianceKind;
     }
 
-    public String getSavedAmount() {
+    public int getSavedAmount() {
         return savedAmount;
     }
 
-    public void setSavedAmount(String savedAmount) {
+    public void setSavedAmount(int savedAmount) {
         this.savedAmount = savedAmount;
     }
 

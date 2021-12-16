@@ -25,6 +25,8 @@ public class ConservationApp {
     private ArrayList<Registers> registers;
     private Contract currentContract;
     private String currentSite;
+    private ArrayList<Action> actions;
+    private ArrayList<SavesBy> savesByArrayList;
 
 
 
@@ -46,7 +48,25 @@ public class ConservationApp {
         this.registers = DBRegisters.databaseReadRegisters();
         this.monthlyConsumptions = DBMonthlyConsumption.databaseReadMonthlyConsumption();
         this.currentSite = null;
+        this.actions = DBActions.databaseReadActions();
+        this.savesByArrayList = DBSavesBy.databaseReadSavesBy();
 
+    }
+
+    public ArrayList<SavesBy> getSavesByArrayList() {
+        return savesByArrayList;
+    }
+
+    public void setSavesByArrayList(ArrayList<SavesBy> savesByArrayList) {
+        this.savesByArrayList = savesByArrayList;
+    }
+
+    public ArrayList<Action> getActions() {
+        return actions;
+    }
+
+    public void setActions(ArrayList<Action> actions) {
+        this.actions = actions;
     }
 
     public String getCurrentSite() {
