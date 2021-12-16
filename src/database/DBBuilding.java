@@ -1,6 +1,5 @@
 package database;
 
-import logic.Appliance;
 import logic.Building;
 
 import java.sql.*;
@@ -26,10 +25,10 @@ public class DBBuilding {
                 String buildingID = rs.getString("buildingID");
                 String country = rs.getString("country");
                 String city = rs.getString("city");
-                String adress = rs.getString("adress");
+                String address = rs.getString("address");
                 String zip = rs.getString("zip");
 
-                Building newBuilding = new Building(buildingID, country, city, adress,zip);
+                Building newBuilding = new Building(buildingID, country, city, address,zip);
                 buildings.add(newBuilding);
 
             }
@@ -45,7 +44,7 @@ public class DBBuilding {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO building "+"VALUES('"+building.getBuildingID()+"', '"+building.getCountry()+"', '"+building.getCity()+"', '"+building.getAdress()+"' , '"+building.getZip() +"')";
+            String query = "INSERT INTO building "+"VALUES('"+building.getBuildingID()+"', '"+building.getCountry()+"', '"+building.getCity()+"', '"+building.getAddress()+"' , '"+building.getZip() +"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
@@ -73,8 +72,8 @@ public class DBBuilding {
                     pstmt2.setString(2, primaryKey);
                     pstmt2.executeUpdate();
                     break;
-                case "adress":
-                    String query3 = "UPDATE building SET adress = ? WHERE buildingID = ?";
+                case "address":
+                    String query3 = "UPDATE building SET address = ? WHERE buildingID = ?";
                     PreparedStatement pstmt3 = connection.prepareStatement(query3);
                     pstmt3.setString(1, change);
                     pstmt3.setString(2, primaryKey);

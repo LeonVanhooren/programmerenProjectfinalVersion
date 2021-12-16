@@ -3,7 +3,6 @@ package gui;
 import database.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -16,10 +15,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import logic.*;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -122,7 +119,7 @@ public class AddStudentRoomController implements Initializable {
                 City.setPromptText(searchBuildingCity(currentBuilding));
                 Country.setPromptText(searchBuildingCountry(currentBuilding));
                 Zip.setPromptText(searchBuildingZip(currentBuilding));
-                Address.setPromptText(searchBuildingAdressStudent(currentBuilding));
+                Address.setPromptText(searchBuildingAddressStudent(currentBuilding));
             }
             
         });
@@ -201,47 +198,47 @@ public class AddStudentRoomController implements Initializable {
         return buildingID;
     }
 
-    public String searchBuildingAdressStudent(String buildingID){
-        String buildingAdress = null;
+    public String searchBuildingAddressStudent(String buildingID){
+        String buildingAddress = null;
         for(Building newBuilding: program.getBuildings()){
             if(newBuilding.getBuildingID().equals(buildingID)){
-                buildingAdress = newBuilding.getAdress();
+                buildingAddress = newBuilding.getAddress();
             }
         }
-        return buildingAdress;
+        return buildingAddress;
     }
 
     public String searchBuildingCountry(String buildingID){
-        String buildingAdress = null;
+        String buildingAddress = null;
         for(Building newBuilding: program.getBuildings()){
             if(newBuilding.getBuildingID().equals(buildingID)){
-                buildingAdress = newBuilding.getCountry();
+                buildingAddress = newBuilding.getCountry();
             }
         }
-        return buildingAdress;
+        return buildingAddress;
     }
 
     public String searchBuildingCity(String buildingID){
-        String buildingAdress = null;
+        String buildingAddress = null;
         for(Building newBuilding: program.getBuildings()){
             if(newBuilding.getBuildingID().equals(buildingID)){
-                buildingAdress = newBuilding.getCity();
+                buildingAddress = newBuilding.getCity();
             }
         }
-        return buildingAdress;
+        return buildingAddress;
     }
 
     public String searchBuildingZip(String buildingID){
-        String buildingAdress = null;
+        String buildingAddress = null;
         for(Building newBuilding: program.getBuildings()){
             if(newBuilding.getBuildingID().equals(buildingID)){
-                buildingAdress = newBuilding.getZip();
+                buildingAddress = newBuilding.getZip();
             }
         }
-        return buildingAdress;
+        return buildingAddress;
     }
     @FXML
-    private TextField adressInput;
+    private TextField addressInput;
     @FXML
     private TextField countryInput;
     @FXML
@@ -254,17 +251,17 @@ public class AddStudentRoomController implements Initializable {
     private Label buildinginfo;
 
     public void addBuildingButton(){
-        String adress, country, city, zip;
-        adress = adressInput.getText();
+        String address, country, city, zip;
+        address = addressInput.getText();
         country = countryInput.getText();
         city = cityInput.getText();
         zip = zipInput.getText();
 
         if (!emptyFieldsBuilding()){
-            if(buildingExists(adress, country, city, zip) == false){
+            if(buildingExists(address, country, city, zip) == false){
             int buildingID = (int)Math.floor(Math.random()*(99999-10000+1)+10000);
             String buildingIDString = ""+buildingID;
-            Building newBuilding = new Building(buildingIDString, country, city, adress, zip);
+            Building newBuilding = new Building(buildingIDString, country, city, address, zip);
             DBBuilding.addBuildingToDatabase(newBuilding);
 
             ArrayList<Building> buildings = new ArrayList<>();
@@ -296,9 +293,9 @@ public class AddStudentRoomController implements Initializable {
 
     }
 
-    public boolean buildingExists(String adress, String country, String city, String zip){
+    public boolean buildingExists(String address, String country, String city, String zip){
         for(Building b : program.getBuildings()){
-            if((b.getAdress().equals(adress)) && (b.getCountry().equals(country)) && (b.getCity().equals(city)) && (b.getZip().equals(zip))){
+            if((b.getAddress().equals(address)) && (b.getCountry().equals(country)) && (b.getCity().equals(city)) && (b.getZip().equals(zip))){
                 return true;
             }
         }
@@ -324,7 +321,7 @@ public class AddStudentRoomController implements Initializable {
         characteristics = characteristicsInput.getText();
         if(!emptyFieldsRoom()){
 
-            if(!roomExists(buildingID, roomNr)){
+            if(!roomExists(buildingID, roomNr)&&buildingIsFromLandlord(buildingID)){
             String roomIDString = buildingID +"." + roomNrInput.getText();
             Room newRoom = new Room(roomNr, roomIDString, buildingID, characteristics);
             DBRoom.addRoomToDatabase(newRoom);
@@ -349,8 +346,9 @@ public class AddStudentRoomController implements Initializable {
 
             clearRoomInput();
         }
-        else if (roomExists(buildingID,roomNr)){
-            registerRoomInfo.setText("The database already contains this room!");
+        else if (roomExists(buildingID,roomNr)||!buildingIsFromLandlord(buildingID)){
+            registerRoomInfo.setText("This room already exists/this building doesn't exists!");
+            clearRoomInput();
         }
     }
     else if (emptyFieldsRoom()){
@@ -358,9 +356,13 @@ public class AddStudentRoomController implements Initializable {
         registerRoomInfo.setText("Please fill in every field!");
         }}
     public boolean roomExists(String buildingID,int roomNr){
-        for (Room r : program.getRooms()){
-            if((r.getBuildingID().equals(buildingID)) && (r.getRoomNR() == roomNr)){
-                return true;
+        for(Building b : program.getCurrentLandlordBuildings()) {
+            if (b.getBuildingID().equals(buildingID)) {
+                for (Room r : program.getRoomsFromBuilding(b)) {
+                    if ((r.getRoomNR() == roomNr)) {
+                        return true;
+                    }
+                }
             }
         }
         return false;
@@ -368,7 +370,7 @@ public class AddStudentRoomController implements Initializable {
 
     public void changeBuilding() {
         if(!Address.getText().equals("")){
-            DBBuilding.changeBuildingFromDatabase("adress", Address.getText(), currentBuilding);
+            DBBuilding.changeBuildingFromDatabase("address", Address.getText(), currentBuilding);
         }
         if(!City.getText().equals("")){
             DBBuilding.changeBuildingFromDatabase("city", City.getText(), currentBuilding);
@@ -392,7 +394,7 @@ public class AddStudentRoomController implements Initializable {
         }
     }
     public void clearBuildingInput(){
-        adressInput.setText("");
+        addressInput.setText("");
         countryInput.setText("");
         cityInput.setText("");
         zipInput.setText("");
@@ -411,13 +413,19 @@ public class AddStudentRoomController implements Initializable {
         return false;
     }
     public boolean emptyFieldsBuilding(){
-        if ((adressInput.getText().equals(""))||(countryInput.getText().equals(""))||(cityInput.getText().equals(""))||(zipInput.getText().equals(""))){
+        if ((addressInput.getText().equals(""))||(countryInput.getText().equals(""))||(cityInput.getText().equals(""))||(zipInput.getText().equals(""))){
             return true;
         }
         return false;
     }
-
-
+    public boolean buildingIsFromLandlord(String buildingID){
+        for(Building b : program.getCurrentLandlordBuildings()){
+            if(b.getBuildingID().equals(buildingID)){
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 

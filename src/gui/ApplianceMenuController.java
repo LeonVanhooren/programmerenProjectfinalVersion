@@ -352,10 +352,6 @@ public class ApplianceMenuController implements Initializable {
 
             DBAppliance.removeApplianceFromDatabase(itemToRemove);
 
-
-
-
-
             myListView.getItems().remove(selectedIdx);
             myListView.getSelectionModel().select(newSelectedIdx);
 
