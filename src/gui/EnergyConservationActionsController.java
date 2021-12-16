@@ -94,9 +94,9 @@ public class EnergyConservationActionsController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Action> observableValue, Action action, Action t1) {
                    currentAction = (Action) myListView.getSelectionModel().getSelectedItem();
-                   /*description.setPromptText(currentAction.getDescription());
+                   description.setPromptText(currentAction.getDescription());
                    savedAmount.setPromptText(""+currentAction.getSavedAmount());
-                   choiceBoxApplianceKind.setValue(currentAction.getApplianceKind());*/
+                   choiceBoxApplianceKind.setValue(currentAction.getApplianceKind());
 
             }
 
