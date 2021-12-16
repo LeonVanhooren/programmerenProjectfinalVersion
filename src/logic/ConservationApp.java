@@ -24,6 +24,7 @@ public class ConservationApp {
     private ArrayList<MonthlyConsumption> monthlyConsumptions;
     private ArrayList<Registers> registers;
     private Contract currentContract;
+    private String currentSite;
 
 
 
@@ -44,7 +45,16 @@ public class ConservationApp {
         this.currentContract = null;
         this.registers = DBRegisters.databaseReadRegisters();
         this.monthlyConsumptions = DBMonthlyConsumption.databaseReadMonthlyConsumption();
+        this.currentSite = null;
 
+    }
+
+    public String getCurrentSite() {
+        return currentSite;
+    }
+
+    public void setCurrentSite(String currentSite) {
+        this.currentSite = currentSite;
     }
 
     public Contract getCurrentContract() {
@@ -236,6 +246,93 @@ public class ConservationApp {
 
 
         return appliancesOutput;
+    }
+
+    public ArrayList<Appliance> getAppliancesCurrentStudentElectricity(){
+        ArrayList<Appliance> appliances = new ArrayList<>();
+
+
+        String roomID = null;
+        for(Lease newLease:leases){
+            if(newLease.getStudentID().equals(currentStudent.getStudentID())){
+                roomID = newLease.getRoomID();
+            }
+        }
+        System.out.println(roomID);
+
+        ArrayList<String > appliancesString = new ArrayList<>();
+        for(Contains newContains: containsArrayList){
+            if(newContains.getRoomID().equals(roomID)){
+                System.out.println(newContains.getApplianceID());
+                appliancesString.add(newContains.getApplianceID());
+            }
+        }
+        for(String applianceID: appliancesString) {
+            for (Appliance newAppliance : this.appliances) {
+                if (newAppliance.getApplianceID().equals(applianceID)&&newAppliance.getApplianceKind().equals("Electricity")){
+                    appliances.add(newAppliance);
+                }
+            }
+        }
+        return appliances;
+    }
+
+    public ArrayList<Appliance> getAppliancesCurrentStudentWater(){
+        ArrayList<Appliance> appliances = new ArrayList<>();
+
+
+        String roomID = null;
+        for(Lease newLease:leases){
+            if(newLease.getStudentID().equals(currentStudent.getStudentID())){
+                roomID = newLease.getRoomID();
+            }
+        }
+        System.out.println(roomID);
+
+        ArrayList<String > appliancesString = new ArrayList<>();
+        for(Contains newContains: containsArrayList){
+            if(newContains.getRoomID().equals(roomID)){
+                System.out.println(newContains.getApplianceID());
+                appliancesString.add(newContains.getApplianceID());
+            }
+        }
+        for(String applianceID: appliancesString) {
+            for (Appliance newAppliance : this.appliances) {
+                if (newAppliance.getApplianceID().equals(applianceID)&&newAppliance.getApplianceKind().equals("Water")){
+                    appliances.add(newAppliance);
+                }
+            }
+        }
+        return appliances;
+    }
+
+    public ArrayList<Appliance> getAppliancesCurrentStudentGas(){
+        ArrayList<Appliance> appliances = new ArrayList<>();
+
+
+        String roomID = null;
+        for(Lease newLease:leases){
+            if(newLease.getStudentID().equals(currentStudent.getStudentID())){
+                roomID = newLease.getRoomID();
+            }
+        }
+        System.out.println(roomID);
+
+        ArrayList<String > appliancesString = new ArrayList<>();
+        for(Contains newContains: containsArrayList){
+            if(newContains.getRoomID().equals(roomID)){
+                System.out.println(newContains.getApplianceID());
+                appliancesString.add(newContains.getApplianceID());
+            }
+        }
+        for(String applianceID: appliancesString) {
+            for (Appliance newAppliance : this.appliances) {
+                if (newAppliance.getApplianceID().equals(applianceID)&&newAppliance.getApplianceKind().equals("Gas")){
+                    appliances.add(newAppliance);
+                }
+            }
+        }
+        return appliances;
     }
 
     public ArrayList<Registers> getRegistersLandlord(String date){

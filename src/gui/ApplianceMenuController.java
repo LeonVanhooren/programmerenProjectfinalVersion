@@ -373,4 +373,16 @@ public class ApplianceMenuController implements Initializable {
 
         }
     }
+
+    public void goToSite(ActionEvent event) throws IOException {
+        program.setCurrentSite(QRCodeTF.getText());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("WebView.fxml"));
+        root = loader.load();
+
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Appliance site");
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
 }
