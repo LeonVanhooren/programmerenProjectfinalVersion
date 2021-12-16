@@ -10,19 +10,17 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import logic.Action;
 import logic.Appliance;
 import logic.ConservationApp;
+import logic.SavesBy;
 
 
-import java.beans.PropertyChangeListener;
 import java.io.IOException;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -57,13 +55,13 @@ public class EnergyConservationActionsController implements Initializable {
     private String[] applianceKindInput= {"Electricity", "Water", "Gas" };
 
     @FXML
-    private ChoiceBox choiceBoxApplianceKind;
+    private ChoiceBox<String> choiceBoxApplianceKind;
     @FXML
-    private ChoiceBox choiceBoxElectricity;
+    private ChoiceBox<Appliance> choiceBoxElectricity;
     @FXML
-    private ChoiceBox choiceBoxGas;
+    private ChoiceBox<Appliance> choiceBoxGas;
     @FXML
-    private ChoiceBox choiceBoxWater;
+    private ChoiceBox<Appliance> choiceBoxWater;
     @FXML
     private TextArea description;
     @FXML
@@ -71,11 +69,11 @@ public class EnergyConservationActionsController implements Initializable {
     @FXML
     private ListView myListView;
     @FXML
-    private ChoiceBox choiceBoxElecAction;
+    private ChoiceBox<Action> choiceBoxElecAction;
     @FXML
-    private ChoiceBox choiceBoxGasAction;
+    private ChoiceBox<Action> choiceBoxGasAction;
     @FXML
-    private ChoiceBox choiceBoxWaterAction;
+    private ChoiceBox<Action> choiceBoxWaterAction;
 
     private Action currentAction;
     private ArrayList<Action> listViewActions = programs.getActions();
@@ -148,6 +146,19 @@ public class EnergyConservationActionsController implements Initializable {
         description.setText("");
         savedAmount.setText("");
         choiceBoxApplianceKind.setValue("");
+    }
+
+    @FXML
+    private DatePicker datePickerElectricity;
+
+    public void setActionOnElectricityAppliance(){
+        Appliance currentAppliance = choiceBoxElectricity.getValue();
+        LocalDate date = datePickerElectricity.getValue();
+        String dateString = date.getDayOfMonth()+"/"+date.getMonthValue()+"/"+date.getYear();
+        Action currentAction = choiceBoxElecAction.getValue();
+
+        SavesBy newSavesBy = new SavesBy(currentAppliance.getApplianceID(), )
+
     }
 
 

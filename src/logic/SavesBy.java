@@ -1,11 +1,23 @@
 package logic;
 
 public class SavesBy {
-    private String applianceID, description;
+    private String applianceID, actionID, date;
 
-    public SavesBy(String applianceID, String description) {
+    public SavesBy(String actionID,String applianceID, String date) {
         this.applianceID = applianceID;
-        this.description = description;
+        this.actionID = actionID;
+    }
+
+    public void setActionID(String actionID) {
+        this.actionID = actionID;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getApplianceID() {
@@ -16,19 +28,16 @@ public class SavesBy {
         this.applianceID = applianceID;
     }
 
-    public String getDescription() {
-        return description;
+    public String getActionID() {
+        return actionID;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
 
     @Override
     public String toString() {
         return "SavesBy{" +
                 "applianceID='" + applianceID + '\'' +
-                ", description='" + description + '\'' +
+                ", description='" + actionID + '\'' +
                 '}';
     }
 }

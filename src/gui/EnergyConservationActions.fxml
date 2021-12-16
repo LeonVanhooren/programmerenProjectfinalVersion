@@ -24,7 +24,7 @@
                         <Image url="@electriciteit.jpg" />
                      </image>
                   </ImageView>
-                  <DatePicker layoutX="208.0" layoutY="171.0" />
+                  <DatePicker fx:id="datePickerElectricity" layoutX="208.0" layoutY="171.0" />
                   <Label layoutX="265.0" layoutY="137.0" text="Select a day:" />
                   <Label layoutX="196.0" layoutY="211.0" text="Choose energy conservation action(s):" />
                   <Button layoutX="265.0" layoutY="285.0" mnemonicParsing="false" text="Submit" />
