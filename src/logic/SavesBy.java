@@ -6,6 +6,7 @@ public class SavesBy {
     public SavesBy(String actionID,String applianceID, String date) {
         this.applianceID = applianceID;
         this.actionID = actionID;
+        this.date = date;
     }
 
     public void setActionID(String actionID) {
