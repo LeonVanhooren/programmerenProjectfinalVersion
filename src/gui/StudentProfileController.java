@@ -1,8 +1,6 @@
 package gui;
 
 import database.DBStudent;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -108,7 +106,7 @@ public class StudentProfileController implements Initializable {
         String buildingAdress = null;
         for(Building newBuilding: program.getBuildings()){
             if(newBuilding.getBuildingID().equals(buildingID)){
-                buildingAdress = newBuilding.getAdress();
+                buildingAdress = newBuilding.getAddress();
             }
         }
         return buildingAdress;
