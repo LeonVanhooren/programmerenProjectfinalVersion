@@ -11,14 +11,14 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.DatePicker;
+import javafx.scene.control.*;
 import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import logic.ConservationApp;
 import logic.MonthlyConsumption;
 import logic.Registers;
+import logic.Room;
 
 import java.awt.*;
 import java.io.IOException;
@@ -118,11 +118,24 @@ public class RegisterEnergyConsumptionController implements Initializable {
 
     @FXML
     private ListView<Registers> myListView;
+    @FXML
+    private ChoiceBox roomChoiceBox;
+
+
+    public void showConsumption(){
+        LocalDate date = datePicker.getValue();
+        String dateString = date.getDayOfMonth()+"/"+date.getMonthValue()+"/"+date.getYear();
+        ArrayList<Integer> output = program.getMonthlyConsumptionFromRoom(dateString, (Room) roomChoiceBox.getValue());
+        electricity.setText(String.valueOf(output.get(0)));
+        gas.setText(String.valueOf(output.get(1)));
+        water.setText(String.valueOf(output.get(2)));
+    }
 
     private Registers currentRegister;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         myListView.getItems().addAll(program.getRegisters());
+        roomChoiceBox.getItems().addAll(program.getCurrentLandlordRooms());
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Registers>() {
             @Override
             public void changed(ObservableValue<? extends Registers> observableValue, Registers registers, Registers t1) {
@@ -133,6 +146,8 @@ public class RegisterEnergyConsumptionController implements Initializable {
     });
 
     }
+
+
 
 
 
