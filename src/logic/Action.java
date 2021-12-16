@@ -54,7 +54,18 @@ public class Action {
 
     @Override
     public String toString() {
-
-        return getDescription();
+        String output = getDescription()+" saves "+getSavedAmount();
+        switch (getApplianceKind()){
+            case "Electricity":
+                output += " kWh electricity";
+                break;
+            case "Gas":
+                output+=" m³ gas";
+                break;
+            case "Water":
+                output+=" m³ water";
+                break;
+        }
+        return output;
     }
 }
