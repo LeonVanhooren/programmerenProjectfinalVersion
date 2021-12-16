@@ -54,8 +54,6 @@ public class ApplianceMenuController implements Initializable {
     @FXML
     private TextField consumptionTF;
     @FXML
-    private TextField efficiencyTF;
-    @FXML
     private Label addApplianceLabel;
     @FXML
     private Label RemoveApplianceLabel;
@@ -74,14 +72,13 @@ public class ApplianceMenuController implements Initializable {
         applianceIDint = (int) Math.floor(Math.random() * (999 - 100 + 1) + 999);
         String applianceIDString = "1" + applianceIDint;
         consumption = consumptionTF.getText();
-        efficiency = efficiencyTF.getText();
         QRCode = QRCodeTF.getText();
         applianceName = applianceNameTF.getText();
 
         if (appliancePresent(applianceName) == true) {
             setAddApplianceStatus("The database already contains this appliance!");
         } else {
-            Appliance newAppliance = new Appliance(applianceIDString, consumption, efficiency, QRCode, applianceName, choiceBoxAdd.getValue());
+            Appliance newAppliance = new Appliance(applianceIDString, consumption, choiceBoxAdd1.getValue(), QRCode, applianceName, choiceBoxAdd.getValue());
             applianceID.setText("The appliance ID is: " + applianceIDString);
 
             DBAppliance.addApplianceToDatabase(newAppliance);
@@ -160,7 +157,7 @@ public class ApplianceMenuController implements Initializable {
     public void clearInput(){
         applianceNameTF.setText("");
         consumptionTF.setText("");
-        efficiencyTF.setText("");
+        choiceBoxAdd1.setValue("");
         QRCodeTF.setText("");
         choiceBoxAdd.setValue("");
     }
@@ -169,8 +166,6 @@ public class ApplianceMenuController implements Initializable {
     private TextField applianceNameChange;
     @FXML
     private TextField consumptionChange;
-    @FXML
-    private TextField efficiencyChange;
     @FXML
     private TextField QRCodeChange;
 
@@ -181,8 +176,8 @@ public class ApplianceMenuController implements Initializable {
         if (!consumptionChange.getText().equals("")) {
             DBAppliance.changeApplianceFromDatabase("consumption", consumptionChange.getText(), currentAppliance.getApplianceID());
         }
-        if (!efficiencyChange.getText().equals("")) {
-            DBAppliance.changeApplianceFromDatabase("efficiency", efficiencyChange.getText(), currentAppliance.getApplianceID());
+        if (!choiceBoxChange1.getValue().equals("")) {
+            DBAppliance.changeApplianceFromDatabase("efficiency", choiceBoxChange1.getValue(), currentAppliance.getApplianceID());
         }
         if (!QRCodeChange.getText().equals("")) {
             DBAppliance.changeApplianceFromDatabase("QR-code", QRCodeChange.getText(), currentAppliance.getApplianceID());
@@ -194,7 +189,6 @@ public class ApplianceMenuController implements Initializable {
         changeApplianceList(searchApplianceChange(currentAppliance.getApplianceID()), currentAppliance);
         applianceNameChange.setPromptText(currentAppliance.getApplianceName());
         consumptionChange.setPromptText(currentAppliance.getConsumption());
-        efficiencyChange.setPromptText(currentAppliance.getEfficiency());
         QRCodeChange.setPromptText(currentAppliance.getQRCode());
 
 
@@ -243,9 +237,25 @@ public class ApplianceMenuController implements Initializable {
     @FXML
     private Label applianceIDChange;
     @FXML
+    private ChoiceBox<String> choiceBoxAdd1;
+    @FXML
+    private ChoiceBox<String> choiceBoxChange1;
+    @FXML
     private ChoiceBox<String> choiceBoxAdd;
     @FXML
     private ChoiceBox<String> choiceBoxChange;
+
+    private String[] choices1 = {"A", "B", "C", "D", "E", "F", "G"};
+
+    private String currentChoiceAdd1;
+    private String currentChoiceChange1;
+
+    public void getCurrentAdd1(ActionEvent event){
+        currentChoiceAdd1 = choiceBoxAdd1.getValue();
+    }
+    public void getCurrentChange1(ActionEvent event){
+        currentChoiceChange1 = choiceBoxChange1.getValue();
+    }
 
     private String[] choices = {"Electricity", "Water", "Gas"};
 
@@ -270,14 +280,17 @@ public class ApplianceMenuController implements Initializable {
         choiceBoxAdd.setOnAction(this::getCurrentAdd);
         choiceBoxChange.getItems().addAll(choices);
         choiceBoxChange.setOnAction(this::getCurrentChange);
+        choiceBoxAdd1.getItems().addAll(choices1);
+        choiceBoxAdd1.setOnAction(this::getCurrentAdd1);
+        choiceBoxChange1.getItems().addAll(choices1);
+        choiceBoxChange1.setOnAction(this::getCurrentChange1);
         myListView.getItems().addAll(appliances);
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Appliance>() {
             @Override
             public void changed(ObservableValue<? extends Appliance> observableValue, Appliance appliance, Appliance t1) {
-                    myListView.refresh();
                     currentAppliance = myListView.getSelectionModel().getSelectedItem();
                     consumptionChange.setPromptText(currentAppliance.getConsumption());
-                    efficiencyChange.setPromptText(currentAppliance.getEfficiency());
+                    choiceBoxChange1.setValue(currentAppliance.getEfficiency());
                     applianceIDChange.setText("Appliance ID:" + currentAppliance.getApplianceID());
                     applianceNameChange.setPromptText(currentAppliance.getApplianceName());
                     QRCodeChange.setPromptText(currentAppliance.getQRCode());

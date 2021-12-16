@@ -254,12 +254,10 @@ public class ConservationApp {
                 roomID = newLease.getRoomID();
             }
         }
-        System.out.println(roomID);
 
        ArrayList<String > appliancesString = new ArrayList<>();
         for(Contains newContains: containsArrayList){
             if(newContains.getRoomID().equals(roomID)){
-                System.out.println(newContains.getApplianceID());
                 appliancesString.add(newContains.getApplianceID());
             }
         }
@@ -270,7 +268,6 @@ public class ConservationApp {
         for(int i = 0; i<appliancesString.size();i++){
             for(Appliance newAppliance: this.appliances){
                 if(newAppliance.getApplianceID().equals(appliancesString.get(i))){
-                    System.out.println(newAppliance);
                     appliancesOutput[i] = newAppliance;
                 }
             }
@@ -295,7 +292,6 @@ public class ConservationApp {
         ArrayList<String > appliancesString = new ArrayList<>();
         for(Contains newContains: containsArrayList){
             if(newContains.getRoomID().equals(roomID)){
-                System.out.println(newContains.getApplianceID());
                 appliancesString.add(newContains.getApplianceID());
             }
         }
@@ -324,7 +320,6 @@ public class ConservationApp {
         ArrayList<String > appliancesString = new ArrayList<>();
         for(Contains newContains: containsArrayList){
             if(newContains.getRoomID().equals(roomID)){
-                System.out.println(newContains.getApplianceID());
                 appliancesString.add(newContains.getApplianceID());
             }
         }
@@ -348,12 +343,10 @@ public class ConservationApp {
                 roomID = newLease.getRoomID();
             }
         }
-        System.out.println(roomID);
 
         ArrayList<String > appliancesString = new ArrayList<>();
         for(Contains newContains: containsArrayList){
             if(newContains.getRoomID().equals(roomID)){
-                System.out.println(newContains.getApplianceID());
                 appliancesString.add(newContains.getApplianceID());
             }
         }
