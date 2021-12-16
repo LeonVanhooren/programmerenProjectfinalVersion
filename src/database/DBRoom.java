@@ -84,6 +84,10 @@ public class DBRoom {
         }
     }
 
+    public static void changeIdforRoom(String roomNr){
+
+    }
+
     public static void removeRoomFromDatabase(Room room){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
