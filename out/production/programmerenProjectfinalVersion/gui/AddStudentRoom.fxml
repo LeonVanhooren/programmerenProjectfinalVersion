@@ -15,7 +15,7 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="registerRoomInfo" alignment="CENTER" layoutX="184.0" layoutY="14.0" text="Student room is not yet added" />
+                  <Label fx:id="registerRoomInfo" layoutX="177.0" layoutY="14.0" text="Student room is not yet added" />
                   <Label layoutX="100.0" layoutY="88.0" text="Room number:" />
                   <Label layoutX="118.0" layoutY="127.0" />
                   <TextField fx:id="roomNrInput" layoutX="191.0" layoutY="84.0" />
@@ -23,7 +23,7 @@
                   <Button layoutX="451.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
                   <Button layoutX="209.0" layoutY="227.0" mnemonicParsing="false" onAction="#addRoomButton" text="Add student room" />
                   <Label layoutX="118.0" layoutY="127.0" text="Building ID:" />
-                  <Label fx:id="roomIDT" alignment="CENTER" layoutX="143.0" layoutY="51.0" prefHeight="17.0" prefWidth="245.0" />
+                  <Label fx:id="roomIDT" layoutX="234.0" layoutY="48.0" text="Room id:" />
                   <TextField fx:id="characteristicsInput" layoutX="191.0" layoutY="162.0" />
                   <Label layoutX="100.0" layoutY="166.0" text="Characteristics:" />
                </children></AnchorPane>
@@ -41,17 +41,12 @@
                   <TextField fx:id="buildingIDRoom" layoutX="348.0" layoutY="116.0" />
                   <Button layoutX="365.0" layoutY="248.0" mnemonicParsing="false" onAction="#changeRoom" text="Save student room" />
                   <Button layoutX="97.0" layoutY="287.0" mnemonicParsing="false" text="Remove" />
-                  <Button layoutX="451.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
+                  <Button layoutX="452.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
                   <ListView fx:id="myListView" layoutX="27.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" />
                   <Label layoutX="283.0" layoutY="206.0" text="Room ID:" />
                   <Label fx:id="roomIDroom" layoutX="373.0" layoutY="206.0" text="No room selected!" />
                   <Label fx:id="characteristicsLabel" layoutX="261.0" layoutY="152.0" text="characteristics:" />
                   <TextField fx:id="characteristics" layoutX="348.0" layoutY="148.0" />
-                  <Button layoutX="189.0" layoutY="278.0" mnemonicParsing="false" onAction="#refreshRoomListView" text="Refresh">
-                     <font>
-                        <Font size="8.0" />
-                     </font>
-                  </Button>
                </children>
             </AnchorPane>
          </content>
@@ -60,18 +55,19 @@
          <content>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <Label fx:id="buildinginfo" alignment="CENTER" layoutX="85.0" layoutY="20.0" prefHeight="17.0" prefWidth="361.0" text="Student room is not yet added" />
+                  <Label fx:id="buildinginfo" layoutX="177.0" layoutY="14.0" text="Student room is not yet added" />
                   <Label layoutX="127.0" layoutY="87.0" text="Address:" />
+                  <Label layoutX="118.0" layoutY="127.0" />
                   <TextField fx:id="adressInput" layoutX="191.0" layoutY="83.0" />
                   <TextField fx:id="countryInput" layoutX="191.0" layoutY="123.0" />
-                  <Button layoutX="451.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="25.3333333333332" prefWidth="40.6666666666664" text="Back" />
+                  <Button layoutX="450.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="25.0" prefWidth="42.0" text="Back" />
                   <Button layoutX="216.0" layoutY="274.0" mnemonicParsing="false" onAction="#addBuildingButton" text="Add building" />
-                  <Label layoutX="127.0" layoutY="127.0" text="Country:" />
-                  <Label layoutX="149.0" layoutY="167.0" text="City:" />
+                  <Label layoutX="127.0" layoutY="118.0" text="Country:" />
+                  <Label layoutX="138.0" layoutY="167.0" text="City:" />
                   <TextField fx:id="cityInput" layoutX="191.0" layoutY="163.0" />
                   <TextField fx:id="zipInput" layoutX="191.0" layoutY="206.0" />
-                  <Label layoutX="152.0" layoutY="210.0" text="Zip:" />
-                  <Label fx:id="buildingIDT" alignment="CENTER" layoutX="132.0" layoutY="50.0" prefHeight="17.0" prefWidth="267.0" />
+                  <Label layoutX="141.0" layoutY="210.0" text="Zip" />
+                  <Label fx:id="buildingIDT" layoutX="227.0" layoutY="50.0" text="Building ID:" />
                </children>
             </AnchorPane>
          </content>
@@ -92,9 +88,9 @@
                   <TextField fx:id="Zip" layoutX="348.0" layoutY="187.0" />
                   <Button layoutX="379.0" layoutY="224.0" mnemonicParsing="false" onAction="#changeBuilding" text="Save building" />
                   <Button layoutX="97.0" layoutY="287.0" mnemonicParsing="false" onAction="#removeBuilding" text="Remove" />
-                  <Button layoutX="451.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" prefHeight="25.33333333333332" prefWidth="40.66666666666664" text="Back" />
+                  <Button layoutX="456.0" layoutY="348.0" mnemonicParsing="false" onAction="#backToMenu" text="Back" />
                   <ListView fx:id="myListViewBuilding" layoutX="27.0" layoutY="74.0" prefHeight="200.0" prefWidth="200.0" />
-                  <Button layoutX="189.0" layoutY="278.0" mnemonicParsing="false" onAction="#refreshBuildingListView" text="Refresh">
+                  <Button layoutX="189.0" layoutY="277.0" mnemonicParsing="false" onAction="#refreshBuildingListView" text="Refresh">
                      <font>
                         <Font size="8.0" />
                      </font>
