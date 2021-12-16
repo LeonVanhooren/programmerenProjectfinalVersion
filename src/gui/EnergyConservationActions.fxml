@@ -83,6 +83,7 @@
                   <Label layoutX="348.0" layoutY="154.0" text="Saved amount:" />
                   <Label layoutX="347.0" layoutY="189.0" text="Appliance kind:" />
                   <Button layoutX="474.0" layoutY="223.0" mnemonicParsing="false" onAction="#addAction" text="Add action" />
+                  <Button layoutX="152.0" layoutY="324.0" mnemonicParsing="false" onAction="#removeAction" text="Delete" />
                </children>
             </AnchorPane>
         </content>
