@@ -79,7 +79,6 @@ public class RegisterEnergyConsumptionController implements Initializable {
     public void addConsumption(ActionEvent event){
         LocalDate ld = datePicker.getValue();
         String date = ld.getDayOfMonth()+"/"+ld.getMonthValue()+"/"+ld.getYear();
-        System.out.println(date);
 
         String registrationID =""+Math.floor(Math.random()*(99999-91000+1)+91000);
         String roomIDString = roomIDChoice.getValue();
