@@ -32,7 +32,7 @@ public class AddStudentRoomController implements Initializable {
     @FXML
     private ListView<String> myListView;
     @FXML
-    private ListView<String> myListViewBuilding;
+    private ListView myListViewBuilding;
 
     @FXML
     private TextField Address;
@@ -55,7 +55,8 @@ public class AddStudentRoomController implements Initializable {
 
 
     String currentRoom;
-    String currentBuilding;
+    private Building currentBuilding;
+    private ArrayList<Building> listViewBuildings = program.getBuildings();
 
     public void backToMenu(javafx.event.ActionEvent event) throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LandlordMenu.fxml"));
@@ -91,35 +92,35 @@ public class AddStudentRoomController implements Initializable {
 
 
     public void removeBuilding(){
-        Building building = null;
-        for(Building newBuilding: program.getBuildings()){
-            if (newBuilding.getBuildingID().equals(currentBuilding)){
-                building = newBuilding;
-            }
-        }
-        ArrayList<Building> buildings = program.getBuildings();
-        buildings.remove(building);
-        program.setBuildings(buildings);
+        Building currentBuildingRemove = currentBuilding;
+        DBBuilding.removeBuildingFromDatabase(currentBuilding);
+        listViewBuildings.remove(currentBuildingRemove);
 
-       DBBuilding.removeBuildingFromDatabase(currentBuilding);
+        program.setBuildings(DBBuilding.databaseReadBuilding());
 
+        myListViewBuilding.getItems().clear();
+        myListViewBuilding.getItems().addAll(program.getCurrentLandlordBuildings());
+        program.setBuildings(listViewBuildings);
+    }
+
+    public void clearInputBuildingChange(){
+        Address.setText("");
+        City.setText("");
+        Country.setText("");
+        Zip.setText("");
     }
 
     @FXML
     private Label roomIDroom;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        myListViewBuilding.getItems().addAll(program.getBuildingIDsLandlord());
-        myListViewBuilding.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+        myListViewBuilding.getItems().addAll(program.getCurrentLandlordBuildings());
+        myListViewBuilding.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Building>() {
 
 
             @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                currentBuilding = myListViewBuilding.getSelectionModel().getSelectedItem();
-                City.setPromptText(searchBuildingCity(currentBuilding));
-                Country.setPromptText(searchBuildingCountry(currentBuilding));
-                Zip.setPromptText(searchBuildingZip(currentBuilding));
-                Address.setPromptText(searchBuildingAddressStudent(currentBuilding));
+            public void changed(ObservableValue<? extends Building> observableValue, Building s, Building t1) {
+                currentBuilding = (Building) myListViewBuilding.getSelectionModel().getSelectedItem();
             }
             
         });
@@ -280,7 +281,7 @@ public class AddStudentRoomController implements Initializable {
             program.setOwnerships(ownerships);
 
             myListViewBuilding.getItems().clear();
-            myListViewBuilding.getItems().addAll(program.getBuildingIDsLandlord());
+            myListViewBuilding.getItems().addAll(program.getCurrentLandlordBuildings());
 
             clearBuildingInput();
         }
@@ -370,17 +371,23 @@ public class AddStudentRoomController implements Initializable {
 
     public void changeBuilding() {
         if(!Address.getText().equals("")){
-            DBBuilding.changeBuildingFromDatabase("address", Address.getText(), currentBuilding);
+            DBBuilding.changeBuildingFromDatabase("address", Address.getText(), currentBuilding.getBuildingID());
         }
         if(!City.getText().equals("")){
-            DBBuilding.changeBuildingFromDatabase("city", City.getText(), currentBuilding);
+            DBBuilding.changeBuildingFromDatabase("city", City.getText(), currentBuilding.getBuildingID());
         }
         if(!Country.getText().equals("")){
-            DBBuilding.changeBuildingFromDatabase("country", Country.getText(), currentBuilding);
+            DBBuilding.changeBuildingFromDatabase("country", Country.getText(), currentBuilding.getBuildingID());
         }
         if(!Zip.getText().equals("")){
-            DBBuilding.changeBuildingFromDatabase("zip", Zip.getText(), currentBuilding);
+            DBBuilding.changeBuildingFromDatabase("zip", Zip.getText(), currentBuilding.getBuildingID());
         }
+        program.setBuildings(DBBuilding.databaseReadBuilding());
+
+        myListViewBuilding.getItems().clear();
+        myListViewBuilding.getItems().addAll(program.getCurrentLandlordBuildings());
+
+        clearInputBuildingChange();
     }
     public void changeRoom(){
         if(!RoomNr.getText().equals("")){
