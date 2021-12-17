@@ -92,7 +92,7 @@ public class DBRoom {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "DELETE FROM rooms WHERE studentID="+room.getRoomID();
+            String query = "DELETE FROM room WHERE roomID="+room.getRoomID();
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
