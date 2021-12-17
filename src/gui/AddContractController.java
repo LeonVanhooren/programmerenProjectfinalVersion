@@ -57,6 +57,8 @@ public class AddContractController  implements Initializable {
     @FXML
     private Label contractAdd;
 
+    private ArrayList<Contract> contracts = program.getContracts();
+
     public void addContract() {
         String studentID, roomID, startDate;
         int duration;
@@ -79,6 +81,10 @@ public class AddContractController  implements Initializable {
 
                 contractAdd.setText("Contract has been drawn up and sent to student!");
                 this.contractNr.setText("The contractNr is " + contractNrString);
+
+                this.contracts.add(newContract);
+                myListView.getItems().clear();
+                myListView.getItems().addAll(this.contracts);
 
                 clearContractInput();
             } else if (contractExists(studentID, roomID)) {
@@ -177,14 +183,6 @@ public class AddContractController  implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Contract> observableValue, Contract o, Contract t1) {
                 currentContract = (Contract) myListView.getSelectionModel().getSelectedItem();
-                studentIDStatus.setText("Student ID: "+currentContract.getStudentID());
-                landlordIDStatus.setText("Landlord ID: "+currentContract.getLandlordID());
-                contractNrStatus.setText("Contract Nr: "+currentContract.getContractNr());
-                startDateStatus.setText("Start date: "+currentContract.getStartDate());
-                durationStatus.setText("Duration: "+currentContract.getContractDuration());
-                statusStatus.setText("Status: "+currentContract.getStatus());
-                roomIDStatus.setText("Room ID: "+currentContract.getcontractRoomID());
-
             }
         });
 
@@ -195,41 +193,16 @@ public class AddContractController  implements Initializable {
 
     public void removeContract(){
 
-        Contract contractRemove = currentContract;
+        Contract currentContractRemove = currentContract;
 
-        ArrayList<Contract> contractsRemoveList = program.getContractsLandlord();
-        contractsRemoveList.remove(contractRemove);
-        myListView.getItems().addAll(contractsRemoveList);
+        DBContract.removeContractFromDatabase(currentContract);
+        contracts.remove(currentContractRemove);
 
-        ArrayList<Contract> contracts = program.getContracts();
-        contracts.remove(contractRemove);
+        program.setAppliances(DBAppliance.databaseReadAppliance());
+
+        myListView.getItems().clear();
+        myListView.getItems().addAll(program.getContractsLandlord());
         program.setContracts(contracts);
-
-        DBContract.removeContractFromDatabase(contractRemove);
-
-        String roomID = contractRemove.getcontractRoomID();
-        Lease leaseRemove = null;
-
-        for(Lease newLease: program.getLeases()){
-            if(newLease.getRoomID().equals(roomID)){
-                leaseRemove = newLease;
-            }
-        }
-
-        DBLease.removeLeaseFromDatabase(leaseRemove);
-
-        ArrayList<Lease> leases = program.getLeases();
-        leases.remove(leaseRemove);
-        program.setLeases(leases);
-
-        currentContract = null;
-        studentIDStatus.setText("");
-        landlordIDStatus.setText("");
-        contractNrStatus.setText("");
-        startDateStatus.setText("");
-        durationStatus.setText("");
-        statusStatus.setText("");
-        roomIDStatus.setText("");
 
     }
 }

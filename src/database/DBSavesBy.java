@@ -19,7 +19,7 @@ public class DBSavesBy {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            ResultSet rs = stm.executeQuery("select * from saves_by");
+            ResultSet rs = stm.executeQuery("select * from savesby");
             while (rs.next()) {
 
                 String actionID = rs.getString("actionID");
@@ -42,7 +42,7 @@ public class DBSavesBy {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "INSERT INTO saves_by "+"VALUES('"+savesBy.getActionID()+"', '"+savesBy.getApplianceID()+"', '"+savesBy.getDate()+"')";
+            String query = "INSERT INTO savesby "+"VALUES('"+savesBy.getActionID()+"', '"+savesBy.getApplianceID()+"', '"+savesBy.getDate()+"')";
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 

@@ -77,6 +77,13 @@ public class Contract {
 
     @Override
     public String toString() {
-        return "Contract number: "+getContractNr()+", room ID: "+getcontractRoomID();
+        return
+                "StudentID='" + studentID + '\'' +
+                        ", LandlordID='" + landlordID + '\'' +
+                        ", ContractNr='" + contractNr + '\'' +
+                        ", startDate='" + startDate + '\'' +
+                        ", Duration='" + contractDuration + '\'' +
+                        ", Status='" + status + '\'' +
+                        ", RoomID='" + contractRoomID + '\'';
     }
 }
