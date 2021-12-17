@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.chart.AreaChart?>
 <?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.DatePicker?>
@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17" fx:controller="gui.StudentReportController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="649.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.StudentReportController">
   <tabs>
     <Tab text="Appliances vs Actions">
          <content>
@@ -54,18 +54,20 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <AreaChart fx:id="areaChartElectricity" layoutX="20.0" layoutY="42.0" prefHeight="315.0" prefWidth="559.0">
+                  <DatePicker fx:id="datePickerElectricity" layoutX="125.0" layoutY="14.0" />
+                  <Label layoutX="37.0" layoutY="18.0" text="Choose month:" />
+                  <Button layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onAction="#makeElectricityGraph" text="Add month" />
+                  <Button layoutX="490.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearElectricityGraph" text="Clear graph" />
+                  <Button layoutX="404.0" layoutY="14.0" mnemonicParsing="false" onAction="#showElectricity" text="Show graph" />
+                  <Label fx:id="electricityInfo" layoutX="63.0" layoutY="320.0" text="Months: " />
+                  <LineChart fx:id="areaChartElectricity" layoutX="14.0" layoutY="45.0" prefHeight="275.0" prefWidth="632.0">
                     <xAxis>
-                      <CategoryAxis side="BOTTOM" />
+                      <CategoryAxis prefHeight="24.0" prefWidth="575.0" side="BOTTOM" />
                     </xAxis>
                     <yAxis>
                       <NumberAxis side="LEFT" />
                     </yAxis>
-                  </AreaChart>
-                  <DatePicker fx:id="datePickerElectricity" layoutX="125.0" layoutY="14.0" />
-                  <Label layoutX="37.0" layoutY="18.0" text="Choose month:" />
-                  <Button layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onAction="#showElectricityGraph" text="Add stats" />
-                  <Button layoutX="402.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearElectricityGraph" text="Clear graph" />
+                  </LineChart>
                </children></AnchorPane>
       </content>
     </Tab>
@@ -75,18 +77,20 @@
                <children>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="374.0" prefWidth="600.0">
                      <children>
-                        <AreaChart fx:id="areaChartGas" layoutX="20.0" layoutY="42.0" prefHeight="315.0" prefWidth="559.0">
-                           <xAxis>
-                              <CategoryAxis side="BOTTOM" />
-                           </xAxis>
-                           <yAxis>
-                              <NumberAxis side="LEFT" />
-                           </yAxis>
-                        </AreaChart>
                         <DatePicker fx:id="datePickerGas" layoutX="125.0" layoutY="14.0" />
                         <Label layoutX="37.0" layoutY="18.0" text="Choose month:" />
-                        <Button layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearGasGraph" text="Add stats" />
-                        <Button layoutX="402.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearGasGraph" text="Clear graph" />
+                        <Button layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onAction="#makeGasGraph" text="Add stats" />
+                        <Button layoutX="482.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearGasGraph" text="Clear graph" />
+                        <LineChart fx:id="areaChartGas" layoutY="39.0" prefHeight="284.0" prefWidth="649.0">
+                          <xAxis>
+                            <CategoryAxis side="BOTTOM" />
+                          </xAxis>
+                          <yAxis>
+                            <NumberAxis side="LEFT" />
+                          </yAxis>
+                        </LineChart>
+                        <Label fx:id="gasInfo" layoutX="77.0" layoutY="323.0" text="Months: " />
+                        <Button layoutX="396.0" layoutY="14.0" mnemonicParsing="false" onAction="#showGas" text="Show graph" />
                      </children>
                   </AnchorPane>
                </children>
@@ -99,18 +103,20 @@
                <children>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="369.0" prefWidth="594.0">
                      <children>
-                        <AreaChart fx:id="areaChartWater" layoutX="20.0" layoutY="42.0" prefHeight="315.0" prefWidth="559.0">
+                        <DatePicker fx:id="datePickerWater" layoutX="125.0" layoutY="14.0" />
+                        <Label layoutX="37.0" layoutY="18.0" text="Choose month:" />
+                        <Button layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onAction="#makeWaterGraph" text="Add stats" />
+                        <Button layoutX="486.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearWaterGraph" text="Clear graph" />
+                        <LineChart fx:id="areaChartWater" layoutX="20.0" layoutY="39.0" prefHeight="279.0" prefWidth="626.0">
                            <xAxis>
-                              <CategoryAxis side="BOTTOM" />
+                              <CategoryAxis prefHeight="36.0" prefWidth="569.0" side="BOTTOM" />
                            </xAxis>
                            <yAxis>
                               <NumberAxis side="LEFT" />
                            </yAxis>
-                        </AreaChart>
-                        <DatePicker fx:id="datePickerWater" layoutX="125.0" layoutY="14.0" />
-                        <Label layoutX="37.0" layoutY="18.0" text="Choose month:" />
-                        <Button layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onAction="#showWaterGraph" text="Add stats" />
-                        <Button layoutX="402.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearWaterGraph" text="Clear graph" />
+                        </LineChart>
+                        <Button layoutX="398.0" layoutY="14.0" mnemonicParsing="false" onAction="#showWater" text="Show graph" />
+                        <Label fx:id="waterInfo" layoutX="63.0" layoutY="310.0" text="Months: " />
                      </children>
                   </AnchorPane>
                </children>
