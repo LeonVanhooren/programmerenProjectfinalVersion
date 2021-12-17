@@ -112,7 +112,7 @@ public class DBContract {
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "DELETE FROM contract WHERE contractID="+contract.getStudentID();
+            String query = "DELETE FROM contract WHERE contractNr="+contract.getStudentID();
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
