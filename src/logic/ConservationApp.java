@@ -644,5 +644,12 @@ public class ConservationApp {
         }
         return output;
     }
+    public ArrayList<String> getCurrentLandlordRoomIDs(){
+        ArrayList<String> output = new ArrayList<>();
+        for(Room newRoom:getCurrentLandlordRooms()){
+            output.add(newRoom.getRoomID());
+        }
+        return output;
+    }
 }
 

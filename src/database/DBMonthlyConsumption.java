@@ -39,6 +39,37 @@ public class DBMonthlyConsumption {
 
     }
 
+    public static void changeMonthlyConsumptionToDatabase(String column, String change, String primaryKey){
+        try{
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            switch (column){
+                case "water":
+                    String query1 = "UPDATE monthlyconsumption SET water = ? WHERE registrationID = ?";
+                    PreparedStatement pstmt1 = connection.prepareStatement(query1);
+                    pstmt1.setString(1, change);
+                    pstmt1.setString(2, primaryKey);
+                    pstmt1.executeUpdate();
+                    break;
+                case "electricity":
+                    String query2 = "UPDATE monthlyconsumption SET electricity = ? WHERE registrationID = ?";
+                    PreparedStatement pstmt2 = connection.prepareStatement(query2);
+                    pstmt2.setString(1, change);
+                    pstmt2.setString(2, primaryKey);
+                    pstmt2.executeUpdate();
+                    break;
+                case "gas":
+                    String query3 = "UPDATE monthlyconsumption SET gas = ? WHERE registrationID = ?";
+                    PreparedStatement pstmt3 = connection.prepareStatement(query3);
+                    pstmt3.setString(1, change);
+                    pstmt3.setString(2, primaryKey);
+                    pstmt3.executeUpdate();
+                    break;
+            }
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+    }
+
     public static void addMonthlyConsumptionToDatabase(MonthlyConsumption monthlyConsumption){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
