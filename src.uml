@@ -1,0 +1,1619 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/MilanVissers/IdeaProjects/programmerenProjectfinalVersion2/src</OriginalElement>
+  <nodes>
+    <node x="6783.3220085470275" y="1120.0">database.DBContains</node>
+    <node x="7546.3497863247885" y="4062.0">gui.RegisterEnergyConsumptionController</node>
+    <node x="5524.472222222238" y="99.0">logic.MonthlyConsumption</node>
+    <node x="767.5555555555716" y="1109.0">database.DBBuilding</node>
+    <node x="1997.805555555572" y="99.0">logic.Room</node>
+    <node x="3933.222222222238" y="165.0">logic.BelongsTo</node>
+    <node x="3206.222222222238" y="0.0">logic.Landlord</node>
+    <node x="1695.805555555572" y="66.0">logic.Building</node>
+    <node x="2686.5555555555716" y="1120.0">database.DBLease</node>
+    <node x="7473.3220085470275" y="1131.0">database.DBSavesBy</node>
+    <node x="4159.6970085470275" y="4238.0">gui.LandlordMenuController</node>
+    <node x="5876.222222222238" y="132.0">logic.Registers</node>
+    <node x="8311.340598290615" y="3864.0">gui.ApplianceMenuController</node>
+    <node x="8606.340598290615" y="3897.0">gui.EnergyConservationActionsController</node>
+    <node x="4471.6970085470275" y="4249.0">gui.WebViewController</node>
+    <node x="1492.5555555555716" y="1109.0">database.DBContract</node>
+    <node x="2805.0720085470275" y="4227.0">gui.LandlordProfileController</node>
+    <node x="7096.3220085470275" y="1109.0">database.DBAppliance</node>
+    <node x="2964.5555555555716" y="1109.0">database.DBLandlord</node>
+    <node x="5600.5720085470275" y="3908.0">gui.StudentReportController</node>
+    <node x="3931.891452991455" y="1644.0">logic.ConservationApp</node>
+    <node x="3257.9470085470275" y="4161.0">gui.StudentProfileController</node>
+    <node x="6459.3220085470275" y="1120.0">database.DBRegisters</node>
+    <node x="3553.9470085470275" y="4260.0">gui.StudentMenuController</node>
+    <node x="1135.5555555555716" y="1109.0">database.DBRoom</node>
+    <node x="4548.222222222238" y="0.0">logic.Student</node>
+    <node x="3885.6970085470275" y="4139.0">gui.LoginScreenController</node>
+    <node x="481.9722222222381" y="4128.0">gui.AddContractController</node>
+    <node x="7773.3220085470275" y="1109.0">database.DBActions</node>
+    <node x="4979.9747863247885" y="1109.0">database.DBStudent</node>
+    <node x="6660.972222222238" y="66.0">logic.Action</node>
+    <node x="4801.030341880361" y="4172.0">gui.RegisterStudentController</node>
+    <node x="6011.3220085470275" y="1120.0">database.DBMonthlyConsumption</node>
+    <node x="0.0" y="4977.0">StartApp</node>
+    <node x="5100.222222222238" y="132.0">logic.SavesBy</node>
+    <node x="2386.4470085470275" y="4172.0">gui.RegisterLandlordController</node>
+    <node x="2234.8055555555716" y="0.0">logic.Contract</node>
+    <node x="8463.097222222237" y="33.0">logic.Appliance</node>
+    <node x="2189.5555555555716" y="1131.0">database.DBOwnership</node>
+    <node x="4886.222222222238" y="165.0">logic.Contains</node>
+    <node x="1177.0555555555716" y="4205.0">gui.MessagesController</node>
+    <node x="4669.9747863247885" y="1032.0">logic.OpenContract</node>
+    <node x="143.9722222222381" y="3864.0">gui.AddStudentRoomController</node>
+    <node x="1862.5555555555716" y="1131.0">database.DBBelongsTo</node>
+    <node x="5899.5720085470275" y="4007.0">gui.LandlordReportController</node>
+    <node x="4345.222222222238" y="165.0">logic.Lease</node>
+    <node x="4137.222222222238" y="165.0">logic.Ownership</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="logic.ConservationApp" target="logic.Lease" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3818.6970085470275" y="1482.0" />
+      <point x="3818.6970085470275" y="731.0" />
+      <point x="4436.722222222238" y="731.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="gui.EnergyConservationActionsController" target="logic.Action" relationship="TO_ONE">
+      <point x="0.0" y="-501.0" />
+      <point x="8752.840598290615" y="3843.0" />
+      <point x="8791.17393162395" y="3843.0" />
+      <point x="8791.17393162395" y="781.0" />
+      <point x="6779.972222222238" y="781.0" />
+      <point x="0.0" y="204.0" />
+    </edge>
+    <edge source="gui.AddContractController" target="logic.Contract" relationship="CREATE">
+      <point x="-86.66666666666674" y="-270.0" />
+      <point x="525.3055555555711" y="3713.0" />
+      <point x="600.9722222222381" y="3713.0" />
+      <point x="600.9722222222381" y="811.0" />
+      <point x="307.722222222239" y="811.0" />
+      <point x="307.722222222239" y="781.0" />
+      <point x="2291.638888888905" y="781.0" />
+      <point x="-113.66666666666652" y="270.0" />
+    </edge>
+    <edge source="gui.RegisterEnergyConsumptionController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="-100.0" y="-336.0" />
+      <point x="7596.3497863247885" y="3843.0" />
+      <point x="7096.8220085470275" y="3843.0" />
+      <point x="7096.8220085470275" y="3673.0" />
+      <point x="4189.391452991455" y="3673.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="database.DBRoom" relationship="DEPENDENCY">
+      <point x="106.0" y="-534.0" />
+      <point x="408.9722222222381" y="3843.0" />
+      <point x="318.9722222222381" y="3843.0" />
+      <point x="318.9722222222381" y="1572.0" />
+      <point x="1304.0555555555716" y="1572.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.LoginScreenController" target="logic.Landlord" relationship="DEPENDENCY">
+      <point x="-63.5" y="-259.0" />
+      <point x="3949.1970085470275" y="3843.0" />
+      <point x="3341.5555555555716" y="3843.0" />
+      <point x="3341.5555555555716" y="931.0" />
+      <point x="2380.363675213694" y="931.0" />
+      <point x="2380.363675213694" y="631.0" />
+      <point x="3260.222222222238" y="631.0" />
+      <point x="-108.0" y="270.0" />
+    </edge>
+    <edge source="database.DBRoom" target="logic.Room" relationship="CREATE">
+      <point x="0.0" y="-127.0" />
+      <point x="1304.0555555555716" y="1001.0" />
+      <point x="143.55555555557203" y="1001.0" />
+      <point x="143.55555555557203" y="791.0" />
+      <point x="2033.972222222239" y="791.0" />
+      <point x="-72.33333333333326" y="171.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Lease" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1472.0" />
+      <point x="5605.1970085470275" y="1472.0" />
+      <point x="5605.1970085470275" y="811.0" />
+      <point x="4850.222222222238" y="811.0" />
+      <point x="4850.222222222238" y="571.0" />
+      <point x="4497.722222222238" y="571.0" />
+      <point x="61.0" y="105.0" />
+    </edge>
+    <edge source="gui.LandlordReportController" target="logic.BelongsTo" relationship="DEPENDENCY">
+      <point x="-101.25" y="-391.0" />
+      <point x="6000.8220085470275" y="901.0" />
+      <point x="4830.222222222238" y="901.0" />
+      <point x="4830.222222222238" y="581.0" />
+      <point x="4086.5555555555716" y="581.0" />
+      <point x="61.333333333333485" y="105.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBLease" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1502.0" />
+      <point x="2815.5555555555716" y="1502.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="gui.MessagesController" target="logic.Contract" relationship="DEPENDENCY">
+      <point x="-85.0" y="-193.0" />
+      <point x="1219.5555555555716" y="3843.0" />
+      <point x="935.5555555555716" y="3843.0" />
+      <point x="935.5555555555716" y="3713.0" />
+      <point x="757.0555555555716" y="3713.0" />
+      <point x="757.0555555555716" y="921.0" />
+      <point x="2854.363675213694" y="921.0" />
+      <point x="2854.363675213694" y="611.0" />
+      <point x="2518.972222222238" y="611.0" />
+      <point x="113.66666666666652" y="270.0" />
+    </edge>
+    <edge source="gui.LoginScreenController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="63.5" y="-259.0" />
+      <point x="4076.1970085470275" y="3823.0" />
+      <point x="4209.391452991455" y="3823.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Building" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="911.0" />
+      <point x="3543.222222222238" y="911.0" />
+      <point x="3543.222222222238" y="661.0" />
+      <point x="1930.805555555572" y="661.0" />
+      <point x="94.0" y="204.0" />
+    </edge>
+    <edge source="gui.MessagesController" target="logic.Contract" relationship="TO_MANY">
+      <point x="0.0" y="-193.0" />
+      <point x="1304.5555555555716" y="3833.0" />
+      <point x="1125.0555555555716" y="3833.0" />
+      <point x="1125.0555555555716" y="941.0" />
+      <point x="2529.863675213694" y="941.0" />
+      <point x="2529.863675213694" y="621.0" />
+      <point x="2405.3055555555716" y="621.0" />
+      <point x="0.0" y="270.0" />
+    </edge>
+    <edge source="gui.ApplianceMenuController" target="logic.Student" relationship="DEPENDENCY">
+      <point x="-91.66666666666606" y="-534.0" />
+      <point x="8357.173931623951" y="3843.0" />
+      <point x="8125.8220085470275" y="3843.0" />
+      <point x="8125.8220085470275" y="821.0" />
+      <point x="3883.2222222222376" y="821.0" />
+      <point x="3883.222222222238" y="591.0" />
+      <point x="4601.222222222238" y="591.0" />
+      <point x="-106.0" y="270.0" />
+    </edge>
+    <edge source="database.DBAppliance" target="logic.Appliance" relationship="CREATE">
+      <point x="0.0" y="-127.0" />
+      <point x="7274.3220085470275" y="741.0" />
+      <point x="8638.097222222237" y="741.0" />
+      <point x="8638.097222222237" y="611.0" />
+      <point x="8737.263888888903" y="611.0" />
+      <point x="109.66666666666606" y="237.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBLandlord" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1492.0" />
+      <point x="3140.0555555555716" y="1492.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="database.DBBuilding" relationship="DEPENDENCY">
+      <point x="106.0" y="-534.0" />
+      <point x="408.9722222222381" y="3843.0" />
+      <point x="318.9722222222381" y="3843.0" />
+      <point x="318.9722222222381" y="1562.0" />
+      <point x="941.0555555555716" y="1562.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.StudentMenuController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="-68.25" y="-138.0" />
+      <point x="3622.1970085470275" y="3833.0" />
+      <point x="4189.391452991455" y="3833.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="logic.BelongsTo" relationship="CREATE">
+      <point x="-106.0" y="-534.0" />
+      <point x="196.9722222222381" y="3843.0" />
+      <point x="20.0" y="3843.0" />
+      <point x="20.0" y="3833.0" />
+      <point x="153.55555555557203" y="3833.0" />
+      <point x="153.55555555557203" y="991.0" />
+      <point x="1111.2247863247885" y="991.0" />
+      <point x="1111.2247863247885" y="691.0" />
+      <point x="3963.8888888889046" y="691.0" />
+      <point x="-61.333333333333485" y="105.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Contains" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3945.8055555555716" y="1482.0" />
+      <point x="3945.8055555555716" y="751.0" />
+      <point x="4918.555555555571" y="751.0" />
+      <point x="-64.66666666666697" y="105.0" />
+    </edge>
+    <edge source="gui.StudentProfileController" target="logic.Lease" relationship="DEPENDENCY">
+      <point x="-69.0" y="-237.0" />
+      <point x="3326.9470085470275" y="3843.0" />
+      <point x="3001.0555555555716" y="3843.0" />
+      <point x="3001.0555555555716" y="3713.0" />
+      <point x="3326.0555555555716" y="3713.0" />
+      <point x="3326.0555555555716" y="811.0" />
+      <point x="4850.222222222238" y="811.0" />
+      <point x="4850.222222222238" y="571.0" />
+      <point x="4497.722222222238" y="571.0" />
+      <point x="61.0" y="105.0" />
+    </edge>
+    <edge source="gui.ApplianceMenuController" target="logic.Appliance" relationship="TO_MANY">
+      <point x="0.0" y="-534.0" />
+      <point x="8448.840598290615" y="3843.0" />
+      <point x="8489.17393162395" y="3843.0" />
+      <point x="8489.17393162395" y="771.0" />
+      <point x="8627.597222222237" y="771.0" />
+      <point x="0.0" y="237.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.SavesBy" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1472.0" />
+      <point x="5605.1970085470275" y="1472.0" />
+      <point x="5605.1970085470275" y="701.0" />
+      <point x="5204.222222222238" y="701.0" />
+      <point x="0.0" y="138.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.OpenContract" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="4742.4747863247885" y="1482.0" />
+      <point x="-72.5" y="204.0" />
+    </edge>
+    <edge source="gui.ApplianceMenuController" target="logic.Appliance" relationship="TO_ONE">
+      <point x="0.0" y="-534.0" />
+      <point x="8448.840598290615" y="3843.0" />
+      <point x="8489.17393162395" y="3843.0" />
+      <point x="8489.17393162395" y="771.0" />
+      <point x="8627.597222222237" y="771.0" />
+      <point x="0.0" y="237.0" />
+    </edge>
+    <edge source="gui.MessagesController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="0.0" y="-193.0" />
+      <point x="1304.5555555555716" y="3833.0" />
+      <point x="1125.0555555555716" y="3833.0" />
+      <point x="1125.0555555555716" y="3813.0" />
+      <point x="4209.391452991455" y="3813.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Building" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3683.9470085470275" y="1482.0" />
+      <point x="3683.9470085470275" y="961.0" />
+      <point x="2230.113675213694" y="961.0" />
+      <point x="2230.113675213694" y="671.0" />
+      <point x="1836.805555555572" y="671.0" />
+      <point x="0.0" y="204.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Registers" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1472.0" />
+      <point x="5605.1970085470275" y="1472.0" />
+      <point x="5605.1970085470275" y="891.0" />
+      <point x="5821.222222222238" y="891.0" />
+      <point x="5821.222222222238" y="651.0" />
+      <point x="5911.722222222238" y="651.0" />
+      <point x="-71.0" y="138.0" />
+    </edge>
+    <edge source="database.DBLease" target="logic.Lease" relationship="CREATE">
+      <point x="0.0" y="-116.0" />
+      <point x="2815.5555555555716" y="971.0" />
+      <point x="2617.4470085470275" y="971.0" />
+      <point x="2617.4470085470275" y="601.0" />
+      <point x="4375.722222222238" y="601.0" />
+      <point x="-61.0" y="105.0" />
+    </edge>
+    <edge source="gui.StudentProfileController" target="logic.BelongsTo" relationship="DEPENDENCY">
+      <point x="-69.0" y="-237.0" />
+      <point x="3326.9470085470275" y="3843.0" />
+      <point x="3001.0555555555716" y="3843.0" />
+      <point x="3001.0555555555716" y="3713.0" />
+      <point x="3326.0555555555716" y="3713.0" />
+      <point x="3326.0555555555716" y="901.0" />
+      <point x="4830.222222222238" y="901.0" />
+      <point x="4830.222222222238" y="581.0" />
+      <point x="4086.5555555555716" y="581.0" />
+      <point x="61.333333333333485" y="105.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBStudent" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1482.0" />
+      <point x="5015.2247863247885" y="1482.0" />
+      <point x="5015.2247863247885" y="1462.0" />
+      <point x="5152.9747863247885" y="1462.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBActions" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1612.0" />
+      <point x="7933.3220085470275" y="1612.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.LandlordReportController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="-101.25" y="-391.0" />
+      <point x="6000.8220085470275" y="3693.0" />
+      <point x="4189.391452991455" y="3693.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="gui.ApplianceMenuController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="0.0" y="-534.0" />
+      <point x="8448.840598290615" y="3843.0" />
+      <point x="8489.17393162395" y="3843.0" />
+      <point x="8489.17393162395" y="3643.0" />
+      <point x="4209.391452991455" y="3643.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.MonthlyConsumption" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1472.0" />
+      <point x="5605.1970085470275" y="1472.0" />
+      <point x="5605.1970085470275" y="881.0" />
+      <point x="5672.972222222238" y="881.0" />
+      <point x="5672.972222222238" y="661.0" />
+      <point x="5577.472222222238" y="661.0" />
+      <point x="-106.0" y="171.0" />
+    </edge>
+    <edge source="database.DBBelongsTo" target="logic.BelongsTo" relationship="CREATE">
+      <point x="0.0" y="-105.0" />
+      <point x="2015.5555555555716" y="991.0" />
+      <point x="1111.2247863247885" y="991.0" />
+      <point x="1111.2247863247885" y="691.0" />
+      <point x="3963.8888888889046" y="691.0" />
+      <point x="-61.333333333333485" y="105.0" />
+    </edge>
+    <edge source="gui.LandlordProfileController" target="database.DBLandlord" relationship="DEPENDENCY">
+      <point x="-58.75" y="-171.0" />
+      <point x="2863.8220085470275" y="3833.0" />
+      <point x="2537.9305555555716" y="3833.0" />
+      <point x="2537.9305555555716" y="1622.0" />
+      <point x="3140.0555555555716" y="1622.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.StudentReportController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="-69.75" y="-490.0" />
+      <point x="5670.3220085470275" y="3823.0" />
+      <point x="4209.391452991455" y="3823.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="gui.StudentReportController" target="logic.Room" relationship="DEPENDENCY">
+      <point x="69.75" y="-490.0" />
+      <point x="5809.8220085470275" y="3843.0" />
+      <point x="5680.3220085470275" y="3843.0" />
+      <point x="5680.3220085470275" y="861.0" />
+      <point x="3893.222222222238" y="861.0" />
+      <point x="3893.222222222238" y="641.0" />
+      <point x="2178.6388888889055" y="641.0" />
+      <point x="72.33333333333348" y="171.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBBuilding" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1552.0" />
+      <point x="941.0555555555716" y="1552.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.MessagesController" target="logic.Lease" relationship="CREATE">
+      <point x="85.0" y="-193.0" />
+      <point x="1389.5555555555716" y="3713.0" />
+      <point x="1852.0555555555716" y="3713.0" />
+      <point x="1852.0555555555716" y="971.0" />
+      <point x="2617.4470085470275" y="971.0" />
+      <point x="2617.4470085470275" y="601.0" />
+      <point x="4375.722222222238" y="601.0" />
+      <point x="-61.0" y="105.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="logic.Room" relationship="TO_ONE">
+      <point x="0.0" y="-534.0" />
+      <point x="302.9722222222381" y="3843.0" />
+      <point x="304.305555555572" y="3843.0" />
+      <point x="304.305555555572" y="951.0" />
+      <point x="2369.863675213694" y="951.0" />
+      <point x="2369.863675213694" y="651.0" />
+      <point x="2106.305555555572" y="651.0" />
+      <point x="0.0" y="171.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.BelongsTo" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3818.6970085470275" y="1482.0" />
+      <point x="3818.6970085470275" y="711.0" />
+      <point x="4025.222222222238" y="711.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="gui.LandlordMenuController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="-73.0" y="-160.0" />
+      <point x="4232.6970085470275" y="3833.0" />
+      <point x="4189.391452991455" y="3833.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="gui.StudentReportController" target="logic.Appliance" relationship="DEPENDENCY">
+      <point x="69.75" y="-490.0" />
+      <point x="5809.8220085470275" y="3843.0" />
+      <point x="5680.3220085470275" y="3843.0" />
+      <point x="5680.3220085470275" y="791.0" />
+      <point x="7274.263888888905" y="791.0" />
+      <point x="7274.263888888905" y="611.0" />
+      <point x="8517.930555555571" y="611.0" />
+      <point x="-109.66666666666606" y="237.0" />
+    </edge>
+    <edge source="gui.AddContractController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="86.66666666666663" y="-270.0" />
+      <point x="698.6388888889046" y="3843.0" />
+      <point x="622.9722222222381" y="3843.0" />
+      <point x="622.9722222222381" y="3803.0" />
+      <point x="4209.391452991455" y="3803.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="gui.EnergyConservationActionsController" target="database.DBSavesBy" relationship="DEPENDENCY">
+      <point x="-97.66666666666606" y="-501.0" />
+      <point x="8655.173931623951" y="3843.0" />
+      <point x="8644.67393162395" y="3843.0" />
+      <point x="8644.67393162395" y="1512.0" />
+      <point x="7613.3220085470275" y="1512.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Room" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3818.6970085470275" y="1482.0" />
+      <point x="3818.6970085470275" y="951.0" />
+      <point x="2369.863675213694" y="951.0" />
+      <point x="2369.863675213694" y="651.0" />
+      <point x="2106.305555555572" y="651.0" />
+      <point x="0.0" y="171.0" />
+    </edge>
+    <edge source="gui.LandlordReportController" target="logic.Registers" relationship="DEPENDENCY">
+      <point x="-101.25" y="-391.0" />
+      <point x="6000.8220085470275" y="3833.0" />
+      <point x="6761.8220085470275" y="3833.0" />
+      <point x="6761.8220085470275" y="891.0" />
+      <point x="5821.222222222238" y="891.0" />
+      <point x="5821.222222222238" y="651.0" />
+      <point x="5911.722222222238" y="651.0" />
+      <point x="-71.0" y="138.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Landlord" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1472.0" />
+      <point x="5336.4747863247885" y="1472.0" />
+      <point x="5336.4747863247885" y="931.0" />
+      <point x="2380.363675213694" y="931.0" />
+      <point x="2380.363675213694" y="631.0" />
+      <point x="3260.222222222238" y="631.0" />
+      <point x="-108.0" y="270.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Contract" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3818.6970085470275" y="1482.0" />
+      <point x="3818.6970085470275" y="941.0" />
+      <point x="2529.863675213694" y="941.0" />
+      <point x="2529.863675213694" y="621.0" />
+      <point x="2405.3055555555716" y="621.0" />
+      <point x="0.0" y="270.0" />
+    </edge>
+    <edge source="gui.RegisterLandlordController" target="logic.Landlord" relationship="CREATE">
+      <point x="-124.0" y="-226.0" />
+      <point x="2448.4470085470275" y="3713.0" />
+      <point x="2179.0555555555716" y="3713.0" />
+      <point x="2179.0555555555716" y="801.0" />
+      <point x="3368.222222222238" y="801.0" />
+      <point x="0.0" y="270.0" />
+    </edge>
+    <edge source="gui.WebViewController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="-66.5" y="-149.0" />
+      <point x="4538.1970085470275" y="3833.0" />
+      <point x="4189.391452991455" y="3833.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="gui.AddContractController" target="logic.Room" relationship="DEPENDENCY">
+      <point x="0.0" y="-270.0" />
+      <point x="611.9722222222381" y="861.0" />
+      <point x="3893.222222222238" y="861.0" />
+      <point x="3893.222222222238" y="641.0" />
+      <point x="2178.6388888889055" y="641.0" />
+      <point x="72.33333333333348" y="171.0" />
+    </edge>
+    <edge source="gui.AddContractController" target="logic.Landlord" relationship="DEPENDENCY">
+      <point x="0.0" y="-270.0" />
+      <point x="611.9722222222381" y="931.0" />
+      <point x="2380.363675213694" y="931.0" />
+      <point x="2380.363675213694" y="631.0" />
+      <point x="3260.222222222238" y="631.0" />
+      <point x="-108.0" y="270.0" />
+    </edge>
+    <edge source="gui.LandlordReportController" target="logic.Registers" relationship="TO_MANY">
+      <point x="101.25" y="-391.0" />
+      <point x="6203.3220085470275" y="3843.0" />
+      <point x="6772.8220085470275" y="3843.0" />
+      <point x="6772.8220085470275" y="3833.0" />
+      <point x="7085.8220085470275" y="3833.0" />
+      <point x="7085.8220085470275" y="851.0" />
+      <point x="5982.722222222238" y="851.0" />
+      <point x="0.0" y="138.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Room" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="861.0" />
+      <point x="3893.222222222238" y="861.0" />
+      <point x="3893.222222222238" y="641.0" />
+      <point x="2178.6388888889055" y="641.0" />
+      <point x="72.33333333333348" y="171.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Student" relationship="TO_ONE">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3837.8055555555716" y="1482.0" />
+      <point x="3837.8055555555716" y="741.0" />
+      <point x="4707.222222222238" y="741.0" />
+      <point x="0.0" y="270.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Landlord" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3818.6970085470275" y="1482.0" />
+      <point x="3818.6970085470275" y="701.0" />
+      <point x="3476.222222222238" y="701.0" />
+      <point x="108.0" y="270.0" />
+    </edge>
+    <edge source="gui.LandlordProfileController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="-58.75" y="-171.0" />
+      <point x="2863.8220085470275" y="3833.0" />
+      <point x="2537.9305555555716" y="3833.0" />
+      <point x="2537.9305555555716" y="3763.0" />
+      <point x="4189.391452991455" y="3763.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBAppliance" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1592.0" />
+      <point x="7274.3220085470275" y="1592.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.RegisterEnergyConsumptionController" target="logic.Registers" relationship="TO_MANY">
+      <point x="0.0" y="-336.0" />
+      <point x="7696.3497863247885" y="3843.0" />
+      <point x="8103.8220085470275" y="3843.0" />
+      <point x="8103.8220085470275" y="851.0" />
+      <point x="5982.722222222238" y="851.0" />
+      <point x="0.0" y="138.0" />
+    </edge>
+    <edge source="gui.ApplianceMenuController" target="database.DBAppliance" relationship="DEPENDENCY">
+      <point x="-91.66666666666606" y="-534.0" />
+      <point x="8357.173931623951" y="3843.0" />
+      <point x="8125.8220085470275" y="3843.0" />
+      <point x="8125.8220085470275" y="1522.0" />
+      <point x="7274.3220085470275" y="1522.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.StudentProfileController" target="logic.Student" relationship="DEPENDENCY">
+      <point x="-69.0" y="-237.0" />
+      <point x="3326.9470085470275" y="3843.0" />
+      <point x="3001.0555555555716" y="3843.0" />
+      <point x="3001.0555555555716" y="3713.0" />
+      <point x="3326.0555555555716" y="3713.0" />
+      <point x="3326.0555555555716" y="821.0" />
+      <point x="3883.222222222238" y="821.0" />
+      <point x="3883.222222222238" y="591.0" />
+      <point x="4601.222222222238" y="591.0" />
+      <point x="-106.0" y="270.0" />
+    </edge>
+    <edge source="gui.StudentProfileController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="-69.0" y="-237.0" />
+      <point x="3326.9470085470275" y="3843.0" />
+      <point x="3001.0555555555716" y="3843.0" />
+      <point x="3001.0555555555716" y="3773.0" />
+      <point x="4189.391452991455" y="3773.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBRoom" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1542.0" />
+      <point x="1304.0555555555716" y="1542.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.EnergyConservationActionsController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="0.0" y="-501.0" />
+      <point x="8752.840598290615" y="3843.0" />
+      <point x="8791.17393162395" y="3843.0" />
+      <point x="8791.17393162395" y="3623.0" />
+      <point x="4209.391452991455" y="3623.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="gui.AddContractController" target="logic.Contract" relationship="TO_MANY">
+      <point x="86.66666666666663" y="-270.0" />
+      <point x="698.6388888889046" y="3843.0" />
+      <point x="622.9722222222381" y="3843.0" />
+      <point x="622.9722222222381" y="941.0" />
+      <point x="2529.863675213694" y="941.0" />
+      <point x="2529.863675213694" y="621.0" />
+      <point x="2405.3055555555716" y="621.0" />
+      <point x="0.0" y="270.0" />
+    </edge>
+    <edge source="gui.AddContractController" target="logic.Contract" relationship="TO_ONE">
+      <point x="86.66666666666663" y="-270.0" />
+      <point x="698.6388888889046" y="3843.0" />
+      <point x="622.9722222222381" y="3843.0" />
+      <point x="622.9722222222381" y="941.0" />
+      <point x="2529.863675213694" y="941.0" />
+      <point x="2529.863675213694" y="621.0" />
+      <point x="2405.3055555555716" y="621.0" />
+      <point x="0.0" y="270.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBMonthlyConsumption" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1562.0" />
+      <point x="6225.3220085470275" y="1562.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="gui.AddContractController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="0.0" y="-270.0" />
+      <point x="611.9722222222381" y="3733.0" />
+      <point x="4189.391452991455" y="3733.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Action" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1472.0" />
+      <point x="5605.1970085470275" y="1472.0" />
+      <point x="5605.1970085470275" y="761.0" />
+      <point x="5831.222222222238" y="761.0" />
+      <point x="5831.222222222238" y="641.0" />
+      <point x="6700.638888888905" y="641.0" />
+      <point x="-79.33333333333303" y="204.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Appliance" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1472.0" />
+      <point x="5605.1970085470275" y="1472.0" />
+      <point x="5605.1970085470275" y="791.0" />
+      <point x="7274.263888888905" y="791.0" />
+      <point x="7274.263888888905" y="611.0" />
+      <point x="8517.930555555571" y="611.0" />
+      <point x="-109.66666666666606" y="237.0" />
+    </edge>
+    <edge source="gui.MessagesController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="-85.0" y="-193.0" />
+      <point x="1219.5555555555716" y="3843.0" />
+      <point x="935.5555555555716" y="3843.0" />
+      <point x="935.5555555555716" y="3743.0" />
+      <point x="4189.391452991455" y="3743.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.SavesBy" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3965.8055555555716" y="1482.0" />
+      <point x="3965.8055555555716" y="761.0" />
+      <point x="5134.888888888905" y="761.0" />
+      <point x="-69.33333333333303" y="138.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.OpenContract" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1472.0" />
+      <point x="4887.4747863247885" y="1472.0" />
+      <point x="72.5" y="204.0" />
+    </edge>
+    <edge source="gui.ApplianceMenuController" target="logic.Lease" relationship="DEPENDENCY">
+      <point x="-91.66666666666606" y="-534.0" />
+      <point x="8357.173931623951" y="3843.0" />
+      <point x="8125.8220085470275" y="3843.0" />
+      <point x="8125.8220085470275" y="3833.0" />
+      <point x="8340.92393162395" y="3833.0" />
+      <point x="8340.92393162395" y="811.0" />
+      <point x="4850.222222222238" y="811.0" />
+      <point x="4850.222222222238" y="571.0" />
+      <point x="4497.722222222238" y="571.0" />
+      <point x="61.0" y="105.0" />
+    </edge>
+    <edge source="gui.EnergyConservationActionsController" target="logic.Appliance" relationship="DEPENDENCY">
+      <point x="-97.66666666666606" y="-501.0" />
+      <point x="8655.173931623951" y="3843.0" />
+      <point x="8644.67393162395" y="3843.0" />
+      <point x="8644.67393162395" y="791.0" />
+      <point x="7274.263888888905" y="791.0" />
+      <point x="7274.263888888905" y="611.0" />
+      <point x="8517.930555555571" y="611.0" />
+      <point x="-109.66666666666606" y="237.0" />
+    </edge>
+    <edge source="database.DBMonthlyConsumption" target="logic.MonthlyConsumption" relationship="CREATE">
+      <point x="0.0" y="-116.0" />
+      <point x="6225.3220085470275" y="841.0" />
+      <point x="7397.013888888905" y="841.0" />
+      <point x="7397.013888888905" y="661.0" />
+      <point x="5789.472222222238" y="661.0" />
+      <point x="106.0" y="171.0" />
+    </edge>
+    <edge source="gui.StudentProfileController" target="database.DBStudent" relationship="DEPENDENCY">
+      <point x="-69.0" y="-237.0" />
+      <point x="3326.9470085470275" y="3843.0" />
+      <point x="3001.0555555555716" y="3843.0" />
+      <point x="3001.0555555555716" y="3713.0" />
+      <point x="3326.0555555555716" y="3713.0" />
+      <point x="3326.0555555555716" y="1612.0" />
+      <point x="5015.2247863247885" y="1612.0" />
+      <point x="5015.2247863247885" y="1462.0" />
+      <point x="5152.9747863247885" y="1462.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="database.DBOwnership" target="logic.Ownership" relationship="CREATE">
+      <point x="0.0" y="-105.0" />
+      <point x="2343.5555555555716" y="981.0" />
+      <point x="1377.5581196581215" y="981.0" />
+      <point x="1377.5581196581215" y="681.0" />
+      <point x="4168.555555555571" y="681.0" />
+      <point x="-62.66666666666697" y="105.0" />
+    </edge>
+    <edge source="database.DBContains" target="logic.Contains" relationship="CREATE">
+      <point x="0.0" y="-116.0" />
+      <point x="6929.3220085470275" y="801.0" />
+      <point x="7759.013888888905" y="801.0" />
+      <point x="7759.013888888905" y="681.0" />
+      <point x="5047.888888888905" y="681.0" />
+      <point x="64.66666666666697" y="105.0" />
+    </edge>
+    <edge source="gui.RegisterStudentController" target="logic.Student" relationship="CREATE">
+      <point x="122.66666666666697" y="-226.0" />
+      <point x="5107.6970085470275" y="3813.0" />
+      <point x="5620.6970085470275" y="3813.0" />
+      <point x="5620.6970085470275" y="691.0" />
+      <point x="4870.222222222238" y="691.0" />
+      <point x="4870.222222222238" y="561.0" />
+      <point x="4813.222222222238" y="561.0" />
+      <point x="106.0" y="270.0" />
+    </edge>
+    <edge source="database.DBContract" target="logic.Contract" relationship="CREATE">
+      <point x="0.0" y="-127.0" />
+      <point x="1667.0555555555716" y="811.0" />
+      <point x="307.722222222239" y="811.0" />
+      <point x="307.722222222239" y="781.0" />
+      <point x="2291.638888888905" y="781.0" />
+      <point x="-113.66666666666652" y="270.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="logic.Building" relationship="CREATE">
+      <point x="-106.0" y="-534.0" />
+      <point x="196.9722222222381" y="3843.0" />
+      <point x="20.0" y="3843.0" />
+      <point x="20.0" y="3833.0" />
+      <point x="0.0" y="3833.0" />
+      <point x="0.0" y="1011.0" />
+      <point x="133.55555555557203" y="1011.0" />
+      <point x="133.55555555557203" y="801.0" />
+      <point x="1742.805555555572" y="801.0" />
+      <point x="-94.0" y="204.0" />
+    </edge>
+    <edge source="gui.ApplianceMenuController" target="logic.Contains" relationship="CREATE">
+      <point x="91.66666666666606" y="-534.0" />
+      <point x="8540.507264957283" y="3843.0" />
+      <point x="8500.17393162395" y="3843.0" />
+      <point x="8500.17393162395" y="801.0" />
+      <point x="7759.013888888905" y="801.0" />
+      <point x="7759.013888888905" y="681.0" />
+      <point x="5047.888888888905" y="681.0" />
+      <point x="64.66666666666697" y="105.0" />
+    </edge>
+    <edge source="gui.LandlordReportController" target="logic.MonthlyConsumption" relationship="DEPENDENCY">
+      <point x="-101.25" y="-391.0" />
+      <point x="6000.8220085470275" y="3833.0" />
+      <point x="6761.8220085470275" y="3833.0" />
+      <point x="6761.8220085470275" y="881.0" />
+      <point x="5672.972222222238" y="881.0" />
+      <point x="5672.972222222238" y="661.0" />
+      <point x="5577.472222222238" y="661.0" />
+      <point x="-106.0" y="171.0" />
+    </edge>
+    <edge source="gui.EnergyConservationActionsController" target="database.DBActions" relationship="DEPENDENCY">
+      <point x="-97.66666666666606" y="-501.0" />
+      <point x="8655.173931623951" y="3843.0" />
+      <point x="8644.67393162395" y="3843.0" />
+      <point x="8644.67393162395" y="1502.0" />
+      <point x="7933.3220085470275" y="1502.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.LandlordMenuController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="73.0" y="-160.0" />
+      <point x="4378.6970085470275" y="3823.0" />
+      <point x="4209.391452991455" y="3823.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="gui.LandlordReportController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="101.25" y="-391.0" />
+      <point x="6203.3220085470275" y="3843.0" />
+      <point x="6772.8220085470275" y="3843.0" />
+      <point x="6772.8220085470275" y="3683.0" />
+      <point x="4209.391452991455" y="3683.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="database.DBActions" target="logic.Action" relationship="CREATE">
+      <point x="0.0" y="-127.0" />
+      <point x="7933.3220085470275" y="751.0" />
+      <point x="8803.097222222237" y="751.0" />
+      <point x="8803.097222222237" y="621.0" />
+      <point x="6859.305555555571" y="621.0" />
+      <point x="79.33333333333303" y="204.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBSavesBy" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1602.0" />
+      <point x="7613.3220085470275" y="1602.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Contract" relationship="TO_ONE">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3818.6970085470275" y="1482.0" />
+      <point x="3818.6970085470275" y="941.0" />
+      <point x="2529.863675213694" y="941.0" />
+      <point x="2529.863675213694" y="621.0" />
+      <point x="2405.3055555555716" y="621.0" />
+      <point x="0.0" y="270.0" />
+    </edge>
+    <edge source="gui.LandlordReportController" target="logic.MonthlyConsumption" relationship="TO_MANY">
+      <point x="101.25" y="-391.0" />
+      <point x="6203.3220085470275" y="3843.0" />
+      <point x="6772.8220085470275" y="3843.0" />
+      <point x="6772.8220085470275" y="871.0" />
+      <point x="5683.472222222238" y="871.0" />
+      <point x="0.0" y="171.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="logic.Room" relationship="TO_MANY">
+      <point x="0.0" y="-534.0" />
+      <point x="302.9722222222381" y="3843.0" />
+      <point x="304.305555555572" y="3843.0" />
+      <point x="304.305555555572" y="951.0" />
+      <point x="2369.863675213694" y="951.0" />
+      <point x="2369.863675213694" y="651.0" />
+      <point x="2106.305555555572" y="651.0" />
+      <point x="0.0" y="171.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="0.0" y="-534.0" />
+      <point x="302.9722222222381" y="3843.0" />
+      <point x="304.305555555572" y="3843.0" />
+      <point x="304.305555555572" y="3793.0" />
+      <point x="4209.391452991455" y="3793.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="gui.StudentReportController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="69.75" y="-490.0" />
+      <point x="5809.8220085470275" y="3843.0" />
+      <point x="5680.3220085470275" y="3843.0" />
+      <point x="5680.3220085470275" y="3703.0" />
+      <point x="4189.391452991455" y="3703.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="gui.LandlordProfileController" target="logic.Landlord" relationship="DEPENDENCY">
+      <point x="-58.75" y="-171.0" />
+      <point x="2863.8220085470275" y="3833.0" />
+      <point x="2537.9305555555716" y="3833.0" />
+      <point x="2537.9305555555716" y="931.0" />
+      <point x="2380.363675213694" y="931.0" />
+      <point x="2380.363675213694" y="631.0" />
+      <point x="3260.222222222238" y="631.0" />
+      <point x="-108.0" y="270.0" />
+    </edge>
+    <edge source="database.DBRegisters" target="logic.Registers" relationship="CREATE">
+      <point x="0.0" y="-116.0" />
+      <point x="6605.3220085470275" y="831.0" />
+      <point x="7592.013888888905" y="831.0" />
+      <point x="7592.013888888905" y="631.0" />
+      <point x="6053.722222222238" y="631.0" />
+      <point x="71.0" y="138.0" />
+    </edge>
+    <edge source="gui.MessagesController" target="logic.Student" relationship="DEPENDENCY">
+      <point x="-85.0" y="-193.0" />
+      <point x="1219.5555555555716" y="3843.0" />
+      <point x="935.5555555555716" y="3843.0" />
+      <point x="935.5555555555716" y="3713.0" />
+      <point x="757.0555555555716" y="3713.0" />
+      <point x="757.0555555555716" y="821.0" />
+      <point x="3883.222222222238" y="821.0" />
+      <point x="3883.222222222238" y="591.0" />
+      <point x="4601.222222222238" y="591.0" />
+      <point x="-106.0" y="270.0" />
+    </edge>
+    <edge source="gui.ApplianceMenuController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="-91.66666666666606" y="-534.0" />
+      <point x="8357.173931623951" y="3843.0" />
+      <point x="8125.8220085470275" y="3843.0" />
+      <point x="8125.8220085470275" y="3653.0" />
+      <point x="4189.391452991455" y="3653.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="gui.StudentProfileController" target="logic.Room" relationship="DEPENDENCY">
+      <point x="-69.0" y="-237.0" />
+      <point x="3326.9470085470275" y="3843.0" />
+      <point x="3001.0555555555716" y="3843.0" />
+      <point x="3001.0555555555716" y="3713.0" />
+      <point x="3326.0555555555716" y="3713.0" />
+      <point x="3326.0555555555716" y="861.0" />
+      <point x="3893.222222222238" y="861.0" />
+      <point x="3893.222222222238" y="641.0" />
+      <point x="2178.6388888889055" y="641.0" />
+      <point x="72.33333333333348" y="171.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Student" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3837.8055555555716" y="1482.0" />
+      <point x="3837.8055555555716" y="741.0" />
+      <point x="4707.222222222238" y="741.0" />
+      <point x="0.0" y="270.0" />
+    </edge>
+    <edge source="gui.StudentProfileController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="69.0" y="-237.0" />
+      <point x="3464.9470085470275" y="3823.0" />
+      <point x="4209.391452991455" y="3823.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="logic.Ownership" relationship="CREATE">
+      <point x="-106.0" y="-534.0" />
+      <point x="196.9722222222381" y="3843.0" />
+      <point x="20.0" y="3843.0" />
+      <point x="20.0" y="3833.0" />
+      <point x="158.55555555557203" y="3833.0" />
+      <point x="158.55555555557203" y="981.0" />
+      <point x="1377.5581196581215" y="981.0" />
+      <point x="1377.5581196581215" y="681.0" />
+      <point x="4168.555555555571" y="681.0" />
+      <point x="-62.66666666666697" y="105.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="logic.Building" relationship="TO_ONE">
+      <point x="0.0" y="-534.0" />
+      <point x="302.9722222222381" y="3843.0" />
+      <point x="304.305555555572" y="3843.0" />
+      <point x="304.305555555572" y="3783.0" />
+      <point x="169.55555555557203" y="3783.0" />
+      <point x="169.55555555557203" y="961.0" />
+      <point x="2230.113675213694" y="961.0" />
+      <point x="2230.113675213694" y="671.0" />
+      <point x="1836.805555555572" y="671.0" />
+      <point x="0.0" y="204.0" />
+    </edge>
+    <edge source="gui.LandlordProfileController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="58.75" y="-171.0" />
+      <point x="2981.3220085470275" y="3823.0" />
+      <point x="4209.391452991455" y="3823.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="gui.AddContractController" target="logic.Student" relationship="DEPENDENCY">
+      <point x="0.0" y="-270.0" />
+      <point x="611.9722222222381" y="821.0" />
+      <point x="3883.222222222238" y="821.0" />
+      <point x="3883.222222222238" y="591.0" />
+      <point x="4601.222222222238" y="591.0" />
+      <point x="-106.0" y="270.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Landlord" relationship="TO_ONE">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3818.6970085470275" y="1482.0" />
+      <point x="3818.6970085470275" y="701.0" />
+      <point x="3476.222222222238" y="701.0" />
+      <point x="108.0" y="270.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBRegisters" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1572.0" />
+      <point x="6605.3220085470275" y="1572.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="gui.StudentMenuController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="68.25" y="-138.0" />
+      <point x="3758.6970085470275" y="3823.0" />
+      <point x="4209.391452991455" y="3823.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Student" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="821.0" />
+      <point x="3883.222222222238" y="821.0" />
+      <point x="3883.222222222238" y="591.0" />
+      <point x="4601.222222222238" y="591.0" />
+      <point x="-106.0" y="270.0" />
+    </edge>
+    <edge source="gui.RegisterEnergyConsumptionController" target="logic.Registers" relationship="TO_ONE">
+      <point x="0.0" y="-336.0" />
+      <point x="7696.3497863247885" y="3843.0" />
+      <point x="8103.8220085470275" y="3843.0" />
+      <point x="8103.8220085470275" y="851.0" />
+      <point x="5982.722222222238" y="851.0" />
+      <point x="0.0" y="138.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Action" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="4512.891452991455" y="1482.0" />
+      <point x="4512.891452991455" y="781.0" />
+      <point x="6779.972222222238" y="781.0" />
+      <point x="0.0" y="204.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Appliance" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="4659.4747863247885" y="1482.0" />
+      <point x="4659.4747863247885" y="771.0" />
+      <point x="8627.597222222237" y="771.0" />
+      <point x="0.0" y="237.0" />
+    </edge>
+    <edge source="gui.WebViewController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="66.5" y="-149.0" />
+      <point x="4671.1970085470275" y="3823.0" />
+      <point x="4209.391452991455" y="3823.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="gui.RegisterStudentController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="-122.66666666666697" y="-226.0" />
+      <point x="4862.363675213694" y="3843.0" />
+      <point x="4926.8497863247885" y="3843.0" />
+      <point x="4926.8497863247885" y="3713.0" />
+      <point x="4189.391452991455" y="3713.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="gui.EnergyConservationActionsController" target="logic.Action" relationship="CREATE">
+      <point x="97.66666666666606" y="-501.0" />
+      <point x="8850.507264957283" y="3843.0" />
+      <point x="8807.17393162395" y="3843.0" />
+      <point x="8807.17393162395" y="751.0" />
+      <point x="8803.097222222237" y="751.0" />
+      <point x="8803.097222222237" y="621.0" />
+      <point x="6859.305555555571" y="621.0" />
+      <point x="79.33333333333303" y="204.0" />
+    </edge>
+    <edge source="gui.RegisterLandlordController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="0.0" y="-226.0" />
+      <point x="2572.4470085470275" y="3843.0" />
+      <point x="2343.5555555555716" y="3843.0" />
+      <point x="2343.5555555555716" y="3753.0" />
+      <point x="4189.391452991455" y="3753.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="gui.RegisterLandlordController" target="database.DBLandlord" relationship="DEPENDENCY">
+      <point x="0.0" y="-226.0" />
+      <point x="2572.4470085470275" y="3843.0" />
+      <point x="2343.5555555555716" y="3843.0" />
+      <point x="2343.5555555555716" y="1622.0" />
+      <point x="3140.0555555555716" y="1622.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Ownership" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="3818.6970085470275" y="1482.0" />
+      <point x="3818.6970085470275" y="721.0" />
+      <point x="4231.222222222238" y="721.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="gui.RegisterEnergyConsumptionController" target="database.DBRegisters" relationship="DEPENDENCY">
+      <point x="-100.0" y="-336.0" />
+      <point x="7596.3497863247885" y="3843.0" />
+      <point x="7096.8220085470275" y="3843.0" />
+      <point x="7096.8220085470275" y="1542.0" />
+      <point x="6605.3220085470275" y="1542.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="gui.EnergyConservationActionsController" target="logic.Appliance" relationship="TO_MANY">
+      <point x="0.0" y="-501.0" />
+      <point x="8752.840598290615" y="3843.0" />
+      <point x="8791.17393162395" y="3843.0" />
+      <point x="8791.17393162395" y="771.0" />
+      <point x="8627.597222222237" y="771.0" />
+      <point x="0.0" y="237.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="logic.Landlord" relationship="DEPENDENCY">
+      <point x="106.0" y="-534.0" />
+      <point x="408.9722222222381" y="3843.0" />
+      <point x="318.9722222222381" y="3843.0" />
+      <point x="318.9722222222381" y="931.0" />
+      <point x="2380.363675213694" y="931.0" />
+      <point x="2380.363675213694" y="631.0" />
+      <point x="3260.222222222238" y="631.0" />
+      <point x="-108.0" y="270.0" />
+    </edge>
+    <edge source="gui.MessagesController" target="database.DBContract" relationship="DEPENDENCY">
+      <point x="-85.0" y="-193.0" />
+      <point x="1219.5555555555716" y="3843.0" />
+      <point x="935.5555555555716" y="3843.0" />
+      <point x="935.5555555555716" y="1582.0" />
+      <point x="1667.0555555555716" y="1582.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.ApplianceMenuController" target="logic.Appliance" relationship="CREATE">
+      <point x="91.66666666666606" y="-534.0" />
+      <point x="8540.507264957283" y="3843.0" />
+      <point x="8500.17393162395" y="3843.0" />
+      <point x="8500.17393162395" y="741.0" />
+      <point x="8638.097222222237" y="741.0" />
+      <point x="8638.097222222237" y="611.0" />
+      <point x="8737.263888888903" y="611.0" />
+      <point x="109.66666666666606" y="237.0" />
+    </edge>
+    <edge source="gui.ApplianceMenuController" target="database.DBContains" relationship="DEPENDENCY">
+      <point x="-91.66666666666606" y="-534.0" />
+      <point x="8357.173931623951" y="3843.0" />
+      <point x="8125.8220085470275" y="3843.0" />
+      <point x="8125.8220085470275" y="1532.0" />
+      <point x="6929.3220085470275" y="1532.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="database.DBLandlord" target="logic.Landlord" relationship="CREATE">
+      <point x="0.0" y="-127.0" />
+      <point x="3140.0555555555716" y="801.0" />
+      <point x="3368.222222222238" y="801.0" />
+      <point x="0.0" y="270.0" />
+    </edge>
+    <edge source="database.DBBuilding" target="logic.Building" relationship="CREATE">
+      <point x="0.0" y="-127.0" />
+      <point x="941.0555555555716" y="1011.0" />
+      <point x="133.55555555557203" y="1011.0" />
+      <point x="133.55555555557203" y="801.0" />
+      <point x="1742.805555555572" y="801.0" />
+      <point x="-94.0" y="204.0" />
+    </edge>
+    <edge source="gui.RegisterEnergyConsumptionController" target="logic.MonthlyConsumption" relationship="CREATE">
+      <point x="100.0" y="-336.0" />
+      <point x="7796.3497863247885" y="3833.0" />
+      <point x="8114.8220085470275" y="3833.0" />
+      <point x="8114.8220085470275" y="841.0" />
+      <point x="7397.013888888905" y="841.0" />
+      <point x="7397.013888888905" y="661.0" />
+      <point x="5789.472222222238" y="661.0" />
+      <point x="106.0" y="171.0" />
+    </edge>
+    <edge source="gui.EnergyConservationActionsController" target="logic.Action" relationship="TO_MANY">
+      <point x="0.0" y="-501.0" />
+      <point x="8752.840598290615" y="3843.0" />
+      <point x="8791.17393162395" y="3843.0" />
+      <point x="8791.17393162395" y="781.0" />
+      <point x="6779.972222222238" y="781.0" />
+      <point x="0.0" y="204.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.BelongsTo" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1472.0" />
+      <point x="5595.1970085470275" y="1472.0" />
+      <point x="5595.1970085470275" y="901.0" />
+      <point x="4830.222222222238" y="901.0" />
+      <point x="4830.222222222238" y="581.0" />
+      <point x="4086.5555555555716" y="581.0" />
+      <point x="61.333333333333485" y="105.0" />
+    </edge>
+    <edge source="gui.RegisterLandlordController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="124.0" y="-226.0" />
+      <point x="2696.4470085470275" y="3823.0" />
+      <point x="4209.391452991455" y="3823.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.MonthlyConsumption" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="4229.0581196581215" y="1482.0" />
+      <point x="4229.0581196581215" y="871.0" />
+      <point x="5683.472222222238" y="871.0" />
+      <point x="0.0" y="171.0" />
+    </edge>
+    <edge source="gui.StudentProfileController" target="logic.Building" relationship="DEPENDENCY">
+      <point x="-69.0" y="-237.0" />
+      <point x="3326.9470085470275" y="3843.0" />
+      <point x="3001.0555555555716" y="3843.0" />
+      <point x="3001.0555555555716" y="3713.0" />
+      <point x="2676.0555555555716" y="3713.0" />
+      <point x="2676.0555555555716" y="911.0" />
+      <point x="3543.222222222238" y="911.0" />
+      <point x="3543.222222222238" y="661.0" />
+      <point x="1930.805555555572" y="661.0" />
+      <point x="94.0" y="204.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="database.DBOwnership" relationship="DEPENDENCY">
+      <point x="106.0" y="-534.0" />
+      <point x="408.9722222222381" y="3843.0" />
+      <point x="318.9722222222381" y="3843.0" />
+      <point x="318.9722222222381" y="1602.0" />
+      <point x="2343.5555555555716" y="1602.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="gui.EnergyConservationActionsController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="-97.66666666666606" y="-501.0" />
+      <point x="8655.173931623951" y="3843.0" />
+      <point x="8644.67393162395" y="3843.0" />
+      <point x="8644.67393162395" y="3633.0" />
+      <point x="4189.391452991455" y="3633.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="logic.Building" relationship="TO_MANY">
+      <point x="0.0" y="-534.0" />
+      <point x="302.9722222222381" y="3843.0" />
+      <point x="304.305555555572" y="3843.0" />
+      <point x="304.305555555572" y="3783.0" />
+      <point x="169.55555555557203" y="3783.0" />
+      <point x="169.55555555557203" y="961.0" />
+      <point x="2230.113675213694" y="961.0" />
+      <point x="2230.113675213694" y="671.0" />
+      <point x="1836.805555555572" y="671.0" />
+      <point x="0.0" y="204.0" />
+    </edge>
+    <edge source="gui.StudentReportController" target="logic.Action" relationship="DEPENDENCY">
+      <point x="69.75" y="-490.0" />
+      <point x="5809.8220085470275" y="3843.0" />
+      <point x="5680.3220085470275" y="3843.0" />
+      <point x="5680.3220085470275" y="761.0" />
+      <point x="5831.222222222238" y="761.0" />
+      <point x="5831.222222222238" y="641.0" />
+      <point x="6700.638888888905" y="641.0" />
+      <point x="-79.33333333333303" y="204.0" />
+    </edge>
+    <edge source="gui.LoginScreenController" target="logic.Student" relationship="DEPENDENCY">
+      <point x="-63.5" y="-259.0" />
+      <point x="3949.1970085470275" y="3843.0" />
+      <point x="3341.5555555555716" y="3843.0" />
+      <point x="3341.5555555555716" y="821.0" />
+      <point x="3883.222222222238" y="821.0" />
+      <point x="3883.222222222238" y="591.0" />
+      <point x="4601.222222222238" y="591.0" />
+      <point x="-106.0" y="270.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="database.DBBelongsTo" relationship="DEPENDENCY">
+      <point x="106.0" y="-534.0" />
+      <point x="408.9722222222381" y="3843.0" />
+      <point x="318.9722222222381" y="3843.0" />
+      <point x="318.9722222222381" y="1592.0" />
+      <point x="2015.5555555555716" y="1592.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="gui.EnergyConservationActionsController" target="logic.SavesBy" relationship="CREATE">
+      <point x="97.66666666666606" y="-501.0" />
+      <point x="8850.507264957283" y="3843.0" />
+      <point x="8807.17393162395" y="3843.0" />
+      <point x="8807.17393162395" y="3833.0" />
+      <point x="8802.17393162395" y="3833.0" />
+      <point x="8802.17393162395" y="761.0" />
+      <point x="8793.097222222237" y="761.0" />
+      <point x="8793.097222222237" y="671.0" />
+      <point x="5273.555555555571" y="671.0" />
+      <point x="69.33333333333303" y="138.0" />
+    </edge>
+    <edge source="gui.RegisterStudentController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="0.0" y="-226.0" />
+      <point x="4985.030341880361" y="3823.0" />
+      <point x="4209.391452991455" y="3823.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBContains" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1582.0" />
+      <point x="6929.3220085470275" y="1582.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="gui.AddContractController" target="database.DBContract" relationship="DEPENDENCY">
+      <point x="0.0" y="-270.0" />
+      <point x="611.9722222222381" y="1582.0" />
+      <point x="1667.0555555555716" y="1582.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.LoginScreenController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="-63.5" y="-259.0" />
+      <point x="3949.1970085470275" y="3843.0" />
+      <point x="3341.5555555555716" y="3843.0" />
+      <point x="3341.5555555555716" y="3783.0" />
+      <point x="4189.391452991455" y="3783.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBContract" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1532.0" />
+      <point x="1667.0555555555716" y="1532.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Registers" relationship="TO_MANY">
+      <point x="-136.25" y="-974.0" />
+      <point x="4068.141452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1622.0" />
+      <point x="4100.891452991455" y="1482.0" />
+      <point x="4507.891452991455" y="1482.0" />
+      <point x="4507.891452991455" y="851.0" />
+      <point x="5982.722222222238" y="851.0" />
+      <point x="0.0" y="138.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBOwnership" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1512.0" />
+      <point x="2343.5555555555716" y="1512.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="gui.RegisterEnergyConsumptionController" target="database.DBMonthlyConsumption" relationship="DEPENDENCY">
+      <point x="-100.0" y="-336.0" />
+      <point x="7596.3497863247885" y="3843.0" />
+      <point x="7096.8220085470275" y="3843.0" />
+      <point x="7096.8220085470275" y="1552.0" />
+      <point x="6225.3220085470275" y="1552.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+    <edge source="database.DBStudent" target="logic.Student" relationship="CREATE">
+      <point x="0.0" y="-127.0" />
+      <point x="5152.9747863247885" y="691.0" />
+      <point x="4870.222222222238" y="691.0" />
+      <point x="4870.222222222238" y="561.0" />
+      <point x="4813.222222222238" y="561.0" />
+      <point x="106.0" y="270.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Contains" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1472.0" />
+      <point x="5605.1970085470275" y="1472.0" />
+      <point x="5605.1970085470275" y="711.0" />
+      <point x="4983.222222222238" y="711.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Contract" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1472.0" />
+      <point x="5351.4747863247885" y="1472.0" />
+      <point x="5351.4747863247885" y="921.0" />
+      <point x="2854.363675213694" y="921.0" />
+      <point x="2854.363675213694" y="611.0" />
+      <point x="2518.972222222238" y="611.0" />
+      <point x="113.66666666666652" y="270.0" />
+    </edge>
+    <edge source="gui.RegisterEnergyConsumptionController" target="logic.ConservationApp" relationship="TO_ONE">
+      <point x="0.0" y="-336.0" />
+      <point x="7696.3497863247885" y="3843.0" />
+      <point x="8103.8220085470275" y="3843.0" />
+      <point x="8103.8220085470275" y="3663.0" />
+      <point x="4209.391452991455" y="3663.0" />
+      <point x="4209.391452991455" y="3613.0" />
+      <point x="4340.641452991455" y="3613.0" />
+      <point x="136.25" y="974.0" />
+    </edge>
+    <edge source="gui.RegisterEnergyConsumptionController" target="logic.Room" relationship="DEPENDENCY">
+      <point x="-100.0" y="-336.0" />
+      <point x="7596.3497863247885" y="3843.0" />
+      <point x="7096.8220085470275" y="3843.0" />
+      <point x="7096.8220085470275" y="3833.0" />
+      <point x="7462.8220085470275" y="3833.0" />
+      <point x="7462.8220085470275" y="861.0" />
+      <point x="3893.222222222238" y="861.0" />
+      <point x="3893.222222222238" y="641.0" />
+      <point x="2178.6388888889055" y="641.0" />
+      <point x="72.33333333333348" y="171.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="database.DBBelongsTo" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1522.0" />
+      <point x="2015.5555555555716" y="1522.0" />
+      <point x="0.0" y="105.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="logic.ConservationApp" relationship="DEPENDENCY">
+      <point x="106.0" y="-534.0" />
+      <point x="408.9722222222381" y="3843.0" />
+      <point x="318.9722222222381" y="3843.0" />
+      <point x="318.9722222222381" y="3723.0" />
+      <point x="4189.391452991455" y="3723.0" />
+      <point x="4189.391452991455" y="3623.0" />
+      <point x="4068.141452991455" y="3623.0" />
+      <point x="-136.25" y="974.0" />
+    </edge>
+    <edge source="database.DBSavesBy" target="logic.SavesBy" relationship="CREATE">
+      <point x="0.0" y="-105.0" />
+      <point x="7613.3220085470275" y="761.0" />
+      <point x="8793.097222222237" y="761.0" />
+      <point x="8793.097222222237" y="671.0" />
+      <point x="5273.555555555571" y="671.0" />
+      <point x="69.33333333333303" y="138.0" />
+    </edge>
+    <edge source="gui.RegisterEnergyConsumptionController" target="logic.Registers" relationship="CREATE">
+      <point x="100.0" y="-336.0" />
+      <point x="7796.3497863247885" y="3833.0" />
+      <point x="8114.8220085470275" y="3833.0" />
+      <point x="8114.8220085470275" y="831.0" />
+      <point x="7592.013888888905" y="831.0" />
+      <point x="7592.013888888905" y="631.0" />
+      <point x="6053.722222222238" y="631.0" />
+      <point x="71.0" y="138.0" />
+    </edge>
+    <edge source="gui.RegisterStudentController" target="database.DBStudent" relationship="DEPENDENCY">
+      <point x="-122.66666666666697" y="-226.0" />
+      <point x="4862.363675213694" y="3843.0" />
+      <point x="4926.8497863247885" y="3843.0" />
+      <point x="4926.8497863247885" y="3813.0" />
+      <point x="5015.2247863247885" y="3813.0" />
+      <point x="5015.2247863247885" y="1462.0" />
+      <point x="5152.9747863247885" y="1462.0" />
+      <point x="0.0" y="127.0" />
+    </edge>
+    <edge source="gui.AddStudentRoomController" target="logic.Room" relationship="CREATE">
+      <point x="-106.0" y="-534.0" />
+      <point x="196.9722222222381" y="3843.0" />
+      <point x="20.0" y="3843.0" />
+      <point x="20.0" y="3833.0" />
+      <point x="5.0" y="3833.0" />
+      <point x="5.0" y="1001.0" />
+      <point x="143.55555555557203" y="1001.0" />
+      <point x="143.55555555557203" y="791.0" />
+      <point x="2033.972222222239" y="791.0" />
+      <point x="-72.33333333333326" y="171.0" />
+    </edge>
+    <edge source="logic.ConservationApp" target="logic.Ownership" relationship="DEPENDENCY">
+      <point x="136.25" y="-974.0" />
+      <point x="4340.641452991455" y="1622.0" />
+      <point x="5361.4747863247885" y="1622.0" />
+      <point x="5361.4747863247885" y="1472.0" />
+      <point x="5600.1970085470275" y="1472.0" />
+      <point x="5600.1970085470275" y="721.0" />
+      <point x="4293.888888888905" y="721.0" />
+      <point x="62.66666666666697" y="105.0" />
+    </edge>
+    <edge source="gui.MessagesController" target="database.DBLease" relationship="DEPENDENCY">
+      <point x="-85.0" y="-193.0" />
+      <point x="1219.5555555555716" y="3843.0" />
+      <point x="935.5555555555716" y="3843.0" />
+      <point x="935.5555555555716" y="1612.0" />
+      <point x="2815.5555555555716" y="1612.0" />
+      <point x="0.0" y="116.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.1032182103610675" showDependencies="true" x="4450.0" y="2538.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Methods</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
