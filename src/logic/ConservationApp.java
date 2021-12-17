@@ -644,5 +644,24 @@ public class ConservationApp {
         }
         return output;
     }
+    public ArrayList<String> getCurrentLandlordRoomIDs(){
+        ArrayList<String> output = new ArrayList<>();
+        for(Room newRoom:getCurrentLandlordRooms()){
+            output.add(newRoom.getRoomID());
+        }
+        return output;
+    }
+
+    public ArrayList<Registers> getCurrentLandlordRegisters(){
+        ArrayList<Registers> output = new ArrayList<>();
+        for(Registers newRegisters:this.registers) {
+            for (Room newRoom : getCurrentLandlordRooms()) {
+                if(newRoom.getRoomID().equals(newRegisters.getRoomID())){
+                    output.add(newRegisters);
+                }
+            }
+        }
+        return output;
+    }
 }
 

@@ -12,6 +12,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -57,7 +58,7 @@ public class RegisterEnergyConsumptionController implements Initializable {
     @FXML
     private DatePicker datePicker;
     @FXML
-    private TextField roomID;
+    private ChoiceBox<String> roomIDChoice;
     @FXML
     private TextField electricity;
     @FXML
@@ -67,6 +68,14 @@ public class RegisterEnergyConsumptionController implements Initializable {
     @FXML
     private Label consumptionInfo;
 
+    private String currentChoiceAdd;
+
+    private ArrayList<Registers> listViewRegisters = program.getRegisters();
+
+    public void getroomIDChoice(ActionEvent event){
+        currentChoiceAdd = roomIDChoice.getValue();
+    }
+
 
     public void addConsumption(ActionEvent event){
         LocalDate ld = datePicker.getValue();
@@ -74,7 +83,7 @@ public class RegisterEnergyConsumptionController implements Initializable {
         System.out.println(date);
 
         String registrationID =""+Math.floor(Math.random()*(99999-91000+1)+91000);
-        String roomIDString = roomID.getText();
+        String roomIDString = roomIDChoice.getValue();
         String electricityString = electricity.getText();
         String waterString = water.getText();
         String gasString = gas.getText();
@@ -99,11 +108,55 @@ public class RegisterEnergyConsumptionController implements Initializable {
             registersArrayList.add(newRegisters);
             program.setRegisters(registersArrayList);
 
+
             consumptionInfo.setText("Consumption is successfully added!");
         }
         else{
             consumptionInfo.setText("You already added consumption info for this room!");
         }
+    }
+    @FXML
+    private TextField changeElec;
+    @FXML
+    private TextField changeWater;
+    @FXML
+    private TextField changeGas;
+
+    public void changeConsumption(){
+        if(!changeElec.getText().equals("")){
+            DBMonthlyConsumption.changeMonthlyConsumptionToDatabase("electricity", changeElec.getText(), currentRegister.getRegistrationID());
+        }
+        if(!changeWater.getText().equals("")){
+            DBMonthlyConsumption.changeMonthlyConsumptionToDatabase("water", changeWater.getText(), currentRegister.getRegistrationID());
+        }
+        if(!changeGas.getText().equals("")){
+            DBMonthlyConsumption.changeMonthlyConsumptionToDatabase("gas", changeGas.getText(), currentRegister.getRegistrationID());
+        }
+        program.setMonthlyConsumptions(DBMonthlyConsumption.databaseReadMonthlyConsumption());
+
+        myListView.getItems().clear();
+        myListView.getItems().addAll(program.getCurrentLandlordRegisters());
+
+        clearInputChange();
+    }
+    public void removeRegister(){
+        Registers currentRegisterRemove = currentRegister;
+
+        DBRegisters.removeRegisterFromDatabase(currentRegister);
+        listViewRegisters.remove(currentRegisterRemove);
+
+        program.setRegisters(DBRegisters.databaseReadRegisters());
+
+        myListView.getItems().clear();
+        myListView.getItems().addAll(program.getCurrentLandlordRegisters());
+        program.setRegisters(listViewRegisters);
+
+    }
+
+    public void clearInputChange(){
+        changeElec.setText("");
+        changeWater.setText("");
+        changeGas.setText("");
     }
 
     public boolean consumptionPresent(Registers registers){
@@ -134,7 +187,9 @@ public class RegisterEnergyConsumptionController implements Initializable {
     private Registers currentRegister;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        myListView.getItems().addAll(program.getRegisters());
+        myListView.getItems().addAll(program.getCurrentLandlordRegisters());
+        roomIDChoice.getItems().addAll(program.getCurrentLandlordRoomIDs());
+        roomIDChoice.setOnAction(this::getroomIDChoice);
         roomChoiceBox.getItems().addAll(program.getCurrentLandlordRooms());
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Registers>() {
             @Override
@@ -146,9 +201,12 @@ public class RegisterEnergyConsumptionController implements Initializable {
     });
 
     }
-
-
-
-
+    public void clearInputAdd(){
+        datePicker.setValue(null);
+        roomIDChoice.setValue("");
+        electricity.setText("");
+        water.setText("");
+        gas.setText("");
+    }
 
 }
