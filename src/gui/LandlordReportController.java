@@ -69,6 +69,9 @@ public class LandlordReportController implements Initializable {
         String[] outputArray = date.split("/");
         return outputArray[2];
     }
+    XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
+    XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
+    XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
 
     public void showBarChart(){
         LocalDate date = datePicker.getValue();
@@ -82,24 +85,19 @@ public class LandlordReportController implements Initializable {
         roomIDs = getRoomIDs();
         buildingIDs = getBuildingIDs();
 
-        XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
-        series1.setName("Water (m³)");
         for(int i = 0; i<water.size(); i++){
             series1.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), water.get(i)));
         }
 
-        XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
-        series2.setName("Electricity (kWh)");
         for(int i = 0; i<electricity.size(); i++){
             series2.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), electricity.get(i)));
         }
 
-        XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
-        series3.setName("Gas (kWh)");
         for(int i = 0; i<gas.size(); i++){
             series3.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), gas.get(i)));
         }
 
+        barChart.getData().clear();
         barChart.getData().addAll(series1, series2, series3);
 
         switch (toMonth(dateString)){
@@ -207,41 +205,12 @@ public class LandlordReportController implements Initializable {
     }
 
     public void clearBarChart(){
+        series1.getData().clear();
+        series2.getData().clear();
+        series3.getData().clear();
         barChart.getData().clear();
     }
 
-    private ArrayList<String> trimmedBuildingID;
-    private ArrayList<Integer> waterBuildings;
-    private ArrayList<Integer> electricityBuildings;
-    private ArrayList<Integer> gasBuildings;
-
-    public void setConsumptionPerBuilding(){
-        /*ArrayList <String> buildingIDsLandlord = buildingIDs;
-        ArrayList <Integer> waterBuilding = new ArrayList<>();
-        ArrayList <Integer> electricityBuilding = new ArrayList<>();
-        ArrayList <Integer> gasBuilding = new ArrayList<>();
-        ArrayList <String> trimmedBuildingIDs = new ArrayList<>();
-
-        trimmedBuildingIDs.add(buildingIDsLandlord.get(0));
-
-        for(int i = 0; i<buildingIDsLandlord.size(); i++){
-            for(int j =0; j<buildingIDsLandlord.size(); j++){
-                if (trimmedBuildingIDs.get(i).equals(buildingIDsLandlord.get(i))) {
-                    trimmedBuildingIDs.add(buildingIDsLandlord.get(j));
-                    waterBuilding.set(i, waterBuilding.get(i)+water.get(j));
-                    electricityBuilding.set(i, electricityBuilding.get(i)+ electricity.get(j));
-                    gasBuilding.set(i, gasBuilding.get(i)+gas.get(j));
-                }
-
-            }
-        }
-
-        trimmedBuildingID = trimmedBuildingIDs;
-        waterBuildings = waterBuilding;
-        electricityBuildings = electricityBuilding;
-        gasBuildings = gasBuilding;*/
-    }
-    
     @FXML
     private BarChart<String, Integer> barChart1;
 
@@ -250,6 +219,10 @@ public class LandlordReportController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+
+        series1.setName("Water (m³)");
+        series2.setName("Electricity (kWh)");
+        series3.setName("Gas (m³)");
     }
 
 }
