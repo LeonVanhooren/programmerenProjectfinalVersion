@@ -31,7 +31,7 @@
                   <Label layoutX="175.0" layoutY="137.0" text="Select a day:" />
                   <Label layoutX="107.0" layoutY="211.0" text="Choose energy conservation action(s):" />
                   <Button layoutX="181.0" layoutY="285.0" mnemonicParsing="false" onAction="#setActionOnElectricityAppliance" text="Submit" />
-                  <Button layoutX="527.0" layoutY="311.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
+                  <Button layoutX="545.0" layoutY="331.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
                   <ChoiceBox fx:id="choiceBoxElecAction" layoutX="133.0" layoutY="241.0" prefHeight="25.0" prefWidth="155.0" />
                   <Label layoutX="153.0" layoutY="61.0" text="Appliance name" />
                   <ChoiceBox fx:id="choiceBoxElectricity" layoutX="133.0" layoutY="96.0" prefWidth="150.0" />
@@ -61,7 +61,7 @@
                   <Label layoutX="107.0" layoutY="197.0" text="Choose energy conservation action(s): " />
                   <ChoiceBox fx:id="choiceBoxWaterAction" layoutX="126.0" layoutY="237.0" prefHeight="25.0" prefWidth="165.0" />
                   <Button layoutX="183.0" layoutY="282.0" mnemonicParsing="false" onAction="#setActionOnWaterAppliance" text="Submit" />
-                  <Button layoutX="536.0" layoutY="322.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
+                  <Button layoutX="545.0" layoutY="331.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
                   <Label layoutX="167.0" layoutY="56.0" text="Appliance name" />
                   <ChoiceBox fx:id="choiceBoxWater" layoutX="135.0" layoutY="87.0" prefWidth="150.0" />
                   <Label fx:id="waterInfo" alignment="CENTER" layoutX="-11.0" layoutY="25.0" prefHeight="17.0" prefWidth="415.0" text="The conservation action is not yet added!" />
@@ -85,7 +85,7 @@
                   <Label layoutX="97.0" layoutY="202.0" text="Choose energy conservation action(s)" />
                   <ChoiceBox fx:id="choiceBoxGasAction" layoutX="109.0" layoutY="232.0" prefHeight="25.0" prefWidth="159.0" />
                   <Button layoutX="162.0" layoutY="276.0" mnemonicParsing="false" onAction="#setActionOnGasAppliance" text="Submit" />
-                  <Button layoutX="536.0" layoutY="319.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
+                  <Button layoutX="545.0" layoutY="331.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
                   <Label layoutX="154.0" layoutY="54.0" text="Appliance name" />
                   <ChoiceBox fx:id="choiceBoxGas" layoutX="114.0" layoutY="91.0" prefWidth="150.0" />
                   <Label fx:id="gasInfo" alignment="CENTER" layoutX="-34.0" layoutY="24.0" prefHeight="17.0" prefWidth="446.0" text="The conservation action is not yet added!" />
@@ -113,7 +113,8 @@
                   <Label layoutX="348.0" layoutY="154.0" text="Saved amount:" />
                   <Label layoutX="347.0" layoutY="189.0" text="Appliance kind:" />
                   <Button layoutX="474.0" layoutY="223.0" mnemonicParsing="false" onAction="#addAction" text="Add action" />
-                  <Button layoutX="152.0" layoutY="324.0" mnemonicParsing="false" onAction="#removeAction" text="Delete" />
+                  <Button layoutX="152.0" layoutY="318.0" mnemonicParsing="false" onAction="#removeAction" text="Delete" />
+                  <Button layoutX="544.0" layoutY="331.0" mnemonicParsing="false" onAction="#backToStudentMenu" text="Back" />
                </children>
             </AnchorPane>
         </content>

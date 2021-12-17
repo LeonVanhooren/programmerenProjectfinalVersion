@@ -31,8 +31,6 @@ public class MessagesController implements Initializable {
 
     private ArrayList<Contract> contracts = program.getContracts();
 
-    
-
     @FXML
     private Label landlordID;
     @FXML

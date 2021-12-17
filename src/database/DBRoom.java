@@ -33,7 +33,6 @@ public class DBRoom {
             }
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
         return rooms;
@@ -47,7 +46,6 @@ public class DBRoom {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -79,13 +77,8 @@ public class DBRoom {
             }
 
         } catch(SQLException e){
-            System.out.println("FAIL");
             e.printStackTrace();
         }
-    }
-
-    public static void changeIdforRoom(String roomNr){
-
     }
 
     public static void removeRoomFromDatabase(Room room){
@@ -97,7 +90,6 @@ public class DBRoom {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }

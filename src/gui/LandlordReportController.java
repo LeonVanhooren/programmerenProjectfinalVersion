@@ -1,7 +1,5 @@
 package gui;
 
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,16 +8,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.BarChart;
-import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.Stage;
 import logic.*;
-
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -36,14 +31,13 @@ public class LandlordReportController implements Initializable {
     @FXML
     private ListView<MonthlyConsumption> myListViewMonthlyConsumption;
     @FXML
+    private BarChart<String, Integer> barChart;
+    @FXML
     private DatePicker datePicker;
     @FXML
     private Label monthInfo;
     @FXML
-    private BarChart<String, Integer> barChart;
-    @FXML
     private BarChart<String, Integer> barChart1;
-
 
     private ArrayList<Registers> registersLandlord;
     private ArrayList<MonthlyConsumption> monthlyConsumptionsLandlord;
@@ -51,11 +45,7 @@ public class LandlordReportController implements Initializable {
     private ArrayList<Integer> electricity;
     private ArrayList<Integer> gas;
     private ArrayList<String> roomIDs;
-    ArrayList<String> buildingIDs;
 
-    XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
-    XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
-    XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
 
     public void backToLandlordMenu(ActionEvent event) throws IOException {
 
@@ -69,8 +59,6 @@ public class LandlordReportController implements Initializable {
 
     }
 
-
-
     public String toMonth(String date){
         String[] outputArray = date.split("/");
         return outputArray[1];
@@ -79,7 +67,9 @@ public class LandlordReportController implements Initializable {
         String[] outputArray = date.split("/");
         return outputArray[2];
     }
-
+    XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
+    XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
+    XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
 
     public void showBarChartLandlord(){
         barChart.getData().clear();
@@ -149,7 +139,6 @@ public class LandlordReportController implements Initializable {
                 monthInfo.setText(monthInfo.getText()+" "+"December of the year "+toYear(dateString));
                 break;
         }
-
     }
 
     private ArrayList<Integer> getWaterFromRooms(){
@@ -195,6 +184,7 @@ public class LandlordReportController implements Initializable {
         }
         return roomIDs;
     }
+    ArrayList<String> buildingIDs;
 
     public ArrayList<String> getBuildingIDs(){
         ArrayList<String> roomIDs = getRoomIDs();
@@ -224,5 +214,4 @@ public class LandlordReportController implements Initializable {
         series2.setName("Electricity (kWh)");
         series3.setName("Gas (m³)");
     }
-
 }

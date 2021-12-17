@@ -101,10 +101,6 @@ public class EnergyConservationActionsController implements Initializable {
     private ArrayList<Action> gasActions = programs.getGasActions();
     private ArrayList<Action> waterActions = programs.getWaterActions();
 
-
-
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         choiceBoxElectricity.getItems().addAll(appliancesElectricity);
@@ -127,12 +123,8 @@ public class EnergyConservationActionsController implements Initializable {
                    description.setPromptText(currentAction.getDescription());
                    savedAmount.setPromptText(""+currentAction.getSavedAmount());
                    choiceBoxApplianceKind.setValue(currentAction.getApplianceKind());
-
             }
-
-
         });
-
     }
 
     public void removeAction(){
@@ -203,8 +195,6 @@ public class EnergyConservationActionsController implements Initializable {
         }
     }
 
-
-
     public void setActionOnGasAppliance(){
         Appliance currentAppliance = choiceBoxGas.getValue();
         LocalDate date = datePickerGas.getValue();
@@ -227,8 +217,6 @@ public class EnergyConservationActionsController implements Initializable {
             gasInfo.setText("You already added this action to this appliance today!");
         }
     }
-
-
 
     public void setActionOnWaterAppliance(){
 
@@ -265,8 +253,6 @@ public class EnergyConservationActionsController implements Initializable {
         return false;
     }
 
-
-
     public void showBarChartGas(){
 
         ArrayList<Integer> recommended = new ArrayList<>();
@@ -284,8 +270,6 @@ public class EnergyConservationActionsController implements Initializable {
         barChartGas.getData().addAll(series1);
     }
 
-
-
     public void showBarChartWater(){
 
         ArrayList<Integer> recommended = new ArrayList<>();
@@ -301,12 +285,7 @@ public class EnergyConservationActionsController implements Initializable {
             series1.getData().add(new XYChart.Data<String, Integer>(actionsIDs.get(i), recommended.get(i)));
         }
         barChartWater.getData().addAll(series1);
-
-
     }
-
-
-
 
     public void showBarChartElectricity(){
 
@@ -324,5 +303,4 @@ public class EnergyConservationActionsController implements Initializable {
         }
         barChartElectricity.getData().addAll(series1);
     }
-
 }

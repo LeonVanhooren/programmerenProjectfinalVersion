@@ -32,7 +32,6 @@ public class DBMonthlyConsumption {
             }
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
         return monthlyConsumptions;
@@ -79,7 +78,6 @@ public class DBMonthlyConsumption {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }

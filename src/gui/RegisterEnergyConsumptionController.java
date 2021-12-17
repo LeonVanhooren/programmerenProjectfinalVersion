@@ -74,14 +74,11 @@ public class RegisterEnergyConsumptionController implements Initializable {
         stage.setTitle("landlord menu");
         scene = new Scene(root);
         stage.setScene(scene);
-
     }
-
 
     public void addConsumption(ActionEvent event){
         LocalDate ld = datePicker.getValue();
         String date = ld.getDayOfMonth()+"/"+ld.getMonthValue()+"/"+ld.getYear();
-        System.out.println(date);
 
         String registrationID =""+Math.floor(Math.random()*(99999-91000+1)+91000);
         String roomIDString = roomIDChoice.getValue();
@@ -91,7 +88,6 @@ public class RegisterEnergyConsumptionController implements Initializable {
 
         MonthlyConsumption newMonthlyConsumption = new MonthlyConsumption(registrationID, waterString, electricityString, gasString);
         Registers newRegisters = new Registers(date, registrationID, roomIDString);
-
 
         if(consumptionPresent(newRegisters)==false) {
 
@@ -111,6 +107,8 @@ public class RegisterEnergyConsumptionController implements Initializable {
 
 
             consumptionInfo.setText("Consumption is successfully added!");
+
+            clearInputAdd();
         }
         else{
             consumptionInfo.setText("You already added consumption info for this room!");
@@ -134,6 +132,7 @@ public class RegisterEnergyConsumptionController implements Initializable {
 
         clearInputChange();
     }
+
     public void removeRegister(){
         Registers currentRegisterRemove = currentRegister;
 

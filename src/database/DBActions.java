@@ -33,7 +33,6 @@ public class DBActions {
             }
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
 
         }
@@ -49,7 +48,6 @@ public class DBActions {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -63,7 +61,6 @@ public class DBActions {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -88,7 +85,6 @@ public class DBActions {
                     break;
             }
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }

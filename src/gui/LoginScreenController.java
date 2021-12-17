@@ -44,7 +44,6 @@ public class LoginScreenController {
         outputStudent[1] = studentPasswordInput.getText();
         if (!emptyfieldsStudent()){
         if(studentPresent(outputStudent[0],outputStudent[1] )==true){
-            System.out.println("zit in de database");
 
             loginInfoStudent.setText("This matches an account in the DB!");
             FXMLLoader loader = new FXMLLoader();
@@ -95,7 +94,6 @@ public class LoginScreenController {
         outputLandlord[1] = landlordPasswordInput.getText();
         if (!emptyfieldsLandlord()){
         if(landlordPresent(outputLandlord[0],outputLandlord[1] )==true){
-            System.out.println("zit in de database");
             loginInfoLandlord.setText("This matches an account in the DB!");
 
             FXMLLoader loader = new FXMLLoader(getClass().getResource("LandlordMenu.fxml"));

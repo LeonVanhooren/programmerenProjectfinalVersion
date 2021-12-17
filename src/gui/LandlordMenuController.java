@@ -25,9 +25,7 @@ public class LandlordMenuController {
 
     public void setUsernameLandlord(String username){
         usernameLabelLandlord.setText("Welcome: "+username);
-
     }
-
 
     public void monthlyConsumptionMenu(ActionEvent event) throws IOException {
 
@@ -38,7 +36,6 @@ public class LandlordMenuController {
         stage.setTitle("Consumption menu");
         scene = new Scene(root);
         stage.setScene(scene);
-
     }
 
     public void studentRoomMenu(ActionEvent event) throws IOException {
@@ -50,15 +47,11 @@ public class LandlordMenuController {
         stage.setTitle("Student room/building menu");
         scene = new Scene(root);
         stage.setScene(scene);
-
-
     }
 
     public void goToLandlordProfile(ActionEvent event)throws IOException{
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LandlordProfile.fxml"));
         root = loader.load();
-
-
 
         stage = (Stage)((Node) event.getSource()).getScene().getWindow();
         stage.setTitle("Landlord profile");
@@ -86,9 +79,7 @@ public class LandlordMenuController {
         stage.setTitle("Landlord report");
         scene = new Scene(root);
         stage.setScene(scene);
-
     }
-
 
     public void backToSignIn(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("LoginScreen.fxml"));
@@ -100,5 +91,4 @@ public class LandlordMenuController {
         stage.setScene(scene);
 
     }
-
 }

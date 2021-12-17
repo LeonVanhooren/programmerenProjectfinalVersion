@@ -32,7 +32,6 @@ public class DBLease {
             }
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
         return leases;
@@ -47,7 +46,6 @@ public class DBLease {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -61,7 +59,6 @@ public class DBLease {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }

@@ -32,7 +32,6 @@ public class DBBelongsTo {
             }
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
         return belongsToArrayList;
@@ -46,7 +45,6 @@ public class DBBelongsTo {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }

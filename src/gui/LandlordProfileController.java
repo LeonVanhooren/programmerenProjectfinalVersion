@@ -1,7 +1,6 @@
 package gui;
 
 import database.DBLandlord;
-import database.DBStudent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -73,8 +72,5 @@ public class LandlordProfileController implements Initializable {
         if(!telephoneNr.getText().equals("")){
             DBLandlord.changeLandlordFromDatabase("telephoneNr", telephoneNr.getText(), program.getCurrentLandlord().getLandlordID());
         }
-
     }
-
-
 }
