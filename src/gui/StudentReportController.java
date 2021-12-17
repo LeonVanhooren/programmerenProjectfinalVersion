@@ -112,7 +112,7 @@ public class StudentReportController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        currentRoomInfo.setText(currentRoomInfo.getText()+program.getRoomCurrentStudent().getRoomID());
+        currentRoomInfo.setText(currentRoomInfo.getText()+" "+program.getRoomCurrentStudent().getRoomID());
         appliances.getItems().addAll(applianceNames());
         consumption.getItems().addAll(applianceConsumptions());
         series1.setName("Monthly consumption");
