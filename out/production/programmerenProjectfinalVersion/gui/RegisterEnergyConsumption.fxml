@@ -49,18 +49,14 @@
                   <ListView fx:id="myListView" layoutX="10.0" layoutY="43.0" prefHeight="247.0" prefWidth="283.0" />
                   <Button layoutX="112.0" layoutY="298.0" mnemonicParsing="false" text="Remove" />
                   <Button layoutX="545.0" layoutY="331.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
-                  <DatePicker layoutX="390.0" layoutY="67.0" />
-                  <TextField layoutX="390.0" layoutY="109.0" />
-                  <TextField layoutX="390.0" layoutY="147.0" />
-                  <TextField layoutX="390.0" layoutY="185.0" />
-                  <TextField layoutX="390.0" layoutY="222.0" />
-                  <Label layoutX="300.0" layoutY="71.0" text="Change date:" />
-                  <Label layoutX="300.0" layoutY="113.0" text="Change room:" />
-                  <Label layoutX="300.0" layoutY="151.0" text="Change elect.;" />
-                  <Label layoutX="300.0" layoutY="189.0" text="Change water:" />
-                  <Label layoutX="300.0" layoutY="226.0" text="Change gas:" />
+                  <TextField fx:id="changeElec" layoutX="390.0" layoutY="62.0" />
+                  <TextField fx:id="changeWater" layoutX="390.0" layoutY="102.0" />
+                  <TextField fx:id="changeGas" layoutX="390.0" layoutY="145.0" />
+                  <Label layoutX="301.0" layoutY="66.0" text="Change elect.;" />
+                  <Label layoutX="300.0" layoutY="106.0" text="Change water:" />
+                  <Label layoutX="311.0" layoutY="149.0" text="Change gas:" />
                   <Label alignment="CENTER" layoutX="146.0" layoutY="14.0" prefHeight="17.0" prefWidth="307.0" text="No consumption is yet selected!" />
-                  <Button layoutX="400.0" layoutY="264.0" mnemonicParsing="false" text="Change consumption" />
+                  <Button layoutX="400.0" layoutY="185.0" mnemonicParsing="false" onAction="#changeConsumption" text="Change consumption" />
                </children></AnchorPane>
       </content>
     </Tab>

@@ -133,6 +133,15 @@ public class RegisterEnergyConsumptionController implements Initializable {
         program.setMonthlyConsumptions(DBMonthlyConsumption.databaseReadMonthlyConsumption());
 
         myListView.getItems().clear();
+        myListView.getItems().addAll(program.getCurrentLandlordRegisters());
+
+        clearInputChange();
+    }
+
+    public void clearInputChange(){
+        changeElec.setText("");
+        changeWater.setText("");
+        changeGas.setText("");
     }
 
     public boolean consumptionPresent(Registers registers){
@@ -163,7 +172,7 @@ public class RegisterEnergyConsumptionController implements Initializable {
     private Registers currentRegister;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        myListView.getItems().addAll(program.getRegisters());
+        myListView.getItems().addAll(program.getCurrentLandlordRegisters());
         roomIDChoice.getItems().addAll(program.getCurrentLandlordRoomIDs());
         roomIDChoice.setOnAction(this::getroomIDChoice);
         roomChoiceBox.getItems().addAll(program.getCurrentLandlordRooms());
