@@ -37,7 +37,6 @@ public class DBRegisters {
             }
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
         return registers;
@@ -55,7 +54,6 @@ public class DBRegisters {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -68,7 +66,6 @@ public class DBRegisters {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }

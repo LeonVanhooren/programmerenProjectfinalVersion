@@ -34,7 +34,6 @@ public class DBLandlord {
             }
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
         return landlords;
@@ -49,7 +48,6 @@ public class DBLandlord {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -96,7 +94,6 @@ public class DBLandlord {
                     break;
             }
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -111,7 +108,6 @@ public class DBLandlord {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }

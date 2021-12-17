@@ -31,7 +31,6 @@ public class DBSavesBy {
             }
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
 
         }
@@ -47,7 +46,6 @@ public class DBSavesBy {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }

@@ -33,7 +33,6 @@ public class DBStudent {
             }
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
         return students;
@@ -49,7 +48,6 @@ public class DBStudent {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -95,7 +93,6 @@ public class DBStudent {
                     break;
             }
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -111,7 +108,6 @@ public class DBStudent {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }

@@ -31,7 +31,6 @@ public class DBOwnership {
             }
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
         return ownerships;
@@ -46,7 +45,6 @@ public class DBOwnership {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
