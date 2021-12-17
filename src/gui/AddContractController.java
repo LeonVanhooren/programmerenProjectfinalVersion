@@ -189,4 +189,47 @@ public class AddContractController  implements Initializable {
         });
 
     }
+
+    @FXML
+    private TextField contractNrTerminate;
+
+    public void removeContract(){
+
+        Contract contractRemove = currentContract;
+
+        ArrayList<Contract> contractsRemoveList = program.getContractsLandlord();
+        contractsRemoveList.remove(contractRemove);
+        myListView.getItems().addAll(contractsRemoveList);
+
+        ArrayList<Contract> contracts = program.getContracts();
+        contracts.remove(contractRemove);
+        program.setContracts(contracts);
+
+        DBContract.removeContractFromDatabase(contractRemove);
+
+        String roomID = contractRemove.getcontractRoomID();
+        Lease leaseRemove = null;
+
+        for(Lease newLease: program.getLeases()){
+            if(newLease.getRoomID().equals(roomID)){
+                leaseRemove = newLease;
+            }
+        }
+
+        DBLease.removeLeaseFromDatabase(leaseRemove);
+
+        ArrayList<Lease> leases = program.getLeases();
+        leases.remove(leaseRemove);
+        program.setLeases(leases);
+
+        currentContract = null;
+        studentIDStatus.setText("");
+        landlordIDStatus.setText("");
+        contractNrStatus.setText("");
+        startDateStatus.setText("");
+        durationStatus.setText("");
+        statusStatus.setText("");
+        roomIDStatus.setText("");
+
+    }
 }

@@ -60,7 +60,7 @@
                   <Button layoutX="490.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearElectricityGraph" text="Clear graph" />
                   <Button layoutX="404.0" layoutY="14.0" mnemonicParsing="false" onAction="#showElectricity" text="Show graph" />
                   <Label fx:id="electricityInfo" layoutX="63.0" layoutY="320.0" text="Months: " />
-                  <LineChart layoutX="14.0" layoutY="45.0" prefHeight="275.0" prefWidth="632.0">
+                  <LineChart fx:id="areaChartElectricity" layoutX="14.0" layoutY="45.0" prefHeight="275.0" prefWidth="632.0">
                     <xAxis>
                       <CategoryAxis prefHeight="24.0" prefWidth="575.0" side="BOTTOM" />
                     </xAxis>
