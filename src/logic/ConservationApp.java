@@ -600,5 +600,49 @@ public class ConservationApp {
         }
         return output;
     }
+
+    public Room getRoomCurrentStudent(){
+        Room output=null;
+        String roomID=null;
+        for(Lease newLease: this.leases){
+            if(newLease.getStudentID().equals(currentStudent.getStudentID())){
+                roomID = newLease.getRoomID();
+            }
+        }
+
+        for(Room newRoom: this.rooms){
+            if(newRoom.getRoomID().equals(roomID)){
+                output = newRoom;
+            }
+        }
+
+        return output;
+    }
+
+    public ArrayList<String> getSavesBysConservations(ArrayList<Action> outputActions) {
+        ArrayList<String> output = new ArrayList<>();
+        for(Action newAction:outputActions){
+            switch(newAction.getApplianceKind()){
+                case "Electricity":
+                    output.add(newAction.getSavedAmount()+" kWh electricity");
+                    break;
+                case "Gas":
+                    output.add(newAction.getSavedAmount()+" m³ gas");
+                    break;
+                case "Water":
+                    output.add(newAction.getSavedAmount()+" m³ water");
+            }
+        }
+        return output;
+    }
+
+
+    public ArrayList<String> getCurrentLandlordBuildingIDs() {
+        ArrayList<String> output = new ArrayList<>();
+        for(Building newBuilding:getCurrentLandlordBuildings()){
+            output.add(newBuilding.getBuildingID());
+        }
+        return output;
+    }
 }
 
