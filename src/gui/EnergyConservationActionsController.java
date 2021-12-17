@@ -36,25 +36,24 @@ public class EnergyConservationActionsController implements Initializable {
     private Parent root;
     private Scene scene;
 
-    public void backToStudentMenu(ActionEvent event) throws IOException{
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("StudentMenu.fxml"));
-        root = loader.load();
-
-
-
-        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("Student menu");
-        scene = new Scene(root);
-        stage.setScene(scene);
-    }
-
-    private ArrayList<Appliance> appliancesElectricity = programs.getAppliancesCurrentStudentElectricity();
-    private ArrayList<Appliance> appliancesWater = programs.getAppliancesCurrentStudentWater();
-    private ArrayList<Appliance> appliancesGas = programs.getAppliancesCurrentStudentGas();
-    private ArrayList<Action> electricityActions = programs.getElectricityActions();
-    private ArrayList<Action> gasActions = programs.getGasActions();
-    private ArrayList<Action> waterActions = programs.getWaterActions();
+    @FXML
+    private Label electricityInfo;
+    @FXML
+    private Label gasInfo;
+    @FXML
+    private Label waterInfo;
+    @FXML
+    private DatePicker datePickerGas;
+    @FXML
+    private DatePicker datePickerElectricity;
+    @FXML
+    private DatePicker datePickerWater;
+    @FXML
+    private BarChart barChartGas;
+    @FXML
+    private BarChart barChartWater;
+    @FXML
+    private BarChart barChartElectricity;
 
     private String[] applianceKindInput= {"Electricity", "Water", "Gas" };
 
@@ -81,6 +80,28 @@ public class EnergyConservationActionsController implements Initializable {
 
     private Action currentAction;
     private ArrayList<Action> listViewActions = programs.getActions();
+
+    public void backToStudentMenu(ActionEvent event) throws IOException{
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("StudentMenu.fxml"));
+        root = loader.load();
+
+
+
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("Student menu");
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    private ArrayList<Appliance> appliancesElectricity = programs.getAppliancesCurrentStudentElectricity();
+    private ArrayList<Appliance> appliancesWater = programs.getAppliancesCurrentStudentWater();
+    private ArrayList<Appliance> appliancesGas = programs.getAppliancesCurrentStudentGas();
+    private ArrayList<Action> electricityActions = programs.getElectricityActions();
+    private ArrayList<Action> gasActions = programs.getGasActions();
+    private ArrayList<Action> waterActions = programs.getWaterActions();
+
+
 
 
 
@@ -157,15 +178,6 @@ public class EnergyConservationActionsController implements Initializable {
         savedAmount.setText("");
         choiceBoxApplianceKind.setValue("");
     }
-    @FXML
-    private Label electricityInfo;
-    @FXML
-    private Label gasInfo;
-    @FXML
-    private Label waterInfo;
-
-    @FXML
-    private DatePicker datePickerElectricity;
 
     public void setActionOnElectricityAppliance(){
 
@@ -191,8 +203,7 @@ public class EnergyConservationActionsController implements Initializable {
         }
     }
 
-    @FXML
-    private DatePicker datePickerGas;
+
 
     public void setActionOnGasAppliance(){
         Appliance currentAppliance = choiceBoxGas.getValue();
@@ -217,8 +228,7 @@ public class EnergyConservationActionsController implements Initializable {
         }
     }
 
-    @FXML
-    private DatePicker datePickerWater;
+
 
     public void setActionOnWaterAppliance(){
 
@@ -255,8 +265,6 @@ public class EnergyConservationActionsController implements Initializable {
         return false;
     }
 
-    @FXML
-    private BarChart barChartGas;
 
 
     public void showBarChartGas(){
@@ -276,8 +284,7 @@ public class EnergyConservationActionsController implements Initializable {
         barChartGas.getData().addAll(series1);
     }
 
-    @FXML
-    private BarChart barChartWater;
+
 
     public void showBarChartWater(){
 
@@ -298,8 +305,7 @@ public class EnergyConservationActionsController implements Initializable {
 
     }
 
-    @FXML
-    private BarChart barChartElectricity;
+
 
 
     public void showBarChartElectricity(){

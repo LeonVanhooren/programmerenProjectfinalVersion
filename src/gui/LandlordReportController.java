@@ -73,7 +73,13 @@ public class LandlordReportController implements Initializable {
     XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
     XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
 
-    public void showBarChart(){
+    public void showBarChartLandlord(){
+        barChart.getData().clear();
+        barChart.getData().addAll(series1, series2, series3);
+
+    }
+
+    public void makeBarChart(){
         LocalDate date = datePicker.getValue();
         String dateString = date.getDayOfMonth()+"/"+date.getMonthValue()+"/"+date.getYear();
 
@@ -97,49 +103,49 @@ public class LandlordReportController implements Initializable {
             series3.getData().add(new XYChart.Data<String, Integer>(roomIDs.get(i), gas.get(i)));
         }
 
-        barChart.getData().clear();
-        barChart.getData().addAll(series1, series2, series3);
+
 
         switch (toMonth(dateString)){
             case "01":
-                monthInfo.setText("January of the year "+toYear(dateString));
+                monthInfo.setText(monthInfo.getText()+" "+"January of the year "+toYear(dateString));
                 break;
             case "02":
-                monthInfo.setText("February of the year "+toYear(dateString));
+                monthInfo.setText(monthInfo.getText()+" "+"February of the year "+toYear(dateString));
                 break;
             case "03":
-                monthInfo.setText("March of the year "+toYear(dateString));
+                monthInfo.setText(monthInfo.getText()+" "+"March of the year "+toYear(dateString));
                 break;
             case "04":
-                monthInfo.setText("April of the year "+toYear(dateString));
+                monthInfo.setText(monthInfo.getText()+" "+"April of the year "+toYear(dateString));
                 break;
             case "05":
-                monthInfo.setText("May of the year "+toYear(dateString));
+                monthInfo.setText(monthInfo.getText()+" "+"May of the year "+toYear(dateString));
                 break;
             case "06":
-                monthInfo.setText("June of the year "+toYear(dateString));
+                monthInfo.setText(monthInfo.getText()+" "+"June of the year "+toYear(dateString));
                 break;
             case "07":
-                monthInfo.setText("July of the year "+toYear(dateString));
+                monthInfo.setText(monthInfo.getText()+" "+"July of the year "+toYear(dateString));
                 break;
             case "08":
-                monthInfo.setText("August of the year "+toYear(dateString));
+                monthInfo.setText(monthInfo.getText()+" "+"August of the year "+toYear(dateString));
                 break;
             case "09":
-                monthInfo.setText("September of the year "+toYear(dateString));
+                monthInfo.setText(monthInfo.getText()+" "+"September of the year "+toYear(dateString));
                 break;
             case "10":
-                monthInfo.setText("October of the year "+toYear(dateString));
+                monthInfo.setText(monthInfo.getText()+" "+"October of the year "+toYear(dateString));
                 break;
             case "11":
-                monthInfo.setText("November of the year "+toYear(dateString));
+                monthInfo.setText(monthInfo.getText()+" "+"November of the year "+toYear(dateString));
                 break;
             case "12":
-                monthInfo.setText("December of the year "+toYear(dateString));
+                monthInfo.setText(monthInfo.getText()+" "+"December of the year "+toYear(dateString));
                 break;
         }
 
     }
+
 
     private ArrayList<Integer> getWaterFromRooms(){
         ArrayList<Integer> water =new ArrayList<>();
@@ -209,6 +215,7 @@ public class LandlordReportController implements Initializable {
         series2.getData().clear();
         series3.getData().clear();
         barChart.getData().clear();
+        monthInfo.setText("Months to compare: ");
     }
 
     @FXML

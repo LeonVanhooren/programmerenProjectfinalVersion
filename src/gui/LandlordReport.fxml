@@ -27,9 +27,10 @@
                   </BarChart>
                   <Label layoutX="62.0" layoutY="25.0" text="Pick a month:" />
                   <DatePicker fx:id="datePicker" layoutX="140.0" layoutY="21.0" />
-                  <Button layoutX="372.0" layoutY="21.0" mnemonicParsing="false" onAction="#showBarChart" text="Show report" />
-                  <Label fx:id="monthInfo" alignment="CENTER" layoutX="120.0" layoutY="335.0" prefHeight="17.0" prefWidth="326.0" text="Month: " />
-                  <Button layoutX="470.0" layoutY="21.0" mnemonicParsing="false" onAction="#clearBarChart" text="Clear report" />
+                  <Button layoutX="414.0" layoutY="21.0" mnemonicParsing="false" onAction="#showBarChartLandlord" text="Show report" />
+                  <Label fx:id="monthInfo" alignment="CENTER" layoutX="4.0" layoutY="335.0" prefHeight="17.0" prefWidth="536.0" text="Month consumption: " />
+                  <Button layoutX="505.0" layoutY="21.0" mnemonicParsing="false" onAction="#clearBarChart" text="Clear report" />
+                  <Button layoutX="326.0" layoutY="21.0" mnemonicParsing="false" onAction="#makeBarChart" text="Add month" />
                </children></AnchorPane>
       </content>
     </Tab>
