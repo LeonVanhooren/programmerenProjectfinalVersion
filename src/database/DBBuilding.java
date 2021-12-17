@@ -95,11 +95,11 @@ public class DBBuilding {
 
 
 
-    public static void removeBuildingFromDatabase(String buildingID){
+    public static void removeBuildingFromDatabase(Building building){
         try {
             Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
             Statement stm = connection.createStatement();
-            String query = "DELETE FROM building WHERE buildingID="+buildingID;
+            String query = "DELETE FROM building WHERE buildingID="+building.getBuildingID();
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 

@@ -54,12 +54,11 @@ public class Building {
 
     @Override
     public String toString() {
-        return "Building{" +
+        return
                 "buildingID='" + buildingID + '\'' +
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
-                ", address='" + address + '\'' +", zip='" + zip + '\''+
-                '}';
+                ", address='" + address + '\'' +", zip='" + zip + '\'';
     }
 }
 
