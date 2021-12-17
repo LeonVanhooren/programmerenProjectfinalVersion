@@ -30,6 +30,12 @@ public class LoginScreenController {
     private TextField studentUsernameInput;
     @FXML
     private PasswordField studentPasswordInput;
+    @FXML
+    private TextField landlordUsernameInput;
+    @FXML
+    private PasswordField landlordPasswordInput;
+    @FXML
+    private Label loginInfoLandlord;
 
     public void studentSignIn(ActionEvent event) throws IOException {
         String[] outputStudent = new String[2];
@@ -45,8 +51,6 @@ public class LoginScreenController {
             loader.setLocation(getClass().getResource("StudentMenu.fxml"));
             Parent view = loader.load();
 
-
-
             stage = (Stage)((Node) event.getSource()).getScene().getWindow();
             stage.setTitle("Student menu");
             scene = new Scene(view);
@@ -58,7 +62,6 @@ public class LoginScreenController {
             studentUsernameInput.setText("");
             studentPasswordInput.setText("");
 
-
         }}
         else{loginInfoStudent.setText("Please fill in every field!");
 
@@ -69,7 +72,6 @@ public class LoginScreenController {
             if(((newStudent.getStudentID().equals(studentID))||(newStudent.getEmail().equals(studentID)))&&(newStudent.getPassword().equals(password))){
                 program.setCurrentStudent(newStudent);
                 return true;
-
             }
         }
         return false;
@@ -84,17 +86,7 @@ public class LoginScreenController {
         stage.setTitle("Student register menu");
         scene = new Scene(root);
         stage.setScene(scene);
-
     }
-
-
-    @FXML
-    private TextField landlordUsernameInput;
-    @FXML
-    private PasswordField landlordPasswordInput;
-    @FXML
-    private Label loginInfoLandlord;
-
 
     public void landlordSignIn(ActionEvent event) throws IOException{
         String[] outputLandlord = new String[2];
@@ -122,8 +114,6 @@ public class LoginScreenController {
             landlordPasswordInput.setText("");
         }}
         else{ loginInfoLandlord.setText("Please fill in every field!");
-
-
     }}
 
     public boolean landlordPresent(String landlordID, String password) {
@@ -131,12 +121,10 @@ public class LoginScreenController {
             if (((newLandlord.getLandlordID().equals(landlordID))||(newLandlord.getEmail().equals(landlordID))) && ((newLandlord.getPassWord().equals(password)))) {
                 program.setCurrentLandlord(newLandlord);
                 return true;
-
             }
         }
         return false;
     }
-
 
     private Parent root1;
     private Scene scene1;
@@ -166,5 +154,5 @@ public class LoginScreenController {
         }
         return false;
     }
-    }
+}
 
