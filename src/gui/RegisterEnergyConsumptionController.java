@@ -70,6 +70,8 @@ public class RegisterEnergyConsumptionController implements Initializable {
 
     private String currentChoiceAdd;
 
+    private ArrayList<Registers> listViewRegisters = program.getRegisters();
+
     public void getroomIDChoice(ActionEvent event){
         currentChoiceAdd = roomIDChoice.getValue();
     }
@@ -136,6 +138,19 @@ public class RegisterEnergyConsumptionController implements Initializable {
         myListView.getItems().addAll(program.getCurrentLandlordRegisters());
 
         clearInputChange();
+    }
+    public void removeRegister(){
+        Registers currentRegisterRemove = currentRegister;
+
+        DBRegisters.removeRegisterFromDatabase(currentRegister);
+        listViewRegisters.remove(currentRegisterRemove);
+
+        program.setRegisters(DBRegisters.databaseReadRegisters());
+
+        myListView.getItems().clear();
+        myListView.getItems().addAll(program.getCurrentLandlordRegisters());
+        program.setRegisters(listViewRegisters);
+
     }
 
     public void clearInputChange(){

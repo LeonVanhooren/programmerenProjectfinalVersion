@@ -47,7 +47,7 @@
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
                   <ListView fx:id="myListView" layoutX="10.0" layoutY="43.0" prefHeight="247.0" prefWidth="283.0" />
-                  <Button layoutX="112.0" layoutY="298.0" mnemonicParsing="false" text="Remove" />
+                  <Button layoutX="112.0" layoutY="298.0" mnemonicParsing="false" onAction="#removeRegister" text="Remove" />
                   <Button layoutX="545.0" layoutY="331.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
                   <TextField fx:id="changeElec" layoutX="390.0" layoutY="62.0" />
                   <TextField fx:id="changeWater" layoutX="390.0" layoutY="102.0" />

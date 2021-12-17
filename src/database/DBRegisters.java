@@ -3,6 +3,7 @@ package database;
 import logic.BelongsTo;
 import logic.Ownership;
 import logic.Registers;
+import logic.Student;
 
 import java.sql.*;
 import java.time.LocalDate;
@@ -50,6 +51,19 @@ public class DBRegisters {
 
 
             String query = "INSERT INTO registers "+"VALUES('"+ registers.getDate()+"', '"+ registers.getRegistrationID() +"', '"+ registers.getRoomID() +"')";
+            PreparedStatement preparedStmt = connection.prepareStatement(query);
+            preparedStmt.execute();
+
+        } catch (SQLException e) {
+            System.out.println("FAIL");
+            e.printStackTrace();
+        }
+    }
+    public static void removeRegisterFromDatabase(Registers registers){
+        try {
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Statement stm = connection.createStatement();
+            String query = "DELETE FROM registers WHERE registrationID="+registers.getRegistrationID();
             PreparedStatement preparedStmt = connection.prepareStatement(query);
             preparedStmt.execute();
 
