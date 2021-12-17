@@ -9,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.chart.AreaChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import logic.Action;
@@ -108,13 +109,118 @@ public class StudentReportController implements Initializable {
         energySaved.getItems().addAll(outputEnergySaved);
     }
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         appliances.getItems().addAll(applianceNames());
         consumption.getItems().addAll(applianceConsumptions());
 
+    }
+
+    public void clearElectricityGraph(){
+        areaChartElectricity.getData().clear();
+    }
+    public void clearGasGraph(){
+        areaChartGas.getData().clear();
+    }
+    public void clearWaterGraph(){
+        areaChartWater.getData().clear();
+    }
+
+    private ArrayList<XYChart.Series> series = new ArrayList<>();
+
+    public void showElectricityGraph(){
+        LocalDate dateLocal = datePickerElectricity.getValue();
+        String date = dateLocal.getDayOfMonth()+"/"+dateLocal.getMonthValue()+"/"+dateLocal.getYear();
+
+        ArrayList<Appliance> appliances = program.getAppliancesFromRoom(program.getRoomCurrentStudent());
+        ArrayList<Integer> monthlyConsumptionRoom = program.getConsumptionOfAppliances(appliances);
+
+        String[] dateSplit = date.split("/");
+        ArrayList<Action> actions = program.getActionsFromRoom(dateSplit,appliances);
+        ArrayList<Integer> monthlyConservation = program.getMonthlyConservation(actions);
+
+        ArrayList<Integer> monthlyConsumptionReducted = program.getMonthlyConsumptionReducted(monthlyConsumptionRoom, monthlyConservation);
+
+        XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
+        series1.setName("Monthly consumption");
+        series1.getData().add(new XYChart.Data<String, Integer>(dateSplit[1]+"/"+dateSplit[2], monthlyConsumptionRoom.get(0)));
+
+
+        XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
+        series2.setName("Monthly conservation");
+        series2.getData().add(new XYChart.Data<String, Integer>(dateSplit[1]+"/"+dateSplit[2], -monthlyConservation.get(0)));
+
+
+        XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
+        series3.setName("Monthly netto-consumption");
+        series3.getData().add(new XYChart.Data<String, Integer>(dateSplit[1]+"/"+dateSplit[2], monthlyConsumptionReducted.get(0)));
+
+        areaChartElectricity.getData().clear();
+
+        series.add(series1);
+        series.add(series2);
+        series.add(series3);
+
+        for(int i = 0; i<series.size(); i++){
+            areaChartElectricity.getData().add(series.get(i));
+        }
+    }
+
+    public void showGasGraph(){
+        LocalDate dateLocal = datePickerGas.getValue();
+        String date = dateLocal.getDayOfMonth()+"/"+dateLocal.getMonthValue()+"/"+dateLocal.getYear();
+
+        ArrayList<Appliance> appliances = program.getAppliancesFromRoom(program.getRoomCurrentStudent());
+        ArrayList<Integer> monthlyConsumptionRoom = program.getConsumptionOfAppliances(appliances);
+
+        String[] dateSplit = date.split("/");
+        ArrayList<Action> actions = program.getActionsFromRoom(dateSplit,appliances);
+        ArrayList<Integer> monthlyConservation = program.getMonthlyConservation(actions);
+
+        ArrayList<Integer> monthlyConsumptionReducted = program.getMonthlyConsumptionReducted(monthlyConsumptionRoom, monthlyConservation);
+
+        XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
+        series1.getData().add(new XYChart.Data<String, Integer>(dateSplit[1]+"/"+dateSplit[2], monthlyConsumptionRoom.get(1)));
+
+
+        XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
+        series2.getData().add(new XYChart.Data<String, Integer>(dateSplit[1]+"/"+dateSplit[2], -monthlyConservation.get(1)));
+
+
+        XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
+        series3.getData().add(new XYChart.Data<String, Integer>(dateSplit[1]+"/"+dateSplit[2], monthlyConsumptionReducted.get(1)));
+
+
+        areaChartGas.getData().addAll(series1, series2, series3);
+
+    }
+
+    public void showWaterGraph(){
+        LocalDate dateLocal = datePickerWater.getValue();
+        String date = dateLocal.getDayOfMonth()+"/"+dateLocal.getMonthValue()+"/"+dateLocal.getYear();
+
+        ArrayList<Appliance> appliances = program.getAppliancesFromRoom(program.getRoomCurrentStudent());
+        ArrayList<Integer> monthlyConsumptionRoom = program.getConsumptionOfAppliances(appliances);
+
+        String[] dateSplit = date.split("/");
+        ArrayList<Action> actions = program.getActionsFromRoom(dateSplit,appliances);
+        ArrayList<Integer> monthlyConservation = program.getMonthlyConservation(actions);
+
+        ArrayList<Integer> monthlyConsumptionReducted = program.getMonthlyConsumptionReducted(monthlyConsumptionRoom, monthlyConservation);
+
+        XYChart.Series<String, Integer> series1 = new XYChart.Series<>();
+        series1.getData().add(new XYChart.Data<String, Integer>(dateSplit[1]+"/"+dateSplit[2], monthlyConsumptionRoom.get(2)));
+
+
+        XYChart.Series<String, Integer> series2 = new XYChart.Series<>();
+        series2.getData().add(new XYChart.Data<String, Integer>(dateSplit[1]+"/"+dateSplit[2], -monthlyConservation.get(2)));
+
+
+        XYChart.Series<String, Integer> series3 = new XYChart.Series<>();
+        series3.getData().add(new XYChart.Data<String, Integer>(dateSplit[1]+"/"+dateSplit[2], monthlyConsumptionReducted.get(2)));
+
+
+        areaChartWater.getData().addAll(series1, series2, series3);
 
     }
 }

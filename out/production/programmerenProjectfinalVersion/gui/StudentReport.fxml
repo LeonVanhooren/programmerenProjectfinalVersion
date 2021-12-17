@@ -64,8 +64,8 @@
                   </AreaChart>
                   <DatePicker fx:id="datePickerElectricity" layoutX="125.0" layoutY="14.0" />
                   <Label layoutX="37.0" layoutY="18.0" text="Choose month:" />
-                  <Button layoutX="321.0" layoutY="14.0" mnemonicParsing="false" text="Add stats" />
-                  <Button layoutX="402.0" layoutY="14.0" mnemonicParsing="false" text="Clear graph" />
+                  <Button layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onAction="#showElectricityGraph" text="Add stats" />
+                  <Button layoutX="402.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearElectricityGraph" text="Clear graph" />
                </children></AnchorPane>
       </content>
     </Tab>
@@ -85,8 +85,8 @@
                         </AreaChart>
                         <DatePicker fx:id="datePickerGas" layoutX="125.0" layoutY="14.0" />
                         <Label layoutX="37.0" layoutY="18.0" text="Choose month:" />
-                        <Button layoutX="321.0" layoutY="14.0" mnemonicParsing="false" text="Add stats" />
-                        <Button layoutX="402.0" layoutY="14.0" mnemonicParsing="false" text="Clear graph" />
+                        <Button layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearGasGraph" text="Add stats" />
+                        <Button layoutX="402.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearGasGraph" text="Clear graph" />
                      </children>
                   </AnchorPane>
                </children>
@@ -109,8 +109,8 @@
                         </AreaChart>
                         <DatePicker fx:id="datePickerWater" layoutX="125.0" layoutY="14.0" />
                         <Label layoutX="37.0" layoutY="18.0" text="Choose month:" />
-                        <Button layoutX="321.0" layoutY="14.0" mnemonicParsing="false" text="Add stats" />
-                        <Button layoutX="402.0" layoutY="14.0" mnemonicParsing="false" text="Clear graph" />
+                        <Button layoutX="321.0" layoutY="14.0" mnemonicParsing="false" onAction="#showWaterGraph" text="Add stats" />
+                        <Button layoutX="402.0" layoutY="14.0" mnemonicParsing="false" onAction="#clearWaterGraph" text="Clear graph" />
                      </children>
                   </AnchorPane>
                </children>
