@@ -40,18 +40,9 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <ListView fx:id="myListView" layoutX="14.0" layoutY="14.0" prefHeight="175.0" prefWidth="261.0" />
-                  <TextField fx:id="contractNrTerminate" layoutX="94.0" layoutY="216.0" prefHeight="25.0" prefWidth="132.0" />
-                  <Label layoutX="25.0" layoutY="220.0" text="Contrac nr.:" />
-                  <Button layoutX="238.0" layoutY="216.0" mnemonicParsing="false" onAction="#removeContract" text="Terminate contract and lease" />
+                  <ListView fx:id="myListView" layoutX="14.0" layoutY="14.0" prefHeight="175.0" prefWidth="394.0" />
+                  <Button layoutX="126.0" layoutY="199.0" mnemonicParsing="false" onAction="#removeContract" text="Terminate contract and lease" />
                   <Button layoutX="366.0" layoutY="282.0" mnemonicParsing="false" onAction="#backToLandlordMenu" text="Back" />
-                  <Label fx:id="studentIDStatus" layoutX="284.0" layoutY="14.0" text="Student ID:" />
-                  <Label fx:id="landlordIDStatus" layoutX="284.0" layoutY="40.0" text="Landlord ID:" />
-                  <Label fx:id="contractNrStatus" layoutX="284.0" layoutY="67.0" text="Contract Nr:" />
-                  <Label fx:id="startDateStatus" layoutX="283.0" layoutY="92.0" text="Start date:" />
-                  <Label fx:id="durationStatus" layoutX="284.0" layoutY="119.0" text="Duration:" />
-                  <Label fx:id="statusStatus" layoutX="284.0" layoutY="143.0" text="Status:" />
-                  <Label fx:id="roomIDStatus" layoutX="284.0" layoutY="171.0" text="Room ID:" />
                </children></AnchorPane>
       </content>
     </Tab>
