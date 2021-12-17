@@ -93,9 +93,8 @@ public class ApplianceMenuController implements Initializable {
             containsArrayList.add(newContains);
             program.setContainsArrayList(containsArrayList);
 
-            this.appliances.add(newAppliance);
             myListView.getItems().clear();
-            myListView.getItems().addAll(this.appliances);
+            myListView.getItems().addAll(program.getAppliancesStudent());
             clearInput();
 
 
@@ -109,7 +108,7 @@ public class ApplianceMenuController implements Initializable {
 
     public void refresh() {
         myListView.getItems().clear();
-        myListView.getItems().addAll(appliances);
+        myListView.getItems().addAll(program.getAppliancesStudent());
     }
     public void clearInput(){
         applianceNameTF.setText("");
@@ -237,7 +236,7 @@ public class ApplianceMenuController implements Initializable {
     private Appliance currentAppliance;
 
 
-    private ArrayList<Appliance> appliances = program.getAppliancesStudent();
+    private ArrayList<Appliance> appliances = program.getAppliances();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {

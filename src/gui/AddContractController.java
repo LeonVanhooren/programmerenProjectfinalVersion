@@ -57,7 +57,7 @@ public class AddContractController  implements Initializable {
     @FXML
     private Label contractAdd;
 
-    private ArrayList<Contract> contracts = program.getContracts();
+    private ArrayList<Contract> contracts = program.getContractsLandlord();
 
     public void addContract() {
         String studentID, roomID, startDate;
@@ -199,6 +199,10 @@ public class AddContractController  implements Initializable {
         contracts.remove(currentContractRemove);
 
         program.setAppliances(DBAppliance.databaseReadAppliance());
+
+        Lease newLease = new Lease(currentContract.getStudentID(), currentContract.getcontractRoomID());
+
+        DBLease.removeLeaseFromDatabase(newLease);
 
         myListView.getItems().clear();
         myListView.getItems().addAll(program.getContractsLandlord());
