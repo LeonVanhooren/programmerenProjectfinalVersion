@@ -141,32 +141,6 @@ public class ConservationApp {
         this.registers = registers;
     }
 
-    public String[] getRoomIDs(){
-        String[] output = new String[rooms.size()];
-        for(int i=0; i<rooms.size();i++){
-            output[i] = rooms.get(i).getRoomID();
-        }
-
-        return output;
-    }
-
-    public String[] getBuildingIDs(){
-        String[] output = new String[buildings.size()];
-        for(int i=0; i<buildings.size();i++){
-            output[i] = buildings.get(i).getBuildingID();
-        }
-        return output;
-    }
-
-    public String[] getApplianceIDs(){
-        String[] output = new String[appliances.size()];
-        for(int i = 0; i<appliances.size();i++){
-            output[i] = appliances.get(i).getApplianceID();
-        }
-        return output;
-    }
-
-
     public void setCurrentStudent(Student student){
         this.currentStudent = student;
     }
