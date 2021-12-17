@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
@@ -16,28 +17,27 @@
          <content>
             <AnchorPane prefHeight="368.0" prefWidth="407.0">
                <children>
-                  <Label layoutX="112.0" layoutY="95.0" text="Select the date" />
-                  <DatePicker fx:id="datePicker" layoutX="213.0" layoutY="91.0" />
+                  <Label layoutX="60.0" layoutY="95.0" text="Select the date" />
+                  <DatePicker fx:id="datePicker" layoutX="180.0" layoutY="91.0" />
                   <Label layoutX="180.0" layoutY="14.0" text="Monthly energy consumption">
                      <font>
                         <Font size="21.0" />
                      </font>
                   </Label>
-                  <Label layoutX="112.0" layoutY="183.0" text="Electricity (in kWh):" />
-                  <Label layoutX="110.0" layoutY="225.0" text="Water (m³):" />
-                  <Label layoutX="112.0" layoutY="266.0" text="Gas (m³):" />
-                  <TextField fx:id="electricity" layoutX="213.0" layoutY="179.0" />
-                  <TextField fx:id="water" layoutX="213.0" layoutY="221.0" />
-                  <TextField fx:id="gas" layoutX="213.0" layoutY="262.0" />
+                  <Label layoutX="59.0" layoutY="183.0" text="Electricity (in kWh):" />
+                  <Label layoutX="60.0" layoutY="225.0" text="Water (m³):" />
+                  <Label layoutX="61.0" layoutY="266.0" text="Gas (m³):" />
+                  <TextField fx:id="electricity" layoutX="180.0" layoutY="179.0" />
+                  <TextField fx:id="water" layoutX="180.0" layoutY="221.0" />
+                  <TextField fx:id="gas" layoutX="180.0" layoutY="262.0" />
                   <Button layoutX="545.0" layoutY="331.0" mnemonicParsing="false" onAction="#landlordMenu" text="Back" />
                   <Button layoutX="261.0" layoutY="295.0" mnemonicParsing="false" onAction="#addConsumption" text="Submit" />
                   <Label fx:id="firstDayError" layoutX="115.0" layoutY="87.0" textFill="RED" />
-                  <TextField fx:id="roomID" layoutX="213.0" layoutY="134.0" />
-                  <Label layoutX="112.0" layoutY="138.0" text="Room ID:" />
-                  <Label fx:id="consumptionInfo" alignment="CENTER" layoutX="100.0" layoutY="55.0" prefHeight="17.0" prefWidth="399.0" text="Consumption not yet added!" textFill="RED" />
-                  <Label layoutX="388.0" layoutY="183.0" text="(national student average = 153 kWh )" />
-                  <Label layoutX="388.0" layoutY="225.0" text="(national student average = 78 m³)" />
-                  <Label layoutX="390.0" layoutY="266.0" text="(national student average = 4 m³)" />
+                  <TextField fx:id="roomID" layoutX="180.0" layoutY="134.0" />
+                  <Label layoutX="60.0" layoutY="138.0" text="Room ID:" />
+                  <Label fx:id="consumptionInfo" alignment="CENTER" layoutX="55.0" layoutY="55.0" prefHeight="17.0" prefWidth="399.0" text="Consumption not yet added!" textFill="RED" />
+                  <ChoiceBox fx:id="roomChoiceBox" layoutX="379.0" layoutY="91.0" prefWidth="150.0" />
+                  <Button layoutX="395.0" layoutY="134.0" mnemonicParsing="false" onAction="#showConsumption" text="Show consumption" />
                </children>
             </AnchorPane>
          </content>

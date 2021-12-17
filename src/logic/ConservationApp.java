@@ -2,6 +2,7 @@ package logic;
 
 import database.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ConservationApp {
@@ -484,6 +485,120 @@ public class ConservationApp {
             }
         }
         return rooms;
+    }
+
+    public ArrayList<Appliance> getAppliancesFromRoom(Room room){
+        ArrayList<Appliance> appliances = new ArrayList<>();
+        ArrayList<String> strings = new ArrayList<>();
+
+        for(Contains newContains: this.containsArrayList){
+            if(newContains.getRoomID().equals(room.getRoomID())){
+                strings.add(newContains.getApplianceID());
+            }
+        }
+       for(int i=0; i<strings.size(); i++)
+        for(Appliance newAppliance:this.appliances){
+            if(newAppliance.getApplianceID().equals(strings.get(i))){
+                appliances.add(newAppliance);
+            }
+        }
+
+        return appliances;
+    }
+
+    public ArrayList<Integer> getConsumptionOfAppliances(ArrayList<Appliance> appliances){
+        ArrayList<Integer> output = new ArrayList<>();
+        int water = 0;
+        int gas = 0;
+        int electricity = 0;
+
+        for(Appliance newAppliance:appliances){
+            if(newAppliance.getApplianceKind().equals("Electricity")){
+                electricity+=Integer.parseInt(newAppliance.getConsumption());
+            }
+            if(newAppliance.getApplianceKind().equals("Gas")){
+                gas+=Integer.parseInt(newAppliance.getConsumption());
+            }
+            if(newAppliance.getApplianceKind().equals("Water")){
+                water+=Integer.parseInt(newAppliance.getConsumption());
+            }
+        }
+        output.add(electricity);
+        output.add(gas);
+        output.add(water);
+
+        return output;
+    }
+
+    public ArrayList<Action> getActionsFromRoom(String[] dateSplit, ArrayList<Appliance> appliances){
+        ArrayList<Action> actionArrayList = new ArrayList<>();
+        ArrayList<SavesBy> savesByArrayList = new ArrayList<>();
+
+        for(Appliance newAppliance:appliances) {
+            for (SavesBy newSavesBy : this.savesByArrayList) {
+                String[] date = newSavesBy.getDate().split("/");
+                if (newSavesBy.getApplianceID().equals(newAppliance.getApplianceID())
+                        && date[1].equals(dateSplit[1]) && date[2].equals(dateSplit[2])) {
+                    savesByArrayList.add(newSavesBy);
+                }
+            }
+        }
+
+        for (SavesBy newSavesBy:savesByArrayList){
+            for (Action newAction:this.actions){
+                if(newSavesBy.getActionID().equals(newAction.getActionID())){
+                    actionArrayList.add(newAction);
+                }
+            }
+        }
+
+        return actionArrayList;
+    }
+
+    public ArrayList<Integer> getMonthlyConservation(ArrayList<Action> actions){
+        ArrayList<Integer> output = new ArrayList<>();
+        int electricity = 0;
+        int gas = 0;
+        int water = 0;
+
+        for(Action newAction : actions){
+            if(newAction.getApplianceKind().equals("Electricity")){
+                electricity+=newAction.getSavedAmount();
+            }
+            if(newAction.getApplianceKind().equals("Gas")){
+                gas+= newAction.getSavedAmount();
+            }
+            if(newAction.getApplianceKind().equals("Water")){
+                water+= newAction.getSavedAmount();
+            }
+        }
+
+        output.add(electricity);
+        output.add(gas);
+        output.add(water);
+
+        return output;
+    }
+
+    public ArrayList<Integer> getMonthlyConsumptionFromRoom(String date, Room room){
+
+        ArrayList<Appliance> appliances = getAppliancesFromRoom(room);
+        ArrayList<Integer> monthlyConsumptionRoom = getConsumptionOfAppliances(appliances);
+        String[] dateSplit = date.split("/");
+        ArrayList<Action> actions = getActionsFromRoom(dateSplit,appliances);
+        ArrayList<Integer> monthlyConservation = getMonthlyConservation(actions);
+
+        ArrayList<Integer> monthlyConsumptionReducted = getMonthlyConsumptionReducted(monthlyConsumptionRoom, monthlyConservation);
+
+        return monthlyConsumptionReducted;
+    }
+
+    private ArrayList<Integer> getMonthlyConsumptionReducted(ArrayList<Integer> monthlyConsumptionRoom, ArrayList<Integer> monthlyConservation) {
+        ArrayList<Integer> output = new ArrayList<>();
+        for(int i=0; i<monthlyConsumptionRoom.size(); i++){
+            output.add( monthlyConsumptionRoom.get(i)-monthlyConservation.get(i));
+        }
+        return output;
     }
 }
 
