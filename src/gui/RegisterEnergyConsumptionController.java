@@ -20,18 +20,10 @@ import logic.ConservationApp;
 import logic.MonthlyConsumption;
 import logic.Registers;
 import logic.Room;
-
-import java.awt.*;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
-import java.text.SimpleDateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.ResourceBundle;
 
 public class RegisterEnergyConsumptionController implements Initializable {
@@ -67,6 +59,18 @@ public class RegisterEnergyConsumptionController implements Initializable {
     private TextField gas;
     @FXML
     private Label consumptionInfo;
+    @FXML
+    private TextField changeElec;
+    @FXML
+    private TextField changeWater;
+    @FXML
+    private TextField changeGas;
+    @FXML
+    private ListView<Registers> myListView;
+    @FXML
+    private ChoiceBox roomChoiceBox;
+
+    private Registers currentRegister;
 
     private String currentChoiceAdd;
 
@@ -115,12 +119,6 @@ public class RegisterEnergyConsumptionController implements Initializable {
             consumptionInfo.setText("You already added consumption info for this room!");
         }
     }
-    @FXML
-    private TextField changeElec;
-    @FXML
-    private TextField changeWater;
-    @FXML
-    private TextField changeGas;
 
     public void changeConsumption(){
         if(!changeElec.getText().equals("")){
@@ -150,7 +148,6 @@ public class RegisterEnergyConsumptionController implements Initializable {
         myListView.getItems().clear();
         myListView.getItems().addAll(program.getCurrentLandlordRegisters());
         program.setRegisters(listViewRegisters);
-
     }
 
     public void clearInputChange(){
@@ -169,12 +166,6 @@ public class RegisterEnergyConsumptionController implements Initializable {
         return output;
     }
 
-    @FXML
-    private ListView<Registers> myListView;
-    @FXML
-    private ChoiceBox roomChoiceBox;
-
-
     public void showConsumption(){
         LocalDate date = datePicker.getValue();
         String dateString = date.getDayOfMonth()+"/"+date.getMonthValue()+"/"+date.getYear();
@@ -184,7 +175,6 @@ public class RegisterEnergyConsumptionController implements Initializable {
         water.setText(String.valueOf(output.get(2)));
     }
 
-    private Registers currentRegister;
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         myListView.getItems().addAll(program.getCurrentLandlordRegisters());
@@ -196,10 +186,7 @@ public class RegisterEnergyConsumptionController implements Initializable {
             public void changed(ObservableValue<? extends Registers> observableValue, Registers registers, Registers t1) {
                 currentRegister = myListView.getSelectionModel().getSelectedItem();
             }
-
-
     });
-
     }
     public void clearInputAdd(){
         datePicker.setValue(null);
@@ -208,5 +195,4 @@ public class RegisterEnergyConsumptionController implements Initializable {
         water.setText("");
         gas.setText("");
     }
-
 }
