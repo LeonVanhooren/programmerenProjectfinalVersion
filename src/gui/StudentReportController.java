@@ -105,6 +105,7 @@ public class StudentReportController implements Initializable {
         ArrayList<Action> outputActions = program.getActionsFromRoom(dateStringSplit, appliances);
         ArrayList<String> outputEnergySaved = program.getSavesBysConservations(outputActions);
 
+
         actions.getItems().addAll(outputActions);
         energySaved.getItems().addAll(outputEnergySaved);
     }
