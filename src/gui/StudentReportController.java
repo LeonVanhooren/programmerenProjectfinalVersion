@@ -56,6 +56,7 @@ public class StudentReportController implements Initializable {
 
 
 
+
     public void backToStudentMenu(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("StudentMenu.fxml"));
