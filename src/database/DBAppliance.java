@@ -34,7 +34,6 @@ public class DBAppliance {
             }
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
 
         }
@@ -50,7 +49,6 @@ public class DBAppliance {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -97,7 +95,6 @@ public class DBAppliance {
                     break;
             }
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -111,7 +108,6 @@ public class DBAppliance {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }

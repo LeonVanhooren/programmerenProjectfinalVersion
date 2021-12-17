@@ -34,7 +34,6 @@ public class DBBuilding {
             }
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
         return buildings;
@@ -49,7 +48,6 @@ public class DBBuilding {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -88,7 +86,6 @@ public class DBBuilding {
                     break;
             }
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }
@@ -104,7 +101,6 @@ public class DBBuilding {
             preparedStmt.execute();
 
         } catch (SQLException e) {
-            System.out.println("FAIL");
             e.printStackTrace();
         }
     }

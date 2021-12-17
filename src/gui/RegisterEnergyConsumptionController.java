@@ -108,6 +108,8 @@ public class RegisterEnergyConsumptionController implements Initializable {
 
 
             consumptionInfo.setText("Consumption is successfully added!");
+
+            clearInputAdd();
         }
         else{
             consumptionInfo.setText("You already added consumption info for this room!");

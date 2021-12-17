@@ -2,7 +2,6 @@ package logic;
 
 import database.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class ConservationApp {
@@ -285,7 +284,6 @@ public class ConservationApp {
                 roomID = newLease.getRoomID();
             }
         }
-        System.out.println(roomID);
 
         ArrayList<String > appliancesString = new ArrayList<>();
         for(Contains newContains: containsArrayList){
@@ -313,7 +311,6 @@ public class ConservationApp {
                 roomID = newLease.getRoomID();
             }
         }
-        System.out.println(roomID);
 
         ArrayList<String > appliancesString = new ArrayList<>();
         for(Contains newContains: containsArrayList){
