@@ -3,12 +3,14 @@ package gui;
 import database.*;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
@@ -30,7 +32,7 @@ public class AddStudentRoomController implements Initializable {
 
 
     @FXML
-    private ListView<String> myListView;
+    private ListView myListView;
     @FXML
     private ListView myListViewBuilding;
 
@@ -54,7 +56,8 @@ public class AddStudentRoomController implements Initializable {
     private Label characteristicsLabel;
 
 
-    String currentRoom;
+    private Room currentRoom;
+    private ArrayList<Room> listViewRooms = program.getRooms();
     private Building currentBuilding;
     private ArrayList<Building> listViewBuildings = program.getBuildings();
 
@@ -93,6 +96,9 @@ public class AddStudentRoomController implements Initializable {
 
     public void removeBuilding(){
         Building currentBuildingRemove = currentBuilding;
+
+        buildingIDChoice.getItems().remove(currentBuildingRemove.getBuildingID());
+
         DBBuilding.removeBuildingFromDatabase(currentBuilding);
         listViewBuildings.remove(currentBuildingRemove);
 
@@ -101,6 +107,18 @@ public class AddStudentRoomController implements Initializable {
         myListViewBuilding.getItems().clear();
         myListViewBuilding.getItems().addAll(program.getCurrentLandlordBuildings());
         program.setBuildings(listViewBuildings);
+    }
+
+    public void removeRoom(){
+        Room currentRoomRemove = currentRoom;
+        DBRoom.removeRoomFromDatabase(currentRoom);
+        listViewRooms.remove(currentRoomRemove);
+
+        program.setRooms(DBRoom.databaseReadRoom());
+
+        myListView.getItems().clear();
+        myListView.getItems().addAll(program.getCurrentLandlordRooms());
+        program.setRooms(listViewRooms);
     }
 
     public void clearInputBuildingChange(){
@@ -124,24 +142,22 @@ public class AddStudentRoomController implements Initializable {
             }
             
         });
-        myListView.getItems().addAll(program.getRoomIDsLandlord(program.getBuildingIDsLandlord()));
-
-        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+        buildingIDChoice.getItems().addAll(program.getCurrentLandlordBuildingIDs());
+        buildingIDChoice.setOnAction(this::getBuildingIDChoice);
+        myListView.getItems().addAll(program.getCurrentLandlordRooms());
+        myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Room>() {
 
 
             @Override
-            public void changed(ObservableValue<? extends String> observableValue, String s, String t1) {
-                currentRoom = myListView.getSelectionModel().getSelectedItem();
-                roomIDroom.setText(currentRoom);
-                buildingIDRoom.setPromptText(searchBuildingIDStudent(currentRoom));
-                RoomNr.setPromptText(""+searchRoomNrStudent(currentRoom));
-                characteristics.setPromptText(searchCharacteristics(currentRoom));
+            public void changed(ObservableValue<? extends Room> observableValue, Room s, Room t1) {
+                currentRoom =(Room) myListView.getSelectionModel().getSelectedItem();
             }
 
 
         });
 
     }
+
     public void refreshBuildingListView(){
         myListViewBuilding.getItems().clear();
         myListViewBuilding.getItems().addAll(program.getBuildingIDsLandlord());
@@ -246,6 +262,14 @@ public class AddStudentRoomController implements Initializable {
     private Label buildingIDT;
     @FXML
     private Label buildinginfo;
+    @FXML
+    private ChoiceBox<String> buildingIDChoice;
+
+    private String currentChoiceAdd;
+
+    public void getBuildingIDChoice(ActionEvent event){
+        currentChoiceAdd = buildingIDChoice.getValue();
+    }
 
     public void addBuildingButton(){
         String address, country, city, zip;
@@ -275,6 +299,8 @@ public class AddStudentRoomController implements Initializable {
             ownerships = program.getOwnerships();
             ownerships.add(newOwnership);
             program.setOwnerships(ownerships);
+
+            buildingIDChoice.getItems().add(newBuilding.getBuildingID());
 
             myListViewBuilding.getItems().clear();
             myListViewBuilding.getItems().addAll(program.getCurrentLandlordBuildings());
@@ -311,16 +337,15 @@ public class AddStudentRoomController implements Initializable {
     private TextField characteristicsInput;
 
     public void addRoomButton(){
-        String buildingID, characteristics;
+        String characteristics;
         int roomNr;
         roomNr = Integer.parseInt("0"+roomNrInput.getText());
-        buildingID = buildingIDInput.getText();
         characteristics = characteristicsInput.getText();
         if(!emptyFieldsRoom()){
 
-            if(!roomExists(buildingID, roomNr)&&buildingIsFromLandlord(buildingID)){
-            String roomIDString = buildingID +"." + roomNrInput.getText();
-            Room newRoom = new Room(roomNr, roomIDString, buildingID, characteristics);
+            if(!roomExists(buildingIDChoice.getValue(), roomNr)&&buildingIsFromLandlord(buildingIDChoice.getValue())){
+            String roomIDString = buildingIDChoice.getValue() +"." + roomNrInput.getText();
+            Room newRoom = new Room(roomNr, roomIDString, buildingIDChoice.getValue(), characteristics);
             DBRoom.addRoomToDatabase(newRoom);
 
             ArrayList<Room> roomsList = new ArrayList<>();
@@ -339,12 +364,12 @@ public class AddStudentRoomController implements Initializable {
             program.setBelongsToArrayList(belongsToArrayList);
 
             myListView.getItems().clear();
-            myListView.getItems().addAll(program.getRoomIDsLandlord(program.getBuildingIDsLandlord()));
+            myListView.getItems().addAll(program.getCurrentLandlordRooms());
 
             clearRoomInput();
         }
-        else if (roomExists(buildingID,roomNr)||!buildingIsFromLandlord(buildingID)){
-            registerRoomInfo.setText("This room already exists/this building doesn't exists!");
+        else if (roomExists(buildingIDChoice.getValue(),roomNr)||!buildingIsFromLandlord(buildingIDChoice.getValue())){
+            registerRoomInfo.setText("This room already exists!");
             clearRoomInput();
         }
     }
@@ -381,20 +406,26 @@ public class AddStudentRoomController implements Initializable {
         program.setBuildings(DBBuilding.databaseReadBuilding());
 
         myListViewBuilding.getItems().clear();
-        myListViewBuilding.getItems().addAll(program.getCurrentLandlordBuildings());
+        myListViewBuilding.getItems().addAll(program.getAppliancesStudent());
 
         clearInputBuildingChange();
     }
     public void changeRoom(){
         if(!RoomNr.getText().equals("")){
-            DBRoom.changeRoomFromDatabase("roomNr", RoomNr.getText(), currentRoom);
+            DBRoom.changeRoomFromDatabase("roomNr", RoomNr.getText(), currentRoom.getRoomID());
         }
-        if(!buildingIDRoom.getText().equals("")){
-            DBRoom.changeRoomFromDatabase("buildingID", buildingIDRoom.getText(), currentRoom);
+        if(buildingIDChoice.getValue() != null){
+            DBRoom.changeRoomFromDatabase("buildingID", buildingIDChoice.getValue(), currentRoom.getRoomID());
         }
         if(!characteristics.getText().equals("")){
-            DBRoom.changeRoomFromDatabase("characteristics", characteristics.getText(), currentRoom);
+            DBRoom.changeRoomFromDatabase("characteristics", characteristics.getText(), currentRoom.getRoomID());
         }
+        program.setRooms(DBRoom.databaseReadRoom());
+
+        myListView.getItems().clear();
+        myListView.getItems().addAll(program.getCurrentLandlordRooms());
+
+        clearRoomInput();
     }
     public void clearBuildingInput(){
         addressInput.setText("");
@@ -404,13 +435,13 @@ public class AddStudentRoomController implements Initializable {
     }
     public void clearRoomInput(){
         roomNrInput.setText("");
-        buildingIDInput.setText("");
+        buildingIDChoice.setValue("");
         characteristicsInput.setText("");
     }
 
     public boolean emptyFieldsRoom(){
         int roomnr = Integer.parseInt("0"+ roomNrInput.getText());
-        if((roomnr== 0)||(buildingIDInput.getText().equals(""))|| (characteristicsInput.getText().equals(""))) {
+        if((roomnr== 0)||(buildingIDChoice.getValue().equals(""))|| (characteristicsInput.getText().equals(""))) {
             return true;
         }
         return false;

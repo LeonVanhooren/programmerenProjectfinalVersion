@@ -600,5 +600,14 @@ public class ConservationApp {
         }
         return output;
     }
+    public ArrayList<String> getCurrentLandlordBuildingIDs(){
+        ArrayList<String> output = new ArrayList<>();
+        ArrayList<Building> buildings = getCurrentLandlordBuildings();
+        for(Building newBuilding: buildings){
+            output.add(newBuilding.getBuildingID());
+        }
+        return output;
+    }
+
 }
 

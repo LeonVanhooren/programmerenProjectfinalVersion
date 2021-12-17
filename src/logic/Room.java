@@ -47,12 +47,11 @@ public class Room {
 
     @Override
     public String toString() {
-        return "Room{" +
+        return
                 "roomID='" + roomID + '\'' +
                 ", buildingID='" + buildingID + '\'' +
                 ", characteristics='" + characteristics + '\'' +
-                ", roomNR=" + roomNR +
-                '}';
+                ", roomNR=" + roomNR + '\'';
     }
 }
 

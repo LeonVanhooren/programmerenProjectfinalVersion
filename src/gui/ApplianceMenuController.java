@@ -149,6 +149,11 @@ public class ApplianceMenuController implements Initializable {
         if (choiceBoxChange.getValue() != null) {
             DBAppliance.changeApplianceFromDatabase("applianceKind", choiceBoxChange.getValue(), currentAppliance.getApplianceID());
         }
+
+        program.setAppliances(DBAppliance.databaseReadAppliance());
+
+        myListView.getItems().clear();
+        myListView.getItems().addAll(program.getAppliancesStudent());
         clearInputChange();
 
     }
@@ -244,7 +249,7 @@ public class ApplianceMenuController implements Initializable {
         choiceBoxAdd1.setOnAction(this::getCurrentAdd1);
         choiceBoxChange1.getItems().addAll(choices1);
         choiceBoxChange1.setOnAction(this::getCurrentChange1);
-        myListView.getItems().addAll(appliances);
+        myListView.getItems().addAll(program.getAppliancesStudent());
         myListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Appliance>() {
             @Override
             public void changed(ObservableValue<? extends Appliance> observableValue, Appliance appliance, Appliance t1) {
@@ -340,20 +345,13 @@ public class ApplianceMenuController implements Initializable {
 
     public void removeAppliance(){
         Appliance currentApplianceRemove = currentAppliance;
-        DBAppliance.removeApplianceFromDatabase(currentApplianceRemove);
+        DBAppliance.removeApplianceFromDatabase(currentAppliance);
         appliances.remove(currentApplianceRemove);
 
-        Contains newContains = new Contains(searchRoomID(program.getCurrentStudent()), currentApplianceRemove.getApplianceID());
-
-        ArrayList<Contains> containsArrayList = program.getContainsArrayList();
-        containsArrayList.remove(newContains);
-        program.setContainsArrayList(containsArrayList);
-
-        DBContains.removeContainsFromDatabase(newContains);
-
+        program.setAppliances(DBAppliance.databaseReadAppliance());
 
         myListView.getItems().clear();
-        myListView.getItems().addAll(appliances);
+        myListView.getItems().addAll(program.getAppliancesStudent());
         program.setAppliances(appliances);
 
     }
