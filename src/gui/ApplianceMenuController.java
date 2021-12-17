@@ -34,8 +34,6 @@ public class ApplianceMenuController implements Initializable {
     private Parent root;
     private Scene scene;
 
-    private String currentApplianceID;
-
     public void backToStudentMenu(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("studentMenu.fxml"));
         root = loader.load();
@@ -50,8 +48,6 @@ public class ApplianceMenuController implements Initializable {
 
     @FXML
     private TextField QRCodeTF;
-    @FXML
-    private TextField applianceIDTF;
     @FXML
     private TextField consumptionTF;
     @FXML
@@ -105,11 +101,6 @@ public class ApplianceMenuController implements Initializable {
 
     }
 
-
-    public void refresh() {
-        myListView.getItems().clear();
-        myListView.getItems().addAll(program.getAppliancesStudent());
-    }
     public void clearInput(){
         applianceNameTF.setText("");
         consumptionTF.setText("");
@@ -178,21 +169,6 @@ public class ApplianceMenuController implements Initializable {
             if (newLease.getStudentID().equals(student.getStudentID())) {
                 output = newLease.getRoomID();
             }
-        }
-        return output;
-    }
-
-
-    public String[] getApplianceIDs(String roomID) {
-        ArrayList<String> output1 = new ArrayList<>();
-        for (Contains newContains : program.getContainsArrayList()) {
-            if (newContains.getRoomID().equals(roomID)) {
-                output1.add(newContains.getApplianceID());
-            }
-        }
-        String[] output = new String[output1.size()];
-        for (int j = 0; j < output1.size(); j++) {
-            output[j] = output1.get(j);
         }
         return output;
     }
@@ -286,48 +262,9 @@ public class ApplianceMenuController implements Initializable {
 
     }
 
-    public void setRemoveApplianceStatus(String output) {
-        RemoveApplianceLabel.setText(output);
-
-    }
-
     public void setChangeApplianceStatus(String output) {
         ChangeApplianceLabel.setText(output);
 
-    }
-    @FXML
-    private TextField applianceRemove;
-
-    public void removeListItem(ActionEvent event) {
-
-        final int selectedIdx = myListView.getSelectionModel().getSelectedIndex();
-        if (selectedIdx != -1) {
-            Appliance itemToRemove = (Appliance) myListView.getSelectionModel().getSelectedItem();
-
-            final int newSelectedIdx =
-                    (selectedIdx == myListView.getItems().size() - 1)
-                            ? selectedIdx - 1
-                            : selectedIdx;
-
-            ArrayList<Appliance> appliances = program.getAppliances();
-            appliances.remove(itemToRemove);
-            program.setAppliances(appliances);
-
-            Contains newContains = new Contains(searchRoomID(program.getCurrentStudent()), itemToRemove.getApplianceID());
-
-            ArrayList<Contains> containsArrayList = program.getContainsArrayList();
-            containsArrayList.remove(newContains);
-            program.setContainsArrayList(containsArrayList);
-
-            DBContains.removeContainsFromDatabase(newContains);
-
-            DBAppliance.removeApplianceFromDatabase(itemToRemove);
-
-            myListView.getItems().remove(selectedIdx);
-            myListView.getSelectionModel().select(newSelectedIdx);
-
-        }
-        myListView.refresh();
     }
 
     public void goToSite(ActionEvent event) throws IOException {

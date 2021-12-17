@@ -57,7 +57,7 @@ public class AddContractController  implements Initializable {
     @FXML
     private Label contractAdd;
 
-    private ArrayList<Contract> contracts = program.getContractsLandlord();
+    private ArrayList<Contract> contracts = program.getContracts();
 
     public void addContract() {
         String studentID, roomID, startDate;
@@ -158,21 +158,6 @@ public class AddContractController  implements Initializable {
 
     @FXML
     private ListView myListView;
-    @FXML
-    private Label studentIDStatus;
-    @FXML
-    private Label landlordIDStatus;
-    @FXML
-    private Label contractNrStatus;
-    @FXML
-    private Label startDateStatus;
-    @FXML
-    private Label durationStatus;
-    @FXML
-    private Label statusStatus;
-    @FXML
-    private Label roomIDStatus;
-
     private Contract currentContract;
 
 
@@ -188,9 +173,6 @@ public class AddContractController  implements Initializable {
 
     }
 
-    @FXML
-    private TextField contractNrTerminate;
-
     public void removeContract(){
 
         Contract currentContractRemove = currentContract;
@@ -198,11 +180,7 @@ public class AddContractController  implements Initializable {
         DBContract.removeContractFromDatabase(currentContract);
         contracts.remove(currentContractRemove);
 
-        program.setAppliances(DBAppliance.databaseReadAppliance());
-
-        Lease newLease = new Lease(currentContract.getStudentID(), currentContract.getcontractRoomID());
-
-        DBLease.removeLeaseFromDatabase(newLease);
+        program.setContracts(DBContract.databaseReadContract());
 
         myListView.getItems().clear();
         myListView.getItems().addAll(program.getContractsLandlord());
