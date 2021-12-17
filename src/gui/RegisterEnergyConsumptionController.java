@@ -74,9 +74,7 @@ public class RegisterEnergyConsumptionController implements Initializable {
         stage.setTitle("landlord menu");
         scene = new Scene(root);
         stage.setScene(scene);
-
     }
-
 
     public void addConsumption(ActionEvent event){
         LocalDate ld = datePicker.getValue();
@@ -91,7 +89,6 @@ public class RegisterEnergyConsumptionController implements Initializable {
 
         MonthlyConsumption newMonthlyConsumption = new MonthlyConsumption(registrationID, waterString, electricityString, gasString);
         Registers newRegisters = new Registers(date, registrationID, roomIDString);
-
 
         if(consumptionPresent(newRegisters)==false) {
 
@@ -134,6 +131,7 @@ public class RegisterEnergyConsumptionController implements Initializable {
 
         clearInputChange();
     }
+
     public void removeRegister(){
         Registers currentRegisterRemove = currentRegister;
 

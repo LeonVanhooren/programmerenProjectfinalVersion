@@ -1,11 +1,9 @@
 package gui;
 
-import database.DBActions;
 import database.DBAppliance;
 import database.DBContains;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,15 +15,12 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.control.skin.ChoiceBoxSkin;
 import javafx.stage.Stage;
 import logic.*;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class ApplianceMenuController implements Initializable {
@@ -42,9 +37,7 @@ public class ApplianceMenuController implements Initializable {
         stage.setTitle("Student menu");
         scene = new Scene(root);
         stage.setScene(scene);
-
     }
-
 
     @FXML
     private TextField QRCodeTF;
@@ -60,7 +53,39 @@ public class ApplianceMenuController implements Initializable {
     private Label applianceID;
     @FXML
     private TextField applianceNameTF;
+    @FXML
+    private TextField applianceNameChange;
+    @FXML
+    private TextField consumptionChange;
+    @FXML
+    private TextField QRCodeChange;
+    @FXML
+    private ListView myListView;
+    @FXML
+    private Label applianceIDChange;
+    @FXML
+    private ChoiceBox<String> choiceBoxAdd1;
+    @FXML
+    private ChoiceBox<String> choiceBoxChange1;
+    @FXML
+    private ChoiceBox<String> choiceBoxAdd;
+    @FXML
+    private ChoiceBox<String> choiceBoxChange;
 
+    private String[] choices1 = {"A", "B", "C", "D", "E", "F", "G"};
+
+    private String currentChoiceAdd1;
+    private String currentChoiceChange1;
+
+    private String[] choices = {"Electricity", "Water", "Gas"};
+
+    private String currentChoiceAdd;
+    private String currentChoiceChange;
+
+    private Appliance currentAppliance;
+
+
+    private ArrayList<Appliance> appliances = program.getAppliances();
 
     public void addAppliance(ActionEvent event) {
         String consumption, QRCode, applianceName;
@@ -93,12 +118,8 @@ public class ApplianceMenuController implements Initializable {
             myListView.getItems().addAll(program.getAppliancesStudent());
             clearInput();
 
-
             setAddApplianceStatus("The appliance is added to the database!");
-
         }
-
-
     }
 
     public void clearInput(){
@@ -115,13 +136,6 @@ public class ApplianceMenuController implements Initializable {
         QRCodeChange.setText("");
         choiceBoxChange.setValue("");
     }
-
-    @FXML
-    private TextField applianceNameChange;
-    @FXML
-    private TextField consumptionChange;
-    @FXML
-    private TextField QRCodeChange;
 
     public void changeAppliance(ActionEvent event) {
         if (!applianceNameChange.getText().equals("")) {
@@ -145,7 +159,6 @@ public class ApplianceMenuController implements Initializable {
         myListView.getItems().clear();
         myListView.getItems().addAll(program.getAppliancesStudent());
         clearInputChange();
-
     }
 
     public Appliance searchApplianceChange(String applianceID) {
@@ -159,10 +172,6 @@ public class ApplianceMenuController implements Initializable {
         return appliance1;
     }
 
-    @FXML
-    private ListView myListView;
-
-
     public String searchRoomID(Student student) {
         String output = null;
         for (Lease newLease : program.getLeases()) {
@@ -173,33 +182,13 @@ public class ApplianceMenuController implements Initializable {
         return output;
     }
 
-    @FXML
-    private Label applianceIDChange;
-    @FXML
-    private ChoiceBox<String> choiceBoxAdd1;
-    @FXML
-    private ChoiceBox<String> choiceBoxChange1;
-    @FXML
-    private ChoiceBox<String> choiceBoxAdd;
-    @FXML
-    private ChoiceBox<String> choiceBoxChange;
-
-    private String[] choices1 = {"A", "B", "C", "D", "E", "F", "G"};
-
-    private String currentChoiceAdd1;
-    private String currentChoiceChange1;
-
     public void getCurrentAdd1(ActionEvent event){
         currentChoiceAdd1 = choiceBoxAdd1.getValue();
     }
+
     public void getCurrentChange1(ActionEvent event){
         currentChoiceChange1 = choiceBoxChange1.getValue();
     }
-
-    private String[] choices = {"Electricity", "Water", "Gas"};
-
-    private String currentChoiceAdd;
-    private String currentChoiceChange;
 
     public void getCurrentAdd(ActionEvent event) {
         currentChoiceAdd = choiceBoxAdd.getValue();
@@ -208,11 +197,6 @@ public class ApplianceMenuController implements Initializable {
     public void getCurrentChange(ActionEvent event) {
         currentChoiceChange = choiceBoxChange.getValue();
     }
-
-    private Appliance currentAppliance;
-
-
-    private ArrayList<Appliance> appliances = program.getAppliances();
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -233,7 +217,6 @@ public class ApplianceMenuController implements Initializable {
         });
     }
 
-
     public Appliance searchAppliance(String applianceID, Student student) {
         Appliance output = null;
         for (Appliance newAppliance : program.getAppliances()) {
@@ -244,9 +227,6 @@ public class ApplianceMenuController implements Initializable {
         return output;
     }
 
-
-    //we moeten een appliance id number generator doen en een extra vakje voor appliance naam zodat meerdere laptops kunnen toegevoegd worden!!!!!!!!
-
     public boolean appliancePresent(String applianceName) {
         for (Appliance newAppliance : program.getAppliancesStudent()) {
             if (newAppliance.getApplianceName().equals(applianceName)) {
@@ -255,7 +235,6 @@ public class ApplianceMenuController implements Initializable {
         }
         return false;
     }
-
 
     public void setAddApplianceStatus(String output) {
         addApplianceLabel.setText(output);
@@ -276,7 +255,6 @@ public class ApplianceMenuController implements Initializable {
         stage.setTitle("Appliance site");
         scene = new Scene(root);
         stage.setScene(scene);
-
     }
 
     public void removeAppliance(){
