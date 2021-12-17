@@ -88,7 +88,6 @@ public class MessagesController implements Initializable {
             program.getCurrentContract().setStatus("declined");
             status.setText("declined");
         }
-
     }
 
     public void backToStudentMenu(ActionEvent event) throws IOException{
@@ -99,13 +98,10 @@ public class MessagesController implements Initializable {
         stage.setTitle("Student menu");
         scene = new Scene(root);
         stage.setScene(scene);
-
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        
-
         for(Contract newContract: program.getContracts()){
             if(newContract.getStudentID().equals(program.getCurrentStudent().getStudentID())){
                 if(newContract.getStatus().equals("pending")){
@@ -137,15 +133,8 @@ public class MessagesController implements Initializable {
                     startDate.setText(newContract.getStartDate());
                     status.setText(newContract.getStatus());
                 }
-
-
             }
         }
-
-
-
-
-
-        }
     }
+}
 

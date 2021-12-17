@@ -66,7 +66,7 @@ public class LoginScreenController {
 
     public boolean studentPresent(String studentID, String password){
         for(Student newStudent:program.getStudents()){
-            if(newStudent.getStudentID().equals(studentID)&&newStudent.getPassword().equals(password)){
+            if(((newStudent.getStudentID().equals(studentID))||(newStudent.getEmail().equals(studentID)))&&(newStudent.getPassword().equals(password))){
                 program.setCurrentStudent(newStudent);
                 return true;
 
@@ -128,7 +128,7 @@ public class LoginScreenController {
 
     public boolean landlordPresent(String landlordID, String password) {
         for (Landlord newLandlord : program.getLandlords()) {
-            if (newLandlord.getLandlordID().equals(landlordID) && newLandlord.getPassWord().equals(password)) {
+            if (((newLandlord.getLandlordID().equals(landlordID))||(newLandlord.getEmail().equals(landlordID))) && ((newLandlord.getPassWord().equals(password)))) {
                 program.setCurrentLandlord(newLandlord);
                 return true;
 
