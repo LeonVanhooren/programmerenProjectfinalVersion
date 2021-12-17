@@ -12,7 +12,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -32,20 +31,6 @@ public class RegisterEnergyConsumptionController implements Initializable {
     private Parent root;
     private Scene scene;
     private Stage stage;
-
-
-    public void landlordMenu(ActionEvent event) throws IOException {
-
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("LandlordMenu.fxml"));
-        root = loader.load();
-
-        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
-        stage.setTitle("landlord menu");
-        scene = new Scene(root);
-        stage.setScene(scene);
-
-    }
-
 
     @FXML
     private DatePicker datePicker;
@@ -78,6 +63,18 @@ public class RegisterEnergyConsumptionController implements Initializable {
 
     public void getroomIDChoice(ActionEvent event){
         currentChoiceAdd = roomIDChoice.getValue();
+    }
+
+    public void landlordMenu(ActionEvent event) throws IOException {
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("LandlordMenu.fxml"));
+        root = loader.load();
+
+        stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setTitle("landlord menu");
+        scene = new Scene(root);
+        stage.setScene(scene);
+
     }
 
 

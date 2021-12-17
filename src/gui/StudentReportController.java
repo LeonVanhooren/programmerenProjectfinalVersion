@@ -7,7 +7,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.chart.AreaChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
@@ -53,6 +52,27 @@ public class StudentReportController implements Initializable {
     private LineChart areaChartGas;
     @FXML
     private LineChart areaChartWater;
+
+    private XYChart.Series series1Electricity = new XYChart.Series();
+    private XYChart.Series series2Electricity = new XYChart.Series();
+    private XYChart.Series series3Electricity = new XYChart.Series();
+
+    @FXML
+    private Label electricityInfo;
+
+    private XYChart.Series series1 = new XYChart.Series();
+    private XYChart.Series series2 = new XYChart.Series();
+    private XYChart.Series series3 = new XYChart.Series();
+
+    @FXML
+    private Label gasInfo;
+
+    private XYChart.Series series1Water = new XYChart.Series();
+    private XYChart.Series series2Water = new XYChart.Series();
+    private XYChart.Series series3Water = new XYChart.Series();
+
+    @FXML
+    private Label waterInfo;
 
 
 
@@ -150,13 +170,6 @@ public class StudentReportController implements Initializable {
         areaChartWater.getData().clear();
     }
 
-    private XYChart.Series series1 = new XYChart.Series();
-    private XYChart.Series series2 = new XYChart.Series();
-    private XYChart.Series series3 = new XYChart.Series();
-
-    @FXML
-    private Label gasInfo;
-
     public void makeGasGraph(){
         LocalDate dateLocal = datePickerGas.getValue();
         String date = dateLocal.getDayOfMonth()+"/"+dateLocal.getMonthValue()+"/"+dateLocal.getYear();
@@ -187,12 +200,6 @@ public class StudentReportController implements Initializable {
 
     }
 
-    private XYChart.Series series1Water = new XYChart.Series();
-    private XYChart.Series series2Water = new XYChart.Series();
-    private XYChart.Series series3Water = new XYChart.Series();
-
-    @FXML
-    private Label waterInfo;
 
     public void makeWaterGraph(){
         LocalDate dateLocal = datePickerWater.getValue();
@@ -223,13 +230,6 @@ public class StudentReportController implements Initializable {
         areaChartWater.getData().addAll(series1Water, series2Water, series3Water);
 
     }
-
-    private XYChart.Series series1Electricity = new XYChart.Series();
-    private XYChart.Series series2Electricity = new XYChart.Series();
-    private XYChart.Series series3Electricity = new XYChart.Series();
-
-    @FXML
-    private Label electricityInfo;
 
     public void makeElectricityGraph(){
         LocalDate dateLocal = datePickerElectricity.getValue();

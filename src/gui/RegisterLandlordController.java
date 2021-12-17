@@ -13,13 +13,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import logic.ConservationApp;
 import logic.Landlord;
-import logic.Student;
-
-import java.awt.*;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import static java.awt.Color.*;
 
 public class RegisterLandlordController {
 
