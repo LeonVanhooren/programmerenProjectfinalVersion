@@ -1,0 +1,765 @@
+@startuml 
+class gui.AddContractController{
+- logic.ConservationApp program
+- java.util.ArrayList<logic.Contract> contracts
+- logic.Contract currentContract
++ void backToLandlordMenu (ActionEvent )
++ void addContract ()
++ boolean contractExists (String studentID, String )
++ boolean roomExists (String )
++ boolean studentExists (String )
++ boolean emptyFields ()
++ void clearContractInput ()
++ void initialize (URL url, ResourceBundle )
++ void removeContract ()
+}
+interface javafx.fxml.Initializable {
++ void initialize (URL url, ResourceBundle )
+}
+javafx.fxml.Initializable <|.. gui.AddContractController
+class gui.AddStudentRoomController{
+- logic.ConservationApp program
+- logic.Room currentRoom
+- java.util.ArrayList<logic.Room> listViewRooms
+- logic.Building currentBuilding
+- java.util.ArrayList<logic.Building> listViewBuildings
+- java.lang.String currentChoiceAdd
++ void backToMenu (ActionEvent )
++ void removeBuilding ()
++ void removeRoom ()
++ void clearInputBuildingChange ()
++ void initialize (URL location, ResourceBundle )
++ java.lang.String searchCharacteristics (String )
++ void getBuildingIDChoice (ActionEvent )
++ void addBuildingButton ()
++ boolean buildingExists (String address, String country, String city, String )
++ void addRoomButton ()
++ boolean roomExists (String buildingID, int )
++ void changeBuilding ()
++ void changeRoom ()
++ void clearBuildingInput ()
++ void clearRoomInput ()
++ boolean emptyFieldsRoom ()
++ boolean emptyFieldsBuilding ()
++ boolean buildingIsFromLandlord (String )
+}
+class gui.ApplianceMenuController{
+- logic.ConservationApp program
+- java.lang.String[] choices1
+- java.lang.String currentChoiceAdd1
+- java.lang.String currentChoiceChange1
+- java.lang.String[] choices
+- java.lang.String currentChoiceAdd
+- java.lang.String currentChoiceChange
+- logic.Appliance currentAppliance
+- java.util.ArrayList<logic.Appliance> appliances
++ void backToStudentMenu (ActionEvent )
++ void addAppliance (ActionEvent )
++ void clearInput ()
++ void clearInputChange ()
++ void changeAppliance (ActionEvent )
++ logic.Appliance searchApplianceChange (String )
++ java.lang.String searchRoomID (Student )
++ void getCurrentAdd1 (ActionEvent )
++ void getCurrentChange1 (ActionEvent )
++ void getCurrentAdd (ActionEvent )
++ void getCurrentChange (ActionEvent )
++ void initialize (URL location, ResourceBundle )
++ logic.Appliance searchAppliance (String applianceID, Student )
++ boolean appliancePresent (String )
++ void setAddApplianceStatus (String )
++ void setChangeApplianceStatus (String )
++ void goToSite (ActionEvent )
++ void removeAppliance ()
+}
+class gui.EnergyConservationActionsController{
+- logic.ConservationApp programs
+- javafx.stage.Stage stage
+- javafx.scene.Parent root
+- javafx.scene.Scene scene
+- javafx.scene.chart.BarChart barChartGas
+- javafx.scene.chart.BarChart barChartWater
+- javafx.scene.chart.BarChart barChartElectricity
+- java.lang.String[] applianceKindInput
+- logic.Action currentAction
+- java.util.ArrayList<logic.Action> listViewActions
++ void backToStudentMenu (ActionEvent )
++ void initialize (URL url, ResourceBundle )
++ void removeAction ()
++ void addAction ()
++ void setActionOnElectricityAppliance ()
++ void setActionOnGasAppliance ()
++ void setActionOnWaterAppliance ()
++ boolean savesByPresent (SavesBy )
++ void showBarChartGas ()
++ void showBarChartWater ()
++ void showBarChartElectricity ()
+}
+class gui.LandlordMenuController{
+- logic.ConservationApp program
++ void setUsernameLandlord (String )
++ void monthlyConsumptionMenu (ActionEvent )
++ void studentRoomMenu (ActionEvent )
++ void goToLandlordProfile (ActionEvent )
++ void goToContractMenu (ActionEvent )
++ void goToLandlordReport (ActionEvent )
++ void backToSignIn (ActionEvent )
+}
+class gui.LandlordProfileController{
+- logic.ConservationApp program
++ void backToMenu (ActionEvent )
++ void initialize (URL location, ResourceBundle )
++ void changeLandlord ()
+}
+class gui.LandlordReportController{
+ logic.ConservationApp program
+- javafx.scene.Parent root
+- javafx.stage.Stage stage
+- javafx.scene.Scene scene
+- javafx.scene.chart.BarChart<java.lang.String,java.lang.Integer> barChart
+- java.util.ArrayList<logic.Registers> registersLandlord
+- java.util.ArrayList<logic.MonthlyConsumption> monthlyConsumptionsLandlord
+- java.util.ArrayList<java.lang.Integer> water
+- java.util.ArrayList<java.lang.Integer> electricity
+- java.util.ArrayList<java.lang.Integer> gas
+- java.util.ArrayList<java.lang.String> roomIDs
+ javafx.scene.chart.XYChart.Series<java.lang.String,java.lang.Integer> series1
+ javafx.scene.chart.XYChart.Series<java.lang.String,java.lang.Integer> series2
+ javafx.scene.chart.XYChart.Series<java.lang.String,java.lang.Integer> series3
+ java.util.ArrayList<java.lang.String> buildingIDs
++ void backToLandlordMenu (ActionEvent )
++ java.lang.String toMonth (String )
++ java.lang.String toYear (String )
++ void showBarChartLandlord ()
++ void makeBarChart ()
+- java.util.ArrayList<java.lang.Integer> getWaterFromRooms ()
+- java.util.ArrayList<java.lang.Integer> getElectricityFromRooms ()
+- java.util.ArrayList<java.lang.Integer> getGasFromRooms ()
++ java.util.ArrayList<logic.MonthlyConsumption> monthlyConsumptionsLandlord ()
++ java.util.ArrayList<java.lang.String> getRoomIDs ()
++ java.util.ArrayList<java.lang.String> getBuildingIDs ()
++ void clearBarChart ()
++ void initialize (URL location, ResourceBundle )
+}
+class gui.LoginScreenController{
+- logic.ConservationApp program
++ void studentSignIn (ActionEvent )
++ boolean studentPresent (String studentID, String )
++ void studentRegister (ActionEvent )
++ void landlordSignIn (ActionEvent )
++ boolean landlordPresent (String landlordID, String )
++ void landlordRegister (ActionEvent )
++ boolean emptyfieldsLandlord ()
++ boolean emptyfieldsStudent ()
+}
+class gui.MessagesController{
+- logic.ConservationApp program
+- java.util.ArrayList<logic.Contract> contracts
++ void accept ()
++ void decline ()
++ void backToStudentMenu (ActionEvent )
++ void initialize (URL location, ResourceBundle )
+}
+class gui.RegisterEnergyConsumptionController{
+- logic.ConservationApp program
+- logic.Registers currentRegister
+- java.lang.String currentChoiceAdd
+- java.util.ArrayList<logic.Registers> listViewRegisters
++ void getroomIDChoice (ActionEvent )
++ void landlordMenu (ActionEvent )
++ void addConsumption (ActionEvent )
++ void changeConsumption ()
++ void removeRegister ()
++ void clearInputChange ()
++ boolean consumptionPresent (Registers )
++ void showConsumption ()
++ void initialize (URL location, ResourceBundle )
++ void clearInputAdd ()
+}
+class gui.RegisterLandlordController{
+- logic.ConservationApp program
++ void landlordRegisterButton ()
++ void clearLandlordInput ()
++ boolean landlordPresentRegister (String firstname, String lastName, String email, String )
++ void backToSignIn (ActionEvent )
++ boolean emptyfields ()
+}
+class gui.RegisterStudentController{
+- logic.ConservationApp program
++ void studentRegisterButton ()
++ void clearStudentInput ()
++ boolean studentPresentRegister (String firstname, String lastName, String email, String )
++ void backToSignIn (ActionEvent )
++ boolean emptyFields ()
+}
+class gui.StudentMenuController{
+- logic.ConservationApp program
++ void applianceMenu (ActionEvent )
++ void backToSignIn (ActionEvent )
++ void goToStudentProfile (ActionEvent )
++ void goToConservationMenu (ActionEvent )
++ void goToMessages (ActionEvent )
++ void goToStudentReport (ActionEvent )
+}
+class gui.StudentProfileController{
+ logic.ConservationApp program
++ void backToStudentMenu (ActionEvent )
++ void changeStudent ()
++ java.lang.String searchRoomStudent (Student )
++ int searchRoomNrStudent (String )
++ java.lang.String searchBuildingIDStudent (String )
++ java.lang.String searchBuildingAdressStudent (String )
++ void initialize (URL location, ResourceBundle )
+}
+class gui.StudentReportController{
+- javafx.scene.chart.LineChart areaChartElectricity
+- javafx.scene.chart.LineChart areaChartGas
+- javafx.scene.chart.LineChart areaChartWater
+- javafx.scene.chart.XYChart.Series series1Electricity
+- javafx.scene.chart.XYChart.Series series2Electricity
+- javafx.scene.chart.XYChart.Series series3Electricity
+- javafx.scene.chart.XYChart.Series series1
+- javafx.scene.chart.XYChart.Series series2
+- javafx.scene.chart.XYChart.Series series3
+- javafx.scene.chart.XYChart.Series series1Water
+- javafx.scene.chart.XYChart.Series series2Water
+- javafx.scene.chart.XYChart.Series series3Water
++ void backToStudentMenu (ActionEvent )
++ java.util.ArrayList<java.lang.String> applianceNames ()
++ java.util.ArrayList<java.lang.String> applianceConsumptions ()
++ void showActionsAndEnergySaved ()
++ void initialize (URL url, ResourceBundle )
++ void clearElectricityGraph ()
++ void clearGasGraph ()
++ void clearWaterGraph ()
++ void makeGasGraph ()
+- void showGas ()
++ void makeWaterGraph ()
+- void showWater ()
++ void makeElectricityGraph ()
+- void showElectricity ()
+}
+class database.DBActions{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.Action> databaseReadActions ()
++ void addActionsToDatabase (Action )
++ void removeActionFromDatabase (Action )
++ void changeActionFromDatabase (String column, int change, String )
+}
+class database.DBStudent{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.Student> databaseReadStudent ()
++ void addStudentToDatabase (Student )
++ void changeStudentFromDatabase (String column, String change, String )
++ void removeStudentFromDatabase (Student )
+}
+class database.DBSavesBy{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.SavesBy> databaseReadSavesBy ()
++ void addSavesByToDatabase (SavesBy )
+}
+class database.DBRoom{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.Room> databaseReadRoom ()
++ void addRoomToDatabase (Room )
++ void changeRoomFromDatabase (String column, String change, String )
++ void removeRoomFromDatabase (Room )
+}
+class database.DBRegisters{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.Registers> databaseReadRegisters ()
++ void addRegistersToDatabase (Registers )
++ void removeRegisterFromDatabase (Registers )
+}
+class database.DBOwnership{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.Ownership> databaseReadOwnership ()
++ void addOwnershipToDatabase (Ownership )
+}
+class database.DBMonthlyConsumption{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.MonthlyConsumption> databaseReadMonthlyConsumption ()
++ void changeMonthlyConsumptionToDatabase (String column, String change, String )
++ void addMonthlyConsumptionToDatabase (MonthlyConsumption )
+}
+class database.DBLease{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.Lease> databaseReadLease ()
++ void addLeaseToDatabase (Lease )
++ void removeLeaseFromDatabase (Lease )
+}
+class database.DBLandlord{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.Landlord> databaseReadLandlord ()
++ void addLandlordToDatabase (Landlord )
++ void changeLandlordFromDatabase (String column, String change, String )
++ void removeLandlordFromDatabase (Landlord )
+}
+class database.DBContract{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.Contract> databaseReadContract ()
++ void addContractToDatabase (Contract )
++ void changeContractFromDatabase (String column, String change, String )
++ void removeContractFromDatabase (Contract )
+}
+class database.DBContains{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.Contains> databaseReadContains ()
++ void addContainsToDatabase (Contains )
++ void removeContainsFromDatabase (Contains )
+}
+class database.DBBuilding{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.Building> databaseReadBuilding ()
++ void addBuildingToDatabase (Building )
++ void changeBuildingFromDatabase (String column, String change, String )
++ void removeBuildingFromDatabase (Building )
+}
+class database.DBBelongsTo{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.BelongsTo> databaseReadBelongsTo ()
++ void addBelongingToDatabase (BelongsTo )
+}
+class database.DBAppliance{
+- java.sql.Connection CON
+- java.lang.String USERNAME
+- java.lang.String PASSWORD
+- java.lang.String DRIVER
+- java.lang.String URL
++ java.util.ArrayList<logic.Appliance> databaseReadAppliance ()
++ void addApplianceToDatabase (Appliance )
++ void changeApplianceFromDatabase (String column, String change, String )
++ void removeApplianceFromDatabase (Appliance )
+}
+class gui.WebViewController{
+- logic.ConservationApp program
+- javafx.scene.web.WebView myWebView
+- javafx.scene.web.WebEngine webEngine
++ void backToApplianceMenu (ActionEvent )
++ void loadPage ()
++ void loadAddress ()
++ void initialize (URL url, ResourceBundle )
+}
+class logic.Action{
+- java.lang.String description
+- java.lang.String applianceKind
+- java.lang.String actionID
+- int recommended
+- int savedAmount
++ void Action (String actionID, String applianceKind, int recommended, int savedAmount, String )
++ java.lang.String getActionID ()
++ void setActionID (String )
++ java.lang.String getDescription ()
++ void setDescription (String )
++ java.lang.String getApplianceKind ()
++ void setApplianceKind (String )
++ int getSavedAmount ()
++ void setSavedAmount (int )
++ int getRecommended ()
++ void setRecommended (int )
++ java.lang.String toString ()
+}
+class logic.Appliance{
+- java.lang.String applianceID
+- java.lang.String consumption
+- java.lang.String efficiency
+- java.lang.String QRCode
+- java.lang.String applianceName
+- java.lang.String applianceKind
++ void Appliance (String applianceID, String consumption, String efficiency, String QRCode, String applianceName, String )
++ java.lang.String getApplianceKind ()
++ void setApplianceKind (String )
++ java.lang.String getApplianceName ()
++ void setApplianceName (String )
++ java.lang.String getApplianceID ()
++ void setApplianceID (String )
++ java.lang.String getConsumption ()
++ void setConsumption (String )
++ java.lang.String getEfficiency ()
++ void setEfficiency (String )
++ java.lang.String getQRCode ()
++ void setQRCode (String )
++ java.lang.String toString ()
+}
+class logic.BelongsTo{
+- java.lang.String buildingID
+- java.lang.String roomID
++ void BelongsTo (String buildingID, String )
++ java.lang.String getBuildingID ()
++ void setBuildingID (String )
++ java.lang.String getRoomID ()
++ void setRoomID (String )
++ java.lang.String toString ()
+}
+class logic.Building{
+- java.lang.String buildingID
+- java.lang.String country
+- java.lang.String city
+- java.lang.String address
+- java.lang.String zip
++ void Building (String buildingID, String country, String city, String address, String )
++ java.lang.String getBuildingID ()
++ void setBuildingID (String )
++ java.lang.String getCountry ()
++ void setCountry (String )
++ java.lang.String getCity ()
++ void setCity (String )
++ java.lang.String getAddress ()
++ void setAddress (String )
++ java.lang.String getZip ()
++ void setZip (String )
++ java.lang.String toString ()
+}
+class logic.ConservationApp{
+- logic.ConservationApp conservationApp
+- java.util.ArrayList<logic.Student> students
+- java.util.ArrayList<logic.Landlord> landlords
+- java.util.ArrayList<logic.Building> buildings
+- java.util.ArrayList<logic.Ownership> ownerships
+- java.util.ArrayList<logic.Contract> contracts
+- java.util.ArrayList<logic.Room> rooms
+- java.util.ArrayList<logic.Lease> leases
+- java.util.ArrayList<logic.Appliance> appliances
+- java.util.ArrayList<logic.BelongsTo> belongsToArrayList
+- java.util.ArrayList<logic.Contains> containsArrayList
+- java.util.ArrayList<logic.OpenContract> openContracts
+- logic.Student currentStudent
+- logic.Landlord currentLandlord
+- java.util.ArrayList<logic.MonthlyConsumption> monthlyConsumptions
+- java.util.ArrayList<logic.Registers> registers
+- logic.Contract currentContract
+- java.lang.String currentSite
+- java.util.ArrayList<logic.Action> actions
+- java.util.ArrayList<logic.SavesBy> savesByArrayList
++ void ConservationApp ()
++ java.util.ArrayList<logic.SavesBy> getSavesByArrayList ()
++ void setSavesByArrayList (ArrayList<SavesBy> )
++ java.util.ArrayList<logic.Action> getActions ()
++ void setActions (ArrayList<Action> )
++ java.lang.String getCurrentSite ()
++ void setCurrentSite (String )
++ java.util.ArrayList<logic.Room> getRoomsFromBuilding (Building )
++ java.util.ArrayList<logic.Action> getElectricityActions ()
++ java.util.ArrayList<logic.Action> getGasActions ()
++ java.util.ArrayList<logic.Action> getWaterActions ()
++ logic.Contract getCurrentContract ()
++ void setCurrentContract (Contract )
++ java.util.ArrayList<logic.MonthlyConsumption> getMonthlyConsumptions ()
++ void setMonthlyConsumptions (ArrayList<MonthlyConsumption> )
++ java.util.ArrayList<logic.Registers> getRegisters ()
++ void setRegisters (ArrayList<Registers> )
++ void setCurrentStudent (Student )
++ void setCurrentLandlord (Landlord )
++ logic.ConservationApp getInstance ()
++ java.util.ArrayList<logic.Student> getStudents ()
++ java.util.ArrayList<logic.Landlord> getLandlords ()
++ java.util.ArrayList<logic.Building> getBuildings ()
++ java.util.ArrayList<logic.Ownership> getOwnerships ()
++ java.util.ArrayList<logic.Contract> getContracts ()
++ java.util.ArrayList<logic.Room> getRooms ()
++ java.util.ArrayList<logic.Lease> getLeases ()
++ java.util.ArrayList<logic.Appliance> getAppliances ()
++ java.util.ArrayList<logic.BelongsTo> getBelongsToArrayList ()
++ java.util.ArrayList<logic.Contains> getContainsArrayList ()
++ logic.Student getCurrentStudent ()
++ logic.Landlord getCurrentLandlord ()
++ void setConservationApp (ConservationApp )
++ java.lang.String[] getBuildingIDsLandlord ()
++ java.lang.String[] getRoomIDsLandlord (String[] )
++ java.util.ArrayList<logic.Appliance> getAppliancesStudent ()
++ java.util.ArrayList<logic.Appliance> getAppliancesCurrentStudentElectricity ()
++ java.util.ArrayList<logic.Appliance> getAppliancesCurrentStudentWater ()
++ java.util.ArrayList<logic.Appliance> getAppliancesCurrentStudentGas ()
++ java.util.ArrayList<logic.Registers> getRegistersLandlord (String )
++ java.lang.String toMonth (String )
++ java.lang.String toYear (String )
++ void setStudents (ArrayList<Student> )
++ void setLandlords (ArrayList<Landlord> )
++ void setBuildings (ArrayList<Building> )
++ void setOwnerships (ArrayList<Ownership> )
++ void setContracts (ArrayList<Contract> )
++ void setRooms (ArrayList<Room> )
++ void setLeases (ArrayList<Lease> )
++ void setAppliances (ArrayList<Appliance> )
++ void setBelongsToArrayList (ArrayList<BelongsTo> )
++ void setContainsArrayList (ArrayList<Contains> )
++ void setOpenContracts (ArrayList<OpenContract> )
++ java.util.ArrayList<logic.Building> getCurrentLandlordBuildings ()
++ java.util.ArrayList<logic.Contract> getContractsLandlord ()
++ java.util.ArrayList<logic.Room> getCurrentLandlordRooms ()
++ java.util.ArrayList<logic.Appliance> getAppliancesFromRoom (Room )
++ java.util.ArrayList<java.lang.Integer> getConsumptionOfAppliances (ArrayList<Appliance> )
++ java.util.ArrayList<logic.Action> getActionsFromRoom (String[] dateSplit, ArrayList<Appliance> )
++ java.util.ArrayList<java.lang.Integer> getMonthlyConservation (ArrayList<Action> )
++ java.util.ArrayList<java.lang.Integer> getMonthlyConsumptionFromRoom (String date, Room )
++ java.util.ArrayList<java.lang.Integer> getMonthlyConsumptionReducted (ArrayList<Integer> monthlyConsumptionRoom, ArrayList<Integer> )
++ logic.Room getRoomCurrentStudent ()
++ java.util.ArrayList<java.lang.String> getSavesBysConservations (ArrayList<Action> )
++ java.util.ArrayList<java.lang.String> getCurrentLandlordBuildingIDs ()
++ java.util.ArrayList<java.lang.String> getCurrentLandlordRoomIDs ()
++ java.util.ArrayList<logic.Registers> getCurrentLandlordRegisters ()
+}
+class logic.Contains{
+- java.lang.String roomID
+- java.lang.String applianceID
++ void Contains (String roomID, String )
++ java.lang.String getRoomID ()
++ void setRoomID (String )
++ java.lang.String getApplianceID ()
++ void setApplianceID (String )
++ java.lang.String toString ()
+}
+class logic.Contract{
+- java.lang.String studentID
+- java.lang.String landlordID
+- java.lang.String contractNr
+- java.lang.String startDate
+- java.lang.String status
+- java.lang.String contractRoomID
+- int contractDuration
++ void Contract (String studentID, String landlordID, String contractNr, String startDate, int contractDuration, String status, String )
++ java.lang.String getStudentID ()
++ void setStudentID (String )
++ java.lang.String getLandlordID ()
++ void setLandlordID (String )
++ java.lang.String getContractNr ()
++ void setContractNr (String )
++ java.lang.String getStartDate ()
++ void setStartDate (String )
++ int getContractDuration ()
++ void setContractDuration (int )
++ java.lang.String getStatus ()
++ void setStatus (String )
++ java.lang.String getcontractRoomID ()
++ void setContractRoomID (String )
++ java.lang.String toString ()
+}
+class logic.Landlord{
+- java.lang.String name
+- java.lang.String firstName
+- java.lang.String lastName
+- java.lang.String email
+- java.lang.String telephoneNR
+- java.lang.String passWord
+- java.lang.String landlordID
++ void Landlord (String landlordID, String firstName, String lastName, String email, String telephoneNR, String )
++ java.lang.String getPassWord ()
++ void setPassWord (String )
++ java.lang.String getName ()
++ void setName (String )
++ java.lang.String getFirstName ()
++ void setFirstName (String )
++ java.lang.String getLastName ()
++ void setLastName (String )
++ java.lang.String getEmail ()
++ void setEmail (String )
++ java.lang.String getTelephoneNR ()
++ void setTelephoneNR (String )
++ java.lang.String getLandlordID ()
++ void setLandlordID (String )
++ java.lang.String toString ()
+}
+class logic.Lease{
+- java.lang.String studentID
+- java.lang.String roomID
++ void Lease (String studentID, String )
++ java.lang.String getStudentID ()
++ void setStudentID (String )
++ java.lang.String getRoomID ()
++ void setRoomID (String )
++ java.lang.String toString ()
+}
+class logic.OpenContract{
+- java.lang.String studentID
+- java.lang.String landlordID
+- int duration
+- java.util.Date startDate
+- logic.OpenContract.Status status
++ void OpenContract (String studentID, String landlordID, Status status, Date startDate, int )
++ int getDuration ()
++ void setDuration (int )
++ java.util.Date getStartDate ()
++ void setStartDate (Date )
++ java.lang.String getStudentID ()
++ void setStudentID (String )
++ java.lang.String getLandlordID ()
++ void setLandlordID (String )
++ logic.OpenContract.Status getStatus ()
++ void setStatus (Status )
++ java.lang.String toString ()
+}
+class logic.MonthlyConsumption{
+- java.lang.String registrationID
+- java.lang.String water
+- java.lang.String electricity
+- java.lang.String gas
++ void MonthlyConsumption (String registrationID, String water, String electricity, String )
++ java.lang.String getRegistrationID ()
++ void setRegistrationID (String )
++ java.lang.String getWater ()
++ void setWater (String )
++ java.lang.String getElectricity ()
++ void setElectricity (String )
++ java.lang.String getGas ()
++ void setGas (String )
++ java.lang.String toString ()
+}
+class logic.Ownership{
+- java.lang.String landlordID
+- java.lang.String buildingID
++ void Ownership (String buildingID, String )
++ java.lang.String getLandlordID ()
++ void setLandlordID (String )
++ java.lang.String getBuildingID ()
++ void setBuildingID (String )
++ java.lang.String toString ()
+}
+class logic.Registers{
+- java.lang.String date
+- java.lang.String registrationID
+- java.lang.String roomID
++ void Registers (String date, String registrationID, String )
++ java.lang.String getDate ()
++ void setDate (String )
++ java.lang.String getRegistrationID ()
++ void setRegistrationID (String )
++ java.lang.String getRoomID ()
++ void setRoomID (String )
++ java.lang.String toString ()
+}
+class logic.Room{
+- java.lang.String roomID
+- java.lang.String buildingID
+- java.lang.String characteristics
+- int roomNR
++ void Room (int roomNR, String roomID, String buildingID, String )
++ java.lang.String getRoomID ()
++ void setRoomID (String )
++ java.lang.String getBuildingID ()
++ void setBuildingID (String )
++ java.lang.String getCharacteristics ()
++ void setCharacteristics (String )
++ int getRoomNR ()
++ void setRoomNR (int )
++ java.lang.String toString ()
+}
+class logic.SavesBy{
+- java.lang.String applianceID
+- java.lang.String actionID
+- java.lang.String date
++ void SavesBy (String actionID, String applianceID, String )
++ void setActionID (String )
++ java.lang.String getDate ()
++ void setDate (String )
++ java.lang.String getApplianceID ()
++ void setApplianceID (String )
++ java.lang.String getActionID ()
++ java.lang.String toString ()
+}
+class logic.Student{
+- java.lang.String name
+- java.lang.String firstName
+- java.lang.String lastName
+- java.lang.String email
+- java.lang.String password
+- java.lang.String studentID
+- java.lang.String telephoneNr
++ void Student (String firstName, String lastName, String email, String telephoneNr, String studentID, String )
++ java.lang.String getName ()
++ void setName (String )
++ java.lang.String getFirstName ()
++ void setFirstName (String )
++ java.lang.String getLastName ()
++ void setLastName (String )
++ java.lang.String getEmail ()
++ void setEmail (String )
++ java.lang.String getPassword ()
++ void setPassword (String )
++ java.lang.String getStudentID ()
++ void setStudentID (String )
++ java.lang.String getTelephoneNr ()
++ void setTelephoneNr (String )
++ java.lang.String toString ()
+}
+class StartApp{
++ java.lang.String STYLESHEET_CASPIAN
++ java.lang.String STYLESHEET_MODENA
+- javafx.application.HostServices hostServices
+- java.lang.String userAgentStylesheet
++ void start (Stage )
++ void main (String[] )
+}
+class javafx.application.Application{
++ java.lang.String STYLESHEET_CASPIAN
++ java.lang.String STYLESHEET_MODENA
+- javafx.application.HostServices hostServices
+- java.lang.String userAgentStylesheet
++ void launch (Class<? extends Application> aClass, String... )
++ void launch (String... )
++ void Application ()
++ void init ()
++ void start (Stage )
++ void stop ()
++ javafx.application.HostServices getHostServices ()
++ javafx.application.Application.Parameters getParameters ()
++ void notifyPreloader (PreloaderNotification )
++ java.lang.String getUserAgentStylesheet ()
++ void setUserAgentStylesheet (String )
+}
+javafx.application.Application <|-- StartApp
+
+database.DBActions --|> logic.ConservationApp
+database.DBAppliance --|> logic.ConservationApp
+@enduml 

@@ -276,7 +276,7 @@ public class AddStudentRoomController implements Initializable {
         program.setBuildings(DBBuilding.databaseReadBuilding());
 
         myListViewBuilding.getItems().clear();
-        myListViewBuilding.getItems().addAll(program.getAppliancesStudent());
+        myListViewBuilding.getItems().addAll(program.getCurrentLandlordBuildings());
 
         clearInputBuildingChange();
     }
